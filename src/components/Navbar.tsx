@@ -5,11 +5,11 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const links = [
-    { name: "Live", href: "#hero" },
-    { name: "Timeline", href: "#about" },
-    { name: "Music", href: "#music" },
-    { name: "Events", href: "#events" },
-    { name: "Support", href: "#donate" },
+    { name: "About", href: "/about" },
+    { name: "Media", href: "/media" },
+    { name: "Stories", href: "/stories" },
+    { name: "Join", href: "/join" },
+    { name: "Music", href: "/music" },
 ];
 
 export default function Navbar() {

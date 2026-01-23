@@ -33,10 +33,10 @@ export default function Footer() {
                     <div className="md:col-span-2 space-y-6">
                         <h4 className="font-black text-gold uppercase tracking-widest text-xs">Explore</h4>
                         <ul className="space-y-4 text-foreground/70 font-bold">
-                            <li><Link href="#hero" className="hover:text-gold transition-all">Archives</Link></li>
-                            <li><Link href="#about" className="hover:text-gold transition-all">Timeline</Link></li>
-                            <li><Link href="#music" className="hover:text-gold transition-all">Music</Link></li>
-                            <li><Link href="#events" className="hover:text-gold transition-all">Events</Link></li>
+                            <li><Link href="/about" className="hover:text-gold transition-all">Timeline</Link></li>
+                            <li><Link href="/media" className="hover:text-gold transition-all">Media</Link></li>
+                            <li><Link href="/stories" className="hover:text-gold transition-all">Stories</Link></li>
+                            <li><Link href="/join" className="hover:text-gold transition-all">Join Us</Link></li>
                         </ul>
                     </div>
 

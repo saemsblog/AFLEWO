@@ -27,7 +27,12 @@ export const subscribeToTransactions = (txId: string, callback: (payload: any) =
         .channel('public:transactions')
         .on(
             'postgres_changes',
-            { event: 'UPDATE', filter: `provider_tx_id=eq.${txId}` },
+            {
+                event: 'UPDATE',
+                schema: 'public',
+                table: 'transactions',
+                filter: `provider_tx_id=eq.${txId}`
+            },
             (payload) => callback(payload.new)
         )
         .subscribe();

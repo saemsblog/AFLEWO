@@ -4,71 +4,36 @@
 
 @layer base {
   :root {
-    /* AFLEWO Core Palette - Vibrant & Spiritual */
+    /* AFLEWO Core Palette - Final Production Specs */
+    /* aflewo-gold: 45 100% 50% */
     --aflewo-gold: 45 100% 50%;
+    /* aflewo-brown: 20 30% 18% */
     --aflewo-brown: 20 30% 18%;
+    /* aflewo-emerald: 160 84% 39% */
     --aflewo-emerald: 160 84% 39%;
     --aflewo-cream: 40 20% 96%;
 
-    /* Standard Theme Variables mapped to AFLEWO palette */
-    --background: var(--aflewo-cream);
-    --foreground: 20 20% 12%;
-
-    --card: 40 25% 98%;
-    --card-foreground: var(--foreground);
-
-    --popover: 40 25% 98%;
-    --popover-foreground: var(--foreground);
-
-    --primary: var(--aflewo-gold);
-    --primary-foreground: 20 30% 10%;
-
-    --secondary: var(--aflewo-brown);
-    --secondary-foreground: 40 20% 98%;
-
-    --muted: 35 10% 90%;
-    --muted-foreground: 20 8% 45%;
-
-    --accent: var(--aflewo-emerald);
-    --accent-foreground: 160 84% 98%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 20 15% 90%;
-    --input: 20 15% 90%;
-    --ring: var(--aflewo-gold);
-
-    --radius: 1.25rem;
-    /* iOS inspired larger radius */
-
-    /* Glassmorphism */
-    --glass-bg: 40 25% 98% / 0.85;
-    --glass-border: 20 10% 88% / 0.6;
-
-    /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(20 30% 10% / 0.08);
-    --shadow-medium: 0 12px 40px -8px hsl(20 30% 10% / 0.12);
-  }
-
-  .dark {
     --background: 20 30% 8%;
+    /* Default to Dark for immersion */
     --foreground: 40 20% 98%;
 
     --card: 20 30% 12%;
     --card-foreground: var(--foreground);
 
+    --popover: 20 30% 12%;
+    --popover-foreground: var(--foreground);
+
     --primary: var(--aflewo-gold);
     --primary-foreground: 20 30% 8%;
 
-    --secondary: 20 30% 18%;
-    --secondary-foreground: 40 20% 96%;
+    --secondary: var(--aflewo-brown);
+    --secondary-foreground: 40 20% 98%;
 
     --muted: 20 20% 18%;
     --muted-foreground: 20 10% 65%;
 
     --accent: var(--aflewo-emerald);
-    --accent-foreground: 160 84% 15%;
+    --accent-foreground: 160 84% 98%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: var(--foreground);
@@ -77,12 +42,17 @@
     --input: 20 20% 18%;
     --ring: var(--aflewo-gold);
 
-    /* Glassmorphism Dark */
-    --glass-bg: 20 30% 8% / 0.9;
+    --radius: 1.25rem;
+
+    /* Glassmorphism */
+    --glass-bg: 20 30% 8% / 0.8;
     --glass-border: 20 20% 25% / 0.5;
+
+    /* Shadows */
+    --shadow-glow: 0 0 30px -5px hsl(var(--aflewo-gold) / 0.3);
+    --shadow-emerald: 0 0 40px -10px hsl(var(--aflewo-emerald) / 0.4);
   }
 }
-
 
 body {
   background-color: hsl(var(--background));
@@ -94,44 +64,48 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Glassmorphism Card Utility */
+/* --- Premium Utilities --- */
+
 .glass-card {
   background: hsl(var(--glass-bg));
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid hsl(var(--glass-border));
-  border-radius: var(--radius-ios);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.aflewo-glow-gold {
+  filter: drop-shadow(0 0 15px hsl(var(--aflewo-gold) / 0.5));
+}
+
+.aflewo-glow-emerald {
+  filter: drop-shadow(0 0 20px hsl(var(--aflewo-emerald) / 0.6));
+}
+
+.text-gradient-gold {
+  background: linear-gradient(to bottom right, hsl(var(--aflewo-gold)), #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* iOS Inspired Interactive scale */
 .press-scale {
-  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .press-scale:active {
-  transform: scale(0.96);
+  transform: scale(0.94);
 }
 
-/* Scroll Storytelling reveals */
-.reveal-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
+@layer utilities {
+  .section-padding {
+    @apply py-24 px-6 md:px-12 lg:px-24;
+  }
 
-.reveal-up.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Safe areas */
-.safe-area-bottom {
-  padding-bottom: env(safe-area-inset-bottom);
-}
-
-.safe-area-top {
-  padding-top: env(safe-area-inset-top);
+  .max-container {
+    @apply max-w-7xl mx-auto;
+  }
 }
 
 /* Hide scrollbar */
@@ -142,4 +116,21 @@ body {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* Smooth Page Transitions */
+.page-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
