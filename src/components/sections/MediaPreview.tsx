@@ -146,7 +146,7 @@ export default function MediaPreview() {
                         </div>
                         <h2 className="text-5xl md:text-7xl font-black tracking-tighter">
                             THE SOUND <br />
-                            <span className="text-gold">OF HEAVEN.</span>
+                            <span className="text-gold">OF HEAVEN</span>
                         </h2>
                         <p className="text-foreground/50 max-w-md font-medium">
                             20 years of worship captured. From the first gathering to today's continental movement.
@@ -162,12 +162,10 @@ export default function MediaPreview() {
 
                 <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[180px] gap-4">
                     {mediaItems.map((item, i) => (
-                        <div
+                        <Link
+                            href="/media"
                             key={i}
-                            ref={(el) => { itemsRef.current[i] = el; }}
-                            onMouseMove={(e) => handleMouseMove(e, i)}
-                            onMouseLeave={() => handleMouseLeave(i)}
-                            className={`bento-item relative rounded-[2rem] overflow-hidden glass-card border-white/5 group cursor-pointer
+                            className={`bento-item relative rounded-lg overflow-hidden glass-card border-white/5 group cursor-pointer
                                 ${item.size === "large" ? "md:col-span-2 md:row-span-2" : ""}
                                 ${item.size === "medium" ? "md:col-span-2 md:row-span-1" : ""}
                                 ${item.size === "small" ? "md:col-span-1 md:row-span-1" : ""}
@@ -217,8 +215,8 @@ export default function MediaPreview() {
                                 </div>
                             </div>
 
-                            <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/30 rounded-[2rem] transition-colors duration-500 pointer-events-none" />
-                        </div>
+                            <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/30 rounded-lg transition-colors duration-500 pointer-events-none" />
+                        </Link>
                     ))}
                 </div>
 

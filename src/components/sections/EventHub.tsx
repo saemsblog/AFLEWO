@@ -384,10 +384,10 @@ END:VCALENDAR`;
                     key={day}
                     onClick={() => setSelectedDate(isSelected ? null : date)}
                     className={`relative h-10 md:h-14 rounded-lg text-sm font-bold transition-all ${isSelected
-                            ? "bg-gold text-brown"
-                            : hasEvents
-                                ? "bg-white/5 hover:bg-white/10 text-white"
-                                : "text-white/40 hover:bg-white/5"
+                        ? "bg-gold text-brown"
+                        : hasEvents
+                            ? "bg-white/5 hover:bg-white/10 text-white"
+                            : "text-white/40 hover:bg-white/5"
                         }`}
                 >
                     {day}
@@ -424,12 +424,12 @@ END:VCALENDAR`;
                                 <CalendarIcon size={12} /> Events & Calendar
                             </div>
                             <h2 className="text-5xl md:text-7xl font-black tracking-tighter">
-                                THE <span className="text-gold">CALENDAR.</span>
+                                THE <span className="text-gold">CALENDAR</span>
                             </h2>
                         </div>
                         <button
                             onClick={downloadAllICS}
-                            className="press-scale px-8 py-4 bg-gold text-brown rounded-full font-black text-[10px] uppercase tracking-widest hover:brightness-110 transition-all flex items-center gap-3"
+                            className="press-scale px-8 py-4 bg-gold text-brown rounded-lg font-black text-[10px] uppercase tracking-widest hover:brightness-110 transition-all flex items-center gap-3"
                         >
                             <Download size={16} /> Sync All 2026 Events
                         </button>
@@ -438,11 +438,11 @@ END:VCALENDAR`;
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     <div className="lg:col-span-5 hub-panel space-y-6">
-                        <div className="glass-card-elevated p-6 md:p-8 rounded-[2rem] border-white/5">
+                        <div className="glass-card-elevated p-6 md:p-8 rounded-lg border-white/5">
                             <div className="flex items-center justify-between mb-6">
                                 <button
                                     onClick={() => navigateMonth(-1)}
-                                    className="p-3 rounded-full glass-card hover:bg-white/10 transition-colors"
+                                    className="p-3 rounded-lg glass-card hover:bg-white/10 transition-colors"
                                 >
                                     <ChevronLeft size={20} />
                                 </button>
@@ -451,7 +451,7 @@ END:VCALENDAR`;
                                 </h3>
                                 <button
                                     onClick={() => navigateMonth(1)}
-                                    className="p-3 rounded-full glass-card hover:bg-white/10 transition-colors"
+                                    className="p-3 rounded-lg glass-card hover:bg-white/10 transition-colors"
                                 >
                                     <ChevronRight size={20} />
                                 </button>
@@ -472,14 +472,14 @@ END:VCALENDAR`;
                             {selectedDate && (
                                 <button
                                     onClick={() => setSelectedDate(null)}
-                                    className="mt-4 w-full py-3 glass-card rounded-xl text-[10px] font-black uppercase tracking-widest text-white/50 hover:text-white transition-colors flex items-center justify-center gap-2"
+                                    className="mt-4 w-full py-3 glass-card rounded-lg text-[10px] font-black uppercase tracking-widest text-white/50 hover:text-white transition-colors flex items-center justify-center gap-2"
                                 >
                                     <X size={14} /> Clear Selection
                                 </button>
                             )}
                         </div>
 
-                        <div className="glass-card p-6 rounded-2xl border-white/5">
+                        <div className="glass-card p-6 rounded-lg border-white/5">
                             <div className="flex items-center justify-between mb-4">
                                 <h4 className="text-sm font-black uppercase tracking-widest">Filter by Chapter</h4>
                                 <button
@@ -500,8 +500,8 @@ END:VCALENDAR`;
                                                 key={chapter}
                                                 onClick={() => toggleFilter(chapter)}
                                                 className={`px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${isActive
-                                                        ? `${colors.bg} ${colors.text} ${colors.border} border`
-                                                        : "glass-card text-white/50 hover:text-white"
+                                                    ? `${colors.bg} ${colors.text} ${colors.border} border`
+                                                    : "glass-card text-white/50 hover:text-white"
                                                     }`}
                                             >
                                                 {isActive && <Check size={12} />}
@@ -527,7 +527,7 @@ END:VCALENDAR`;
                     </div>
 
                     <div className="lg:col-span-7 hub-panel space-y-6">
-                        <div className="glass-card-elevated p-6 md:p-8 rounded-[2rem] border-white/5">
+                        <div className="glass-card-elevated p-6 md:p-8 rounded-lg border-white/5">
                             <div className="flex items-center justify-between mb-6">
                                 <h3 className="text-xl font-black tracking-tight">
                                     {selectedDate
@@ -555,11 +555,11 @@ END:VCALENDAR`;
                                         return (
                                             <div
                                                 key={event.id}
-                                                className={`group flex flex-col md:flex-row md:items-center justify-between p-5 glass-card rounded-2xl hover:border-gold/30 transition-all border ${colors.border}`}
+                                                className={`group flex flex-col md:flex-row md:items-center justify-between p-5 glass-card rounded-lg hover:border-gold/30 transition-all border ${colors.border}`}
                                                 style={{ animationDelay: `${i * 50}ms` }}
                                             >
                                                 <div className="flex items-start md:items-center gap-4 mb-4 md:mb-0">
-                                                    <div className={`w-14 h-14 rounded-xl ${colors.bg} flex flex-col items-center justify-center ${colors.text} border ${colors.border}`}>
+                                                    <div className={`w-14 h-14 rounded-lg ${colors.bg} flex flex-col items-center justify-center ${colors.text} border ${colors.border}`}>
                                                         <span className="text-lg font-black leading-none">
                                                             {event.date === "Every Night" ? "∞" : event.date.split(' ')[1]?.replace(',', '')}
                                                         </span>
@@ -595,14 +595,14 @@ END:VCALENDAR`;
                                                 <div className="flex gap-2">
                                                     <button
                                                         onClick={() => downloadICS(event)}
-                                                        className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-[8px] font-black uppercase tracking-widest hover:bg-white/10 transition-colors"
+                                                        className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-[8px] font-black uppercase tracking-widest hover:bg-white/10 transition-colors"
                                                         title="Add to Apple Calendar"
                                                     >
                                                         <Apple size={14} /> iCloud
                                                     </button>
                                                     <button
                                                         onClick={() => addToGoogleCalendar(event)}
-                                                        className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-gold text-brown text-[8px] font-black uppercase tracking-widest hover:brightness-110 transition-all"
+                                                        className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gold text-brown text-[8px] font-black uppercase tracking-widest hover:brightness-110 transition-all"
                                                         title="Add to Google Calendar"
                                                     >
                                                         <CalendarIcon size={14} /> Google
@@ -615,7 +615,7 @@ END:VCALENDAR`;
                             </div>
                         </div>
 
-                        <div className="glass-card-elevated p-8 md:p-10 rounded-[2rem] border-white/5 relative overflow-hidden">
+                        <div className="glass-card-elevated p-8 md:p-10 rounded-lg border-white/5 relative overflow-hidden">
                             <div className="absolute top-0 right-0 p-6">
                                 <Sparkles className="text-gold animate-pulse" />
                             </div>
@@ -624,7 +624,7 @@ END:VCALENDAR`;
                                 <div className="space-y-3 text-center">
                                     <span className="text-gold font-black uppercase tracking-[0.4em] text-xs">Prophetic Countdown</span>
                                     <h2 className="text-3xl font-black tracking-tighter">
-                                        {nextEvent ? nextEvent.title : "THE NEXT ALTAR."}
+                                        {nextEvent ? nextEvent.title : "THE NEXT ALTAR"}
                                     </h2>
                                     <p className="text-foreground/40 text-xs font-medium">
                                         {nextEvent
@@ -641,7 +641,7 @@ END:VCALENDAR`;
                                     <FlipDigit value={timeLeft.secs} label="Secs" />
                                 </div>
 
-                                <button className="press-scale w-full py-4 rounded-full bg-white text-brown font-black uppercase tracking-tighter hover:bg-gold transition-all shadow-lg">
+                                <button className="press-scale w-full py-4 rounded-lg bg-white text-brown font-black uppercase tracking-tighter hover:bg-gold transition-all shadow-lg">
                                     Register Now
                                 </button>
                             </div>

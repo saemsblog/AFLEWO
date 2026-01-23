@@ -527,7 +527,7 @@ export default function ChaptersSection() {
                             <MapPin size={12} /> The Prophetic House
                         </div>
                         <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9]">
-                            CHAPTERS OF <br /><span className="text-gold">IDENTITY.</span>
+                            CHAPTERS OF <br /><span className="text-gold">IDENTITY</span>
                         </h2>
                     </div>
                     <div className="flex flex-col gap-4 text-right">
@@ -545,7 +545,7 @@ export default function ChaptersSection() {
                         <div
                             key={i}
                             ref={(el) => { cardsRef.current[i] = el; }}
-                            className={`chapter-card bento-card glass-card-elevated p-8 md:p-10 flex flex-col justify-between group cursor-pointer transition-all duration-700 relative overflow-hidden min-h-[280px] ${getGridClasses(chapter.size)}`}
+                            className={`chapter-card bento-card glass-card-elevated p-8 md:p-10 flex flex-col justify-between group cursor-pointer transition-all duration-700 relative overflow-hidden min-h-[280px] rounded-lg ${getGridClasses(chapter.size)}`}
                             onMouseMove={(e) => handleMouseMove(e, i)}
                             onMouseLeave={() => handleMouseLeave(i)}
                             onClick={() => setSelectedChapter(chapter)}
@@ -572,7 +572,7 @@ export default function ChaptersSection() {
                                             )}
                                         </div>
                                         <h3 className={`font-black tracking-tighter group-hover:text-gold transition-colors ${chapter.size === "hero" ? "text-5xl md:text-6xl" :
-                                                chapter.size === "featured" ? "text-4xl" : "text-3xl"
+                                            chapter.size === "featured" ? "text-4xl" : "text-3xl"
                                             }`}>
                                             {chapter.name}
                                         </h3>
@@ -583,7 +583,7 @@ export default function ChaptersSection() {
                                                 e.stopPropagation();
                                                 setQrChapter(chapter);
                                             }}
-                                            className="p-3 glass-card bg-gold/10 border-gold/30 rounded-xl text-gold hover:bg-gold hover:text-brown transition-all"
+                                            className="p-3 glass-card bg-gold/10 border-gold/30 rounded-lg text-gold hover:bg-gold hover:text-brown transition-all"
                                         >
                                             <QrCode size={20} />
                                         </button>
@@ -614,12 +614,11 @@ export default function ChaptersSection() {
 
                                 <div className="flex items-center justify-between gap-4">
                                     <Link
-                                        href={chapter.link}
-                                        target="_blank"
+                                        href={`/chapters/${chapter.name.toLowerCase()}`}
                                         onClick={(e) => e.stopPropagation()}
                                         className="press-scale flex-1 inline-flex items-center justify-between px-5 py-3 glass-card group-hover:bg-gold group-hover:text-brown transition-all duration-500 rounded-full font-black text-[9px] uppercase tracking-widest"
                                     >
-                                        Connect <ExternalLink size={12} />
+                                        Explore Chapter <ArrowRight size={12} />
                                     </Link>
                                     {chapter.registrationOpen && (
                                         <span className="px-3 py-1 rounded-full bg-emerald/20 text-emerald text-[8px] font-black uppercase tracking-widest">
@@ -634,31 +633,32 @@ export default function ChaptersSection() {
                     ))}
                 </div>
 
-                <div className="mt-16 flex flex-col md:flex-row items-center justify-between gap-8 glass-card p-8 rounded-[2rem] border-white/5">
-                    <div className="flex items-center gap-6">
-                        <div className="p-4 rounded-2xl bg-gold/10 text-gold">
-                            <Globe size={28} />
+                <div className="mt-16 flex flex-col md:flex-row items-center justify-between gap-12 glass-card-elevated p-10 md:p-12 rounded-lg border-gold/10 shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 blur-[100px] -z-10" />
+                    <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+                        <div className="p-5 rounded-lg bg-gold/10 text-gold border border-gold/20 shadow-glow">
+                            <Globe size={40} />
                         </div>
-                        <div className="space-y-1">
-                            <h4 className="text-xl font-black tracking-tighter">Central Administration</h4>
-                            <p className="text-[10px] font-black uppercase tracking-widest text-white/40">
-                                Connect with AFLEWO HQ for partnerships and support
+                        <div className="space-y-3">
+                            <h4 className="text-3xl font-black tracking-tighter text-white">Central Administration</h4>
+                            <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold/60 max-w-sm">
+                                Connect with AFLEWO HQ for global partnerships, support, and resource inquiries.
                             </p>
                         </div>
                     </div>
-                    <div className="flex flex-wrap gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
                         <Link
                             href="https://aflewo.org"
                             target="_blank"
-                            className="px-8 py-4 glass-card hover:bg-white/10 rounded-full font-black text-[10px] uppercase tracking-widest transition-all flex items-center gap-2"
+                            className="flex-1 sm:flex-none px-10 py-5 glass-card-elevated hover:bg-white/10 rounded-lg font-black text-[11px] uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3 border-white/10"
                         >
-                            aflewo.org <ExternalLink size={12} />
+                            aflewo.org <ExternalLink size={14} className="text-gold" />
                         </Link>
                         <Link
                             href="tel:*456*819867#"
-                            className="px-8 py-4 bg-gold text-brown rounded-full font-black text-[10px] uppercase tracking-widest hover:brightness-110 transition-all flex items-center gap-2"
+                            className="flex-1 sm:flex-none px-10 py-5 bg-gold text-brown rounded-lg font-black text-[11px] uppercase tracking-[0.2em] hover:brightness-110 transition-all flex items-center justify-center gap-3 shadow-glow"
                         >
-                            M-Pesa: 819867 <Phone size={12} />
+                            M-Pesa: 819867 <Phone size={14} />
                         </Link>
                     </div>
                 </div>

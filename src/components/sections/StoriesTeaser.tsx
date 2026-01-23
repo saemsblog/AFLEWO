@@ -131,9 +131,9 @@ export default function StoriesTeaser() {
                         </div>
                         <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9]">
                             HEIRS OF <br />
-                            <span className="text-gold">GLORY.</span>
+                            <span className="text-gold">GLORY</span>
                         </h2>
-                        <p className="text-white/60 text-xl font-medium leading-relaxed font-serif-spiritual italic max-w-md">
+                        <p className="text-white/60 text-xl font-medium leading-relaxed font-sans-aflewo italic max-w-md">
                             "Behind every worship night is a story of transformation. From the hidden prayers of volunteers to the global echoes of our anthem."
                         </p>
 
@@ -164,16 +164,28 @@ export default function StoriesTeaser() {
 
                         <Link
                             href="/stories"
-                            className="press-scale inline-flex items-center gap-4 bg-gold text-brown px-10 py-5 rounded-full font-black uppercase tracking-tighter hover:brightness-110 transition-all"
+                            className="press-scale inline-flex items-center gap-4 bg-gold text-brown px-10 py-5 rounded-lg font-black uppercase tracking-tighter hover:brightness-110 transition-all"
                         >
                             Read All Stories <ArrowRight size={20} />
                         </Link>
                     </div>
 
-                    <div className="flex-1 w-full overflow-hidden">
+                    <div
+                        className="flex-1 w-full overflow-hidden cursor-grab active:cursor-grabbing"
+                        onTouchStart={(e) => {
+                            const startX = e.touches[0].clientX;
+                            const handleTouchEnd = (ee: TouchEvent) => {
+                                const endX = ee.changedTouches[0].clientX;
+                                if (startX - endX > 50) nextSlide();
+                                if (startX - endX < -50) prevSlide();
+                                document.removeEventListener("touchend", handleTouchEnd);
+                            };
+                            document.addEventListener("touchend", handleTouchEnd);
+                        }}
+                    >
                         <div
                             ref={carouselRef}
-                            className="flex"
+                            className="flex touch-none"
                             style={{ width: `${stories.length * 100}%` }}
                         >
                             {stories.map((story, i) => (
@@ -182,7 +194,7 @@ export default function StoriesTeaser() {
                                     className="story-card w-full px-2"
                                     style={{ width: `${100 / stories.length}%` }}
                                 >
-                                    <div className="glass-card-elevated p-10 md:p-12 relative overflow-hidden group rounded-[2rem] h-full">
+                                    <div className="glass-card-elevated p-10 md:p-12 relative overflow-hidden group rounded-lg h-full border-white/5">
                                         <Quote className="absolute top-8 right-8 text-gold/10 group-hover:text-gold/20 transition-colors duration-500" size={80} />
 
                                         <div className="relative z-10 space-y-8">
@@ -199,7 +211,7 @@ export default function StoriesTeaser() {
                                                 )}
                                             </div>
 
-                                            <p className="text-2xl md:text-3xl font-bold tracking-tight text-white leading-snug">
+                                            <p className="text-2xl md:text-3xl font-black tracking-tight text-white leading-snug">
                                                 "{story.content}"
                                             </p>
 
@@ -212,7 +224,7 @@ export default function StoriesTeaser() {
                                                         {story.role}
                                                     </p>
                                                 </div>
-                                                <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-gold/10">
+                                                <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-gold/10">
                                                     <Heart size={16} className="text-gold" fill="currentColor" />
                                                     <span className="text-xs font-black text-gold">{story.stat}</span>
                                                 </div>

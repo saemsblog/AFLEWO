@@ -311,11 +311,11 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
                     <Image
-                        src="/brand/AFLEWO-LOGO-1-Photoroom.svg"
+                        src="/brand/AFLEWO LOGO 1-Photoroom.png"
                         alt="AFLEWO Logo"
                         width={120}
                         height={120}
-                        className="object-contain brightness-0 invert md:w-[160px] md:h-[160px]"
+                        className="object-contain md:w-[160px] md:h-[160px]"
                         priority
                     />
                 </div>

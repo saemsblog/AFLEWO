@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -52,7 +52,7 @@
     --input: 30 15% 20%;
     --ring: 42 92% 56%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     /* Extended Palette */
     --gold: 42 92% 56%;
@@ -140,14 +140,14 @@
   h4,
   h5,
   h6 {
-    font-family: 'Playfair Display', Georgia, serif;
-    @apply font-semibold tracking-tight;
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply font-black tracking-tighter;
   }
 }
 
-/* Elegant serif for spiritual/reflective content */
+/* Elegant serif for spiritual/reflective content - Now using Inter for consistency */
 .font-serif-spiritual {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 @layer components {
