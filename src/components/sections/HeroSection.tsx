@@ -1,115 +1,78 @@
-import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Play, ChevronDown, Calendar, MapPin } from 'lucide-react';
-import heroImage from '@/assets/hero-worship.jpg';
+"use client";
 
-export function HeroSection() {
-  const [isLoaded, setIsLoaded] = useState(false);
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Sphere, MeshDistortMaterial, Float } from "@react-three/drei";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+export default function HeroSection() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const textRef = useRef<HTMLDivElement>(null);
 
-  return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage}
-          alt="African worship gathering at sunset"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
-      </div>
+    useEffect(() => {
+        if (textRef.current) {
+            gsap.fromTo(
+                textRef.current.children,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.2,
+                    stagger: 0.2,
+                    ease: "power4.out",
+                    delay: 0.5,
+                }
+            );
+        }
+    }, []);
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 pt-24 pb-16">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Tagline */}
-          <div
-            className={`mb-6 transition-all duration-1000 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-cream/90">
-              <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-              Since 2004 • Uniting Africa in Worship
-            </span>
-          </div>
+    return (
+        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
+            {/* Three.js 3D Background */}
+            <div className="absolute inset-0 z-0">
+                <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+                    <ambientLight intensity={1.5} />
+                    <pointLight position={[10, 10, 10]} intensity={2} color="#FFD700" />
+                    <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={2} color="#10B981" />
 
-          {/* Main Heading */}
-          <h1
-            className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold leading-tight mb-6 transition-all duration-1000 delay-200 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <span className="text-cream">Africa</span>
-            <br />
-            <span className="text-gradient-gold">Let's Worship</span>
-          </h1>
+                    <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
+                        <Sphere args={[1, 100, 200]} scale={2.5}>
+                            <MeshDistortMaterial
+                                color="#FFD700"
+                                attach="material"
+                                distort={0.4}
+                                speed={1.5}
+                                roughness={0.2}
+                                metalness={0.8}
+                            />
+                        </Sphere>
+                    </Float>
 
-          {/* Subtitle */}
-          <p
-            className={`text-lg sm:text-xl md:text-2xl text-cream/80 max-w-2xl mx-auto mb-10 font-light transition-all duration-1000 delay-400 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            Stirring up hope in Jesus through annual events of worship in music and prayer
-            from a united front of the Church across Africa.
-          </p>
-
-          {/* CTA Buttons */}
-          <div
-            className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 transition-all duration-1000 delay-600 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <Button variant="hero" size="xl" className="w-full sm:w-auto">
-              <Calendar className="w-5 h-5" />
-              Upcoming Events
-            </Button>
-            <Button variant="heroOutline" size="xl" className="w-full sm:w-auto">
-              <Play className="w-5 h-5" />
-              Watch Worship
-            </Button>
-          </div>
-
-          {/* Next Event Banner */}
-          <div
-            className={`inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 glass px-6 py-4 rounded-2xl transition-all duration-1000 delay-800 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <div className="flex items-center gap-2 text-gold">
-              <Calendar className="w-5 h-5" />
-              <span className="font-semibold">AFLEWO 2025</span>
+                    <OrbitControls enableZoom={false} enablePan={false} />
+                </Canvas>
             </div>
-            <div className="hidden sm:block w-px h-8 bg-cream/20" />
-            <div className="flex items-center gap-2 text-cream/80">
-              <MapPin className="w-5 h-5" />
-              <span>Winners' Chapel, Nairobi</span>
+
+            {/* Overlay Content */}
+            <div className="relative z-10 text-center px-6 max-w-5xl" ref={textRef}>
+                <h1 className="text-6xl md:text-8xl font-black text-gold mb-6 tracking-tight drop-shadow-2xl">
+                    AFRICA LET'S WORSHIP
+                </h1>
+                <p className="text-xl md:text-3xl text-foreground/80 font-medium mb-10 leading-relaxed max-w-3xl mx-auto">
+                    One God. One People. One Africa. <br />
+                    Igniting a continent through the sound of heaven.
+                </p>
+                <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+                    <button className="press-scale bg-gold text-brown px-10 py-4 rounded-ios font-bold text-lg shadow-glow hover:brightness-110 transition-all">
+                        Experience the Archive
+                    </button>
+                    <button className="press-scale glass-card px-10 py-4 text-gold border-gold/30 font-bold text-lg hover:bg-gold/10 transition-all">
+                        Join the Movement
+                    </button>
+                </div>
             </div>
-            <div className="hidden sm:block w-px h-8 bg-cream/20" />
-            <span className="text-cream/60">All-Night Worship Experience</span>
-          </div>
-        </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <a
-          href="#about"
-          className="flex flex-col items-center gap-2 text-cream/60 hover:text-gold transition-colors duration-300"
-        >
-          <span className="text-sm">Scroll to explore</span>
-          <ChevronDown className="w-6 h-6 animate-bounce" />
-        </a>
-      </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute top-1/4 left-10 w-32 h-32 bg-gold/10 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 right-10 w-40 h-40 bg-terracotta/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '-2s' }} />
-    </section>
-  );
+            {/* Bottom Gradient Fade */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
+        </section>
+    );
 }

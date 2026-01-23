@@ -1,200 +1,92 @@
-import { useEffect, useRef, useState } from 'react';
-import { Play, Headphones, Youtube, ExternalLink, Music2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import musicImage from '@/assets/music-worship.jpg';
+"use client";
 
-const worshipContent = [
-  {
-    id: 1,
-    title: 'AFLEWO 2024 Live Worship',
-    type: 'Full Session',
-    duration: '3:45:00',
-    thumbnail: musicImage,
-    views: '45K views',
-  },
-  {
-    id: 2,
-    title: 'Night of Praise - Nairobi',
-    type: 'Highlights',
-    duration: '28:15',
-    thumbnail: musicImage,
-    views: '23K views',
-  },
-  {
-    id: 3,
-    title: 'Worship Medley 2024',
-    type: 'Music Video',
-    duration: '12:30',
-    thumbnail: musicImage,
-    views: '67K views',
-  },
-  {
-    id: 4,
-    title: 'AFLEWO Kigali Experience',
-    type: 'Full Session',
-    duration: '2:30:00',
-    thumbnail: musicImage,
-    views: '18K views',
-  },
+import { Play, Share2, Download, Music as MusicIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const tracks = [
+    { id: 1, title: "Worthy Is The Lamb", artist: "AFLEWO Live 2024", duration: "8:45", type: "Live" },
+    { id: 2, title: "One Africa (Anthem)", artist: "AFLEWO Collective", duration: "5:20", type: "Original" },
+    { id: 3, title: "Praise Him", artist: "AFLEWO Legacy 2008", duration: "6:12", type: "Classic" },
+    { id: 4, title: "Spirit of Unity", artist: "Worship Residency 2026", duration: "4:30", type: "Exp" },
 ];
 
-export function MusicSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
+export default function MusicSection() {
+    return (
+        <section className="py-24 px-6 bg-background" id="music">
+            <div className="max-w-6xl mx-auto">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div className="max-w-xl">
+                        <h2 className="text-5xl md:text-7xl font-black text-gold uppercase tracking-tighter mb-4 italic">The Sound of Heaven</h2>
+                        <p className="text-muted-foreground text-lg">
+                            Explore two decades of African worship archives. From stadium anthems to intimate residency experiments.
+                        </p>
+                    </div>
+                    <button className="press-scale glass-card px-8 py-3 text-gold font-bold uppercase tracking-widest text-sm border-gold/20">
+                        View All Tracks
+                    </button>
+                </div>
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
+                <div className="grid lg:grid-cols-2 gap-8">
+                    {/* Featured Player Card */}
+                    <div className="glass-card p-8 md:p-12 relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald/20 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+
+                        <div className="flex flex-col h-full justify-between gap-12 relative z-10">
+                            <div className="flex justify-between items-start">
+                                <div className="p-4 bg-gold/10 rounded-ios text-gold">
+                                    <MusicIcon size={32} />
+                                </div>
+                                <div className="flex gap-2">
+                                    <button className="p-3 glass-card rounded-full hover:bg-gold/20 transition-all"><Share2 size={20} /></button>
+                                    <button className="p-3 glass-card rounded-full hover:bg-gold/20 transition-all"><Download size={20} /></button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span className="text-gold font-bold uppercase tracking-widest text-sm mb-2 block">Now Playing • Live Experience</span>
+                                <h3 className="text-4xl md:text-5xl font-black text-foreground mb-4">Worthy Is The Lamb</h3>
+                                <p className="text-foreground/60 text-lg mb-8">Recorded Live at Kasarani Stadium, Nairobi.</p>
+
+                                <div className="flex items-center gap-6">
+                                    <button className="w-20 h-20 bg-gold rounded-full flex items-center justify-center text-brown shadow-glow press-scale">
+                                        <Play fill="currentColor" size={32} />
+                                    </button>
+                                    <div className="flex-1 space-y-2">
+                                        <div className="h-1.5 bg-gold/10 rounded-full w-full relative overflow-hidden">
+                                            <div className="absolute top-0 left-0 h-full bg-gold w-[45%]" />
+                                        </div>
+                                        <div className="flex justify-between text-xs font-bold text-gold/50 uppercase">
+                                            <span>03:42</span>
+                                            <span>08:45</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Track List */}
+                    <div className="space-y-4">
+                        {tracks.map((track) => (
+                            <div key={track.id} className="group glass-card p-6 flex items-center justify-between hover:bg-gold/5 transition-all cursor-pointer border-transparent hover:border-gold/20">
+                                <div className="flex items-center gap-6">
+                                    <div className="w-12 h-12 bg-brown/40 rounded-ios flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-brown transition-all">
+                                        <Play size={20} className={track.id === 1 ? "fill-current" : ""} />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-lg text-foreground">{track.title}</h4>
+                                        <p className="text-sm text-muted-foreground">{track.artist}</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-4">
+                                    <span className="text-xs font-black px-2 py-1 bg-brown/40 text-gold rounded uppercase tracking-tighter">{track.type}</span>
+                                    <span className="text-sm font-bold text-muted-foreground">{track.duration}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <section
-      id="music"
-      ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
-    >
-      {/* Background decorations */}
-      <div className="absolute top-1/2 left-0 w-72 h-72 bg-gold/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-terracotta/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span
-            className={`inline-block text-gold font-semibold text-sm uppercase tracking-widest mb-4 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            Experience the Sound
-          </span>
-          <h2
-            className={`text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-6 transition-all duration-700 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            Worship
-            <span className="text-gradient-gold"> & Music</span>
-          </h2>
-          <p
-            className={`text-cream/70 text-lg max-w-2xl mx-auto transition-all duration-700 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            Relive the powerful moments of worship. Watch full sessions, highlights,
-            and exclusive content from AFLEWO gatherings across Africa.
-          </p>
-        </div>
-
-        {/* Featured Video */}
-        <div
-          className={`relative rounded-3xl overflow-hidden mb-12 transition-all duration-1000 delay-300 ${
-            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          }`}
-        >
-          <div className="aspect-video relative group cursor-pointer">
-            <img
-              src={musicImage}
-              alt="AFLEWO worship session"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-            
-            {/* Play Button */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-24 h-24 rounded-full bg-gold/90 flex items-center justify-center shadow-gold pulse-glow group-hover:scale-110 transition-transform duration-300">
-                <Play className="w-10 h-10 text-primary-foreground ml-1" fill="currentColor" />
-              </div>
-            </div>
-
-            {/* Video Info */}
-            <div className="absolute bottom-0 left-0 right-0 p-8">
-              <span className="inline-block px-3 py-1 bg-gold/20 text-gold text-xs font-semibold rounded-full mb-3">
-                Featured
-              </span>
-              <h3 className="text-2xl md:text-3xl font-serif font-bold text-cream mb-2">
-                AFLEWO 2024 - Full Worship Experience
-              </h3>
-              <p className="text-cream/70">4 hours of uninterrupted worship from Winners' Chapel, Nairobi</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Video Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {worshipContent.map((item, index) => (
-            <div
-              key={item.id}
-              className={`group cursor-pointer transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-              }`}
-              style={{ transitionDelay: `${400 + index * 100}ms` }}
-              onMouseEnter={() => setHoveredItem(item.id)}
-              onMouseLeave={() => setHoveredItem(null)}
-            >
-              <div className="relative rounded-2xl overflow-hidden mb-4">
-                <div className="aspect-video">
-                  <img
-                    src={item.thumbnail}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                
-                {/* Hover Overlay */}
-                <div
-                  className={`absolute inset-0 bg-gold/20 flex items-center justify-center transition-opacity duration-300 ${
-                    hoveredItem === item.id ? 'opacity-100' : 'opacity-0'
-                  }`}
-                >
-                  <div className="w-14 h-14 rounded-full bg-gold flex items-center justify-center shadow-gold">
-                    <Play className="w-6 h-6 text-primary-foreground ml-0.5" fill="currentColor" />
-                  </div>
-                </div>
-
-                {/* Duration Badge */}
-                <div className="absolute bottom-2 right-2 px-2 py-1 bg-background/80 rounded text-cream text-xs">
-                  {item.duration}
-                </div>
-              </div>
-
-              <div>
-                <span className="text-gold text-xs font-medium">{item.type}</span>
-                <h4 className="text-cream font-medium mt-1 group-hover:text-gold transition-colors duration-300">
-                  {item.title}
-                </h4>
-                <p className="text-cream/50 text-sm mt-1">{item.views}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* YouTube CTA */}
-        <div
-          className={`text-center transition-all duration-1000 delay-800 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}
-        >
-          <Button variant="gold" size="lg" className="gap-3">
-            <Youtube className="w-5 h-5" />
-            Watch More on YouTube
-            <ExternalLink className="w-4 h-4" />
-          </Button>
-        </div>
-      </div>
-    </section>
-  );
 }

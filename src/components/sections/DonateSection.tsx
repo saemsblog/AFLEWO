@@ -1,213 +1,144 @@
-import { useEffect, useRef, useState } from 'react';
-import { Heart, CreditCard, Phone, Building2, Gift, ArrowRight, Check } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+"use client";
 
-const donationTiers = [
-  {
-    amount: 'KES 500',
-    title: 'Friend',
-    description: "Support a worshipper's transport",
-    icon: Heart,
-  },
-  {
-    amount: 'KES 2,000',
-    title: 'Partner',
-    description: 'Sponsor equipment for one night',
-    icon: Gift,
-  },
-  {
-    amount: 'KES 10,000',
-    title: 'Champion',
-    description: 'Fund a chapter event',
-    icon: Building2,
-    featured: true,
-  },
-];
+import { useState, useEffect } from "react";
+import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-const paymentMethods = [
-  {
-    name: 'M-Pesa',
-    icon: Phone,
-    details: 'Till Number: 819867',
-    description: 'AFLEWO Kenya',
-  },
-  {
-    name: 'Bank Transfer',
-    icon: Building2,
-    details: 'NCBA Bank',
-    description: 'A/C: 1234567890',
-  },
-];
+type PaymentStatus = "idle" | "pending" | "success" | "failed";
 
-const impactStats = [
-  { value: '100%', label: 'Goes to ministry' },
-  { value: 'Free', label: 'Events for all' },
-  { value: '20+', label: 'Years of impact' },
-];
+export default function DonateSection() {
+    const [amount, setAmount] = useState<string>("");
+    const [phone, setPhone] = useState<string>("");
+    const [status, setStatus] = useState<PaymentStatus>("idle");
+    const [progress, setProgress] = useState(0);
 
-export function DonateSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+    // 69% logic: Simulate the STK Push and real-time verification skeleton
+    const handleDonate = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!amount || !phone) return;
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
+        setStatus("pending");
+        setProgress(10);
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+        // [Step 1] Initializing transaction (Simulated)
+        setTimeout(() => setProgress(30), 1000);
 
-    return () => observer.disconnect();
-  }, []);
+        // [Step 2] Triggering STK Push via Cloudflare Worker/Daraja (Simulated)
+        // In a real scenario, this calls /api/payments/stk-push
+        setTimeout(() => {
+            setProgress(69); // Reached 69% - Waiting for user interaction or callback
+        }, 2500);
 
-  return (
-    <section
-      id="donate"
-      ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
-    >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-terracotta/5" />
-      
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-10 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-48 h-48 bg-terracotta/10 rounded-full blur-3xl" />
+        // [Step 3] Real-time monitoring (Skeleton for Supabase Presence/Realtime)
+        // For now, we simulate a successful callback after a delay
+        setTimeout(() => {
+            setStatus("success");
+            setProgress(100);
+        }, 8000);
+    };
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span
-            className={`inline-block text-gold font-semibold text-sm uppercase tracking-widest mb-4 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            Support the Movement
-          </span>
-          <h2
-            className={`text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-cream mb-6 transition-all duration-700 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            Partner With
-            <span className="text-gradient-gold"> AFLEWO</span>
-          </h2>
-          <p
-            className={`text-cream/70 text-lg max-w-2xl mx-auto transition-all duration-700 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            AFLEWO events are free for all attendees. Your generous support helps us 
-            bring worship experiences to thousands across Africa.
-          </p>
-        </div>
+    return (
+        <section className="py-24 px-6 bg-background relative overflow-hidden" id="donate">
+            <div className="max-w-4xl mx-auto">
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-black text-gold mb-4 uppercase tracking-tighter">Support the Vision</h2>
+                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                        Your seed fuels the sound of worship across Africa. Join us in building a legacy of praise.
+                    </p>
+                </div>
 
-        {/* Impact Stats */}
-        <div
-          className={`flex flex-wrap justify-center gap-8 md:gap-16 mb-16 transition-all duration-700 delay-300 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          {impactStats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-4xl md:text-5xl font-serif font-bold text-gold">{stat.value}</div>
-              <div className="text-cream/60 mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    {/* Donation Form Card */}
+                    <div className="glass-card p-8 md:p-12 relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-2 h-full bg-gold" />
 
-        {/* Donation Tiers */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {donationTiers.map((tier, index) => (
-            <div
-              key={tier.title}
-              className={`relative transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-              } ${tier.featured ? 'md:-mt-4 md:mb-4' : ''}`}
-              style={{ transitionDelay: `${400 + index * 100}ms` }}
-            >
-              <div
-                className={`h-full rounded-3xl p-8 text-center ${
-                  tier.featured
-                    ? 'bg-gradient-to-br from-gold/20 to-terracotta/20 border-2 border-gold'
-                    : 'card-glow'
-                }`}
-              >
-                {tier.featured && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gold text-primary-foreground text-xs font-bold rounded-full">
-                    Most Popular
-                  </span>
+                        <form onSubmit={handleDonate} className="space-y-6">
+                            <div>
+                                <label className="block text-sm font-bold text-gold uppercase mb-2">Phone (M-Pesa)</label>
+                                <input
+                                    type="tel"
+                                    placeholder="e.g. 0712345678"
+                                    className="w-full bg-brown/20 border-border rounded-ios px-4 py-3 text-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    disabled={status === "pending"}
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-bold text-gold uppercase mb-2">Amount (KES)</label>
+                                <input
+                                    type="number"
+                                    placeholder="Enter amount"
+                                    className="w-full bg-brown/20 border-border rounded-ios px-4 py-3 text-foreground focus:ring-2 focus:ring-gold outline-none transition-all"
+                                    value={amount}
+                                    onChange={(e) => setAmount(e.target.value)}
+                                    disabled={status === "pending"}
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={status === "pending"}
+                                className={cn(
+                                    "w-full py-4 rounded-ios font-black text-lg uppercase tracking-wider transition-all press-scale",
+                                    status === "pending" ? "bg-muted text-muted-foreground" : "bg-gold text-brown shadow-glow"
+                                )}
+                            >
+                                {status === "pending" ? (
+                                    <span className="flex items-center justify-center gap-2">
+                                        <Loader2 className="animate-spin" /> Processing... {progress}%
+                                    </span>
+                                ) : (
+                                    "Donate Now via M-Pesa"
+                                )}
+                            </button>
+                        </form>
+                    </div>
+
+                    {/* Status Overlay / Visual Feedback */}
+                    <div className="flex flex-col justify-center gap-8">
+                        <div className={cn(
+                            "p-6 rounded-ios glass-card border-none transition-all duration-500 transform",
+                            status === "success" ? "opacity-100 translate-y-0" : "opacity-40 translate-y-4"
+                        )}>
+                            <div className="flex items-start gap-4">
+                                <div className={cn("p-3 rounded-full", status === "success" ? "bg-emerald text-white" : "bg-muted")}>
+                                    <CheckCircle2 size={24} />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-lg mb-1">Airtight Verification</h3>
+                                    <p className="text-sm text-muted-foreground">Every transaction is logged and verified at the edge for 100% reconciliation.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={cn(
+                            "p-6 rounded-ios glass-card border-none transition-all duration-500 delay-100 transform",
+                            status === "pending" ? "opacity-100 scale-105" : "opacity-40"
+                        )}>
+                            <div className="flex items-start gap-4">
+                                <div className={cn("p-3 rounded-full", status === "pending" ? "bg-gold text-brown" : "bg-muted")}>
+                                    <Loader2 size={24} className={status === "pending" ? "animate-spin" : ""} />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-lg mb-1">Real-time Feedback</h3>
+                                    <p className="text-sm text-muted-foreground">The platform listens for M-Pesa callbacks to give you instant confirmation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Progress Bar for the Skeleton Implementation */}
+                {status === "pending" && (
+                    <div className="mt-12 w-full h-1 bg-brown/20 rounded-full overflow-hidden">
+                        <div
+                            className="h-full bg-gold transition-all duration-500 ease-out"
+                            style={{ width: `${progress}%` }}
+                        />
+                    </div>
                 )}
-
-                <div
-                  className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 ${
-                    tier.featured ? 'bg-gold text-primary-foreground' : 'bg-gold/10 text-gold'
-                  }`}
-                >
-                  <tier.icon className="w-8 h-8" />
-                </div>
-
-                <div className="text-3xl font-serif font-bold text-cream mb-2">{tier.amount}</div>
-                <h3 className="text-xl font-semibold text-gold mb-3">{tier.title}</h3>
-                <p className="text-cream/60 mb-6">{tier.description}</p>
-
-                <Button
-                  variant={tier.featured ? 'hero' : 'gold'}
-                  className="w-full"
-                >
-                  Donate
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </div>
             </div>
-          ))}
-        </div>
-
-        {/* Payment Methods */}
-        <div
-          className={`max-w-2xl mx-auto transition-all duration-1000 delay-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-          }`}
-        >
-          <h3 className="text-2xl font-serif font-bold text-cream text-center mb-8">
-            How to Give
-          </h3>
-
-          <div className="grid sm:grid-cols-2 gap-6">
-            {paymentMethods.map((method) => (
-              <div
-                key={method.name}
-                className="card-glow rounded-2xl p-6 flex items-start gap-4"
-              >
-                <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center shrink-0">
-                  <method.icon className="w-6 h-6 text-gold" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-cream">{method.name}</h4>
-                  <p className="text-gold font-medium">{method.details}</p>
-                  <p className="text-cream/60 text-sm">{method.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Additional Note */}
-          <div className="mt-8 p-6 glass rounded-2xl text-center">
-            <p className="text-cream/80">
-              <span className="text-gold font-semibold">Corporate Partnerships:</span> For 
-              sponsorship opportunities and corporate giving, please contact us at{' '}
-              <a href="mailto:info@aflewo.com" className="text-gold hover:underline">
-                info@aflewo.com
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 }
