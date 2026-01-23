@@ -11,6 +11,9 @@ const config: Config = {
             colors: {
                 background: "var(--background)",
                 foreground: "var(--foreground)",
+                gold: "hsl(45 100% 50%)",
+                brown: "hsl(20 30% 18%)",
+                emerald: "hsl(160 84% 39%)",
                 aflewo: {
                     gold: "hsl(45 100% 50%)",
                     brown: "hsl(20 30% 18%)",
