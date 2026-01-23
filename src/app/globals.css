@@ -1,87 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* 
+  Number Our Days (NOD) Design System
+  Unified AFLEWO Production Palette
+*/
+
 @layer base {
   :root {
-    /* AFLEWO Core Palette - Final Production Specs */
-    /* aflewo-gold: 45 100% 50% */
+    /* Core Background - Light cream, laidback aesthetic */
+    --background: 40 20% 96%;
+    --foreground: 30 10% 15%;
+
+    /* Card surfaces */
+    --card: 40 25% 98%;
+    --card-foreground: 30 10% 15%;
+
+    /* Popover surfaces */
+    --popover: 40 25% 98%;
+    --popover-foreground: 30 10% 15%;
+
+    /* Primary - Muted charcoal with subtle warmth (The NOD Identity) */
+    --primary: 25 8% 25%;
+    --primary-foreground: 40 20% 98%;
+
+    /* AFLEWO Brand Highlights (Retained for thematic continuity) */
     --aflewo-gold: 45 100% 50%;
-    /* aflewo-brown: 20 30% 18% */
-    --aflewo-brown: 20 30% 18%;
-    /* aflewo-emerald: 160 84% 39% */
     --aflewo-emerald: 160 84% 39%;
-    --aflewo-cream: 40 20% 96%;
+    --aflewo-brown: 20 30% 18%;
 
-    --background: 20 30% 8%;
-    /* Default to Dark for immersion */
-    --foreground: 40 20% 98%;
+    --secondary: 35 12% 92%;
+    --secondary-foreground: 30 10% 25%;
 
-    --card: 20 30% 12%;
-    --card-foreground: var(--foreground);
+    --muted: 35 10% 90%;
+    --muted-foreground: 30 8% 45%;
 
-    --popover: 20 30% 12%;
-    --popover-foreground: var(--foreground);
+    --accent: 35 15% 88%;
+    --accent-foreground: 25 10% 30%;
 
-    --primary: var(--aflewo-gold);
-    --primary-foreground: 20 30% 8%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --secondary: var(--aflewo-brown);
-    --secondary-foreground: 40 20% 98%;
+    --border: 35 10% 85%;
+    --input: 35 10% 85%;
+    --ring: 25 8% 25%;
 
-    --muted: 20 20% 18%;
-    --muted-foreground: 20 10% 65%;
-
-    --accent: var(--aflewo-emerald);
-    --accent-foreground: 160 84% 98%;
-
-    --destructive: 0 62% 30%;
-    --destructive-foreground: var(--foreground);
-
-    --border: 20 20% 18%;
-    --input: 20 20% 18%;
-    --ring: var(--aflewo-gold);
-
-    --radius: 1.25rem;
+    --radius: 1rem;
 
     /* Glassmorphism */
-    --glass-bg: 20 30% 8% / 0.8;
-    --glass-border: 20 20% 25% / 0.5;
+    --glass-bg: 40 25% 98% / 0.85;
+    --glass-border: 35 10% 88% / 0.6;
 
     /* Shadows */
-    --shadow-glow: 0 0 30px -5px hsl(var(--aflewo-gold) / 0.3);
-    --shadow-emerald: 0 0 40px -10px hsl(var(--aflewo-emerald) / 0.4);
+    --shadow-soft: 0 4px 20px -4px hsl(30 10% 15% / 0.06);
+    --shadow-medium: 0 8px 30px -6px hsl(30 10% 15% / 0.1);
+    --shadow-glow: 0 0 40px -10px hsl(25 8% 25% / 0.2);
+  }
+
+  .dark {
+    /* Dark mode - Deep charcoal, laidback */
+    --background: 30 5% 8%;
+    --foreground: 40 10% 92%;
+
+    --card: 30 6% 11%;
+    --card-foreground: 40 10% 92%;
+
+    --popover: 30 6% 11%;
+    --popover-foreground: 40 10% 92%;
+
+    --primary: 40 10% 88%;
+    --primary-foreground: 30 5% 8%;
+
+    --secondary: 30 6% 16%;
+    --secondary-foreground: 40 10% 88%;
+
+    --muted: 30 6% 16%;
+    --muted-foreground: 40 5% 58%;
+
+    --accent: 30 6% 18%;
+    --accent-foreground: 40 10% 90%;
+
+    --destructive: 0 55% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 6% 18%;
+    --input: 30 6% 18%;
+    --ring: 40 10% 88%;
+
+    --glass-bg: 30 6% 11% / 0.9;
+    --glass-border: 30 6% 20% / 0.5;
   }
 }
 
-body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  font-family: 'Inter', system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-/* --- Premium Utilities --- */
+/* Elegant serif for spiritual/reflective content */
+.font-serif-spiritual {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
 
+/* Glassmorphism utilities */
 .glass-card {
   background: hsl(var(--glass-bg));
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid hsl(var(--glass-border));
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-soft);
 }
 
-.aflewo-glow-gold {
-  filter: drop-shadow(0 0 15px hsl(var(--aflewo-gold) / 0.5));
+.glass-card-elevated {
+  background: hsl(var(--card) / 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow: var(--shadow-medium);
 }
 
-.aflewo-glow-emerald {
-  filter: drop-shadow(0 0 20px hsl(var(--aflewo-emerald) / 0.6));
+/* Interactive Scale */
+.press-scale {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+.press-scale:active {
+  transform: scale(0.95);
+}
+
+/* Layout Helpers */
+.section-padding {
+  @apply py-24 px-6 md:px-12 lg:px-24;
+}
+
+.max-container {
+  @apply max-w-7xl mx-auto;
+}
+
+/* Text Gradients */
 .text-gradient-gold {
   background: linear-gradient(to bottom right, hsl(var(--aflewo-gold)), #fff);
   -webkit-background-clip: text;
@@ -89,48 +156,39 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* iOS Inspired Interactive scale */
-.press-scale {
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+/* Animation utilities */
+@keyframes breathe {
 
-.press-scale:active {
-  transform: scale(0.94);
-}
-
-@layer utilities {
-  .section-padding {
-    @apply py-24 px-6 md:px-12 lg:px-24;
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 
-  .max-container {
-    @apply max-w-7xl mx-auto;
+  50% {
+    transform: scale(1.02);
+    opacity: 0.95;
   }
 }
 
-/* Hide scrollbar */
+.animate-breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+/* Mask for video/image backgrounds */
+.media-mask {
+  mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+}
+
 .hide-scrollbar {
   -ms-overflow-style: none;
+  /* IE and Edge */
   scrollbar-width: none;
+  /* Firefox */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
-}
-
-/* Smooth Page Transitions */
-.page-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* Chrome, Safari and Opera */
 }

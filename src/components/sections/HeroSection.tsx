@@ -1,78 +1,112 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Sphere, MeshDistortMaterial, Float } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Play } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const textRef = useRef<HTMLDivElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (textRef.current) {
+        const ctx = gsap.context(() => {
+            // Hero Entrance
             gsap.fromTo(
-                textRef.current.children,
-                { opacity: 0, y: 30 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.2,
-                    stagger: 0.2,
-                    ease: "power4.out",
-                    delay: 0.5,
-                }
+                ".hero-title",
+                { opacity: 0, y: 100, rotateX: 45 },
+                { opacity: 1, y: 0, rotateX: 0, duration: 1.5, ease: "power4.out", delay: 0.5 }
             );
-        }
+
+            gsap.fromTo(
+                ".hero-sub",
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 1.2 }
+            );
+
+            gsap.fromTo(
+                ".hero-btn",
+                { opacity: 0, scale: 0.9 },
+                { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.7)", delay: 1.5, stagger: 0.2 }
+            );
+
+            // Scroll Video Zoom
+            if (videoRef.current) {
+                gsap.to(videoRef.current, {
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true,
+                    },
+                    scale: 1.2,
+                    opacity: 0.6
+                });
+            }
+        }, sectionRef);
+
+        return () => ctx.revert();
     }, []);
 
     return (
-        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background">
-            {/* Three.js 3D Background */}
+        <section
+            ref={sectionRef}
+            className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background"
+        >
+            {/* Immersive Video Layer */}
             <div className="absolute inset-0 z-0">
-                <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-                    <ambientLight intensity={1.5} />
-                    <pointLight position={[10, 10, 10]} intensity={2} color="#FFD700" />
-                    <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={2} color="#10B981" />
-
-                    <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
-                        <Sphere args={[1, 100, 200]} scale={2.5}>
-                            <MeshDistortMaterial
-                                color="#FFD700"
-                                attach="material"
-                                distort={0.4}
-                                speed={1.5}
-                                roughness={0.2}
-                                metalness={0.8}
-                            />
-                        </Sphere>
-                    </Float>
-
-                    <OrbitControls enableZoom={false} enablePan={false} />
-                </Canvas>
+                <video
+                    ref={videoRef}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover opacity-80 media-mask"
+                >
+                    <source src="/hero-bg.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background" />
             </div>
 
-            {/* Overlay Content */}
-            <div className="relative z-10 text-center px-6 max-w-5xl" ref={textRef}>
-                <h1 className="text-6xl md:text-8xl font-black text-gold mb-6 tracking-tight drop-shadow-2xl">
-                    AFRICA LET'S WORSHIP
+            {/* Premium Typography Layer */}
+            <div ref={contentRef} className="relative z-10 text-center px-6 max-w-6xl">
+                <div className="inline-flex items-center gap-3 px-4 py-2 glass-card rounded-full text-[10px] font-black uppercase tracking-[0.3em] text-gold mb-8 animate-breathe">
+                    <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+                    </span>
+                    Live from Winners' Chapel
+                </div>
+
+                <h1 className="hero-title text-7xl md:text-9xl font-black tracking-tighter text-white leading-[0.85] perspective-1000 mb-8">
+                    AFRICA <br />
+                    <span className="text-gradient-gold">LET'S WORSHIP</span>
                 </h1>
-                <p className="text-xl md:text-3xl text-foreground/80 font-medium mb-10 leading-relaxed max-w-3xl mx-auto">
+
+                <p className="hero-sub text-xl md:text-2xl text-white/70 font-medium max-w-2xl mx-auto mb-12 leading-relaxed font-serif-spiritual">
                     One God. One People. One Africa. <br />
-                    Igniting a continent through the sound of heaven.
+                    Stirring up hope in Jesus through a united voice since 2004.
                 </p>
-                <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <button className="press-scale bg-gold text-brown px-10 py-4 rounded-ios font-bold text-lg shadow-glow hover:brightness-110 transition-all">
-                        Experience the Archive
+
+                <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
+                    <button className="hero-btn press-scale bg-white text-brown px-12 py-5 rounded-full font-black uppercase tracking-tighter flex items-center gap-3 group hover:bg-gold transition-all">
+                        <Play size={20} fill="currentColor" stroke="none" className="group-hover:scale-110 transition-transform" />
+                        Watch Archive
                     </button>
-                    <button className="press-scale glass-card px-10 py-4 text-gold border-gold/30 font-bold text-lg hover:bg-gold/10 transition-all">
-                        Join the Movement
+                    <button className="hero-btn press-scale glass-card-elevated px-12 py-5 rounded-full font-black uppercase tracking-tighter text-white hover:bg-white/10 transition-all border-white/20">
+                        Our Vision
                     </button>
                 </div>
             </div>
 
-            {/* Bottom Gradient Fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30">
+                <span className="text-[10px] font-black tracking-widest uppercase">Scroll to Discover</span>
+                <div className="w-[2px] h-12 bg-gradient-to-b from-white to-transparent" />
+            </div>
         </section>
     );
 }

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -29,24 +30,28 @@ export default function Navbar() {
             isScrolled ? "mt-4" : "mt-0"
         )}>
             <div className={cn(
-                "max-w-5xl mx-auto rounded-full transition-all duration-500 flex items-center justify-between px-8 py-3",
-                isScrolled ? "glass-card bg-background/60 py-2" : "bg-transparent"
+                "max-w-6xl mx-auto rounded-full transition-all duration-700 flex items-center justify-between px-8 py-4",
+                isScrolled ? "glass-card-elevated py-3 mt-4" : "bg-transparent"
             )}>
-                {/* Logo */}
-                <Link href="/" className="flex items-center gap-2 group">
-                    <div className="w-10 h-10 bg-gold rounded-full flex items-center justify-center font-black text-brown group-hover:rotate-12 transition-transform">
-                        A
+                {/* Brand Logo */}
+                <Link href="/" className="flex items-center gap-3 group">
+                    <div className="relative w-10 h-10 group-hover:scale-110 transition-transform duration-500">
+                        <Image
+                            src="/brand/AFLEWO-LOGO-1-Photoroom.svg"
+                            alt="AFLEWO"
+                            fill
+                            className="object-contain brightness-0 invert"
+                        />
                     </div>
-                    <span className="font-black text-xl tracking-tighter text-foreground">AFLEWO</span>
                 </Link>
 
                 {/* Desktop Links */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-10">
                     {links.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-bold uppercase tracking-widest text-foreground/70 hover:text-gold transition-colors"
+                            className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60 hover:text-gold transition-colors"
                         >
                             {link.name}
                         </Link>
@@ -55,7 +60,7 @@ export default function Navbar() {
 
                 {/* Right Action */}
                 <div className="flex items-center gap-4">
-                    <button className="press-scale bg-gold text-brown px-6 py-2 rounded-full font-bold text-sm uppercase tracking-tighter shadow-glow">
+                    <button className="press-scale bg-white text-brown px-8 py-3 rounded-full font-black text-[10px] uppercase tracking-widest shadow-glow hover:bg-gold transition-all">
                         Connect
                     </button>
                 </div>

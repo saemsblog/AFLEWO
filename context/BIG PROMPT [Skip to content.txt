@@ -1,0 +1,4702 @@
+BIG PROMPT: [Skip to content
+Chat history
+
+
+
+You said:
+Give me everything on AFLEWO, GO HAM!!!
+ChatGPT said:
+
+Thought for 12s
+
+https://www.casureconcierge.com/storage/43ed46c7e4573db4eb6a2f6806eee0ee.jpg
+
+https://media.licdn.com/dms/image/v2/C4D1BAQEke649_pP-0w/company-background_10000/company-background_10000/0/1616740748482/sing_africa_aflewo_africa_lets_worship__cover?e=2147483647&t=PhR6_mf8BLFMybmPCDzkpeY6Df7Q2qvobE8zrI1nDDw&v=beta
+
+https://pbs.twimg.com/media/G2LyhBZXwAE-feP.jpg
+
+https://pbs.twimg.com/media/G2MCztWWAAIL6p_.jpg
+AFLEWO — Everything (no mercy)
+Short definition: AFLEWO = Africa Let’s Worship — an inter-denominational, all-night worship movement started by Daystar University’s Sing Africa alumni; it runs annual worship gatherings (music + prayer) across Kenya and in other African cities. 
+
+Origins & mission
+• Started: first AFLEWO event in 2004, spawned from Sing Africa (a Daystar University student ministry that began in 1996). 
+
+• Vision: “to stir up hope in Jesus across Africa through annual events of worship in music and prayer.” Mission statement: Uniting in Worship. AFLEWO is run by a management “Summit” and supported by inter-denominational pastors and volunteers. 
+
+What the events look like
+• Format: multi-city, all-night worship nights (often 6pm → dawn), driven by a large choir/band and segments of sustained worship, prayer, and short teachings. Events are free (but accept donations/partners). 
+
+• Scale: long history of big turnouts — several editions reported crowds in the thousands to 10,000+ attendees in Nairobi, and multi-city chapters. (AFLEWO has run virtual editions too.)
+
+Geography / chapters / reach
+• Kenya chapters: Nairobi, Mombasa, Nyeri, Nakuru, Meru (and more local chapters). 
+
+• Pan-African footprint: AFLEWO has held events in Kigali (Rwanda) and Dar-es-Salaam (Tanzania), with past plans or outreach to countries like Uganda, Nigeria, Liberia, Congo, Burundi. 
+
+Media, livestreams & presence
+• YouTube: an official AFLEWO channel with past livestreams and event archives. 
+
+• Social: active on Instagram (@aflewoke / @AFLEWOKE), Facebook pages for Nairobi and chapters, and X (Twitter) for announcements. 
+
+• Local coverage: events have been covered and livestreamed on Kenyan media (Citizen TV, etc.) in prior years.
+
+Funding, donations & merch
+• Events are typically free to attend; AFLEWO solicits donations (M-Pesa, Paybill, M-Changa) and has merch for fundraising. Recent event posters list Paybill/Till numbers and partner collection accounts.
+
+Partners & notable supporters
+• AFLEWO has partnered with corporate sponsors and banks for larger editions (e.g., Coop Bank appearing as a partner on recent promotion material). Local churches (venues like Winners’ Chapel) regularly host events.
+
+How to join / perform / volunteer / contact
+• Sign up / choir registration / volunteer: usually announced on AFLEWO’s site and social pages ahead of each edition; choir/volunteer registration windows open then. 
+
+• Contact: AFLEWO’s FAQ lists an email (info@aflewo.com) and social pages for enquiries; event posters also list M-Pesa / Paybill numbers for support. (Check the current event post for the latest registration details.) 
+
+Notable moments & history highlights
+• AFLEWO grew from a university ministry into a large national movement (10k+ attendances reported in major years) and has run virtual events (e.g., 2020 virtual edition).
+• AFLEWO’s 20+ year arc has included regional expansions, televised segments, and collaborations with church networks and sponsors. 
+
+Quick links & where to watch / follow
+• Official site / info and FAQ — AFLEWO site. 
+
+• YouTube channel (livestreams & past nights). 
+
+• Instagram / Facebook / X for event announcements and registrations. 
+
+TL;DR (for skimming)
+AFLEWO = Africa Let’s Worship; started 2004 via Daystar’s Sing Africa alumni. 
+
+Annual inter-denominational all-night worship gatherings, free entry, big crowds. 
+
+Chapters across Kenya + events in Rwanda & Tanzania; active online with livestreams. 
+
+Funded by donations, partners, merch; check latest Paybill/Till on current posters.
+
+If you want deep dives next (I’ll pull primary sources, timelines of each major AFLEWO year, attendee estimates by year, or compile a playlist of AFLEWO performances), say which one and I’ll fetch it.
+
+You said:
+Give me everything on AFLEWO, GO HAM!!! Structure, branches, years of existence, venues, Money transactions, mission and vision statements, challenges, volunteership, partners, members to date, beliefs and groundedness, social posts and social media presence, artists and influential people associated with and worked with the space, definition of the space/platform, services and media it supports, how frequent media/site needs to be seen in a year, documentaries, stories, blogs recorded  etc. - I am gaining info to help me build their website and will be needing all the info I can get on them to form a profile of who they are, what they want in a website and what they are looking forward to in their future - informing which language and tech stack would be the best for such an execution of the website. But first, give me EVERYTHING POSSIBLE about AFLEWO - GO HAM!!!!!
+ChatGPT said:
+Here’s a comprehensive, fact-based profile of AFLEWO (Africa Let’s Worship) built from official sources, social posts, press coverage, and event listings. This can guide building a website profile, structure, content strategy, and tech choices. All content below is sourced and verifiable. 
+
+🔥 DEFINITION & CORE IDENTITY
+AFLEWO stands for Africa Let’s Worship — an annual inter-denominational all-night worship movement centered on Christian praise, prayer, unity, and spiritual revival across Kenya and beyond. It was initiated by Sing Africa alumni (Daystar University Christian fellowship) to mobilize believers in extended worship. 
+
+Operating model:
+• Annual worship events that start in the evening and continue until dawn
+• Music-led praise with pastoral intercession and prayer
+• Volunteers, logistics, creatives, technical teams all collaborate
+• Free entry — open to all Christians, supported by donations and partners 
+
+🕰️ HISTORY & YEARS OF EXISTENCE
+Started: 2004 in Nairobi, Kenya — the first AFLEWO event. 
+
+Legacy & expansion:
+• 2004: inaugural event in Nairobi
+• 2009: AFLEWO Mombasa
+• 2010: AFLEWO Nyeri + AFLEWO Tanzania
+• 2011: AFLEWO Kigali (Rwanda)
+• 2012: AFLEWO Meru
+• 2013: AFLEWO Nakuru
+• 2024/2025: continued annual events in Nairobi and other chapters 
+
+So AFLEWO’s history spans 20+ years with evolving chapters across East Africa. 
+
+🧭 MISSION & VISION STATEMENTS
+Vision:
+“To stir up hope in Jesus through annual events of worship in music and prayer from a united front of the Church across Africa.” 
+
+Mission:
+Uniting in worship — bringing believers together to worship, pray, and intercede in a unified spiritual front. 
+
+🧱 STRUCTURE & LEADERSHIP
+AFLEWO is governed by the AFLEWO Summit / Management Team, including:
+• Chairman
+• Administrator
+• Music Director
+• Fundraising Coordinator
+• PR/Marketing Coordinator
+• Events Manager
+• Small Groups Coordinator
+• Chaplain/Church Relations
+• Partnership Coordinator
+
+They also work with a pastoral advisory board composed of pastors from various denominations to provide spiritual oversight. 
+
+(Note: official site lists roles but only some names; a site/website can structure profiles for each position.) 
+
+🗺️ BRANCHES / CHAPTERS
+Active and past AFLEWO chapters include:
+
+Kenya:
+✔ AFLEWO Nairobi (largest and original)
+✔ AFLEWO Mombasa
+✔ AFLEWO Nyeri
+✔ AFLEWO Nakuru
+✔ AFLEWO Meru
+
+International:
+✔ AFLEWO Tanzania (Dar-es-Salaam)
+✔ AFLEWO Rwanda (Kigali) 
+
+🏟️ VENUES & EVENTS (PAST & RECENT)
+Nairobi
+• Winners’ Chapel International (Likoni Road) — major venue for big editions. 
+
+Historically also used:
+• CITAM Karen
+• Nyayo Stadium (once) 
+
+Mombasa
+• Elim Sanctuary, Makupa (historical)
+• JCC Bamburi Centre (2025 event listed) 
+
+Nyeri
+• PCEA Nyamachaki + Pefa Nyeri events. 
+
+Rwanda
+• Christian Life Assembly, Kigali (2025 event) 
+
+💰 FINANCES, TRANSACTIONS & FUNDING
+AFLEWO operates without commercial entry fees — events are free, but supported by:
+
+Donations via:
+• M-PESA Till (e.g., 819867 for AFLEWO 2025)
+• Bank transfers (e.g., NCBA account listed in social posts)
+• M-Changa / Paybill accounts for partnerships and support 
+
+Partnerships with corporates — e.g., Co-op Bank Kenya joined AFLEWO 2025 as a key partner. 
+
+No public financial reports were found, but transaction points and accounts are shared annually online for congregation contributions. 
+
+🧠 CHALLENGES & COMMUNITY CONTEXT
+There’s limited official documentation about internal challenges, but typical areas for an event movement like this can include:
+
+• Logistics of all-night worship coordination
+• Funding dependencies on partners and donations
+• Volunteer recruitment and management
+• Growth into new cities while maintaining quality
+• Digital amplification and content delivery across Africa
+
+(Specific news on challenges beyond these general patterns isn’t available from the sources searched.)
+
+🙌 VOLUNTEER & SERVICE OPPORTUNITIES
+Volunteers are core to AFLEWO, including teams for:
+• Music & choir
+• Logistics
+• Production & sound
+• Intercession
+• Marketing & PR
+• Partnerships
+
+(The official site and social pages typically announce volunteer signup windows ahead of each event.) 
+
+📢 SOCIAL MEDIA & DIGITAL PRESENCE
+AFLEWO maintains a presence on:
+• Facebook (event pages and community posts) 
+
+• Twitter / X (@AFLEWO) for updates and partner announcements 
+
+• YouTube (@aflewoke) with worship videos and event coverage. 
+
+• LinkedIn company page with event announcements. 
+
+A website (aflewo.org) serves as the central info hub. 
+
+🎵 ARTISTS & KEY INFLUENTIAL PEOPLE
+There is no public roster of specific artists tied exclusively to AFLEWO, but the event consistently features:
+• Choirs drawn from multiple denominations and churches. 
+
+• Worship leaders from local church networks. 
+
+• Pastoral advisory figures involved in planning. 
+
+(If you need names of worship leaders and artists linked to specific editions, I can pull from social or YouTube posts.)
+
+📡 MEDIA SUPPORTED & CONTENT TYPES
+AFLEWO supports and produces:
+
+Online Content:
+• YouTube worship sessions and clips 
+
+• Social graphics and posts on event themes, dates, partners 
+
+Historical Media: The official site once had documentary links for past editions. 
+
+No commercial recording albums — singing includes public domain songs and music from various artists; commercial recordings are handled by Sing Africa. 
+
+📆 FREQUENCY OF EVENTS & DIGITAL EXPOSURE
+• Annual main worship event in each chapter. 
+
+• Online promotional posts and partner highlights occur throughout the year. 
+
+• YouTube videos of past worship sets serve as evergreen content. 
+
+🧾 DOCUMENTARIES, STORIES & BLOGS
+The official source historically offered AFLEWO-related documentaries and downloads for past events. 
+
+Beyond that:
+• YouTube clips from multiple years exist but are not centrally catalogued. 
+
+• Social pages often share testimonies and event reflections. 
+
+🧱 SUMMARY PROFILE FOR A WEBSITE
+Core sections your site could include:
+
+Home / Brand Story – history since 2004, core values, vision & mission.
+
+About AFLEWO – definition, structure, leadership.
+
+Events – chapters, calendars, venues, themes by year.
+
+Partners & Sponsors – Co-op Bank, churches, media partners.
+
+Donate / Support – M-PESA / Bank / Paybill details (updated yearly).
+
+Volunteer – signup forms; role descriptions.
+
+Media – YouTube integration, livestreams, galleries.
+
+Past Editions – stories, testimonies, highlights, documentaries.
+
+Contact & Social – links to all community platforms.
+
+💡 RECOMMENDED TECH STACK INSIGHT
+Based on AFLEWO’s needs:
+
+• CMS: Headless CMS (e.g., Strapi, Sanity) or WordPress for frequent content updates and event calendars.
+• Frontend: React / Next.js for performance and dynamic pages.
+• Media: YouTube API integration for worship videos.
+• Donations: M-PESA and bank details on secure pages.
+• Social embeds: X/Twitter and Instagram feeds.
+• SEO & Events: Structured event schema for Google discovery.
+
+(Response based on industry practices given AFLEWO’s public profile.)
+
+If you want specifics next:
+I can compile:
+
+✔ all available YouTube videos + playlists for AFLEWO events
+✔ list of recent social posts (X/Twitter) with dates
+✔ a timeline of festivals by year + theme
+✔ contact info + tech sitemap draft
+
+Say which one to expand.
+
+You said:
+AFLEWO TECH STACK.txt
+Document
+My next question was actually on tech stack based on AFLEWO's portifolio - if i was asked to redo their rather old website, and given a tech breadth of the attach doc to choose from, which would be my pick for a modern revamp of their look with the ability to customize colours, layout to become an ultra modern looking site that loads fast even for small incapable devices - what ought i go with? GIVE ME AN ARRAY OF OPTIONS + RECOMMENDATION(S)! GIVE ME EVERYTHING!!! DO NOT HOLD BACK!!!! GO HAAAMM!!!!
+ChatGPT said:
+
+Thought for 12s
+Short answer — pick this stack (GO HAM summary)
+Primary recommendation (best balance of speed, customisability, low-end device friendliness, and dev speed):
+Next.js + React + TypeScript frontend (SSG/SSR/ISR + Server Components) + Supabase (Postgres + Auth + Storage) for backend + Cloudflare R2 (or AWS S3 + CloudFront) for media + Cloudflare Images (or Cloudinary for advanced transforms) + Vercel or Cloudflare Pages/Workers for edge hosting + Stripe + M-Pesa integration for payments + AWS IVS primary live stream + YouTube simulcast backup for livestreaming.
+
+Below you get a full array of options (from conservative to maximal/edge-first) + why each fits AFLEWO, costs/notes, and an immediate performance checklist for low-end devices. GO HAM.
+
+Array of options (ranked, with one-line TL;DR + why for AFLEWO)
+Option A — Modern Edge / JAMstack (Recommended)
+Stack: Next.js (React + TypeScript) → Vercel or Cloudflare Pages/Workers; Supabase Postgres; Cloudflare R2 (media); Cloudflare Images; Stripe + M-Pesa; AWS IVS for pro livestream + YouTube backup.
+TL;DR: Ultra-modern, SEO-friendly, tiny JS shipped to device when using server components + edge caching; scales to big event traffic with CDN and R2 cost savings.
+
+Option B — Developer-friendly serverless (fast build, lower ops)
+Stack: Next.js + Vercel; Supabase; AWS S3 + CloudFront (if already AWS); Cloudinary for advanced media transforms; Stripe.
+TL;DR: Same developer DX as A with simpler media ecosystem (CloudFront + S3) — slightly more egress cost than R2 but proven.
+
+Option C — Edge-first (maximum global performance, cost-efficient at scale)
+Stack: Next.js (or SvelteKit) deployed to Cloudflare Pages + Workers, R2 for storage, Cloudflare Images, Supabase (or Postgres elsewhere).
+TL;DR: Best for very high global scale and lowest bandwidth bills (R2 zero egress). Slightly steeper ops/Workers knowledge.
+
+Option D — No-code / marketing first (fastest launch, limited scale)
+Stack: Webflow (design + CMS) + embed players (YouTube/Vimeo) + Stripe/PayPal via forms.
+TL;DR: Launch super fast (2–4 weeks) with beautiful templates, but limited for memberships, live streaming control, and large sermon libraries. 
+AFLEWO TECH STACK
+
+
+Option E — Traditional CMS (lowest skill barrier for non-tech editors)
+Stack: WordPress + managed hosting + plugins for events/donations + external stream embedding.
+TL;DR: Good if the client must manage content themselves and budget is restricted — but performance, security and scaling problems for big events. 
+AFLEWO TECH STACK
+
+
+Why I recommend Option A for AFLEWO (detailed)
+SEO & discoverability: AFLEWO needs searchable sermons, event pages and press — Next.js SSR/ISR gives best-in-class SEO and flexible static/dynamic rendering. 
+AFLEWO TECH STACK
+
+
+Speed on weak devices: Next.js Server Components + aggressive edge caching mean the client downloads far less JS; combine with responsive images (AVIF/WebP) and lazy loading to keep initial payload tiny.
+
+Media scale & cost control: Cloudflare R2 + Cloudflare Images/Azure/S3 patterns remove egress surprises — R2 has $0 egress which is huge for video-heavy orgs. Use Cloudflare Images (or Cloudinary if you want fancy transforms).
+
+Live streaming reliability: For a branded, low-latency, high-quality stream use AWS IVS (professional, DVR, analytics); simulcast to YouTube/Facebook for reach/backup.
+
+Faster delivery & global scale: Host front-end on Vercel for easy Next.js integration or Cloudflare for maximum edge control; both are recommended in the doc.
+
+Services & provider choices (concrete picks & why)
+Frontend: Next.js + React + TypeScript — SSR/SSG/ISR, image optimization, server components. 
+AFLEWO TECH STACK
+
+
+Host / Edge: Vercel for fastest Next.js DX; Cloudflare Pages + Workers if you prioritise global edge + bandwidth economics.
+
+DB / Auth / Storage: Supabase (managed Postgres + Auth + Storage) — integrates instantly, real-time too.
+
+Media storage & CDN: Cloudflare R2 (R2 + Workers + Images) for video/photo scale and $0 egress; fallback: S3 + CloudFront.
+
+Image transforms: Cloudflare Images or Cloudinary (Cloudinary = richer transforms; Cloudflare Images = cheaper & simpler). 
+AFLEWO TECH STACK
+
+
+Streaming: AWS IVS as primary (low latency, DVR, scale) + YouTube Live & Facebook as backup/social simulcast.
+
+Payments: Stripe (online) + MPESA connector for local Kenyan donors. 
+AFLEWO TECH STACK
+
+
+Search (if large library): Start with Postgres full-text; upgrade to Meilisearch/Elasticsearch once library is 5k+ items. 
+AFLEWO TECH STACK
+
+
+Performance & low-end-device checklist (do these)
+Pre-render public pages with SSG/ISR; server-side render event pages where needed. 
+AFLEWO TECH STACK
+
+
+Use responsive images + format negotiation (AVIF/WebP via Cloudflare Images / Cloudinary). 
+AFLEWO TECH STACK
+
+
+Lazy load non-critical images and videos; show low-res placeholders. 
+AFLEWO TECH STACK
+
+
+Ship minimal JS: Server Components + route-level code splitting. 
+AFLEWO TECH STACK
+
+
+Aggressive CDN cache with long TTLs for media + cache invalidation on content update. 
+AFLEWO TECH STACK
+
+
+Use service worker to cache static assets and provide offline access for resource pages. (file recommends PWAs for engagement) 
+AFLEWO TECH STACK
+
+
+Cost & scaling notes (real examples from the doc)
+AWS IVS streaming: estimate ~$1,500–$2,000 for a 50k-viewer 3-hour event (per the doc). Plan budget for large events. 
+AFLEWO TECH STACK
+
+
+S3 + CloudFront egress: heavy bandwidth can cost hundreds monthly; Cloudflare R2 can cut that to near-zero (storage cost only). Example in doc: 500GB + 3TB bandwidth on S3 ≈ $266/month vs R2 ≈ $7.50.
+
+Vercel: great for Next.js; free/pro tiers but can get pricey with heavy bandwidth—Cloudflare may be cheaper at extreme scale.
+
+Implementation priorities / minimal MVP plan (fastest path to value)
+Core public site: Next.js SSG pages for history, mission, events calendar, donate page, media gallery. 
+AFLEWO TECH STACK
+
+
+Media & streaming: setup R2/S3 + Cloudflare Images; configure AWS IVS + YouTube simulcast.
+
+Member system: Supabase Auth + Postgres members table + import legacy members (doc has migration steps). 
+AFLEWO TECH STACK
+
+
+Payments: Stripe + MPESA connectors for donations and merch. 
+AFLEWO TECH STACK
+
+
+Volunteer signups & forms: serverless endpoints for lightweight onboarding; moderate traffic only. 
+AFLEWO TECH STACK
+
+
+Quick comparison table (condensed)
+Goal	Best option
+Fastest dev + SEO + modern features	Next.js + Vercel + Supabase.
+Lowest bandwidth cost for videos	Cloudflare R2 + Cloudflare Images. 
+AFLEWO TECH STACK
+
+Max global edge performance	Cloudflare Workers + Pages. 
+AFLEWO TECH STACK
+
+Fastest launch (no-code)	Webflow (tradeoffs on streaming & custom features). 
+AFLEWO TECH STACK
+
+Non-tech editors + low budget	WordPress (watch out for security/scale). 
+AFLEWO TECH STACK
+
+Final — decisive recommendation (one liner)
+Build AFLEWO on Next.js + TypeScript, deploy to Vercel (or Cloudflare Pages if you prioritise zero-egress R2 economics), use Supabase for Postgres/Auth/Storage, serve media from Cloudflare R2 + Cloudflare Images, and run livestreams via AWS IVS with YouTube simulcast for reach. This gives the best balance of modern design freedom, low client load (so small devices win), event-day scale, and straightforward dev ops.
+
+Next step (pick a number)
+1 — Full, annotated architecture diagram + infra IaC (Terraform) for the stack above.
+2 — 8-week sprint plan with milestones, team roles, and cost estimate.
+3 — Component list & UI library recommendations (wireframes and Tailwind + design tokens).
+4 — Migration plan for members + media + SEO with exact scripts and commands.
+
+Reply with the option number you want me to expand into full deliverables and I’ll produce it immediately.
+
+
+Sources
+You said:
+Next.js + React + Typescript, Cloudflare Pages, Supabase + Postgres/Auth/Storage, Cloudflare R2 + Cloudflare Images + YouTube + Simulcast using OBS. - Tell me more about these as a stack for a complete website + payment integration suitable for such a production site [MPesa Daraja API integration + Mchanga + Paybill integration & flawless, airtight backend verification procedures] + any other item I may have left out that is relevant to a website built for production - all before I go about with answering [Next step (pick a number). Compare also vs [Next.js + React + Typescript, Vercel, Supabase + Postgres/Auth/Storage, Cloudflare R2 + Cloudflare Images + YouTube + Simulcast using OBS] in FULL DETAIL! GO HAM!!!!
+
+1 — Full, annotated architecture diagram + infra IaC (Terraform) for the stack above.
+2 — 8-week sprint plan with milestones, team roles, and cost estimate.
+3 — Component list & UI library recommendations (wireframes and Tailwind + design tokens).
+4 — Migration plan for members + media + SEO with exact scripts and commands.] this! DON'T HOLD BACK - TELL ME EVERYTHING! GO HAAAMMM!!!! Payment Gateway context : [Truehost
+English
+Pricing 
+Hosting
+Domains
+VPS
+Websites
+Local SEO
+Promos
+Resources
+0
+Enter Language
+Search
+India
+English
+Kenya
+English
+United Kingdom
+English
+South Africa
+English
+Nigeria
+English
+United States
+English
+United States
+Español
+Indonesia
+English
+Bangladesh
+English
+Egypt
+العربية
+Tanzania
+English
+Ethiopia
+English
+Uganda
+English
+Congo - Kinshasa
+English
+Ghana
+English
+Côte d’Ivoire
+English
+Zambia
+English
+Cameroon
+English
+Rwanda
+English
+Germany
+Deutsch
+France
+Français
+Spain
+Català
+Spain
+Español
+Italy
+Italiano
+Russia
+Русский
+Japan
+English
+Brazil
+Português
+Brazil
+Português
+Mexico
+Español
+Philippines
+English
+Pakistan
+English
+Turkey
+Türkçe
+Vietnam
+English
+Thailand
+English
+South Korea
+English
+Australia
+English
+China
+中文
+Somalia
+English
+Canada
+English
+Canada
+Français
+Netherlands
+Nederlands
+13 Best Payment Gateways in Kenya For 2025
+
+By
+Mysson Victor
+Jan 14, 2025
+15
+Minute Read
+Build Something Beautiful With a .CO.KE Domain
+Just KSh 999 (Back to 1299 in 7 days)
+desired-domain
+
+Home
+Online Business
+Kenya’s digital economy is rapidly evolving, with e-commerce and mobile payments at its forefront. 
+
+For an e-Commerce website, you’ll need a payment gateway in order to process payments from your clients. 
+
+Thus, choosing the right payment gateway is a very crucia component of running any online business
+
+This guide offers a comprehensive overview of the top payment gateways in Kenya as of 2025. 
+
+We’ll cover:
+
+Key features of each gateway
+Supported payment methods
+Security measures
+Integration options
+But first, let’s answer the basic question:
+
+What is a payment gateway?
+A payment gateway is a secure bridge between an online store and a bank. 
+
+Think of it as a digital cashier that facilitates secure online purchases, or as an equivalent of a point-of-sale (POS) terminal.
+
+It facilitates the authorization and processing of credit card transactions and other forms of electronic payments for both online and offline businesses. 
+
+The gateway collects payment details from customers, verifies their authenticity, and communicates with the financial institutions involved to confirm whether the transaction can proceed
+
+How Does a Payment Gateway Work?
+The operation of a payment gateway involves several key steps:
+
+Customer Information Collection: When a customer initiates a purchase, they provide their payment details, such as credit card information, on the merchant’s website or mobile app.
+Data Encryption: To ensure security, the payment gateway encrypts the sensitive payment information, safeguarding it from unauthorized access during transmission.
+Request for Authorization: The encrypted payment data is transmitted to the payment processor or acquiring bank, which forwards it to the customer’s card-issuing bank for verification.
+Approval or Decline of Transaction: The issuing bank assesses whether the customer has sufficient funds and verifies the legitimacy of the transaction. It then sends back an approval or denial response through the same secure channels to the merchant.
+Transaction Finalization: If approved, the transaction is finalized by transferring funds from the customer’s account to the merchant’s account, completing the payment process.
+Importance in e-Commerce
+Thus payment gateways play a crucial role in e-commerce by improving security and simplifying the transaction process. 
+
+They accommodate a variety of payment methods, such as credit cards, debit cards, digital wallets, and even cryptocurrencies, providing convenience and flexibility for both merchants and customers.  
+
+Also, by securely handling sensitive customer data, payment gateways foster trust and confidence, which can help lower cart abandonment rates during online shopping.
+
+How to Choose the Best Payment Gateway in Kenya
+When selecting a payment gateway, consider these key factors:
+
+Credibility: Look for providers with a solid track record.
+Safety: Prioritize gateways with robust security features.
+Payment Method Compatibility: Ensure support for various payment options.
+Integration Capabilities: Ensure that the gateway can easily integrate with existing e-commerce platforms or POS systems.
+Transaction Fees: Understand the fee structure associated with each transaction, as this can impact profitability.
+Best Payment Gateways in Kenya
+1) Lipa na M-Pesa
+Lipa na M-Pesa is a cashless payment service provided by Safaricom, Kenya’s largest mobile network operator. 
+
+It’s an extension of the widely popular M-Pesa mobile money service, specifically designed for merchant payments. 
+
+Here are the key features and benefits:
+
+Wide Acceptance: Lipa na M-Pesa is accepted by a vast number of businesses across Kenya, from small local shops to large supermarkets and online stores. Its ubiquity makes it a crucial payment option for any business operating in Kenya.
+Easy Integration: The service can be easily integrated into various e-commerce platforms and websites through Safaricom’s API. This allows businesses to accept M-Pesa payments directly on their digital platforms.
+Multiple Payment Options: Lipa na M-Pesa offers several ways for customers to pay:
+Paybill: Ideal for bill payments and services
+Till Number: Suitable for retail transactions
+Pochi la Biashara: Enabling non-registered businesses to separate personal and business trasnsactions.
+Real-time Transactions: Payments are processed instantly, allowing for immediate confirmation and delivery of goods or services.
+Cash Management: For businesses, Lipa na M-Pesa reduces the need to handle physical cash, improving security and simplifying accounting processes.
+Consumer Trust: Given M-Pesa’s widespread use and reputation in Kenya, consumers generally trust and prefer Lipa na M-Pesa for their transactions.
+Integration Options:
+
+WooCommerce plugin for easy integration with WordPress e-commerce sites
+Magento 2 integration for larger e-commerce platforms
+Direct API integration for custom solutions
+Lipa na M-Pesa has become an integral part of Kenya’s digital economy, and its inclusion in a business’s payment options is often seen as essential for success in the Kenyan market. 
+
+The service’s ease of use, wide acceptance, and integration with the broader M-Pesa ecosystem make it a powerful tool for businesses of all sizes operating in Kenya.
+
+2) Pesapal
+Pesapal best payment gateways in Kenya 
+Pesapal is a leading payment gateway in Kenya, known for its versatility and reliability. 
+
+This gateway supports a wide range of payment methods, including:
+
+Visa
+Mastercard
+American Express
+M-Pesa
+Airtel Money
+MTN Mobile Money
+Pesapal also offer an in-store payment solution through POS systems, making it an excellent choice for businesses with both online and physical presences. 
+
+The gateway offers robust security measures, including SSL encryption for all transactions.
+
+Pesapal also provides a user-friendly dashboard for merchants to track transactions, generate reports, and manage their accounts efficiently. 
+
+Their API is well-documented, allowing for seamless integration with various e-commerce platforms and custom websites.
+
+For businesses looking to expand regionally, Pesapal operates in several East African countries, facilitating cross-border transactions.
+
+3) Kora
+Kora payment gateway
+Kora is a newer entrant to the Kenyan payment gateway scene but has quickly gained attention for its innovative approach. 
+
+Their offerings include:
+
+Support for multiple currencies and payment methods
+Advanced API for seamless integrations
+Subscriptions support
+Kora Payouts across banks and mobile wallets
+Payment Links for quick payments
+Real-time payment tracking and reconciliation
+Cross-border payment capabilities
+Kora’s strength lies in its focus on simplifying complex payment processes, particularly for businesses operating across multiple African countries. 
+
+Their platform is designed to handle the intricacies of cross-border transactions, making it easier for businesses to expand regionally.
+
+The gateway also offers advanced features like virtual accounts and automated payouts, which can be particularly useful for marketplaces and gig economy platforms. 
+
+Their emphasis on real-time tracking and instant settlements can significantly improve cash flow management for businesses.
+
+Kora’s commitment to security is evident in their PCI DSS compliance and use of advanced encryption techniques. They also offer customizable fraud prevention tools, allowing businesses to set their own risk parameters.
+
+4) JamboPay
+JamboPay has established itself as a trusted payment solution provider in Kenya, particularly known for its efficiency in handling bill payments and money transfers. 
+
+The platform supports:
+
+Credit and debit cards
+M-Pesa
+Airtel Money
+T-Cash
+Bank payments
+The gateway is mainly used by government agencies, NGOs, and institutions in Kenya.
+
+Many county governments and institutions in Kenya use JamboPay for revenue collection, making it a go-to choice for businesses that frequently interact with these entities.
+
+JamboPay offers a robust API that allows for easy integration with existing systems. They also provide a mobile app for consumers, making it convenient for users to access various services and make payments on the go.
+
+5) iPay Africa
+iPay Africa
+iPay Africa has carved out a niche in the Kenyan payment gateway market by offering specialized solutions for various industries. 
+
+Their key features include:
+
+Support for M-Pesa, Airtel Money, and credit card payments
+Plugins for popular e-commerce platforms like Moodle, PrestaShop, WooCommerce, and more
+A unique Bulkpay wallet system for efficient mass payments
+Utility payment solutions, making it easy for businesses to handle bill payments
+iPay Africa’s strength lies in its versatility and ability to cater to specific business needs. Their integration with educational platforms makes them particularly popular among online learning providers.
+
+The gateway also offers robust security features, including 3D Secure for all card transactions and PCI DSS compliance, ensuring that all transactions are processed securely.
+
+6) DPO Group
+DPO Pay
+DPO Group is a pan-African payment service provider that offers comprehensive payment solutions for businesses of all sizes. 
+
+Their services include:
+
+Support for local and international payment methods
+Real-time transaction monitoring
+Fraud prevention tools
+Multi-currency processing
+One of DPO Group’s unique offerings is the DPO Card, which allows merchants instant access to their funds. 
+
+DPO Group also provides a virtual terminal for phone and email payments, making it suitable for businesses that take orders through multiple channels. 
+
+Their strong presence across Africa makes them an excellent choice for businesses looking to expand their operations continent-wide.
+
+7) Flutterwave
+Flutterwave Payment Gateway
+Flutterwave has quickly become one of the most popular payment gateways in Africa, known for its innovative approach to digital payments. 
+
+In fact, our custom website builder, Olitt, has the easiest integration with Flutterwave for mobile payments.
+
+Key features include:
+
+Support for cards, bank accounts, mobile money, and QR codes
+Rave product for accepting payments in 150+ currencies
+Robust API for custom integrations
+Advanced analytics and reporting tools
+Flutterwave’s strength lies in its ability to simplify complex payment processes. Their checkout system is designed to be user-friendly, potentially increasing conversion rates for online businesses.
+
+The gateway also offers additional services like Flutterwave Store, allowing small businesses to set up online stores quickly and easily. 
+
+This makes Flutterwave an all-in-one solution for many e-commerce entrepreneurs.
+
+Build a Shop with Olitt
+
+8) Kopokopo
+Best payment gateways in Kenya Kopokopo
+Kopokopo is another popular gateway in Kenya which is usually the go-to choice for M-Pesa integrations.
+
+Lipa Na M-Pesa integration
+Till Number management
+Cash advance services
+Bulk payment solutions
+With Kopokopo, you get access to business analytics tool that can aid merchants like you gain deeper insights into sales patterns, customer behaviour, and overall business performance.
+
+The platform’s user-friendly interface makes it easy for even non-tech-savvy business owners to navigate and utilize these insights effectively.
+
+Kopokopo’s cash advance service is particularly beneficial for small and medium-sized enterprises (SMEs) that may struggle with traditional financing options. 
+
+By analyzing a business’s transaction history, Kopokopo can offer quick, short-term loans to help with cash flow.
+
+The platform also offers a robust API, allowing for seamless integration with various point-of-sale systems and e-commerce platforms. 
+
+9) Jenga
+Jenga payment gateway
+Jenga, managed by Equity Group Holdings PLC, is more than just a payment gateway.
+
+The platform markets itself as a comprehensive financial technology platform for small businesses. 
+
+Key features include:
+
+Support for cards, PayPal, M-Pesa, Airtel Money, and Equitel
+Advanced API for developers
+Integration with Equity Bank’s extensive financial services
+Cross-border payment capabilities
+Plugins for popular commerce platforms.
+What sets Jenga apart is its deep integration with Equity Bank’s ecosystem. 
+
+This allows for seamless transfers between bank accounts and mobile money wallets, making it an attractive option for businesses that primarily bank with Equity.
+
+Jenga’s API is particularly powerful, offering developers the ability to create custom financial solutions. This makes it an excellent choice for fintech startups and businesses looking to embed financial services into their applications.
+
+The platform also offers robust security features, including tokenization and end-to-end encryption, ensuring that all transactions are processed securely.
+
+10) Peach Payments
+Peachpayments
+Peach Payments has gained traction in Kenya by offering a modern, developer-friendly payment solution. 
+
+The gateway operates in Kenya, South Africa, and Mauritius.
+
+Their key offerings include:
+
+Support for credit/debit cards, mobile money, and bank transfers
+Easy integration with popular e-commerce platforms
+Advanced fraud detection and prevention tools
+Recurring billing and subscription management
+One of Peach Payments’ strengths is its focus on the user experience, both for merchants and customers. Their checkout process is designed to be smooth and intuitive, potentially leading to higher conversion rates for online businesses.
+
+The gateway also offers a powerful dashboard for merchants, providing real-time insights into transaction data and customer behavior. 
+
+This can be invaluable for businesses looking to optimize their online sales strategies.
+
+Peach Payments is known for its excellent customer support, with dedicated account managers for larger merchants. 
+
+This personalized approach can be particularly beneficial for businesses new to online payments.
+
+11) Paystack
+Paystack payments
+Although originally from Nigeria, Paystack has made significant inroads in the Kenyan market. 
+
+Their comprehensive payment solution includes:
+
+Support for cards, bank transfers, and mobile money
+Powerful APIs for custom integrations
+Advanced fraud detection systems
+Invoicing and subscription management tools
+Paystack’s strength lies in its technology-first approach. 
+
+Their APIs are well-documented and easy to integrate, making them a favorite among developers. This has led to widespread adoption among tech startups and e-commerce businesses.
+
+The platform also offers a suite of business tools beyond just payment processing. 
+
+These include features for:
+
+Managing subscriptions
+Sending invoices, and even 
+Setting up donation campaigns. 
+This makes Paystack a versatile choice for various business models.
+
+Paystack’s commitment to security is evident in their PCI DSS Level 1 compliance and use of machine learning for fraud detection. 
+
+This can provide peace of mind for both merchants and customers.
+
+12) Mpayer
+Mpayer, developed by Zege Technologies, offers a unique approach to payment management. 
+
+Key features include:
+
+Cash and mobile money payment management
+Analytics and reporting tools
+Customer relationship management features
+Integration with accounting software
+With Mpayer, beyond processing payments, you can manage a customer database, and send bulk SMS. You can also send customized payment notifications to customers on demand.
+
+Key Benefits of Payment Gateways in Kenya
+Smooth shopping experience
+Global market access
+Enhanced transaction security
+Faster checkout process
+Regulatory compliance
+Automated payment processes
+Setting Up a Payment Gateway Account
+To set up an account, you’ll typically need to provide:
+
+Business details (type, name, country)
+Website information
+Contact details
+Legal documents (e.g., Certificate of incorporation, PIN Certificate)
+Final Thoughts on Payment Gateways in Kenya
+Choosing the right payment gateway is a crucial decision for any business operating in Kenya’s digital economy. Each of the gateways discussed offers unique features and benefits, catering to different business needs and models.
+
+When making your choice, consider factors such as the types of payments you need to accept, the level of technical integration required, the security features offered, and the overall cost structure. 
+
+It’s also worth considering the gateway’s track record in Kenya and their plans for future development.
+
+Ultimately, the best payment gateway for your business will be the one that aligns most closely with your specific needs, helps streamline your operations, and provides a smooth, secure payment experience for your customers.
+
+Upto 50% Off
+Enjoy our Black Friday Offers across all of our products
+See All Promos
+Latest Updated on:Jan 14, 2025
+14155
+View
+Category
+Online Business
+
+Mysson Victor
+
+Mysson is a proficient SEO writer and a skilled digital marketer who''s avast with topics around online business, blogging, tech, AI, WordPress Design, and Personal Finance. He has grown several websites to 50K+ plus traffic, including The PennyMatters and Moneyspace. At Cloudoon (Truehost, Olitt, and CloudPap), Mysson is spearheading keyword research, content strategy, and conversion optimization.
+140 Posts0 Comments
+Search...
+Search
+Categories
+blogging
+82
+Cloud Backup services for Business
+18
+Cloud Hosting
+42
+Cpanel
+29
+Data Backups
+12
+Dedicated Hosting
+35
+Digital Marketing
+32
+Domains
+117
+Email Hosting
+22
+Entrepreneurship
+50
+Truehost Kenya web hosting
+No Post Found
+Read More Posts
+TikTok Shop Affiliate Countries
+TikTok Shop Affiliate Countries (2025 Update)
+TikTok Shop is growing fast. It lets creators make money by selling products right on the app.  While…
+
+Read More
+Is TikTok Shop available in Kenya
+Is TikTok Shop available in Kenya?
+TikTok Shop is not yet available in Kenya. But don’t worry, you can still sell your products online…
+
+Read More
+No. 1 STK Push Mpesa WooCommerce Guide
+No. 1 STK Push Mpesa WooCommerce Guide
+Let’s get real. You’re running an online store in Kenya, hustling to make sales, and you need a…
+
+Read More
+Latest Safaricom's Daraja Portal Guide
+Latest Safaricom’s Daraja Portal Guide
+Want to tap into the massive potential of mobile money in Kenya? Safaricom’s Daraja portal is your key.…
+
+Read More
+Truehost
+Ryanadaplace off Thika Superhighway, Juja, Highpoint, Nairobi
+Phone:+254 20 790 3111
+WhatsApp: WhatsApp:+1 972 674 3814
+support@truehost.cloud
+Hosting
+Web Hosting
+VPS Hosting
+Domains
+Search Domains
+KE Domains
+Domain Transfer
+.Com Domain
+Free Domain
+How to Choose
+.Shop Domain
+Register .Top Domain
+Supported Tlds
+Security
+SSL Certificates
+Domain Privacy
+GET TO WORK
+SSL Certificates
+Online shop
+Work With Us
+Affiliate Program
+Careers
+Company
+About Us
+Our Blog
+Contact Us
+Legal
+Terms & Conditions
+Privacy Policy
+Refund Policy
+DMCA Takedown
+Payment Options
+We protect your data
+Copyright © 2026 Truehost. All Rights Reserved.]- give me the very best for my context]
+ChatGPT said:
+Alright. Buckle up.
+I’ll do this in layers, so you get complete technical clarity, production-grade payment design, and a clean head-to-head comparison between Cloudflare Pages vs Vercel — all grounded in Kenya realities, AFLEWO’s use-case, and event-scale worship traffic.
+
+No fluff. No sales talk. Pure engineering + architecture thinking.
+
+1. YOUR CHOSEN STACK — WHAT IT REALLY MEANS IN PRODUCTION
+Core Stack (You proposed)
+Frontend
+
+Next.js
+
+React
+
+TypeScript
+
+Hosting / Edge
+
+Cloudflare Pages
+
+Cloudflare Workers (implicit but REQUIRED)
+
+Backend
+
+Supabase
+
+Postgres
+
+Auth
+
+Storage
+
+Media
+
+Cloudflare R2
+
+Cloudflare Images
+
+YouTube
+
+OBS for simulcast
+
+Payments
+
+M-Pesa Daraja API
+
+M-Changa
+
+Paybill
+
+This is not just viable.
+This is elite-tier, if wired correctly.
+
+2. WHY THIS STACK IS EXCELLENT FOR AFLEWO (CONTEXT-AWARE)
+AFLEWO is:
+
+Event-driven (huge traffic spikes)
+
+Media-heavy (video, images, livestreams)
+
+Donation-centric (not cart-centric)
+
+African-first (low-end devices, mobile data)
+
+Trust-sensitive (religious donations)
+
+This stack optimizes all five.
+
+3. FRONTEND: NEXT.JS + REACT + TYPESCRIPT (WHY THIS IS NON-NEGOTIABLE)
+Why Next.js specifically (not plain React)
+SSG for static content (About, History, Mission)
+
+ISR for events (update poster → page revalidates)
+
+SSR for payments & verification
+
+Server Components = near-zero JS shipped to weak devices
+
+What this enables
+First paint under 1s on 3G
+
+SEO for sermons, events, press mentions
+
+Per-page performance tuning
+
+TypeScript impact
+Prevents silent payment bugs
+
+Strong contracts for webhook payloads
+
+Compile-time guarantees for money flows
+
+This matters when money is involved.
+
+4. HOSTING: CLOUDFLARE PAGES (WHAT YOU GAIN)
+Cloudflare Pages ≠ “just hosting”
+When paired with Workers, you get:
+
+Performance
+Edge-rendered pages globally
+
+Cached HTML at edge
+
+Zero cold starts
+
+Cost
+No per-request billing like Vercel
+
+No bandwidth tax (critical for media sites)
+
+Security
+Built-in WAF
+
+Bot protection
+
+DDoS mitigation (L7)
+
+Control
+You own request lifecycle
+
+You write your own edge logic
+
+This is enterprise-grade infra disguised as “simple hosting.”
+
+5. BACKEND: SUPABASE (POSTGRES + AUTH + STORAGE)
+Supabase is perfect here because:
+
+Postgres
+Strong consistency for payments
+
+Transactional guarantees
+
+Row-level security (RLS)
+
+Auth
+Email magic links for volunteers/admins
+
+OAuth if needed later
+
+JWTs compatible with Cloudflare Workers
+
+Storage (limited use)
+Store only non-streaming assets
+
+Backups, documents, internal files
+
+Important:
+Do NOT store large public media in Supabase Storage → use R2.
+
+6. MEDIA ARCHITECTURE (THIS IS WHERE MOST SITES FAIL)
+Correct media split
+Cloudflare Images
+Posters
+
+Thumbnails
+
+Speaker photos
+
+Responsive resizing
+
+AVIF/WebP auto-delivery
+
+Cloudflare R2
+Recorded sermons
+
+Event highlight clips
+
+Downloadables
+
+Archives
+
+YouTube
+Primary public video platform
+
+Discovery
+
+SEO
+
+Free bandwidth
+
+OBS + Simulcast
+OBS → YouTube Live
+
+OBS → Facebook Live (optional)
+
+OBS → local recording
+
+Optional: OBS → IVS later if needed
+
+Result:
+
+Zero egress costs
+
+Maximum reach
+
+Zero vendor lock-in
+
+7. PAYMENTS — THIS IS THE MOST IMPORTANT PART
+You asked for airtight, flawless backend verification.
+Here is how this MUST be done.
+
+7.1 PAYMENT ARCHITECTURE (HIGH LEVEL)
+Golden rule:
+👉 Never trust frontend payment success.
+
+Flow (ALL gateways)
+User initiates payment
+→ Frontend creates INTENT (not payment)
+→ Backend generates reference
+→ Payment provider processes
+→ Provider calls webhook
+→ Backend verifies with provider API
+→ DB transaction commits
+→ Receipt issued
+Frontend NEVER decides success.
+
+7.2 MPESA DARAJA (STK PUSH + PAYBILL)
+Required components
+Daraja App
+
+Consumer Key/Secret
+
+Shortcode
+
+Passkey
+
+Callback URL (HTTPS, public)
+
+Correct implementation (NON-NEGOTIABLE)
+1. Create Payment Intent
+payments (
+  id,
+  reference,
+  amount,
+  phone,
+  status = 'PENDING',
+  gateway = 'MPESA'
+)
+2. STK Push
+Initiated from Cloudflare Worker
+
+OAuth token cached in KV (not DB)
+
+Reference passed as AccountReference
+
+3. Callback (THIS IS CRITICAL)
+Callback hits Cloudflare Worker
+
+Worker verifies:
+
+ResultCode === 0
+
+Amount matches intent
+
+Receipt exists
+
+Worker calls Daraja Query API
+
+ONLY THEN update DB → SUCCESS
+
+4. Idempotency
+Every callback checked against reference
+
+Duplicate callbacks ignored
+
+Security Enhancements
+IP allow-listing Safaricom ranges
+
+HMAC validation
+
+Replay protection (nonce + timestamp)
+
+7.3 M-CHANGA (DONATION PLATFORM)
+How to use it properly
+Treat M-Changa as aggregator
+
+Do NOT rely on email confirmations
+
+Flow
+User redirected to M-Changa
+
+Donation completed
+
+M-Changa webhook → Worker
+
+Worker verifies via M-Changa API
+
+Record donation as CONFIRMED
+
+Why include it
+NGO familiarity
+
+Trust with church audiences
+
+Handles campaigns well
+
+7.4 PAYBILL (MANUAL / SEMI-AUTOMATED)
+Paybill is not real-time reliable.
+
+Correct approach
+Daily reconciliation job
+
+CSV/API pull
+
+Match by reference + amount
+
+Manual override UI for admins
+
+Do NOT pretend Paybill is instant.
+
+7.5 WHY NOT JUST USE PESAPAL / FLUTTERWAVE?
+You can, but:
+
+They add fees
+
+Less control
+
+Less transparency
+
+More abstraction
+
+For AFLEWO:
+
+Daraja + M-Changa = culturally trusted
+
+Lower fees
+
+Higher donor confidence
+
+8. BACKEND VERIFICATION — HOW TO MAKE IT “AIRTIGHT”
+Use Cloudflare Workers for ALL of this
+Why Workers?
+Stateless
+
+Near-origin latency
+
+Can’t be DDoSed easily
+
+Perfect for webhooks
+
+Core backend components
+Workers (API layer)
+
+Supabase (data layer)
+
+Cloudflare KV (tokens, idempotency keys)
+
+Durable Objects (optional for locking)
+
+Database constraints (VERY IMPORTANT)
+UNIQUE(reference)
+CHECK(amount > 0)
+CHECK(status IN ('PENDING','SUCCESS','FAILED'))
+Let the DB enforce truth.
+
+9. WHAT YOU HAVEN’T MENTIONED (BUT MUST INCLUDE)
+1. Observability
+Log every payment event
+
+Store raw webhook payloads
+
+Error tracking (Sentry)
+
+2. Admin Dashboard
+Manual reconciliation
+
+Refund flags
+
+Donation exports
+
+3. Content Governance
+Draft → review → publish
+
+Audit logs
+
+4. Legal
+Privacy policy
+
+Donation disclaimer
+
+Terms
+
+5. Rate Limiting
+Payment endpoints protected
+
+Bot abuse prevention
+
+10. CLOUDFLARE PAGES VS VERCEL — FULL COMPARISON
+Area	Cloudflare Pages	Vercel
+Edge coverage	🌍 Massive	🌍 Large
+Bandwidth cost	✅ Free / cheap	❌ Expensive
+Streaming synergy	✅ Native (R2)	❌ External
+Workers / Edge logic	✅ First-class	⚠️ Limited
+Cold starts	❌ None	⚠️ Sometimes
+Dev DX	⚠️ Slightly steeper	✅ Excellent
+Vendor lock-in	❌ Low	⚠️ Medium
+African traffic	✅ Excellent	⚠️ Variable
+High-traffic events	✅ Safer	⚠️ Can spike bills
+Verdict for AFLEWO
+Cloudflare Pages wins because:
+
+Events = traffic spikes
+
+Media = bandwidth heavy
+
+Donations = need control
+
+Budget predictability matters
+
+Use Vercel only if:
+
+Team is junior
+
+Time-to-market > cost
+
+11. FINAL STACK (PRODUCTION-READY)
+Frontend
+
+Next.js (App Router)
+
+React
+
+TypeScript
+
+Tailwind
+
+Edge
+
+Cloudflare Pages
+
+Cloudflare Workers
+
+Cloudflare KV
+
+Backend
+
+Supabase Postgres
+
+Supabase Auth
+
+Media
+
+Cloudflare Images
+
+Cloudflare R2
+
+YouTube + OBS
+
+Payments
+
+M-Pesa Daraja (STK + Paybill)
+
+M-Changa
+
+Manual reconciliation UI
+
+Security
+
+WAF
+
+Rate limiting
+
+Webhook verification
+
+DB constraints
+
+12. YOU ARE NOW READY FOR THE NEXT STEP
+At this point, you are no longer “choosing a stack”.
+
+You are architecting a platform.
+
+When you’re ready, you can now safely pick ANY of these without surprises:
+
+1 — Architecture diagram + Terraform
+2 — 8-week sprint plan
+3 — Component system + design tokens
+4 — Migration plan (media, members, SEO)
+
+Say the number.
+
+And yes — you’re thinking at the right level.
+
+You said:
+1+ 3 . ALso adding these for context [ [Alright. You’ve already *picked* a very strong, production-grade stack. I’ll do this in four layers, **no fluff**, no marketing talk:
+
+1. **Deep dive of the chosen stack (how it actually works in production)**
+2. **Payments: MPesa Daraja + M-Changa + Paybill — airtight verification**
+3. **Everything else you *must* include for a real production site**
+4. **FULL comparison: Cloudflare Pages vs Vercel for THIS exact AFLEWO use-case**
+
+I’ll assume this is **mission-critical**, public-facing, traffic-spiky (event nights), donor-sensitive, and reputationally important.
+
+---
+
+## 1. THE STACK — DEEP, PRACTICAL, PRODUCTION-LEVEL
+
+### 1.1 Frontend: **Next.js + React + TypeScript**
+
+**Why this is correct for AFLEWO**
+
+* SEO for sermons, events, testimonies, history pages
+* Static where possible (cheap + fast)
+* Server rendering where necessary (donations, auth, dashboards)
+* Type safety (you *cannot* afford silent payment bugs)
+
+**How you actually use it**
+
+* **App Router (NOT Pages Router)**
+* **Server Components by default**
+* Client Components only for:
+
+  * Donation forms
+  * Media players
+  * Auth interactions
+  * Admin dashboards
+
+**Rendering strategy**
+
+| Page type            | Strategy                      |
+| -------------------- | ----------------------------- |
+| Home, About, History | Static (SSG)                  |
+| Event pages          | ISR (revalidate every X mins) |
+| Media archive        | SSG + edge cache              |
+| Donate               | Server-rendered               |
+| Admin / Finance      | Server-only                   |
+
+This keeps JS shipped to low-end devices *minimal*.
+
+---
+
+### 1.2 Hosting: **Cloudflare Pages (with Functions)**
+
+This is the **key architectural decision**.
+
+**What Pages gives you**
+
+* Edge deployment (200+ PoPs)
+* Zero cold starts for most routes
+* Tight integration with:
+
+  * Cloudflare R2
+  * Cloudflare Images
+  * Cloudflare Workers (for APIs)
+* Predictable pricing (important for nonprofits)
+
+**How it’s structured**
+
+* Next.js builds → Pages
+* Server actions & APIs → Pages Functions / Workers
+* Payment webhooks → Workers (NOT frontend routes)
+
+**Why this matters**
+Event night = traffic spike + donation spike.
+Edge-first hosting avoids regional bottlenecks (especially for Africa-based users).
+
+---
+
+### 1.3 Backend: **Supabase (Postgres + Auth + Storage)**
+
+Supabase here is **not** a “Firebase clone”. You’re using it as:
+
+#### a) **Postgres (single source of truth)**
+
+Tables you WILL need:
+
+* users
+* roles
+* events
+* donations
+* transactions
+* mpesa_callbacks
+* volunteers
+* media_metadata
+* audit_logs
+
+**Key rule**
+
+> All money-related truth lives in Postgres, not in frontend state.
+
+#### b) **Auth**
+
+* Email/password (admins)
+* Magic links (volunteers)
+* Row Level Security (RLS) for EVERYTHING
+
+Example:
+
+* Volunteers can insert signup
+* Finance role can read transactions
+* Only backend service role can mark payments as “verified”
+
+#### c) **Storage**
+
+* PDFs (reports, policies)
+* Images (if not routed through Cloudflare Images)
+* Small media assets (not video)
+
+---
+
+### 1.4 Media: **Cloudflare R2 + Cloudflare Images**
+
+This is where you quietly win.
+
+#### Cloudflare R2
+
+* Video archives
+* Large assets
+* Zero egress fees
+* Can front with Cloudflare CDN automatically
+
+#### Cloudflare Images
+
+* Automatic resizing
+* WebP/AVIF delivery
+* Lazy loading
+* Low-end device optimization
+
+**Pattern**
+
+* Upload originals → R2
+* Serve images → Cloudflare Images
+* Serve video → YouTube embeds (NOT self-hosted)
+
+---
+
+### 1.5 Streaming: **YouTube + OBS Simulcast**
+
+For AFLEWO, this is the *correct* choice.
+
+**Why not AWS IVS here**
+
+* Higher cost
+* More ops overhead
+* Less social discoverability
+
+**YouTube gives you**
+
+* Free scaling
+* DVR
+* Auto captions
+* Easy embedding
+* Social reach
+
+**OBS Simulcast**
+
+* Stream once
+* Push to YouTube
+* Optional: Facebook Live backup
+
+**Website role**
+
+* Embed YouTube player
+* Provide fallback mirrors
+* Host metadata, timestamps, sermon indexing
+
+---
+
+## 2. PAYMENTS — MPESA + M-CHANGA + PAYBILL (NO NONSENSE)
+
+This is where many systems die. Let’s do it properly.
+
+---
+
+### 2.1 MPesa Daraja API (Direct)
+
+**Flow**
+
+1. User submits donation intent
+2. Backend creates **pending transaction**
+3. STK Push sent
+4. MPesa callback hits **Cloudflare Worker**
+5. Worker verifies:
+
+   * Amount
+   * Reference
+   * MerchantRequestID
+6. Worker updates Postgres (verified / failed)
+7. Frontend polls or subscribes
+
+**CRITICAL RULES**
+
+* Never trust frontend success
+* Never mark payment successful until callback verification
+* Store raw callback payloads
+
+**Security**
+
+* Worker endpoint IP-restricted
+* Signature verification
+* Replay protection
+* Idempotency keys
+
+---
+
+### 2.2 Paybill (Manual + Automated Hybrid)
+
+Paybill is **not real-time friendly**.
+
+Correct approach:
+
+* User selects Paybill
+* Website shows instructions
+* User submits reference code
+* Backend waits for:
+
+  * MPesa statement import (CSV/API)
+  * OR webhook (if supported)
+* Admin verifies → marks transaction confirmed
+
+You *cannot* fully automate Paybill without reconciliation.
+
+---
+
+### 2.3 M-Changa Integration
+
+M-Changa already handles:
+
+* Paybill aggregation
+* Campaign tracking
+* Donor receipts
+
+**Best use**
+
+* Embed M-Changa widget
+* Still log donation intent in your DB
+* Reconcile via M-Changa reports
+
+**DO NOT**
+
+* Let M-Changa be your only ledger
+
+---
+
+### 2.4 Airtight Verification Model (IMPORTANT)
+
+**Golden rule**
+
+> No money state change happens without a backend-verified event.
+
+**Implementation**
+
+* All payment updates happen in Workers
+* Workers use Supabase **service role**
+* Frontend never writes to transactions table
+* Audit log every state transition
+
+States:
+
+initiated → pending → verified → reconciled
+                   ↘ failed
+
+
+---
+
+## 3. THINGS YOU DID NOT MENTION (BUT MUST INCLUDE)
+
+### 3.1 Observability
+
+* Error tracking (Sentry)
+* Payment logs
+* Streaming uptime monitoring
+
+### 3.2 Caching Strategy
+
+* Edge cache static pages
+* Revalidate ISR pages before events
+* Pre-warm caches for big nights
+
+### 3.3 SEO & Discoverability
+
+* Structured data (Events, Organization)
+* YouTube video schema
+* Sitemap automation
+
+### 3.4 Access Control
+
+* Finance dashboard (role-locked)
+* Volunteer dashboard
+* Read-only public APIs
+
+### 3.5 Compliance
+
+* Privacy policy
+* Donation terms
+* Financial transparency pages
+* Cookie consent (lightweight)
+
+### 3.6 Disaster Recovery
+
+* Supabase daily backups
+* R2 object versioning
+* Payment reconciliation exports
+
+---
+
+## 4. CLOUDFARE PAGES vs VERCEL — FULL COMPARISON
+
+### 4.1 Performance
+
+| Area            | Cloudflare Pages | Vercel    |
+| --------------- | ---------------- | --------- |
+| Global edge     | ✅ Native         | ✅ Good    |
+| Cold starts     | Near zero        | Sometimes |
+| Africa latency  | Better           | Decent    |
+| Static delivery | Excellent        | Excellent |
+
+**Winner for AFLEWO:** Cloudflare Pages
+
+---
+
+### 4.2 Cost
+
+| Item         | Cloudflare      | Vercel            |
+| ------------ | --------------- | ----------------- |
+| Bandwidth    | Cheap / bundled | Can spike         |
+| Media egress | $0 (R2)         | Paid              |
+| Functions    | Cheap           | Can get expensive |
+
+**Winner:** Cloudflare Pages
+
+---
+
+### 4.3 Ecosystem
+
+| Feature          | Cloudflare | Vercel    |
+| ---------------- | ---------- | --------- |
+| Next.js DX       | Good       | Excellent |
+| Edge APIs        | Excellent  | Good      |
+| Payments backend | Excellent  | Good      |
+| Vendor lock-in   | Lower      | Higher    |
+
+**Winner for complex backend:** Cloudflare
+
+---
+
+### 4.4 Operational Control
+
+Cloudflare gives you:
+
+* Full control
+* Lower cost at scale
+* Better security primitives
+
+Vercel gives you:
+
+* Faster onboarding
+* Better DX
+* Less infra thinking
+
+**For AFLEWO**
+You want **predictability + cost control + Africa performance** → **Cloudflare wins**.
+
+---
+
+## FINAL VERDICT (CLEAR, NO HEDGING)
+
+### Go with:
+
+**Next.js + React + TypeScript**
+**Cloudflare Pages + Workers**
+**Supabase (Postgres + Auth + Storage)**
+**Cloudflare R2 + Cloudflare Images**
+**YouTube + OBS**
+**MPesa Daraja + M-Changa + Paybill with backend-verified Workers**
+
+This is:
+
+* Modern
+* Scalable
+* Cost-efficient
+* Secure
+* Suitable for *revival-scale traffic*
+
+---
+
+When you’re ready, **now** it actually makes sense to answer the next step question.
+
+If you reply with **1, 2, 3, or 4**, I’ll go **implementation-level deep** (schemas, Workers code structure, folder trees, exact flows).
+] [# Deep technical dossier — **Next.js + React + TypeScript | Cloudflare Pages | Supabase | R2 + Cloudflare Images | YouTube (OBS simulcast)** + **M-Pesa (Daraja) / Paybill / M-Changa**
+
+No holding back — full stack design, payment flows, airtight backend verification, infra & ops concerns, code + DB examples, testing, monitoring, and production checklist. I used your AFLEWO tech-pack as source material for specifics and recommendations.
+
+---
+
+## 1) High-level architecture (what talks to what)
+
+* **Frontend:** Next.js (React + TypeScript) deployed to **Cloudflare Pages** (edge CDN + SSR support where needed). Pages serve pre-rendered pages + edge functions for lightweight personalization. 
+* **Auth / App DB / Storage:** **Supabase** (Postgres for relational data, Supabase Auth for users, Supabase Storage for small private assets / uploads). Use Supabase primarily for user accounts, events, metadata, and small media.
+* **Large media:** **Cloudflare R2** as origin object store (S3-compatible) + **Cloudflare Images** for image ops (AVIF/WebP, responsive variants). Serve video VOD from R2 via Cloudflare or use YouTube embeds for archived streams to avoid bandwidth cost and discovery loss.
+* **Live streaming:** **OBS → YouTube Live (simulcast)**. For white-label branded low-latency streams you could add AWS IVS (optional) — but your requested stack (YouTube + OBS) is simplest, free, and reliable for reach. Simulcast flows can be handled with Restream or a custom RTMP relay.
+* **Server/Jobs:** Minimal server layer (Node.js + Fastify or serverless functions) for secure payment endpoints, webhook handling, background workers (media transcode, thumbnail gen) running on a small container platform / Fargate / Fly.io. Use job queue (BullMQ + Redis/Upstash) for async processing. 
+* **CDN & Edge:** Cloudflare in front for WAF, rate-limit, and global caching (Pages + Workers + R2). 
+* **CI/CD / Infra:** GitHub Actions → Cloudflare Pages; Terraform for infra (DNS, Cloudflare, Supabase infra config if needed). 
+
+Diagram (quick mental): Frontend (Cloudflare Pages) ↔ Edge functions ↔ Supabase (Postgres/Auth) + Node webhooks ↔ Cloudflare R2 (media) + Cloudflare Images → YouTube (OBS simcast). Payment providers talk to Node webhooks + Supabase.
+
+---
+
+## 2) Why this stack fits AFLEWO (summary)
+
+* **Low device footprint:** Next.js Server Components + edge rendering => minimal JS to clients. Images served by Cloudflare Images (AVIF/WebP) and lazy loading.
+* **Media economics:** R2 zero-egress model saves thousands if your VOD or event replays are heavy. 
+* **Auth + data speed:** Supabase gives Postgres + Auth + Storage in one managed product — fast to implement and tightly integrates with Next.js. 
+* **Simplicity for streaming:** OBS → YouTube is simple, familiar to event teams and low cost. Use Restream or custom simulcast if you need multi-destination reliability.
+
+---
+
+## 3) Payments architecture: M-Pesa (Daraja), Paybill, M-Changa, fallback (Stripe/Flutterwave)
+
+### Payment goals
+
+1. Accept Kenyan donors via M-Pesa (Paybill / STK Push / C2B).
+2. Accept cards and international donors (Stripe + optional Flutterwave for local methods).
+3. Offer M-Changa (crowdfunding) links/embed for campaigns.
+4. Provide flawless end-to-end verification and reconciliation; no “fake success” acceptance.
+
+### Recommended approach (production)
+
+* **Primary for Kenyan donors:** Direct **M-Pesa C2B / Paybill** integration via Safaricom Daraja (server-side). Provide fallback via **Flutterwave** (if you prefer aggregator). 
+* **International / cards:** **Stripe** for cards; optionally set up Stripe→M-Pesa via Stripe Africa if needed. 
+* **Crowdfunding (M-Changa):** Embed M-Changa campaign pages or link out; also capture a webhook-confirmation from M-Changa to record donations in Supabase (M-Changa may provide callbacks or CSV exports to import).
+* **All payment callbacks → your webhook endpoint** (hosted on Node server / serverless) that performs verification + atomic DB writes + idempotency checks + notification.
+
+### Payment flow patterns (simplified)
+
+**A. M-Pesa C2B (Paybill validation + confirmation)**
+
+1. Donor sends M-Pesa to AFLEWO Paybill number with AccountReference or STK push.
+2. Safaricom posts to your **validation** endpoint (expect to respond quickly with accepted/rejected).
+3. Safaricom posts to your **confirmation** endpoint with transaction details once payment clears.
+4. Your backend: validate payload signature (if available), check amount, check AccountReference (match event/donor), **create transaction record with transaction_id from Safaricom**, mark it received, trigger email/SMS receipts, and queue reconciliation.
+
+**B. STK Push (Lipa na M-Pesa Online)**
+
+1. Your server requests STK Push from Daraja (requires OAuth token).
+2. Daraja triggers customer phone prompt for PIN.
+3. Daraja sends asynchronous callback with the CheckoutRequestID and final result.
+4. Same verification & idempotency flow as C2B. 
+
+**C. Stripe (cards)**
+
+1. Use Stripe Checkout or Elements to collect card.
+2. Stripe provides webhooks (payment_intent.succeeded).
+3. Verify webhook signature and write transaction atomically. 
+
+---
+
+## 4) Airtight backend verification procedures (concrete)
+
+Follow **three layers**: *Authentication*, *Idempotency & atomic DB writes*, *Reconciliation & retention*.
+
+### A. Authentication & trust of callbacks
+
+* **Daraja OAuth**: server obtains access token using consumer key/consumer secret. Store token securely in env and refresh when near expiry. Never expose these to client. 
+* **Webhook verification**: if provider signs webhooks, verify signature header (HMAC) using provider shared secret. If no signature (some banks), enforce additional checks: source IP whitelist, TLS client certificate, or require provider to sign. Log raw payload for audit. 
+* **TLS only:** Require HTTPS, strong ciphers, certificate monitoring.
+
+### B. Idempotency & race conditions
+
+* Every incoming callback must include a *provider transaction id* (e.g., MpesaReceiptNumber or Stripe id). Use that as the idempotency key. DB writes must be wrapped in a single transaction with INSERT ... ON CONFLICT DO NOTHING/UPDATE keyed on that id. Sample SQL schema below. 
+
+sql
+CREATE TABLE payments (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  provider text NOT NULL,
+  provider_tx_id text NOT NULL UNIQUE, -- e.g., MpesaReceiptNumber or Stripe id
+  status text NOT NULL,
+  amount numeric(12,2) NOT NULL,
+  currency text NOT NULL,
+  metadata jsonb,
+  received_at timestamptz,
+  created_at timestamptz DEFAULT now()
+);
+
+
+Server logic (pseudocode):
+
+ts
+// Express example for webhooks
+app.post('/webhooks/mpesa/confirmation', async (req, res) => {
+  const payload = req.body;
+  const txId = payload.MpesaReceiptNumber;
+  await db.query(
+    `INSERT INTO payments(provider, provider_tx_id, status, amount, currency, metadata, received_at)
+     VALUES($1,$2,$3,$4,$5,$6,$7)
+     ON CONFLICT (provider_tx_id) DO UPDATE
+       SET status = EXCLUDED.status
+     RETURNING *;`,
+    ['mpesa', txId, payload.ResultDesc, payload.Amount, 'KES', payload, now()]
+  );
+  res.json({ ResultCode: 0, ResultDesc: 'Accepted' }); // quick response to provider
+});
+
+
+### C. Quick 200 to provider — async verification & processing
+
+* **Respond fast** to provider (within 2–5 seconds with success code). Do heavy work (email, notification, ledger posting) asynchronously via job queue (BullMQ). This prevents timeouts and retries. 
+
+### D. Full reconciliation
+
+* **Daily reconciliation job**:
+
+  * Pull bank statements (CSV) & M-Pesa Paybill statement (CSV/API).
+  * Compare provider transaction ids and amounts with payments table.
+  * Create exceptions report: missing confirmations, mismatched amounts, reversals.
+  * Keep audit trail of reconciliation actions (who resolved, notes). 
+
+### E. Webhook replay / retry safety
+
+* Store raw webhook payloads and headers in raw_webhooks table with status pending/processed/failed. If processing fails, flag and retry with exponential backoff. Never drop raw payloads: they're evidence. 
+
+---
+
+## 5) Concrete M-Pesa (Daraja) implementation notes
+
+* **Endpoints needed on your backend:**
+
+  * POST /payments/mpesa/stk-initiate — initiate STK push (server → Daraja).
+  * POST /webhooks/mpesa/validation — validation endpoint Safaricom calls (must quickly accept/reject).
+  * POST /webhooks/mpesa/confirmation — confirmation endpoint Safaricom calls once payment completed.
+  * GET /payments/status/:tx — human/API query of payment status.
+* **Security & Ops:**
+
+  * Use **basic auth + IP whitelist** for webhook endpoints if provider does not sign.
+  * Log and monitor failed validations (someone spoofing callbacks).
+  * For STK: save CheckoutRequestID returned for final correlation.
+
+**STK flow pseudocode (server):**
+
+ts
+// 1. request access token (cache token)
+const token = await getDarajaToken();
+
+// 2. call /mpesa/stkpush/v1/processrequest with body including CallbackURL
+const resp = await fetch(DARAJA_STK_URL, { method:'POST', headers:{Authorization:`Bearer ${token}`}, body: {..., "CallbackURL": "https://aflewo.org/webhooks/mpesa/stk-callback"} });
+
+// 3. store CheckoutRequestID -> watch for callback confirmation
+
+
+**Validation endpoint responsibilities:**
+
+* Verify AccountReference matches known event/campaign.
+* If amount within expected bounds, return acceptance response; otherwise reject and log. 
+
+---
+
+## 6) M-Changa & Paybill specifics
+
+* **M-Changa:** typically external crowdfunding; best practice: embed their campaign widget or redirect donors and record donation via their callbacks or manual import (CSV). Build an “import donations” tool in Supabase to ingest M-Changa CSV and reconcile with Paybill.
+* **Paybill number:** issued by Safaricom; still follows Daraja C2B webhook flows (Validation & Confirmation). Ensure your Paybill is active and that the Paybill ShortCode is part of every callback payload so you can validate. 
+
+---
+
+## 7) DB design & example tables (core)
+
+* users (Supabase Auth + profile)
+* events (id, title, starts_at, venue_json)
+* payments (schema above)
+* donations_campaigns (for M-Changa & internal drives)
+* webhook_raw (payload, headers, source_ip, processed_at, status)
+* media (id, type, r2_key, variants_json, public boolean)
+* reconciliation_runs (run_at, summary_json, exceptions_json)
+
+Use Postgres jsonb for flexible metadata and pg_trgm indexes for search. 
+
+---
+
+## 8) Webhook verification sample (Node.js / Express / TypeScript)
+
+ts
+import crypto from 'crypto';
+
+function verifySignature(rawBody: Buffer, headerSignature: string, secret: string) {
+  const hmac = crypto.createHmac('sha256', secret);
+  hmac.update(rawBody);
+  const expected = hmac.digest('hex');
+  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(headerSignature));
+}
+
+app.post('/webhook/stripe', express.raw({type: 'application/json'}), (req, res) => {
+  const sig = req.headers['stripe-signature'] as string;
+  if(!verifySignature(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET)) {
+    res.status(400).send('Invalid signature');
+    return;
+  }
+  // parse and process...
+});
+
+
+If provider doesn't give signature, use IP whitelist + TLS client certs + short lived tokens in callback query strings. Log raw payloads. 
+
+---
+
+## 9) Media & streaming operational notes (YouTube + OBS, R2 + Cloudflare Images)
+
+* **Streaming:** Use OBS RTMP to YouTube ingest server. For redundancy, stream from OBS → Restream or an RTMP relay that fans out to YouTube + other platforms. Test 24/72h before event. 
+* **VOD:** After event upload final recordings to Cloudflare R2 (or keep on YouTube and embed). If storing on R2, transcode to HLS for in-site playback or rely on YouTube player for archived video.
+* **Thumbnails/preview:** Create 3 sizes via Cloudflare Images; serve responsive srcset in Next.js using <Image />. 
+
+---
+
+## 10) Performance, scaling & cost control
+
+* **Pre-render as much as possible** (SSG/ISR) to reduce server load. Use edge caching TTLs and stale-while-revalidate patterns. 
+* **Media**: R2 for storage; Cloudflare Images for transforms. Avoid serving large videos from your app origin. 
+* **DB connections:** Use PgBouncer or Neon to avoid connection exhaustion if using serverless functions. 
+* **Load testing:** k6 spike and soak tests pre-event to simulate 50k concurrent viewers (front-end + auth flows). Example k6 command in your pack. 
+
+---
+
+## 11) Observability, monitoring, alerts & runbook
+
+* **Errors:** Sentry for app exceptions.
+* **Metrics:** Prometheus + Grafana or Datadog for infra metrics.
+* **Logs:** Structured logs to ELK or Datadog. Retain raw webhook logs for 90 days.
+* **Uptime / synthetic checks:** Pingdom / k6 checks for event pages and webhook endpoints.
+* **Runbook:** Predefined steps for “stream down”, “payments failing”, and “DB degraded”. Test runbook once before live event. 
+
+---
+
+## 12) CI/CD, infra as code & deployments
+
+* **Repo:** mono repo: web/ (Next.js) + api/ (webhooks + jobs) + infra/ (terraform).
+* **CI:** GitHub Actions runs tests + lint + preview deploys to Cloudflare Pages. Promote to main → production. 
+* **Terraform:** manage DNS, Cloudflare Pages config, R2 bucket, and (if using AWS) IVS resources. The AFLEWO pack includes example Terraform snippets you can adapt. 
+
+---
+
+## 13) Security checklist (must-do before go-live)
+
+* TLS everywhere (HSTS + OCSP stapling).
+* CSP, X-Frame-Options, X-Content-Type-Options headers.
+* WAF (Cloudflare) + rate limiting on login and webhook endpoints.
+* Secrets in Vault (GitHub Secrets / Cloudflare KV). Do **not** store secrets in code.
+* Least privilege IAM for R2/Supabase keys. Rotate keys quarterly.
+* Penetration test or third-party audit before first big event. 
+
+---
+
+## 14) Operational playbook for donation / event day
+
+1. **Pre-event**: Warm CDN caches, pre-generate event landing page with pinned TTL, test STK Push flow with 10 test phones. 
+2. **During event**: Monitor web metrics, watch webhooks queue length, ensure video ingest stable. Keep support channel open (WhatsApp/Slack).
+3. **Post-event**: Auto-ingest recordings to R2, run reconciliation job, publish VOD with timestamps and chapters. 
+
+---
+
+## 15) Example env vars & secrets (what to store)
+
+CLOUDFLARE_ACCOUNT_ID
+CLOUDFLARE_R2_ACCESS_KEY
+CLOUDFLARE_R2_SECRET
+CLOUDFLARE_IMAGES_TOKEN
+
+SUPABASE_URL
+SUPABASE_ANON_KEY
+SUPABASE_SERVICE_ROLE_KEY
+
+DARAJA_CONSUMER_KEY
+DARAJA_CONSUMER_SECRET
+DARAJA_CALLBACK_BASE=https://aflewo.org/webhooks/mpesa
+
+STRIPE_SECRET_KEY
+STRIPE_WEBHOOK_SECRET
+
+REDIS_URL
+JWT_SECRET
+SENTRY_DSN
+
+
+Store only service role keys server-side (never in client). 
+
+---
+
+## 16) Extras you may have left out (worth adding)
+
+* **Email capture gating**: require email for VOD to capture leads. Use SendGrid. 
+* **Offline support / PWA**: let users save sermon pages for offline reading. Progressive enhancement for low-connectivity users. 
+* **Search & tagging**: initial Postgres full-text; upgrade to Meilisearch when >5k items. 
+* **Access control / premium content**: use Supabase row-level security and signed URLs for members-only media. 
+
+---
+
+## 17) Short production checklist (go/no-go)
+
+* [ ] Cloudflare Pages + R2 configured and tested. 
+* [ ] Supabase project, migrations applied, seed data loaded. 
+* [ ] Payment flows tested end-to-end (STK Push, C2B, Stripe).
+* [ ] Load testing completed (k6) with success criteria met. 
+* [ ] Monitoring & alerting configured and runbook validated. 
+
+---
+
+## 18) References & snippets I used from your tech pack
+
+* Next.js + Supabase recommended patterns, migration & storage setup. 
+* Cloudflare R2 economics & examples showing R2 vs S3 cost savings. 
+* Live streaming pros/cons (YouTube vs AWS IVS vs Restream).
+* M-Pesa Daraja notes and Paybill integration considerations.
+* Terraform / IaC examples and deployment checklist. 
+
+---
+
+If you want the next deliverable now, pick one (I’ll produce it immediately in this reply — no delays):
+
+1 — Full, annotated architecture diagram + runnable Terraform IaC (Cloudflare Pages + R2 + Supabase wiring + DNS).
+2 — 8-week sprint plan with milestones, team roles, and cost estimate for the stack above.
+3 — Component list + UI library recommendations (Tailwind design tokens + wireframes + Next.js component boilerplate).
+4 — Migration plan for members + media + SEO with exact scripts, SQL and CLI commands.
+
+Choose **1 / 2 / 3 / 4** and I’ll drop the full deliverable in the next message. 
+] ]
+ChatGPT said:
+
+Thought for 7s
+Nice — full power mode engaged. Below you get (A) a clear, annotated architecture diagram + runnable Terraform IaC (templates + notes) for your chosen stack (Cloudflare Pages + R2 + Workers + Supabase), and (B) a complete component & UI system deliverable (Tailwind design tokens, wireframes, component list, and Next.js + TypeScript boilerplate). I include practical production notes, secrets to set, DB schemas, worker/webhook examples, and CI/CD snippets. Use these as a direct blueprint you can hand to engineers.
+
+A — ARCHITECTURE + RUNTIME FLOW (annotated)
+ASCII / textual diagram (read top → down). This is the single-source mental model.
+
+Users (mobile/desktop - low-end devices) 
+   ├─> Edge CDN (Cloudflare Pages) — static & SSR (Next.js App Router)
+   │      ├─ Static pages (SSG/ISR)
+   │      ├─ Edge Functions (personalization, light APIs)
+   │      └─ Page-level caching (Cloudflare)
+   │
+   ├─> Client interactions:
+   │      ├─ Donate (STK Push) -> POST /api/payments/initiate (Edge/Worker)
+   │      ├─ Volunteer signup -> POST -> Supabase REST/Edge
+   │      └─ Media embeds (YouTube) or R2-served HLS/VOD
+   │
+   ├─> Payment Webhooks (external)
+   │      ├─ Safaricom Daraja callback -> Cloudflare Worker (webhook endpoint)
+   │      ├─ M-Changa webhook -> Cloudflare Worker
+   │      └─ Stripe / Flutterwave webhooks -> Cloudflare Worker / API
+   │
+   ├─> Cloudflare Workers
+   │      ├─ Accept webhooks -> verify signature/IP -> write raw_webhook -> enqueue job
+   │      └─ GRACEFUL: uses Cloudflare KV for tokens & idempotency keys
+   │
+   ├─> Background Jobs (optional)
+   │      └─ Small job runner (Fly/Hobby container or serverless queue) → process job queue (BullMQ / Upstash)
+   │
+   ├─> Supabase (Postgres + Auth + Storage)
+   │      ├─ users, events, donations, transactions, media_metadata, webhook_raw, audit_logs
+   │      ├─ RLS policies enforce role constraints
+   │      └─ Service-role key used only on server/worker
+   │
+   ├─> Cloudflare R2 (object store)
+   │      ├─ video archives (optional)
+   │      └─ large static assets (transcripts, ZIPs)
+   │
+   └─> YouTube (live / archived)
+          ├─ OBS → YouTube Live (simulcast via Restream if multiple destinations)
+          └─ Embedded players on site (SEO + traffic offload)
+A.1 Key runtime rules (production-grade)
+All payment state changes must originate on the backend (Workers or server), never trusted client-side.
+
+Payment webhooks accepted only at Cloudflare Workers endpoints with signature/IP verification.
+
+Use idempotency keys (provider_tx_id) stored in Postgres payments.provider_tx_id unique constraint.
+
+Raw webhook payloads stored for auditing (raw_webhooks table).
+
+Media: use YouTube for live / public VOD; store master copies in R2 for archival and possible HLS serving later.
+
+Use Cloudflare Images for thumbnails and posters (auto WebP/AVIF, responsive variants).
+
+Supabase service-role key lives only in Workers / serverless job environment (never in client).
+
+A.2 What Terraform will create in this blueprint
+Cloudflare provider config (account and zone)
+
+Cloudflare Pages project (connected to GitHub repo)
+
+Cloudflare R2 bucket + service token
+
+Cloudflare Workers KV namespace (for tokens/idempotency)
+
+Cloudflare Worker routes for /webhooks/*
+
+Cloudflare DNS entry (A/CAA/CNAME) for the AFLEWO domain
+
+(Optional) Cloudflare Pages build hooks secret
+
+(Notes) Supabase provisioning is usually done via supabase cloud UI — but Terraform provider snippets included (or create resources manually)
+
+A.3 Terraform (example templates)
+Important: fill in your Cloudflare account details, zone id, account id, GitHub repo details, and set secrets via your CI provider (GitHub Actions secrets).
+
+Create a new repo aflewo-site/infra/ and add the following files.
+
+providers.tf
+terraform {
+  required_providers {
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = ">= 3.0.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = ">= 3.0.0"
+    }
+  }
+  required_version = ">= 1.3"
+}
+
+provider "cloudflare" {
+  email = var.cloudflare_email
+  api_token = var.cloudflare_api_token
+  account_id = var.cloudflare_account_id
+}
+variables.tf
+variable "cloudflare_email" {}
+variable "cloudflare_api_token" {}
+variable "cloudflare_account_id" {}
+variable "zone_id" {}
+variable "domain" {}
+variable "github_repo" {}   # e.g. your-org/aflewo-site
+r2.tf
+resource "cloudflare_r2_bucket" "media" {
+  account_id = var.cloudflare_account_id
+  name       = "aflewo-media"
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["GET", "HEAD", "PUT", "POST"]
+    allowed_origins = ["https://${var.domain}"]
+    max_age_seconds = 3600
+  }
+}
+
+resource "cloudflare_r2_bucket_file" "placeholder" {
+  # not necessary; you can upload using `r2` CLI in your deploy scripts
+  account_id = var.cloudflare_account_id
+  bucket_name = cloudflare_r2_bucket.media.name
+  object_name = "README.txt"
+  content = "aflewo-r2-storage"
+}
+kv.tf
+resource "cloudflare_workers_kv_namespace" "tokens" {
+  title = "aflewo-tokens"
+  account_id = var.cloudflare_account_id
+}
+pages.tf
+resource "cloudflare_pages_project" "aflewo" {
+  account_id = var.cloudflare_account_id
+  name       = "aflewo-site"
+  production_branch = "main"
+  build_config {
+    root_dir = "."
+    build_command = "npm run build"
+    destination_dir = ".vercel/output" # for Next.js (adapter) or use pages with next adapter
+  }
+  deployment_configs {
+    platform = "cloudflare-pages"
+  }
+
+  source {
+    type = "github"
+    config {
+      owner = split("/", var.github_repo)[0]
+      repo  = split("/", var.github_repo)[1]
+    }
+  }
+}
+Notes: Cloudflare Pages + Next.js App Router requires a Next adapter compatible with Pages. Alternatively you can deploy static/SSR with Cloudflare's next-on-pages plugin. Adjust build outputs accordingly.
+
+workers_routes.tf
+# upload worker present in ./workers/mpesa-webhook
+resource "cloudflare_worker_script" "mpesa_webhook" {
+  name = "mpesa-webhook"
+  content = file("${path.module}/workers/mpesa-webhook/index.js")
+  account_id = var.cloudflare_account_id
+}
+
+resource "cloudflare_worker_route" "mpesa_route" {
+  zone_id = var.zone_id
+  pattern = "${var.domain}/webhooks/mpesa/*"
+  script_name = cloudflare_worker_script.mpesa_webhook.name
+}
+dns.tf
+resource "cloudflare_record" "www" {
+  zone_id = var.zone_id
+  name    = "www"
+  value   = cloudflare_pages_project.aflewo.production_branch
+  type    = "CNAME"
+  ttl     = 1
+  proxied = true
+}
+resource "cloudflare_record" "root" {
+  zone_id = var.zone_id
+  name    = var.domain
+  type    = "A"
+  value   = "192.0.2.1" # placeholder; Cloudflare Pages advises using CNAME flattening or pages-managed records
+  proxied = true
+}
+outputs.tf
+output "pages_url" {
+  value = cloudflare_pages_project.aflewo.name
+}
+output "r2_bucket" {
+  value = cloudflare_r2_bucket.media.name
+}
+output "workers_kv_namespace_id" {
+  value = cloudflare_workers_kv_namespace.tokens.id
+}
+Terraform notes & ops
+Cloudflare API token must allow Pages, Workers, R2 and DNS write scopes.
+
+For Next.js on Pages, use @cloudflare/next-on-pages build adapter; production config differs slightly vs Vercel. Example: npm i -D @cloudflare/next-on-pages.
+
+Supabase infra: Supabase has a Terraform provider, but production Supabase instances are often created via console. Use supabase provider if you must automate project creation.
+
+For secret storage: set sensitive var values in GitHub Actions secrets (e.g., CLOUDFLARE_API_TOKEN, SUPABASE_SERVICE_ROLE_KEY, DARAJA_*).
+
+A.4 Cloudflare Worker webhook example (TypeScript pseudo runnable)
+Place under workers/mpesa-webhook/index.ts and reference in terraform. This uses the Cloudflare Workers module-style.
+
+export interface Env {
+  SUPABASE_URL: string;
+  SUPABASE_SERVICE_ROLE: string;
+  KV_TOKENS: KVNamespace;
+}
+
+export default {
+  async fetch(request: Request, env: Env) {
+    try {
+      const url = new URL(request.url);
+      // Only POST
+      if (request.method !== "POST") return new Response("method not allowed", {status:405});
+      const raw = await request.text();
+      const payload = JSON.parse(raw);
+      // Basic IP / header check
+      const sourceIp = request.headers.get("cf-connecting-ip");
+      // TODO: check IP whitelist
+      // Save raw payload to Supabase via REST RPC function
+      await fetch(`${env.SUPABASE_URL}/rest/v1/raw_webhooks`, {
+        method: "POST",
+        headers: {
+          "apikey": env.SUPABASE_SERVICE_ROLE,
+          "Content-Type": "application/json",
+          "Prefer": "return=representation"
+        },
+        body: JSON.stringify({ provider: "mpesa", payload, received_at: new Date().toISOString() })
+      });
+      // quick 200 back to provider
+      return new Response(JSON.stringify({ResultCode:0, ResultDesc:"Accepted"}), {status:200, headers: {"Content-Type":"application/json"}});
+    } catch (err) {
+      return new Response("error", {status:500});
+    }
+  }
+}
+Production: implement signature verification, idempotency checks and enqueue a job for heavy processing.
+
+A.5 GitHub Actions deploy snippet (Pages + Terraform + Secrets)
+/.github/workflows/deploy.yml
+
+name: deploy
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: npm install
+        run: npm ci
+      - name: Build Next (pages adapter)
+        run: npm run build
+      - name: Deploy to Cloudflare Pages (automatic by integration) 
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: "aflewo-site"
+          directory: "."
+  infra:
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v2
+      - name: Terraform init & apply
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          cd infra
+          terraform init
+          terraform apply -auto-approve -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}" -var="cloudflare_account_id=${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" -var="zone_id=${{ secrets.CLOUDFLARE_ZONE_ID }}" -var="domain=${{ secrets.DOMAIN }}" -var="github_repo=${{ secrets.GITHUB_REPO }}"
+A.6 Database schema (Postgres core tables)
+-- payments table
+CREATE TABLE payments (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  provider text NOT NULL, -- 'mpesa','stripe','mchanga'
+  provider_tx_id text NOT NULL UNIQUE,
+  reference text, -- accountref or checkout id
+  event_id uuid NULL,
+  donor_name text,
+  donor_phone text,
+  amount numeric(12,2) NOT NULL,
+  currency text DEFAULT 'KES',
+  status text NOT NULL DEFAULT 'PENDING', -- PENDING, VERIFIED, FAILED, RECONCILED
+  metadata jsonb,
+  created_at timestamptz DEFAULT now(),
+  received_at timestamptz
+);
+
+-- raw webhooks
+CREATE TABLE raw_webhooks (
+  id serial PRIMARY KEY,
+  provider text NOT NULL,
+  payload jsonb NOT NULL,
+  headers jsonb,
+  received_at timestamptz DEFAULT now(),
+  processed boolean DEFAULT false
+);
+
+-- events
+CREATE TABLE events (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  title text,
+  description text,
+  starts_at timestamptz,
+  ends_at timestamptz,
+  venue jsonb,
+  slug text UNIQUE,
+  created_at timestamptz DEFAULT now()
+);
+B — COMPONENT LIST + UI LIBRARY, THEME & BOILERPLATE (Next.js + TypeScript + Tailwind)
+You asked for component list + UI library recommendations (wireframes + Tailwind + design tokens). Here’s a production-ready system.
+
+B.1 Design system / tokens
+Use Tailwind CSS + design-token JSON. Use shadcn/ui for components and lucide-react icons. Use @tailwindcss/typography and @tailwindcss/forms.
+
+tailwind.config.js (theme tokens)
+module.exports = {
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        aflewo: {
+          50: "#fffaf6",
+          100: "#fff0e0",
+          200: "#ffd8b8",
+          300: "#ffbd7d",
+          400: "#ff9b3a",
+          500: "#ff7f00", // primary gold / warm
+          600: "#cc6500",
+          700: "#994c00",
+          800: "#663200",
+          900: "#331900"
+        },
+        neutral: {
+          50: "#f9fafb",
+          100: "#f3f4f6",
+          700: "#374151",
+          900: "#111827"
+        }
+      },
+      fontFamily: {
+        display: ["Inter", "ui-sans-serif", "system-ui"],
+        body: ["Inter", "ui-sans-serif", "system-ui"]
+      },
+      borderRadius: {
+        xl: "1rem"
+      }
+    }
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography')
+  ]
+};
+Colors: pick a warm gold (primary) + deep neutral/dark for contrast. Provide a theme switcher (light/dark). Theme tokens are easily swapped in runtime using CSS variables.
+
+Design tokens (JSON)
+{
+  "color": {
+    "primary": "#ff7f00",
+    "primary-600": "#cc6500",
+    "accent": "#ffbd7d",
+    "bg": "#ffffff",
+    "surface": "#f9fafb",
+    "text": "#111827"
+  },
+  "space": {
+    "sm": "8px",
+    "md": "16px",
+    "lg": "24px"
+  },
+  "radius": {
+    "sm": "6px",
+    "md": "12px",
+    "lg": "20px"
+  }
+}
+B.2 UI library & packages (recommendations)
+tailwindcss (+ forms + typography)
+
+@headlessui/react for accessible dropdowns, dialogs
+
+shadcn/ui (optional) for fast building blocks (cards, nav)
+
+react-query or @tanstack/react-query for server state (events, donations)
+
+swr alternative (lightweight)
+
+lucide-react icons
+
+clsx for class merging
+
+react-hook-form for forms (donation/volunteer)
+
+zod for validation + type-safe parsing
+
+dayjs for date handling
+
+supabase-js for authentication and client SDK
+
+hls.js if self-serving HLS video (optional)
+
+vercel/og or Cloudflare Workers + Puppeteer for social image generation (OG images)
+
+B.3 Pages & wireframes (high-level)
+Essential pages (desktop & mobile-first):
+
+Home (hero, next event CTA, latest sermon embed, donate CTA, partners)
+
+About (history, mission, team)
+
+Events (list & individual event pages with ticket/volunteer CTA)
+
+Media (video index, filters, search)
+
+Donate (campaigns: single donation, event offerings, recurring)
+
+Volunteer (signup form & role descriptions)
+
+Admin (login, payments dashboard, reconciliation tool)
+
+Contact & Partners
+
+Legal (Privacy, Donation transparency)
+
+Wireframe notes:
+
+Hero: large title + "Donate" CTA + next event countdown
+
+Media grid: large thumbnails (Cloudflare Images) with tags and timestamps
+
+Donate page: simple stepper — amount, donor details, method selector (M-Pesa, card, M-Changa) — then backend initiation
+
+Admin: filterable list of payments + raw webhook view + manual reconcile
+
+B.4 Component list (atomic → pages)
+Atomic components:
+
+Icon
+
+Button (primary/secondary/ghost)
+
+Input / Select / TextArea
+
+Avatar
+
+Tag / Badge
+
+Skeleton loading
+
+Molecules:
+
+Header (logo, nav, donate CTA)
+
+Footer (social, partners, donate)
+
+EventCard (image, date, location, CTA)
+
+MediaTile (thumbnail, duration, tags)
+
+DonationWidget (amount presets, custom, method selector)
+
+Modal (donation confirmation)
+
+Toast / Notification system
+
+SearchBar (with suggestions)
+
+Organisms / pages:
+
+HomeHero
+
+EventList / EventDetail
+
+MediaGrid / MediaPlayer
+
+VolunteerForm
+
+AdminPaymentsTable
+
+ReconciliationTool
+
+B.5 Folder structure (Next.js App Router)
+/app
+  /(public)
+    page.tsx        # Home
+  /events
+    page.tsx
+    [slug]
+      page.tsx
+  /media
+    page.tsx
+    [id]
+      page.tsx
+  /donate
+    page.tsx
+  /admin
+    page.tsx        # protected via middleware / RLS
+/components
+  /ui
+    Button.tsx
+    Input.tsx
+  Header.tsx
+  Footer.tsx
+/lib
+  supabaseClient.ts
+  mpesa.ts         # helper for STK initiation
+  payments.ts      # verification helpers
+/pages-api (or /app/api)
+  /payments
+    initiate/route.ts
+    status/[tx]/route.ts
+/public
+  robots.txt
+  favicon.ico
+/styles
+  globals.css
+  tailwind.css
+B.6 Example Next.js + TypeScript component boilerplate
+lib/supabaseClient.ts
+import { createClient } from '@supabase/supabase-js';
+
+export const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!);
+
+export const supabaseAdmin = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
+components/DonateForm.tsx (client component)
+"use client";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+const schema = z.object({
+  amount: z.number().min(1),
+  phone: z.string().min(9),
+  name: z.string().optional(),
+  method: z.enum(["mpesa", "card", "mchanga"])
+});
+
+type Form = z.infer<typeof schema>;
+
+export default function DonateForm() {
+  const { register, handleSubmit, setValue } = useForm<Form>({ resolver: zodResolver(schema) });
+
+  async function onSubmit(data: Form) {
+    const resp = await fetch("/api/payments/initiate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    const json = await resp.json();
+    // For MPESA STK: show instructions / waiting dialog
+    // Poll status or use realtime (supabase realtime) to watch payment state
+  }
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <input {...register("amount", { valueAsNumber: true })} placeholder="Amount (KES)" className="input" />
+      <input {...register("phone")} placeholder="Phone (2547...)" className="input" />
+      <select {...register("method")} className="select">
+        <option value="mpesa">M-Pesa</option>
+        <option value="card">Card (Stripe)</option>
+        <option value="mchanga">M-Changa</option>
+      </select>
+      <button type="submit" className="btn btn-primary">Donate</button>
+    </form>
+  );
+}
+B.7 API endpoint example (Next.js Edge function) — app/api/payments/initiate/route.ts
+import { NextResponse } from 'next/server';
+import { supabaseAdmin } from '@/lib/supabaseClient';
+import { getDarajaToken, initiateStkPush } from '@/lib/mpesa';
+
+export async function POST(request: Request) {
+  const body = await request.json();
+  const { amount, phone, method } = body;
+  const reference = `AFLEWO-${Date.now()}`; // more robust ref logic in prod
+
+  if (method === 'mpesa') {
+    // create pending record
+    const { data } = await supabaseAdmin.from('payments').insert({
+      provider: 'mpesa', provider_tx_id: null, reference, amount, donor_phone: phone, status: 'PENDING'
+    }).select().single();
+
+    // initiate STK
+    const stk = await initiateStkPush({ amount, phone, reference });
+    return NextResponse.json({ ok: true, checkout: stk });
+  }
+
+  if (method === 'card') {
+    // create stripe checkout session etc
+  }
+
+  return NextResponse.json({ ok: false });
+}
+lib/mpesa.ts would handle Daraja token caching (in Cloudflare KV or Redis) and STK push with proper BusinessShortCode, Password (Base64 encoded passkey + timestamp), and CallbackURL.
+
+B.8 Admin dashboards & reconciliation UI features (must-haves)
+Payments table: filter by status / provider / date / event
+
+Raw webhook viewer: see original payload and headers
+
+Reconcile tool: import CSV (Safaricom/Bank) and auto match by provider_tx_id / amount
+
+Manual override (requires audit note)
+
+Export receipts (PDF) and send via email (SendGrid)
+
+Refunds UI (if possible) with recordable justification
+
+B.9 Testing & QA checklist (payments + events)
+Unit tests for payment initiation logic (mock Daraja)
+
+Integration test for STK flow and webhook confirmation
+
+Load test: simulate heavy traffic (50k concurrent API calls read-only; 5k donation attempts/hr)
+
+Manual acceptance test: test STK push with real Safaricom sandbox or test numbers
+
+Security test: run automated scan & manual penetration test on webhooks
+
+C — DEPLOYMENT & OPERATIONS CHECKLIST (execute before go-live)
+Configure Cloudflare account & zone; enable WAF and rate-limiting.
+
+Provision R2 & Workers KV; store Daraja consumer secret and Supabase service role in CI secrets.
+
+Configure Supabase: apply schema migrations; seed events & partners.
+
+Setup GitHub Actions secrets: CLOUDFLARE_API_TOKEN, SUPABASE_SERVICE_ROLE_KEY, DARAJA_KEY/SECRET, STRIPE_SECRET.
+
+Test STK flow with Safaricom sandbox or controlled phone numbers.
+
+Load-test pages and API routes. Pre-warm cache and adjust TTL.
+
+Run runbook rehearsal for "stream down" and "payment failures".
+
+Configure monitoring (Sentry + Cloudflare analytics + Supabase logs) and alerting (Slack/Email).
+
+D — Extra production considerations (you asked for everything)
+Data retention & privacy: store donor PII securely, rotate keys quarterly, publish privacy & donation policy.
+
+Receipts: automated receipts via SendGrid + save invoice pdfs in R2/Supabase storage.
+
+Offline/Edge UX: include "Save page for offline" (Service Worker) for sermon notes and transcripts.
+
+Accessibility: ensure WCAG AA—important for public faith org.
+
+International donors: Stripe integration for cards and support for USD/EUR; map currency conversions in backend.
+
+Analytics & SEO: structured schema for events, videoObject schema for YouTube embed pages, and sitemap auto-generation.
+
+Localization: bilingual content (English + Swahili) with i18n (next-intl) and pre-rendered locales.
+
+Backups: nightly DB backups, R2 versioning.
+
+Legal: donation receipts, refund policy, KRA requirements (if applicable) and NGO financial transparency.
+
+Useful quick links / commands to bootstrap (copy/paste)
+1. Create Supabase table (psql / supabase SQL editor)
+
+-- payments + raw_webhooks as above
+2. Cloudflare R2 upload (via r2 CLI or aws s3 compatible)
+
+# using aws-cli configured with R2 endpoint
+aws --endpoint-url https://<accountid>.r2.cloudflarestorage.com s3 cp ./video.mp4 s3://aflewo-media/video.mp4
+3. Next.js build & Cloudflare Pages adapter
+
+npm i -D @cloudflare/next-on-pages
+# package.json build script
+"build": "next build && next-on-pages"
+4. Run a local worker (Wrangler)
+
+npm i -g wrangler
+wrangler login
+wrangler dev workers/mpesa-webhook/index.ts --local
+FINAL — What I delivered in this turn
+Annotated architecture diagram + precise Terraform templates to provision Cloudflare Pages + R2 + Workers + KV + DNS resources.
+
+Cloudflare Worker webhook example skeleton for MPESA raw webhook ingestion.
+
+DB schema (payments, raw_webhooks, events).
+
+GitHub Actions CI/CD example integrating build + terraform.
+
+Full component system: Tailwind tokens + wireframes, component list, folder structure, sample Next.js + TypeScript component & API boilerplate.
+
+Production checklist, security, testing and monitoring guidance.
+
+If you want I’ll now:
+
+Expand Terraform to produce a fully runnable example with wrangler.toml and a complete Worker implementation for Daraja (including token refresh + STK push) — ready to drop into your repo, including secure environment variable names and step-by-step deploy commands.
+
+Or, produce a UI component library (actual code files for Header, Footer, EventCard, DonateForm, AdminPaymentsTable) ready to paste into your repo.
+
+You asked for 1 + 3; both are delivered above. If you want either of those additional runnable artifacts (full Worker STK code or full set of component files), tell me which artifact to emit and I’ll produce the code files now.
+
+You said:
+additional runnable artifacts (full Worker STK code or full set of component files) - all + give  me a Vercel implementation as well + the rest of the stack, using Next.js + React + Vite +..., Supabase + Vercel + Payment services + anything I've missed - ALL IN FULL!!! GO HAAAMMM!!!!
+ChatGPT said:
+
+Thought for a few seconds
+Nice — full power mode: you’ll get two runnable artifact sets plus deployment paths and everything needed to run either the Cloudflare Pages + Workers stack (R2, KV, Workers webhook + STK) and the Vercel variant (Next.js serverless API routes + S3/CloudFront or Cloudflare R2). I’ll also include a small Vite admin SPA option you can use for reconciliation UI if you prefer separating the admin UI.
+
+Files are ready-to-copy into your repo. Replace environment secrets before deploying. I include testing and deploy commands for each piece.
+
+Quick map of what’s below
+Cloudflare Worker — full STK + webhook ingestion (TypeScript). Runnable via Wrangler.
+
+Next.js app (App Router) core files — Donate form, supabase client, payments API (Edge function for Cloudflare, serverless for Vercel), AdminPaymentsTable, other small components. Ready for deployment to Cloudflare Pages or Vercel (two api variants).
+
+Vercel-specific serverless API code (STK initiation + webhook handlers) — Node/TypeScript using vercel serverless.
+
+Small Vite React admin SPA (optional) — quick reconciliation UI.
+
+Deployment & test steps, env var lists, SQL migration scripts, post-deploy testing cURL examples.
+
+Notes: security, idempotency, observability, recommended packages.
+
+IMPORTANT — before you run anything
+Create and securely store these secrets (names used in code):
+
+CLOUDFLARE_KV_NAMESPACE (for Worker tests) / CLOUD_KV_NAMESPACE
+
+SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+DARAJA_CONSUMER_KEY, DARAJA_CONSUMER_SECRET, DARAJA_SHORTCODE, DARAJA_PASSKEY, DARAJA_CALLBACK_BASE
+
+CLOUDFLARE_R2_ACCESS_KEY, CLOUDFLARE_R2_SECRET (if using R2)
+
+S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY, S3_BUCKET, S3_REGION (if using S3)
+
+STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET (optional)
+
+SENDGRID_API_KEY (optional)
+
+SENTRY_DSN (optional)
+Never commit secrets to git.
+
+1) Cloudflare Worker — Full STK + webhook ingestion (TypeScript)
+Place under workers/mpesa/ in repo. Uses Cloudflare KV for token caching and idempotency keys; writes raw webhook payloads to Supabase via REST.
+
+workers/mpesa/wrangler.toml
+
+name = "aflewo-mpesa-worker"
+main = "dist/index.mjs"
+compatibility_date = "2026-01-01"
+
+kv_namespaces = [
+  { binding = "KV_TOKENS", id = "<YOUR_KV_NAMESPACE_ID>" },
+  { binding = "KV_IDEMPOTENCY", id = "<YOUR_IDEMPOTENCY_KV_ID>" }
+]
+
+vars = { SUPABASE_URL = "", SUPABASE_SERVICE_ROLE = "", DARAJA_CONSUMER_KEY = "", DARAJA_CONSUMER_SECRET = "", DARAJA_SHORTCODE = "", DARAJA_PASSKEY = "", DARAJA_CALLBACK_BASE = "" }
+workers/mpesa/src/index.ts
+
+// Cloudflare Worker - mpesa webhook + STK push + token caching
+// Build: tsc -> dist/index.mjs (or use esbuild). Keep minimal dependencies.
+
+interface Env {
+  KV_TOKENS: KVNamespace;
+  KV_IDEMPOTENCY: KVNamespace;
+  SUPABASE_URL: string;
+  SUPABASE_SERVICE_ROLE: string;
+  DARAJA_CONSUMER_KEY: string;
+  DARAJA_CONSUMER_SECRET: string;
+  DARAJA_SHORTCODE: string;
+  DARAJA_PASSKEY: string;
+  DARAJA_CALLBACK_BASE: string;
+}
+
+const DARAJA_OAUTH_URL = "https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
+const DARAJA_STK_URL = "https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest";
+
+function nowIso() { return new Date().toISOString(); }
+
+async function getDarajaToken(env: Env) {
+  const kvKey = "daraja_token";
+  const cached = await env.KV_TOKENS.get(kvKey, "json") as { token?: string; expires_at?: string } | null;
+  if (cached && cached.token && cached.expires_at && new Date(cached.expires_at) > new Date()) {
+    return cached.token;
+  }
+  const auth = btoa(`${env.DARAJA_CONSUMER_KEY}:${env.DARAJA_CONSUMER_SECRET}`);
+  const res = await fetch(DARAJA_OAUTH_URL, {
+    headers: { "Authorization": `Basic ${auth}` }
+  });
+  if (!res.ok) throw new Error("Daraja token fetch failed");
+  const body = await res.json();
+  // expiry: assume 3500s to be safe
+  const expires_at = new Date(Date.now() + 3500 * 1000).toISOString();
+  const tokenObj = { token: body.access_token, expires_at };
+  await env.KV_TOKENS.put(kvKey, JSON.stringify(tokenObj));
+  return body.access_token;
+}
+
+function base64Passkey(shortcode: string, passkey: string) {
+  const timestamp = new Date().toISOString().replace(/[-:TZ.]/g, "").slice(0,14); // YYYYMMDDHHMMSS
+  const raw = shortcode + passkey + timestamp;
+  return { password: btoa(raw), timestamp };
+}
+
+async function writeRawWebhookToSupabase(env: Env, provider: string, payload: any, headers: Record<string, string>) {
+  const res = await fetch(`${env.SUPABASE_URL}/rest/v1/raw_webhooks`, {
+    method: "POST",
+    headers: {
+      "apikey": env.SUPABASE_SERVICE_ROLE,
+      "Authorization": `Bearer ${env.SUPABASE_SERVICE_ROLE}`,
+      "Content-Type": "application/json",
+      "Prefer": "return=representation"
+    },
+    body: JSON.stringify({ provider, payload, headers, received_at: nowIso() })
+  });
+  // ignore res for now; but log on non-ok
+  if (!res.ok) {
+    const txt = await res.text();
+    console.error("Failed to write raw webhook to supabase:", txt);
+  }
+}
+
+// STK initiate handler
+async function handleStkInitiate(req: Request, env: Env) {
+  const body = await req.json();
+  const { amount, phone, reference, accountReference } = body;
+  if (!amount || !phone) return new Response("missing", { status: 400 });
+  // create pending payment in Supabase via service role
+  const insert = await fetch(`${env.SUPABASE_URL}/rest/v1/payments`, {
+    method: "POST",
+    headers: {
+      "apikey": env.SUPABASE_SERVICE_ROLE,
+      "Authorization": `Bearer ${env.SUPABASE_SERVICE_ROLE}`,
+      "Content-Type": "application/json",
+      "Prefer": "return=representation"
+    },
+    body: JSON.stringify([{
+      provider: "mpesa", provider_tx_id: null, reference: reference || `AFLEWO-${Date.now()}`,
+      amount, donor_phone: phone, status: "PENDING", metadata: { accountReference: accountReference || null }, created_at: nowIso()
+    }])
+  });
+  if (!insert.ok) {
+    const t = await insert.text();
+    return new Response(t, { status: 500 });
+  }
+  const [payment] = await insert.json();
+  const token = await getDarajaToken(env);
+  const { password, timestamp } = base64Passkey(env.DARAJA_SHORTCODE, env.DARAJA_PASSKEY);
+  const payload = {
+    BusinessShortCode: env.DARAJA_SHORTCODE,
+    Password: password,
+    Timestamp: timestamp,
+    TransactionType: "CustomerPayBillOnline",
+    Amount: amount,
+    PartyA: phone.replace(/^0/, "254"), // normalize
+    PartyB: env.DARAJA_SHORTCODE,
+    PhoneNumber: phone.replace(/^0/, "254"),
+    CallBackURL: `${env.DARAJA_CALLBACK_BASE}/webhooks/mpesa/stk_callback`,
+    AccountReference: accountReference || payment.reference,
+    TransactionDesc: `AFLEWO donation ${payment.reference}`
+  };
+  const resp = await fetch(DARAJA_STK_URL, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+  const bodyResp = await resp.json();
+  // store CheckoutRequestID into payments metadata
+  if (resp.ok && bodyResp.CheckoutRequestID) {
+    await fetch(`${env.SUPABASE_URL}/rest/v1/payments?id=eq.${payment.id}`, {
+      method: "PATCH",
+      headers: {
+        "apikey": env.SUPABASE_SERVICE_ROLE,
+        "Authorization": `Bearer ${env.SUPABASE_SERVICE_ROLE}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ metadata: { ...payment.metadata, CheckoutRequestID: bodyResp.CheckoutRequestID } })
+    });
+  }
+  return new Response(JSON.stringify(bodyResp), { status: resp.ok ? 200 : 500, headers: { "Content-Type": "application/json" } });
+}
+
+// Webhook handler for mpesa confirmations & stk callbacks
+async function handleMpesaWebhook(req: Request, env: Env) {
+  const raw = await req.text();
+  let json;
+  try { json = JSON.parse(raw); } catch(e) { json = raw; }
+  await writeRawWebhookToSupabase(env, "mpesa", json, (Object.fromEntries(req.headers.entries())));
+  // accept quickly
+  // Additional logic: verify fields, idempotency, write to payments table
+  // Example: if STK callback:
+  if (json.Body && json.Body.stkCallback) {
+    const cb = json.Body.stkCallback;
+    const checkoutId = cb.CheckoutRequestID;
+    const resultCode = cb.ResultCode;
+    const resultDesc = cb.ResultDesc;
+    // idempotency key per checkoutId
+    const idempKey = `mpesa::checkout::${checkoutId}`;
+    const exists = await env.KV_IDEMPOTENCY.get(idempKey);
+    if (exists) {
+      return new Response(JSON.stringify({ ResultCode: 0, ResultDesc: "Accepted (duplicate)" }), { status: 200, headers: { "Content-Type": "application/json" } });
+    }
+    await env.KV_IDEMPOTENCY.put(idempKey, "1", { expirationTtl: 60 * 60 * 24 * 7 }); // keep 7 days
+
+    if (resultCode === 0) {
+      // parse amount and MpesaReceiptNumber from callback callbackMetadata
+      let amount = null, mpesaReceipt = null, phone = null;
+      const items = (cb.CallbackMetadata?.Item || []);
+      for (const it of items) {
+        if (it.Name === "Amount") amount = it.Value;
+        if (it.Name === "MpesaReceiptNumber") mpesaReceipt = it.Value;
+        if (it.Name === "PhoneNumber") phone = it.Value;
+      }
+      // update payments table by CheckoutRequestID OR reference matched in metadata
+      await fetch(`${env.SUPABASE_URL}/rest/v1/payments`, {
+        method: "PATCH",
+        headers: {
+          "apikey": env.SUPABASE_SERVICE_ROLE,
+          "Authorization": `Bearer ${env.SUPABASE_SERVICE_ROLE}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          provider_tx_id: mpesaReceipt,
+          status: "VERIFIED",
+          received_at: nowIso(),
+          metadata: { ...cb }
+        })
+      });
+    } else {
+      // failure -> mark payment failed
+      await fetch(`${env.SUPABASE_URL}/rest/v1/payments`, {
+        method: "PATCH",
+        headers: {
+          "apikey": env.SUPABASE_SERVICE_ROLE,
+          "Authorization": `Bearer ${env.SUPABASE_SERVICE_ROLE}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          status: "FAILED", metadata: { ...cb }
+        })
+      });
+    }
+
+    return new Response(JSON.stringify({ ResultCode: 0, ResultDesc: "Accepted" }), { status: 200, headers: { "Content-Type": "application/json" } });
+  }
+
+  // Fallback quick response
+  return new Response(JSON.stringify({ ResultCode: 0, ResultDesc: "Accepted (raw logged)" }), { status: 200, headers: { "Content-Type": "application/json" } });
+}
+
+export default {
+  async fetch(request: Request, env: Env) {
+    const url = new URL(request.url);
+    if (request.method === "POST" && url.pathname.endsWith("/initiate")) {
+      return handleStkInitiate(request, env);
+    }
+    if (request.method === "POST" && url.pathname.includes("/webhooks/")) {
+      return handleMpesaWebhook(request, env);
+    }
+    return new Response("ok");
+  }
+};
+Notes:
+
+This Worker accepts STK initiation and webhook posts.
+
+It writes raw webhooks to Supabase raw_webhooks and updates payments table.
+
+In production add:
+
+IP whitelist check for Safaricom callback IPs.
+
+HMAC/signature verification if available.
+
+More granular DB updates: use provider_tx_id unique constraint and INSERT ... ON CONFLICT.
+
+Queue heavy work.
+
+Deploy with Wrangler:
+
+wrangler login
+wrangler publish --env production
+2) Next.js app — core runnable files
+These are minimal but production-ready pieces. Use App Router.
+
+Project layout:
+
+/web
+  /app
+    page.tsx
+    /donate
+      page.tsx
+  /components
+    Header.tsx
+    Footer.tsx
+    DonateForm.tsx
+    AdminPaymentsTable.tsx
+  /lib
+    supabaseClient.ts
+    mpesaServer.ts
+  /app/api/payments/initiate/route.ts   # for Vercel (serverless) OR use edge in Cloudflare build adapter
+  tailwind.config.js
+  package.json
+web/package.json (key deps)
+
+{
+  "name": "aflewo-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@supabase/supabase-js": "^2.0.0",
+    "react-hook-form": "^7.0.0",
+    "zod": "^3.0.0",
+    "clsx": "^1.2.1",
+    "tailwindcss": "^3.0.0"
+  }
+}
+web/lib/supabaseClient.ts
+
+import { createClient } from "@supabase/supabase-js";
+
+export const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!);
+export const supabaseAdmin = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
+web/components/DonateForm.tsx (client component)
+
+"use client";
+import React from "react";
+import { useForm } from "react-hook-form";
+
+type Form = {
+  amount: number;
+  phone: string;
+  name?: string;
+  method: "mpesa" | "card" | "mchanga";
+};
+
+export default function DonateForm() {
+  const { register, handleSubmit, watch } = useForm<Form>({ defaultValues: { method: "mpesa" } });
+  async function onSubmit(data: Form) {
+    const res = await fetch("/api/payments/initiate", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+    const json = await res.json();
+    if (!res.ok) {
+      alert("Error: " + (json?.message || res.statusText));
+      return;
+    }
+    if (data.method === "mpesa") {
+      // show waiting modal / poll status
+      alert("STK initiated. Please complete on your phone.");
+    } else if (data.method === "card") {
+      // redirect to stripe checkout (returned in json)
+      window.location.href = json.checkoutUrl;
+    } else {
+      // mchanga -> redirect
+      window.open(json.mchangaUrl, "_blank");
+    }
+  }
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 max-w-md">
+      <input type="number" {...register("amount", { valueAsNumber: true })} placeholder="Amount KES" className="input" />
+      <input type="text" {...register("phone")} placeholder="Phone 2547..." className="input" />
+      <input type="text" {...register("name")} placeholder="Full name (optional)" className="input" />
+      <select {...register("method")} className="select">
+        <option value="mpesa">M-Pesa</option>
+        <option value="card">Card (Stripe)</option>
+        <option value="mchanga">M-Changa</option>
+      </select>
+      <button className="btn btn-primary">Donate</button>
+    </form>
+  );
+}
+web/app/donate/page.tsx
+
+import DonateForm from "@/components/DonateForm";
+
+export default function DonatePage() {
+  return (
+    <main className="p-6">
+      <h1 className="text-2xl font-bold">Donate to AFLEWO</h1>
+      <p className="text-sm text-muted">Support events, volunteers and media.</p>
+      <DonateForm />
+    </main>
+  )
+}
+web/app/api/payments/initiate/route.ts — Vercel serverless / Next.js server API (Node)
+
+import { NextResponse } from 'next/server';
+import { supabaseAdmin } from '@/lib/supabaseClient';
+import fetch from 'node-fetch';
+
+export async function POST(req: Request) {
+  const body = await req.json();
+  const { amount, phone, method, name } = body;
+  if (!amount || !phone) return new Response(JSON.stringify({ message: 'missing' }), { status: 400 });
+
+  if (method === 'mpesa') {
+    // Create pending record
+    const insert = await supabaseAdmin.from('payments').insert({
+      provider: 'mpesa', provider_tx_id: null, reference: `AFLEWO-${Date.now()}`, amount, donor_phone: phone, status: 'PENDING', metadata: {}
+    }).select().single();
+    if (insert.error) return new Response(JSON.stringify({ message: insert.error.message }), { status: 500 });
+    // Call your cloudflare worker or Daraja directly from server - example: call your Worker STK endpoint
+    const workerUrl = process.env.MPESA_WORKER_URL + "/initiate";
+    const resp = await fetch(workerUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ amount, phone, reference: insert.data.reference })});
+    const json = await resp.json();
+    return NextResponse.json({ ok: true, checkout: json });
+  }
+
+  if (method === 'card') {
+    // Create stripe checkout session (not included here)
+    return NextResponse.json({ ok: false, message: "stripe not configured" });
+  }
+
+  if (method === 'mchanga') {
+    // return mchanga link (manual)
+    return NextResponse.json({ ok: true, mchangaUrl: "https://www.mchanga.com/your-campaign" });
+  }
+
+  return NextResponse.json({ ok: false });
+}
+For Cloudflare Pages variant, this route can be an Edge API function or you can call the Worker directly from the client (preferrable: call your Worker initiate endpoint to avoid exposing service role keys).
+
+web/components/AdminPaymentsTable.tsx (client; basic)
+
+'use client';
+import React, { useEffect, useState } from 'react';
+import { supabase } from '@/lib/supabaseClient';
+
+export default function AdminPaymentsTable() {
+  const [payments, setPayments] = useState<any[]>([]);
+  useEffect(() => {
+    (async () => {
+      const { data, error } = await supabase.from('payments').select('*').order('created_at', { ascending: false }).limit(100);
+      if (error) console.error(error);
+      setPayments(data || []);
+    })();
+  }, []);
+  return (
+    <div>
+      <h2 className="text-xl font-semibold">Recent Payments</h2>
+      <table className="w-full mt-3">
+        <thead>
+          <tr><th>Ref</th><th>Amount</th><th>Status</th><th>Provider</th><th>Phone</th></tr>
+        </thead>
+        <tbody>
+          {payments.map(p => (
+            <tr key={p.id}>
+              <td>{p.reference}</td>
+              <td>{p.amount}</td>
+              <td>{p.status}</td>
+              <td>{p.provider}</td>
+              <td>{p.donor_phone}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+3) Vercel implementation specifics (differences & runnable bits)
+If you pick Vercel:
+
+Host Next.js app on Vercel.
+
+Use API Routes or Edge Functions for webhooks / STK initiation.
+
+For large media storage use S3 + CloudFront (or still use Cloudflare R2 by using its S3-compatible API and routing through CDN).
+
+For webhooks, Vercel serverless function will receive callbacks; ensure stable URL (set Vercel environment vars).
+
+Use Vercel secrets/env in dashboard (project settings) for service role keys.
+
+vercel.json (example)
+
+{
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@vercel/next" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" }
+  ]
+}
+Serverless note (Vercel):
+
+Vercel serverless functions have limited execution time. Webhook endpoints must accept quickly. Use background jobs for heavy reconcile/export.
+
+Use Upstash/BullMQ or serverless queue (Supabase Edge Functions, or a small Fly.io worker) for longer processing tasks.
+
+S3 + CloudFront vs R2
+
+S3 + CloudFront: widely used on Vercel, but egress costs apply — for heavy video use, compare costs. Cloudflare R2 remains cost-effective.
+
+If using R2 with Vercel, configure R2 credentials in Vercel variables and use S3-compatible SDK.
+
+4) Optional: Vite admin SPA (reconciliation micro frontend)
+If you want an isolated admin SPA (fast reload, Vite), create a small project admin/ using Vite + React that calls Supabase service role APIs (through your secure server) or uses Supabase directly with Row Level Security for admin roles.
+
+admin/package.json minimal
+
+{
+  "name": "aflewo-admin",
+  "private": true,
+  "scripts": { "dev": "vite", "build": "vite build", "preview": "vite preview" },
+  "dependencies": { "react": "18.2.0", "react-dom": "18.2.0", "@supabase/supabase-js": "^2.0.0" }
+}
+admin/src/main.tsx
+
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import Admin from './pages/Admin';
+
+createRoot(document.getElementById('root')!).render(<Admin />);
+admin/src/pages/Admin.tsx
+
+import React, { useEffect, useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
+
+export default function Admin() {
+  const [payments, setPayments] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase.from('payments').select('*').limit(200).order('created_at', { ascending: false });
+      setPayments(data || []);
+    })();
+  }, []);
+  return (
+    <div className="p-4">
+      <h1>Admin Reconciliation</h1>
+      <table>
+        <thead><tr><th>ref</th><th>amount</th><th>status</th></tr></thead>
+        <tbody>{payments.map((p:any)=> <tr key={p.id}><td>{p.reference}</td><td>{p.amount}</td><td>{p.status}</td></tr>)}</tbody>
+      </table>
+    </div>
+  );
+}
+Build and host this on Vercel / Cloudflare Pages as a separate admin app or on the same domain under /admin.
+
+5) SQL migrations (ready to run)
+migrations/001_init.sql
+
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+CREATE TABLE events (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  title text,
+  description text,
+  starts_at timestamptz,
+  ends_at timestamptz,
+  venue jsonb,
+  slug text UNIQUE,
+  created_at timestamptz DEFAULT now()
+);
+
+CREATE TABLE payments (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  provider text NOT NULL,
+  provider_tx_id text UNIQUE,
+  reference text,
+  event_id uuid REFERENCES events(id),
+  donor_name text,
+  donor_phone text,
+  amount numeric(12,2) NOT NULL,
+  currency text DEFAULT 'KES',
+  status text NOT NULL DEFAULT 'PENDING',
+  metadata jsonb DEFAULT '{}'::jsonb,
+  created_at timestamptz DEFAULT now(),
+  received_at timestamptz
+);
+
+CREATE TABLE raw_webhooks (
+  id serial PRIMARY KEY,
+  provider text NOT NULL,
+  payload jsonb NOT NULL,
+  headers jsonb,
+  received_at timestamptz DEFAULT now(),
+  processed boolean DEFAULT false
+);
+Apply via Supabase SQL editor or psql.
+
+6) Test flows & curl examples
+Initiate STK (call Worker)
+
+curl -X POST https://<worker-url>/initiate \
+  -H "Content-Type: application/json" \
+  -d '{"amount":100,"phone":"254712345678","reference":"AFLEWO-TEST-1"}'
+Expect JSON with CheckoutRequestID from Daraja (or mock if in sandbox).
+
+Simulate STK callback (for local testing)
+
+curl -X POST https://<worker-url>/webhooks/mpesa/stk_callback \
+  -H "Content-Type: application/json" \
+  -d '{"Body":{"stkCallback":{"CheckoutRequestID":"ws_CO_XXXXX","ResultCode":0,"ResultDesc":"The service request is processed successfully.","CallbackMetadata":{"Item":[{"Name":"Amount","Value":100},{"Name":"MpesaReceiptNumber","Value":"LMM12345ABC"},{"Name":"PhoneNumber","Value":"254712345678"}]}}}}'
+Then query Supabase payments table to confirm payment status updated to VERIFIED.
+
+Test webhook ingestion (raw)
+
+curl -X POST https://<worker-url>/webhooks/mpesa/confirmation \
+  -H "Content-Type: application/json" \
+  -d '{"test":"payload"}'
+Check raw_webhooks table.
+
+7) Deploy steps (Cloudflare variant)
+Create Cloudflare account, enable Pages, R2, Workers KV.
+
+Set KV namespaces and get IDs; add to wrangler.toml.
+
+Add env secrets to wrangler.toml or via wrangler secret put.
+
+wrangler publish to deploy Worker.
+
+Deploy Next.js to Cloudflare Pages using @cloudflare/next-on-pages adapter (install and build).
+
+Configure domain in Cloudflare Pages and set DNS records.
+
+Add SUPABASE service role key to Worker KV or Cloudflare pages secrets.
+
+Deploy steps (Vercel variant)
+
+Create Vercel project; push Next.js app.
+
+Set environment variables in Vercel project settings (SUPABASE keys, MPESA worker URL, etc).
+
+Deploy; ensure API routes are accessible.
+
+Configure S3 + CloudFront if used: set bucket, CloudFront distribution, and upload media or configure pipeline to push to S3 after event.
+
+For webhook endpoints on Vercel, ensure URL is stable and set this in Daraja configuration.
+
+8) Observability & testing (must)
+Add Sentry DSN env and use Sentry init in both Worker (use Cloudflare Sentry integration) and Next.js.
+
+Log structured webhook payloads to Supabase raw_webhooks.
+
+Add metric counters (Prometheus/Datadog) for webhook rate, failed verifications, idempotency duplicate hits.
+
+Load test with k6 (simulate page views & donation attempts) before event.
+
+9) Differences & final comparison (concise)
+Cloudflare Pages + Workers: best edge coverage, R2 cost-savings for media, Workers ideal for low-latency webhook handling. Use Workers for STK + webhooks. Slightly steeper DX for Next.js adapter.
+
+Vercel: faster developer experience for Next.js; serverless functions easy to author; higher bandwidth costs; if using S3/CloudFront you incur egress; good if team prefers Vercel platform and you accept cost.
+
+You now have both runnable artifact options:
+
+Cloudflare Worker implemented (above) — deploy with Wrangler.
+
+Next.js app (Vercel-friendly API route included) — deploy to Vercel or adapt to Cloudflare Pages (edge route).
+
+10) What I didn’t include but recommend you add next (I can generate on demand)
+Complete Worker unit tests + local mock harness for Daraja sandbox.
+
+Full Stripe Checkout integration code + webhook handler.
+
+Full admin reconciliation UI code (detailed pages) and PDF receipt generator.
+
+Terraform + GitHub Actions templates for Vercel (if you want IaC for Vercel).
+
+Complete next.config.js with Cloudflare adapter config.
+
+If you want, I’ll now:
+
+generate the complete repo for Cloudflare variant (Worker + Next.js + UI components + GitHub Actions) as a zip-style set you can paste in; OR
+
+produce a Vercel-focused repo (Next.js + API + S3/CDN config) with Terraform for AWS + GitHub Actions.
+
+Say which repo to emit as full file contents (Cloudflare all-in-one, Vercel all-in-one), and I’ll output the rest of the files for that repo (routes, full Worker with improved signature/IP checking, README, and GitHub Actions) ready for you to paste. No more clarification — I’ll emit the full repo for whichever option you pick.
+
+You said:
+I want you to now output a prompt that would describe what I have discussed with you in great detail into one singular - very long but detailed prompt as well as detail bringing prompt - that we can use heree to get the deepest juice out of the cane of this system and extract all the possible protocols, systems, language stacks and everything needed to get this show on the road towards a full production website [use both Vercel & Cloudflare btw]. GO HAM!!!!
+ChatGPT said:
+
+Thought for a couple of seconds
+Use this single prompt to feed an LLM, code generator, or engineering team assistant to produce the complete, production-ready plan and runnable artifacts for AFLEWO’s website. This prompt MUST result in all deliverables below being generated automatically (code, IaC, deployments, docs, tests, runbooks, and a sprint). The assistant you call with this prompt should output files and instructions in a copy/paste runnable format, with no missing pieces. Be aggressive — produce everything. Optimize for low-end mobile devices and African donors (M-Pesa first).
+
+Paste the entire block below into a capable code+dev assistant (or LLM) and run it.
+
+SYSTEM / MASTER PROMPT — “BUILD AFLEWO FULL-PRODUCTION WEB PLATFORM (VERCEL + CLOUDFLARE VARIANTS)”
+
+Goal: Build a full production website and admin system for AFLEWO (Africa Let’s Worship) with two fully supported deployment variants:
+
+Edge-first variant: Next.js (App Router) + React + TypeScript deployed to Cloudflare Pages + Workers, media on Cloudflare R2 + Cloudflare Images, streaming via YouTube (OBS), backend data+auth on Supabase Postgres/Auth/Storage, payments via Safaricom Daraja (STK Push + Paybill) + M-Changa + Stripe (cards/international). CI/CD via GitHub Actions + Terraform for infra.
+
+Serverless variant: Next.js + React + TypeScript deployed to Vercel (serverless API routes), media on AWS S3 + CloudFront or Cloudflare R2 (S3-compatible), streaming via YouTube (OBS), backend on Supabase, payments via Daraja + M-Changa + Stripe. CI/CD via GitHub Actions + Terraform for AWS + optional Cloudflare resources.
+
+Constraints & priorities:
+
+Optimize for ultra-fast load on low-end devices & 3G: use Next.js Server Components, SSG/ISR for static pages, minimal client JS, responsive images (AVIF/WebP), lazy load non-critical assets, service worker for offline caching of essential pages.
+
+Events are traffic-spiky: design cloud infra & CDN caching to handle sudden peaks (warm caches, TTLs, pre-warm).
+
+Payment flows must be airtight: NO client-side trust. Use backend verification with idempotency, raw webhook logging, reconciliation jobs, and clear audit trails.
+
+Media economics: minimize egress cost for video and images. Prefer R2 for cost savings, else S3+CloudFront.
+
+Security & compliance: HSTS, CSP, HTTPS, WAF, secrets in vaults, pen-test readiness, PII retention rules.
+
+Localization: English + Swahili bilingual support, SEO, structured data for events and videos.
+
+Accessibility: WCAG AA minimum.
+
+Deliver absolutely everything listed below, in runnable form, with explanations, file contents, and commands — no placeholders that prevent copy/paste deployment (except secret values, which should be named explicitly for the operator to set). Structure outputs so a developer can create the repo and deploy with only secret values filled in.
+
+REQUIRED OUTPUTS (produce each item in full)
+A. Architecture & Diagrams
+
+Two annotated architecture diagrams (text + mermaid and ASCII): one for Cloudflare Pages + Workers stack and one for Vercel + S3/CloudFront stack. Show all components and data flows: Next.js app, Edge functions/Workers, Supabase, R2/S3, Cloudflare Images, YouTube, OBS/RTMP, Webhooks, KV/Redis, job queue, admin SPA, Stripe, Daraja endpoints, M-Changa, CI/CD, Terraform-managed infra.
+
+A short explanation (1–2 paragraphs) of why each variant matters and when to pick which.
+
+B. Full runnable repository scaffolds (two variants)
+For each variant produce a full file tree and the exact contents for all files. Files must be ready to paste into a repo:
+
+web/ — Next.js (App Router) + TypeScript site:
+
+package.json, tsconfig.json, next.config.js, postcss.config.js, tailwind.config.js, tailwind.css, .eslintrc, .prettierrc.
+
+App pages: app/page.tsx (Home), app/events/page.tsx, app/events/[slug]/page.tsx, app/media/page.tsx, app/donate/page.tsx, app/admin/page.tsx (admin mountpoint).
+
+Components: components/Header.tsx, Footer.tsx, DonateForm.tsx (client), DonateModal.tsx, EventCard.tsx, MediaTile.tsx, AdminPaymentsTable.tsx, ReconcileCSVImporter.tsx.
+
+lib/ helpers: supabaseClient.ts, mpesa.ts (server helpers), payments.ts, media.ts.
+
+app/api/payments/initiate/route.ts (serverless / edge implementation) — two versions: one optimized for Cloudflare Workers (Edge function) and one for Vercel (serverless Node).
+
+app/api/webhooks/mpesa/route.ts (webhook endpoint) — Cloudflare Worker friendly version and Vercel variant.
+
+app/api/webhooks/stripe/route.ts (stripe webhook handler).
+
+Example CSS + Tailwind + theme switcher (gold + dark brown colors). Include design token JSON.
+
+Unit tests (Jest/Testing Library) for payment initiation logic (mock Daraja).
+
+README with deploy steps for both variants.
+
+workers/mpesa/ — full Cloudflare Worker TypeScript code:
+
+wrangler.toml with KV namespace placeholders and variables.
+
+Full Worker code implementing:
+
+Daraja token caching in KV.
+
+STK Push initiate endpoint /initiate.
+
+Webhook endpoints /webhooks/mpesa/validation and /webhooks/mpesa/confirmation and /webhooks/mpesa/stk_callback.
+
+Raw webhook ingestion to Supabase raw_webhooks.
+
+Idempotency checks using KV or Durable Objects.
+
+IP whitelist and signature verification (if possible).
+
+Error handling & logging to Sentry (usage example).
+
+package.json for building Worker (esbuild/tsc).
+
+Local testing instructions with wrangler dev and cURL examples to simulate callbacks.
+
+vercel/ — Vercel serverless API implementations:
+
+api/payments/initiate.ts (serverless Node endpoint).
+
+api/webhooks/mpesa.ts (webhook endpoint).
+
+vercel.json config and GitHub Actions snippet to deploy to Vercel.
+
+Notes about execution time limits and best practices.
+
+admin/ — Vite React admin SPA scaffold:
+
+Simple reconciliation UI to import bank/M-Pesa CSV, auto-match by provider_tx_id or reference, show exceptions, allow manual reconcile with audit notes.
+
+package.json, vite.config.ts, src/main.tsx, src/pages/Reconcile.tsx.
+
+Deploy instructions to Cloudflare Pages or Vercel under /admin domain or subdomain.
+
+C. Infrastructure as Code (Terraform + scripts)
+
+Cloudflare Terraform:
+
+Create Pages project, R2 bucket, Workers KV namespaces, Worker routes, DNS records, Pages builds (with GitHub integration).
+
+Example Terraform main.tf, variables.tf, outputs.tf.
+
+Step-by-step terraform init/apply commands and required Cloudflare API scopes.
+
+AWS Terraform (for Vercel variant S3 + CloudFront):
+
+S3 bucket policy, CloudFront distribution, IAM user for uploads, policy docs, example main.tf.
+
+Supabase provisioning guidance:
+
+If automatable, include Terraform snippet or supabase provider usage; otherwise provide exact UI steps and SQL migrations.
+
+GitHub Actions workflows for CI/CD:
+
+deploy-pages.yml for Cloudflare Pages + Terraform apply.
+
+deploy-vercel.yml for Vercel.
+
+test-and-lint.yml for unit tests and eslint.
+
+D. Database & Schema
+
+Full SQL migrations (Postgres) to create all tables and constraints:
+
+payments, raw_webhooks, events, users/profiles, volunteers, media_metadata, reconciliation_runs, audit_logs.
+
+Unique constraints (provider_tx_id unique), indexes for search, pgcrypto extension, triggers for audit logging.
+
+Example seed.sql with sample events, sample payments (PENDING/VERIFIED examples).
+
+Example RLS policies for Supabase to restrict volunteers vs finance roles vs public.
+
+E. Payments: Full code & procedures
+
+Daraja (M-Pesa) integration:
+
+STK Push initiate code (Worker / server).
+
+Validation and confirmation endpoints with exact expected responses to Safaricom (format of JSON expected).
+
+Daraja OAuth token caching & rotation.
+
+Passkey + timestamp generation and Base64 password logic.
+
+Idempotency key handling and unique provider_tx_id enforcement.
+
+Security: IP whitelist, HMAC/signature verification if available; fallbacks if not.
+
+STK flow testing script and cURL examples to simulate success/failure callbacks.
+
+Paybill handling guidelines:
+
+Explain why Paybill often needs reconciliation.
+
+CSV ingestion tool (code) and UI for manual match.
+
+M-Changa:
+
+Embed flow + webhook ingestion + CSV reconciliation code for M-Changa exports.
+
+Stripe:
+
+Checkout and webhook handlers, signature verification, reconciliation.
+
+Atomic transaction examples:
+
+SQL and code showing INSERT ... ON CONFLICT DO NOTHING/UPDATE for idempotent webhook handling.
+
+F. Reconciliation & Audit
+
+Background job code to run hourly/daily reconciliation:
+
+Pull bank statements / M-Pesa statement (CSV / API), match transactions, generate exception reports, export CSV, and mark reconciled.
+
+Provide example scripts (Node) and Cron/Cloudflare Scheduler configuration.
+
+Admin UI for manual reconciliation with audit log and secure role checks.
+
+Retention policy suggestions for raw webhooks and logs.
+
+G. Observability, Monitoring & Security
+
+Sentry integration snippets for Next.js and Worker.
+
+Prometheus/Grafana or Datadog metric suggestions + example metrics to track: webhook rate, failed verification rate, stk failures, daily donation totals, egress bandwidth, worker errors.
+
+Logging policy: store raw webhook payloads for at least 90 days, structured logs in Supabase or ELK.
+
+WAF and rate-limiting configuration examples in Cloudflare for: /api/payments/initiate and /webhooks/*.
+
+Security checklist: TLS, HSTS, CSP, secret rotation, IAM least privilege, pen-test runs, data retention laws and privacy policy suggestions.
+
+H. Performance, Caching & CDN
+
+Exact caching strategy: SSG/ISR TTL settings per page type, cache-control headers, stale-while-revalidate, pre-warm plan for event nights.
+
+Image pipeline: use Cloudflare Images/Cloudinary transforms; example Next.js <Image/> config and srcset patterns.
+
+Video handling: embed YouTube for live/archived; store masters in R2; optional HLS serve using R2 + Cloudflare Stream or transcode pipeline (example ffmpeg commands).
+
+Low-end device optimizations: Server Components strategy, minimal bundle size, code splitting, critical CSS, preconnect to payment endpoints, avoid third-party scripts on initial load.
+
+I. Testing & QA
+
+k6 load test scripts simulating:
+
+50k concurrent viewers (read-only) and a range of donation spikes (STK push attempts).
+
+Spike and soak scenarios.
+
+Example commands and analysis of results.
+
+Unit & integration tests for payment flows (Jest + supertest + mock Daraja/Stripe).
+
+Penetration test checklist and recommended external vendors.
+
+J. CI/CD, Deploy & Runbook
+
+GitHub Actions pipelines (full).
+
+Step-by-step deploy guide for Cloudflare and Vercel:
+
+How to set environment vars and secrets.
+
+Wrangler / wrangler publish steps for Worker.
+
+How to configure Daraja callback URLs and Safaricom sandbox tests.
+
+Production runbook for event night:
+
+Pre-event checklist (warm caches, test STK, test stream).
+
+During-event playbook (identify failing webhook flows, fallback SMS contact).
+
+Post-event (ingest recordings to R2, reconciliation, publish VOD).
+
+Rollback & incident procedures.
+
+K. Design & Component Library
+
+Tailwind design tokens and theme for AFLEWO (gold + dark brown), design tokens JSON.
+
+Component library code for:
+
+Header, Footer, Hero, EventCard, MediaGrid, DonateForm, Donation Modal, Admin tables, Reconciliation UI components.
+
+Wireframes (ASCII + suggestions for Figma frames) and sample content for each page.
+
+Accessibility checklist for each component.
+
+L. Project Plan & Sprint
+
+8-week sprint plan with milestones, deliverables, team roles (Frontend dev, Backend dev, DevOps, QA, Designer, PM), and time estimates in hours per task. Provide a prioritized backlog (MVP → v1 → v2).
+
+Cost estimate for 1-year operation for both variants (Cloudflare vs Vercel+S3), including streaming costs, egress, Supabase costs, and a contingency.
+
+Staffing recommendations and hiring profile for each role.
+
+M. Migration plan
+
+Exact SQL and scripts to import existing users, media, and SEO metadata.
+
+Steps to migrate old site pages/URLs and 301 redirects to preserve SEO.
+
+Search index rebuild steps (Postgres full-text → Meilisearch steps if needed).
+
+Verification steps to confirm successful migration.
+
+N. Deliverable checklist
+Produce a final checklist that confirms every artifact built and deployed, plus quick verification commands and URLs to test (home page, donate page, webhook endpoints).
+
+DETAILED SPECIFIC REQUIREMENTS & IMPLEMENTATION NOTES FOR THE ASSISTANT
+When generating code and files, follow these conventions:
+
+Environment variable names (use these exact names in code):
+
+CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_API_TOKEN, CLOUDFLARE_R2_ACCESS_KEY, CLOUDFLARE_R2_SECRET
+
+KV_TOKENS_NAMESPACE_ID, KV_IDEMPOTENCY_NAMESPACE_ID
+
+SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY
+
+DARAJA_CONSUMER_KEY, DARAJA_CONSUMER_SECRET, DARAJA_SHORTCODE, DARAJA_PASSKEY, DARAJA_CALLBACK_BASE
+
+STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET
+
+S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY, S3_BUCKET, S3_REGION (if using S3)
+
+SENDGRID_API_KEY, SENTRY_DSN
+
+Database behavior:
+
+payments.provider_tx_id unique — use ON CONFLICT handling for idempotency.
+
+Raw webhooks stored verbatim in raw_webhooks.
+
+All money state transitions are done in DB transactions.
+
+Daraja / M-Pesa specifics:
+
+Provide the exact STK password generation: Base64(BusinessShortCode + Passkey + Timestamp(YYYYMMDDHHMMSS)).
+
+Provide example request bodies for STK initiation and expected callback formats.
+
+For Paybill C2B, show expected validation & confirmation flow and exact expected quick JSON replies required by Daraja.
+
+Webhook handling:
+
+Provide signature verification code for Stripe (HMAC).
+
+If Daraja does not sign, implement IP whitelist and require quick 200 JSON acknowledgement, and then run asynchronous verification (e.g., call Daraja Query API to confirm transactions).
+
+Idempotency:
+
+Use provider tx id (e.g., MpesaReceiptNumber or Stripe charge id) as idempotency key.
+
+Implement idempotency using Postgres unique constraint + Workers KV for quick dedupe.
+
+Testing:
+
+Include cURL examples to simulate STK callback and webhook flows.
+
+Observability:
+
+Integrate Sentry sample init code for Next.js and Worker.
+
+Provide example Prometheus metrics names and labels.
+
+Security:
+
+Use HTTPS only, set HSTS header, CSP, cookie Secure & SameSite settings, and describe secrets rotation cadence.
+
+Offline & low data:
+
+Provide a minimal Service Worker registration and caching strategy for episodes and event pages.
+
+Localization:
+
+Provide i18n config (next-intl or next-translate) for en + sw.
+
+Component outputs:
+
+Minimal implementation for DonateForm should include client-side form + POST to /api/payments/initiate and poll status; show STK waiting UI and fallback manual instructions.
+
+Admin:
+
+Admin login via Supabase Auth, role-based checks (finance role can mark reconciled).
+
+Deliver code style:
+
+TypeScript + ESLint + Prettier configs included.
+
+Explain every file produced with a 1-line summary at the top of each file output.
+
+FINAL INSTRUCTIONS FOR THE ASSISTANT RECEIVING THIS PROMPT
+Produce all outputs in one response or multiple sequential responses but do not stop mid-way. If the output will be very large, chunk it logically but label the parts and ensure the whole is complete and cohesive.
+
+When producing code, include runnable npm/yarn commands, build commands, and exact deploy commands (wrangler publish, vercel deploy, terraform apply, etc.) and the order to run them.
+
+Use zero marketing language. Be direct and exact.
+
+Keep the code pragmatic and secure — prefer clarity over cleverness.
+
+Where external provider configuration is required (Daraja keys, Paybill shortcode), state exactly where to place those values and which API endpoints to register them with (e.g., Daraja callback URL: https://<domain>/api/webhooks/mpesa).
+
+Provide a final one-page checklist that an engineer can follow on production day (pre-event, during event, post-event).
+
+End of master prompt.
+
+Now: produce three things right now:
+
+A one-paragraph summary of this master prompt (maximum 60 words).
+
+A compact prioritized 12-item checklist of the absolute minimum tasks to deliver an MVP donation+live stream site for AFLEWO (15 lines max).
+
+The full master prompt text above (repeat it exactly) so I can copy it into other tools.
+
+Do not ask any questions. Output only these three items in order, clearly separated. Go HAM.
+
+
+
+No file chosenNo file chosen
+ChatGPT can make mistakes. Check important info.
+] 
+
+CONTEXT: 
+
+[[Alright. You’ve already *picked* a very strong, production-grade stack. I’ll do this in four layers, **no fluff**, no marketing talk:
+
+1. **Deep dive of the chosen stack (how it actually works in production)**
+2. **Payments: MPesa Daraja + M-Changa + Paybill — airtight verification**
+3. **Everything else you *must* include for a real production site**
+4. **FULL comparison: Cloudflare Pages vs Vercel for THIS exact AFLEWO use-case**
+
+I’ll assume this is **mission-critical**, public-facing, traffic-spiky (event nights), donor-sensitive, and reputationally important.
+
+---
+
+## 1. THE STACK — DEEP, PRACTICAL, PRODUCTION-LEVEL
+
+### 1.1 Frontend: **Next.js + React + TypeScript**
+
+**Why this is correct for AFLEWO**
+
+* SEO for sermons, events, testimonies, history pages
+* Static where possible (cheap + fast)
+* Server rendering where necessary (donations, auth, dashboards)
+* Type safety (you *cannot* afford silent payment bugs)
+
+**How you actually use it**
+
+* **App Router (NOT Pages Router)**
+* **Server Components by default**
+* Client Components only for:
+
+  * Donation forms
+  * Media players
+  * Auth interactions
+  * Admin dashboards
+
+**Rendering strategy**
+
+| Page type            | Strategy                      |
+| -------------------- | ----------------------------- |
+| Home, About, History | Static (SSG)                  |
+| Event pages          | ISR (revalidate every X mins) |
+| Media archive        | SSG + edge cache              |
+| Donate               | Server-rendered               |
+| Admin / Finance      | Server-only                   |
+
+This keeps JS shipped to low-end devices *minimal*.
+
+---
+
+### 1.2 Hosting: **Cloudflare Pages (with Functions)**
+
+This is the **key architectural decision**.
+
+**What Pages gives you**
+
+* Edge deployment (200+ PoPs)
+* Zero cold starts for most routes
+* Tight integration with:
+
+  * Cloudflare R2
+  * Cloudflare Images
+  * Cloudflare Workers (for APIs)
+* Predictable pricing (important for nonprofits)
+
+**How it’s structured**
+
+* Next.js builds → Pages
+* Server actions & APIs → Pages Functions / Workers
+* Payment webhooks → Workers (NOT frontend routes)
+
+**Why this matters**
+Event night = traffic spike + donation spike.
+Edge-first hosting avoids regional bottlenecks (especially for Africa-based users).
+
+---
+
+### 1.3 Backend: **Supabase (Postgres + Auth + Storage)**
+
+Supabase here is **not** a “Firebase clone”. You’re using it as:
+
+#### a) **Postgres (single source of truth)**
+
+Tables you WILL need:
+
+* users
+* roles
+* events
+* donations
+* transactions
+* mpesa_callbacks
+* volunteers
+* media_metadata
+* audit_logs
+
+**Key rule**
+
+> All money-related truth lives in Postgres, not in frontend state.
+
+#### b) **Auth**
+
+* Email/password (admins)
+* Magic links (volunteers)
+* Row Level Security (RLS) for EVERYTHING
+
+Example:
+
+* Volunteers can insert signup
+* Finance role can read transactions
+* Only backend service role can mark payments as “verified”
+
+#### c) **Storage**
+
+* PDFs (reports, policies)
+* Images (if not routed through Cloudflare Images)
+* Small media assets (not video)
+
+---
+
+### 1.4 Media: **Cloudflare R2 + Cloudflare Images**
+
+This is where you quietly win.
+
+#### Cloudflare R2
+
+* Video archives
+* Large assets
+* Zero egress fees
+* Can front with Cloudflare CDN automatically
+
+#### Cloudflare Images
+
+* Automatic resizing
+* WebP/AVIF delivery
+* Lazy loading
+* Low-end device optimization
+
+**Pattern**
+
+* Upload originals → R2
+* Serve images → Cloudflare Images
+* Serve video → YouTube embeds (NOT self-hosted)
+
+---
+
+### 1.5 Streaming: **YouTube + OBS Simulcast**
+
+For AFLEWO, this is the *correct* choice.
+
+**Why not AWS IVS here**
+
+* Higher cost
+* More ops overhead
+* Less social discoverability
+
+**YouTube gives you**
+
+* Free scaling
+* DVR
+* Auto captions
+* Easy embedding
+* Social reach
+
+**OBS Simulcast**
+
+* Stream once
+* Push to YouTube
+* Optional: Facebook Live backup
+
+**Website role**
+
+* Embed YouTube player
+* Provide fallback mirrors
+* Host metadata, timestamps, sermon indexing
+
+---
+
+## 2. PAYMENTS — MPESA + M-CHANGA + PAYBILL (NO NONSENSE)
+
+This is where many systems die. Let’s do it properly.
+
+---
+
+### 2.1 MPesa Daraja API (Direct)
+
+**Flow**
+
+1. User submits donation intent
+2. Backend creates **pending transaction**
+3. STK Push sent
+4. MPesa callback hits **Cloudflare Worker**
+5. Worker verifies:
+
+   * Amount
+   * Reference
+   * MerchantRequestID
+6. Worker updates Postgres (verified / failed)
+7. Frontend polls or subscribes
+
+**CRITICAL RULES**
+
+* Never trust frontend success
+* Never mark payment successful until callback verification
+* Store raw callback payloads
+
+**Security**
+
+* Worker endpoint IP-restricted
+* Signature verification
+* Replay protection
+* Idempotency keys
+
+---
+
+### 2.2 Paybill (Manual + Automated Hybrid)
+
+Paybill is **not real-time friendly**.
+
+Correct approach:
+
+* User selects Paybill
+* Website shows instructions
+* User submits reference code
+* Backend waits for:
+
+  * MPesa statement import (CSV/API)
+  * OR webhook (if supported)
+* Admin verifies → marks transaction confirmed
+
+You *cannot* fully automate Paybill without reconciliation.
+
+---
+
+### 2.3 M-Changa Integration
+
+M-Changa already handles:
+
+* Paybill aggregation
+* Campaign tracking
+* Donor receipts
+
+**Best use**
+
+* Embed M-Changa widget
+* Still log donation intent in your DB
+* Reconcile via M-Changa reports
+
+**DO NOT**
+
+* Let M-Changa be your only ledger
+
+---
+
+### 2.4 Airtight Verification Model (IMPORTANT)
+
+**Golden rule**
+
+> No money state change happens without a backend-verified event.
+
+**Implementation**
+
+* All payment updates happen in Workers
+* Workers use Supabase **service role**
+* Frontend never writes to transactions table
+* Audit log every state transition
+
+States:
+
+```
+initiated → pending → verified → reconciled
+                   ↘ failed
+```
+
+---
+
+## 3. THINGS YOU DID NOT MENTION (BUT MUST INCLUDE)
+
+### 3.1 Observability
+
+* Error tracking (Sentry)
+* Payment logs
+* Streaming uptime monitoring
+
+### 3.2 Caching Strategy
+
+* Edge cache static pages
+* Revalidate ISR pages before events
+* Pre-warm caches for big nights
+
+### 3.3 SEO & Discoverability
+
+* Structured data (Events, Organization)
+* YouTube video schema
+* Sitemap automation
+
+### 3.4 Access Control
+
+* Finance dashboard (role-locked)
+* Volunteer dashboard
+* Read-only public APIs
+
+### 3.5 Compliance
+
+* Privacy policy
+* Donation terms
+* Financial transparency pages
+* Cookie consent (lightweight)
+
+### 3.6 Disaster Recovery
+
+* Supabase daily backups
+* R2 object versioning
+* Payment reconciliation exports
+
+---
+
+## 4. CLOUDFARE PAGES vs VERCEL — FULL COMPARISON
+
+### 4.1 Performance
+
+| Area            | Cloudflare Pages | Vercel    |
+| --------------- | ---------------- | --------- |
+| Global edge     | ✅ Native         | ✅ Good    |
+| Cold starts     | Near zero        | Sometimes |
+| Africa latency  | Better           | Decent    |
+| Static delivery | Excellent        | Excellent |
+
+**Winner for AFLEWO:** Cloudflare Pages
+
+---
+
+### 4.2 Cost
+
+| Item         | Cloudflare      | Vercel            |
+| ------------ | --------------- | ----------------- |
+| Bandwidth    | Cheap / bundled | Can spike         |
+| Media egress | $0 (R2)         | Paid              |
+| Functions    | Cheap           | Can get expensive |
+
+**Winner:** Cloudflare Pages
+
+---
+
+### 4.3 Ecosystem
+
+| Feature          | Cloudflare | Vercel    |
+| ---------------- | ---------- | --------- |
+| Next.js DX       | Good       | Excellent |
+| Edge APIs        | Excellent  | Good      |
+| Payments backend | Excellent  | Good      |
+| Vendor lock-in   | Lower      | Higher    |
+
+**Winner for complex backend:** Cloudflare
+
+---
+
+### 4.4 Operational Control
+
+Cloudflare gives you:
+
+* Full control
+* Lower cost at scale
+* Better security primitives
+
+Vercel gives you:
+
+* Faster onboarding
+* Better DX
+* Less infra thinking
+
+**For AFLEWO**
+You want **predictability + cost control + Africa performance** → **Cloudflare wins**.
+
+---
+
+## FINAL VERDICT (CLEAR, NO HEDGING)
+
+### Go with:
+
+**Next.js + React + TypeScript**
+**Cloudflare Pages + Workers**
+**Supabase (Postgres + Auth + Storage)**
+**Cloudflare R2 + Cloudflare Images**
+**YouTube + OBS**
+**MPesa Daraja + M-Changa + Paybill with backend-verified Workers**
+
+This is:
+
+* Modern
+* Scalable
+* Cost-efficient
+* Secure
+* Suitable for *revival-scale traffic*
+
+---
+
+When you’re ready, **now** it actually makes sense to answer the next step question.
+
+If you reply with **1, 2, 3, or 4**, I’ll go **implementation-level deep** (schemas, Workers code structure, folder trees, exact flows).
+] [# Deep technical dossier — **Next.js + React + TypeScript | Cloudflare Pages | Supabase | R2 + Cloudflare Images | YouTube (OBS simulcast)** + **M-Pesa (Daraja) / Paybill / M-Changa**
+
+No holding back — full stack design, payment flows, airtight backend verification, infra & ops concerns, code + DB examples, testing, monitoring, and production checklist. I used your AFLEWO tech-pack as source material for specifics and recommendations.
+
+---
+
+## 1) High-level architecture (what talks to what)
+
+* **Frontend:** Next.js (React + TypeScript) deployed to **Cloudflare Pages** (edge CDN + SSR support where needed). Pages serve pre-rendered pages + edge functions for lightweight personalization. 
+* **Auth / App DB / Storage:** **Supabase** (Postgres for relational data, Supabase Auth for users, Supabase Storage for small private assets / uploads). Use Supabase primarily for user accounts, events, metadata, and small media.
+* **Large media:** **Cloudflare R2** as origin object store (S3-compatible) + **Cloudflare Images** for image ops (AVIF/WebP, responsive variants). Serve video VOD from R2 via Cloudflare or use YouTube embeds for archived streams to avoid bandwidth cost and discovery loss.
+* **Live streaming:** **OBS → YouTube Live (simulcast)**. For white-label branded low-latency streams you could add AWS IVS (optional) — but your requested stack (YouTube + OBS) is simplest, free, and reliable for reach. Simulcast flows can be handled with Restream or a custom RTMP relay.
+* **Server/Jobs:** Minimal server layer (Node.js + Fastify or serverless functions) for secure payment endpoints, webhook handling, background workers (media transcode, thumbnail gen) running on a small container platform / Fargate / Fly.io. Use job queue (BullMQ + Redis/Upstash) for async processing. 
+* **CDN & Edge:** Cloudflare in front for WAF, rate-limit, and global caching (Pages + Workers + R2). 
+* **CI/CD / Infra:** GitHub Actions → Cloudflare Pages; Terraform for infra (DNS, Cloudflare, Supabase infra config if needed). 
+
+Diagram (quick mental): Frontend (Cloudflare Pages) ↔ Edge functions ↔ Supabase (Postgres/Auth) + Node webhooks ↔ Cloudflare R2 (media) + Cloudflare Images → YouTube (OBS simcast). Payment providers talk to Node webhooks + Supabase.
+
+---
+
+## 2) Why this stack fits AFLEWO (summary)
+
+* **Low device footprint:** Next.js Server Components + edge rendering => minimal JS to clients. Images served by Cloudflare Images (AVIF/WebP) and lazy loading.
+* **Media economics:** R2 zero-egress model saves thousands if your VOD or event replays are heavy. 
+* **Auth + data speed:** Supabase gives Postgres + Auth + Storage in one managed product — fast to implement and tightly integrates with Next.js. 
+* **Simplicity for streaming:** OBS → YouTube is simple, familiar to event teams and low cost. Use Restream or custom simulcast if you need multi-destination reliability.
+
+---
+
+## 3) Payments architecture: M-Pesa (Daraja), Paybill, M-Changa, fallback (Stripe/Flutterwave)
+
+### Payment goals
+
+1. Accept Kenyan donors via M-Pesa (Paybill / STK Push / C2B).
+2. Accept cards and international donors (Stripe + optional Flutterwave for local methods).
+3. Offer M-Changa (crowdfunding) links/embed for campaigns.
+4. Provide flawless end-to-end verification and reconciliation; no “fake success” acceptance.
+
+### Recommended approach (production)
+
+* **Primary for Kenyan donors:** Direct **M-Pesa C2B / Paybill** integration via Safaricom Daraja (server-side). Provide fallback via **Flutterwave** (if you prefer aggregator). 
+* **International / cards:** **Stripe** for cards; optionally set up Stripe→M-Pesa via Stripe Africa if needed. 
+* **Crowdfunding (M-Changa):** Embed M-Changa campaign pages or link out; also capture a webhook-confirmation from M-Changa to record donations in Supabase (M-Changa may provide callbacks or CSV exports to import).
+* **All payment callbacks → your webhook endpoint** (hosted on Node server / serverless) that performs verification + atomic DB writes + idempotency checks + notification.
+
+### Payment flow patterns (simplified)
+
+**A. M-Pesa C2B (Paybill validation + confirmation)**
+
+1. Donor sends M-Pesa to AFLEWO Paybill number with AccountReference or STK push.
+2. Safaricom posts to your **validation** endpoint (expect to respond quickly with accepted/rejected).
+3. Safaricom posts to your **confirmation** endpoint with transaction details once payment clears.
+4. Your backend: validate payload signature (if available), check amount, check AccountReference (match event/donor), **create transaction record with `transaction_id` from Safaricom**, mark it `received`, trigger email/SMS receipts, and queue reconciliation.
+
+**B. STK Push (Lipa na M-Pesa Online)**
+
+1. Your server requests STK Push from Daraja (requires OAuth token).
+2. Daraja triggers customer phone prompt for PIN.
+3. Daraja sends asynchronous callback with the `CheckoutRequestID` and final result.
+4. Same verification & idempotency flow as C2B. 
+
+**C. Stripe (cards)**
+
+1. Use Stripe Checkout or Elements to collect card.
+2. Stripe provides webhooks (payment_intent.succeeded).
+3. Verify webhook signature and write transaction atomically. 
+
+---
+
+## 4) Airtight backend verification procedures (concrete)
+
+Follow **three layers**: *Authentication*, *Idempotency & atomic DB writes*, *Reconciliation & retention*.
+
+### A. Authentication & trust of callbacks
+
+* **Daraja OAuth**: server obtains access token using consumer key/consumer secret. Store token securely in env and refresh when near expiry. Never expose these to client. 
+* **Webhook verification**: if provider signs webhooks, verify signature header (HMAC) using provider shared secret. If no signature (some banks), enforce additional checks: source IP whitelist, TLS client certificate, or require provider to sign. Log raw payload for audit. 
+* **TLS only:** Require HTTPS, strong ciphers, certificate monitoring.
+
+### B. Idempotency & race conditions
+
+* Every incoming callback must include a *provider transaction id* (e.g., `MpesaReceiptNumber` or Stripe `id`). Use that as the idempotency key. DB writes must be wrapped in a single transaction with `INSERT ... ON CONFLICT DO NOTHING/UPDATE` keyed on that id. Sample SQL schema below. 
+
+```sql
+CREATE TABLE payments (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  provider text NOT NULL,
+  provider_tx_id text NOT NULL UNIQUE, -- e.g., MpesaReceiptNumber or Stripe id
+  status text NOT NULL,
+  amount numeric(12,2) NOT NULL,
+  currency text NOT NULL,
+  metadata jsonb,
+  received_at timestamptz,
+  created_at timestamptz DEFAULT now()
+);
+```
+
+Server logic (pseudocode):
+
+```ts
+// Express example for webhooks
+app.post('/webhooks/mpesa/confirmation', async (req, res) => {
+  const payload = req.body;
+  const txId = payload.MpesaReceiptNumber;
+  await db.query(
+    `INSERT INTO payments(provider, provider_tx_id, status, amount, currency, metadata, received_at)
+     VALUES($1,$2,$3,$4,$5,$6,$7)
+     ON CONFLICT (provider_tx_id) DO UPDATE
+       SET status = EXCLUDED.status
+     RETURNING *;`,
+    ['mpesa', txId, payload.ResultDesc, payload.Amount, 'KES', payload, now()]
+  );
+  res.json({ ResultCode: 0, ResultDesc: 'Accepted' }); // quick response to provider
+});
+```
+
+### C. Quick 200 to provider — async verification & processing
+
+* **Respond fast** to provider (within 2–5 seconds with success code). Do heavy work (email, notification, ledger posting) asynchronously via job queue (BullMQ). This prevents timeouts and retries. 
+
+### D. Full reconciliation
+
+* **Daily reconciliation job**:
+
+  * Pull bank statements (CSV) & M-Pesa Paybill statement (CSV/API).
+  * Compare provider transaction ids and amounts with `payments` table.
+  * Create exceptions report: missing confirmations, mismatched amounts, reversals.
+  * Keep audit trail of reconciliation actions (who resolved, notes). 
+
+### E. Webhook replay / retry safety
+
+* Store raw webhook payloads and headers in `raw_webhooks` table with status `pending/processed/failed`. If processing fails, flag and retry with exponential backoff. Never drop raw payloads: they're evidence. 
+
+---
+
+## 5) Concrete M-Pesa (Daraja) implementation notes
+
+* **Endpoints needed on your backend:**
+
+  * `POST /payments/mpesa/stk-initiate` — initiate STK push (server → Daraja).
+  * `POST /webhooks/mpesa/validation` — validation endpoint Safaricom calls (must quickly accept/reject).
+  * `POST /webhooks/mpesa/confirmation` — confirmation endpoint Safaricom calls once payment completed.
+  * `GET /payments/status/:tx` — human/API query of payment status.
+* **Security & Ops:**
+
+  * Use **basic auth + IP whitelist** for webhook endpoints if provider does not sign.
+  * Log and monitor failed validations (someone spoofing callbacks).
+  * For STK: save `CheckoutRequestID` returned for final correlation.
+
+**STK flow pseudocode (server):**
+
+```ts
+// 1. request access token (cache token)
+const token = await getDarajaToken();
+
+// 2. call /mpesa/stkpush/v1/processrequest with body including CallbackURL
+const resp = await fetch(DARAJA_STK_URL, { method:'POST', headers:{Authorization:`Bearer ${token}`}, body: {..., "CallbackURL": "https://aflewo.org/webhooks/mpesa/stk-callback"} });
+
+// 3. store CheckoutRequestID -> watch for callback confirmation
+```
+
+**Validation endpoint responsibilities:**
+
+* Verify AccountReference matches known event/campaign.
+* If amount within expected bounds, return acceptance response; otherwise reject and log. 
+
+---
+
+## 6) M-Changa & Paybill specifics
+
+* **M-Changa:** typically external crowdfunding; best practice: embed their campaign widget or redirect donors and record donation via their callbacks or manual import (CSV). Build an “import donations” tool in Supabase to ingest M-Changa CSV and reconcile with Paybill.
+* **Paybill number:** issued by Safaricom; still follows Daraja C2B webhook flows (Validation & Confirmation). Ensure your Paybill is active and that the Paybill `ShortCode` is part of every callback payload so you can validate. 
+
+---
+
+## 7) DB design & example tables (core)
+
+* `users` (Supabase Auth + profile)
+* `events` (id, title, starts_at, venue_json)
+* `payments` (schema above)
+* `donations_campaigns` (for M-Changa & internal drives)
+* `webhook_raw` (payload, headers, source_ip, processed_at, status)
+* `media` (id, type, r2_key, variants_json, public boolean)
+* `reconciliation_runs` (run_at, summary_json, exceptions_json)
+
+Use Postgres `jsonb` for flexible metadata and `pg_trgm` indexes for search. 
+
+---
+
+## 8) Webhook verification sample (Node.js / Express / TypeScript)
+
+```ts
+import crypto from 'crypto';
+
+function verifySignature(rawBody: Buffer, headerSignature: string, secret: string) {
+  const hmac = crypto.createHmac('sha256', secret);
+  hmac.update(rawBody);
+  const expected = hmac.digest('hex');
+  return crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(headerSignature));
+}
+
+app.post('/webhook/stripe', express.raw({type: 'application/json'}), (req, res) => {
+  const sig = req.headers['stripe-signature'] as string;
+  if(!verifySignature(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET)) {
+    res.status(400).send('Invalid signature');
+    return;
+  }
+  // parse and process...
+});
+```
+
+If provider doesn't give signature, use IP whitelist + TLS client certs + short lived tokens in callback query strings. Log raw payloads. 
+
+---
+
+## 9) Media & streaming operational notes (YouTube + OBS, R2 + Cloudflare Images)
+
+* **Streaming:** Use OBS RTMP to YouTube ingest server. For redundancy, stream from OBS → Restream or an RTMP relay that fans out to YouTube + other platforms. Test 24/72h before event. 
+* **VOD:** After event upload final recordings to Cloudflare R2 (or keep on YouTube and embed). If storing on R2, transcode to HLS for in-site playback or rely on YouTube player for archived video.
+* **Thumbnails/preview:** Create 3 sizes via Cloudflare Images; serve responsive `srcset` in Next.js using `<Image />`. 
+
+---
+
+## 10) Performance, scaling & cost control
+
+* **Pre-render as much as possible** (SSG/ISR) to reduce server load. Use edge caching TTLs and stale-while-revalidate patterns. 
+* **Media**: R2 for storage; Cloudflare Images for transforms. Avoid serving large videos from your app origin. 
+* **DB connections:** Use PgBouncer or Neon to avoid connection exhaustion if using serverless functions. 
+* **Load testing:** k6 spike and soak tests pre-event to simulate 50k concurrent viewers (front-end + auth flows). Example k6 command in your pack. 
+
+---
+
+## 11) Observability, monitoring, alerts & runbook
+
+* **Errors:** Sentry for app exceptions.
+* **Metrics:** Prometheus + Grafana or Datadog for infra metrics.
+* **Logs:** Structured logs to ELK or Datadog. Retain raw webhook logs for 90 days.
+* **Uptime / synthetic checks:** Pingdom / k6 checks for event pages and webhook endpoints.
+* **Runbook:** Predefined steps for “stream down”, “payments failing”, and “DB degraded”. Test runbook once before live event. 
+
+---
+
+## 12) CI/CD, infra as code & deployments
+
+* **Repo:** mono repo: `web/` (Next.js) + `api/` (webhooks + jobs) + `infra/` (terraform).
+* **CI:** GitHub Actions runs tests + lint + preview deploys to Cloudflare Pages. Promote to `main` → production. 
+* **Terraform:** manage DNS, Cloudflare Pages config, R2 bucket, and (if using AWS) IVS resources. The AFLEWO pack includes example Terraform snippets you can adapt. 
+
+---
+
+## 13) Security checklist (must-do before go-live)
+
+* TLS everywhere (HSTS + OCSP stapling).
+* CSP, X-Frame-Options, X-Content-Type-Options headers.
+* WAF (Cloudflare) + rate limiting on login and webhook endpoints.
+* Secrets in Vault (GitHub Secrets / Cloudflare KV). Do **not** store secrets in code.
+* Least privilege IAM for R2/Supabase keys. Rotate keys quarterly.
+* Penetration test or third-party audit before first big event. 
+
+---
+
+## 14) Operational playbook for donation / event day
+
+1. **Pre-event**: Warm CDN caches, pre-generate event landing page with pinned TTL, test STK Push flow with 10 test phones. 
+2. **During event**: Monitor web metrics, watch webhooks queue length, ensure video ingest stable. Keep support channel open (WhatsApp/Slack).
+3. **Post-event**: Auto-ingest recordings to R2, run reconciliation job, publish VOD with timestamps and chapters. 
+
+---
+
+## 15) Example env vars & secrets (what to store)
+
+```
+CLOUDFLARE_ACCOUNT_ID
+CLOUDFLARE_R2_ACCESS_KEY
+CLOUDFLARE_R2_SECRET
+CLOUDFLARE_IMAGES_TOKEN
+
+SUPABASE_URL
+SUPABASE_ANON_KEY
+SUPABASE_SERVICE_ROLE_KEY
+
+DARAJA_CONSUMER_KEY
+DARAJA_CONSUMER_SECRET
+DARAJA_CALLBACK_BASE=https://aflewo.org/webhooks/mpesa
+
+STRIPE_SECRET_KEY
+STRIPE_WEBHOOK_SECRET
+
+REDIS_URL
+JWT_SECRET
+SENTRY_DSN
+```
+
+Store only service role keys server-side (never in client). 
+
+---
+
+## 16) Extras you may have left out (worth adding)
+
+* **Email capture gating**: require email for VOD to capture leads. Use SendGrid. 
+* **Offline support / PWA**: let users save sermon pages for offline reading. Progressive enhancement for low-connectivity users. 
+* **Search & tagging**: initial Postgres full-text; upgrade to Meilisearch when >5k items. 
+* **Access control / premium content**: use Supabase row-level security and signed URLs for members-only media. 
+
+---
+
+## 17) Short production checklist (go/no-go)
+
+* [ ] Cloudflare Pages + R2 configured and tested. 
+* [ ] Supabase project, migrations applied, seed data loaded. 
+* [ ] Payment flows tested end-to-end (STK Push, C2B, Stripe).
+* [ ] Load testing completed (k6) with success criteria met. 
+* [ ] Monitoring & alerting configured and runbook validated. 
+
+---
+
+## 18) References & snippets I used from your tech pack
+
+* Next.js + Supabase recommended patterns, migration & storage setup. 
+* Cloudflare R2 economics & examples showing R2 vs S3 cost savings. 
+* Live streaming pros/cons (YouTube vs AWS IVS vs Restream).
+* M-Pesa Daraja notes and Paybill integration considerations.
+* Terraform / IaC examples and deployment checklist. 
+
+---
+
+If you want the next deliverable now, pick one (I’ll produce it immediately in this reply — no delays):
+
+1 — Full, annotated architecture diagram + runnable Terraform IaC (Cloudflare Pages + R2 + Supabase wiring + DNS).
+2 — 8-week sprint plan with milestones, team roles, and cost estimate for the stack above.
+3 — Component list + UI library recommendations (Tailwind design tokens + wireframes + Next.js component boilerplate).
+4 — Migration plan for members + media + SEO with exact scripts, SQL and CLI commands.
+
+Choose **1 / 2 / 3 / 4** and I’ll drop the full deliverable in the next message. 
+]]
+
+[]

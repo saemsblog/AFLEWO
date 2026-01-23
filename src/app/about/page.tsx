@@ -2,99 +2,143 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
-import { History, Shield, Globe, Award } from "lucide-react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import { Sparkles, Heart, Shield, Users } from "lucide-react";
 
-const milestones = [
-    { year: "2004", title: "The Spark", desc: "AFLEWO was birthed in a small room in Nairobi, fueled by a vision to unite the continent in worship.", venue: "Nairobi, Kenya" },
-    { year: "2010", title: "One People", desc: "Expansion into neighboring East African countries, breaking tribal and national barriers.", venue: "Kampala & Kigali" },
-    { year: "2016", title: "A Decade of Worship", desc: "A massive gathering that solidified the movement's presence in the Pan-African space.", venue: "Kasarani Stadium" },
-    { year: "2024", title: "20 Years of Glory", desc: "Celebrating two decades of faithfulness and the growth of the worship ecosystem.", venue: "Winning the Heart of Africa" },
-    { year: "2026", title: "The Future Sound", desc: "Launching the AFLEWO Original Music project and the digital archiving initiative.", venue: "Global Echo" },
+gsap.registerPlugin(ScrollTrigger);
+
+const pillars = [
+    { title: "Unity", desc: "Bringing the diverse church of Africa into a single, cohesive voice of worship.", icon: <Users size={32} /> },
+    { title: "Hope", desc: "Stirring up the expectation of God's goodness across the 'prophetic house' of Africa.", icon: <Sparkles size={32} /> },
+    { title: "Excelence", desc: "Presenting our worship with the highest standard of musical and logistical skill.", icon: <Shield size={32} /> },
+    { title: "Intercession", desc: "Standing in the gap for nations like DR Congo, Nigeria, and South Sudan.", icon: <Heart size={32} /> },
 ];
 
 export default function AboutPage() {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from(".about-hero-text", {
+                y: 100,
+                opacity: 0,
+                duration: 1.5,
+                ease: "expo.out"
+            });
+
+            gsap.from(".pillar-card", {
+                scrollTrigger: {
+                    trigger: ".pillars-grid",
+                    start: "top 80%",
+                },
+                y: 50,
+                opacity: 0,
+                stagger: 0.1,
+                duration: 1,
+                ease: "power3.out"
+            });
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <main className="bg-background min-h-screen">
+        <main ref={containerRef} className="bg-background min-h-screen">
             <Navbar />
 
-            {/* Hero Section */}
-            <section className="pt-32 pb-24 px-6 relative">
-                <div className="max-container text-center space-y-8">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="inline-flex items-center gap-2 px-6 py-2 glass-card rounded-full text-gold text-sm font-black tracking-widest uppercase"
-                    >
-                        <Shield size={16} /> Since 2004
-                    </motion.div>
-                    <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-gradient-gold">
-                        OUR IDENTITY.
-                    </h1>
-                    <p className="max-w-3xl mx-auto text-gold/60 text-xl font-medium leading-relaxed">
-                        AFLEWO (Africa Let's Worship) is a call to the nations. We are a Pan-African movement dedicated to igniting and uniting the continent through creative, cultural, and spiritual expression.
-                    </p>
-                </div>
-            </section>
-
-            {/* Mission & Vision Cards */}
-            <section className="section-padding bg-brown/20">
-                <div className="max-container grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div className="glass-card p-12 space-y-6">
-                        <Globe className="text-emerald w-12 h-12" />
-                        <h2 className="text-4xl font-black tracking-tight">Our Mission</h2>
-                        <p className="text-white/60 text-lg leading-loose">
-                            To create a platform where the diverse cultures of Africa converge in a single, powerful sound of worship—transcending tribal, denominational, and national boundaries.
-                        </p>
-                    </div>
-                    <div className="glass-card p-12 space-y-6">
-                        <Award className="text-gold w-12 h-12" />
-                        <h2 className="text-4xl font-black tracking-tight">Our Vision</h2>
-                        <p className="text-white/60 text-lg leading-loose">
-                            To see an Africa that is spiritually resilient, culturally authentic, and globally impactful, united by the common thread of God's love and the gospel message.
+            {/* Subpage Hero */}
+            <section className="relative pt-40 pb-24 px-6 overflow-hidden">
+                <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 blur-3xl bg-gold/20 -z-10" />
+                <div className="max-container">
+                    <div className="about-hero-text max-w-4xl space-y-8">
+                        <span className="text-gold font-black uppercase tracking-[0.4em] text-xs">Our Identity</span>
+                        <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85]">
+                            THE VISION <br />
+                            <span className="text-gold">BEHIND THE ALTAR.</span>
+                        </h1>
+                        <p className="text-2xl text-foreground/60 font-medium leading-relaxed font-serif-spiritual italic">
+                            AFLEWO (Africa Let’s Worship) is a movement birthed from the heart of Daystar University alumni,
+                            committed to raising an annual altar of worship and prayer for the nations of Africa.
                         </p>
                     </div>
                 </div>
             </section>
 
-            {/* The Timeline */}
-            <section className="section-padding relative">
-                <div className="max-container relative">
-                    <div className="text-center mb-24 space-y-4">
-                        <h2 className="text-5xl font-black tracking-tighter">THE JOURNEY</h2>
-                        <div className="w-24 h-1 bg-gold mx-auto" />
+            {/* Mission & Vision Bento */}
+            <section className="section-padding">
+                <div className="max-container grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="glass-card-elevated p-12 space-y-6 md:mt-12">
+                        <h3 className="text-gold font-black uppercase tracking-widest text-xs">The Mission</h3>
+                        <h2 className="text-4xl font-black tracking-tight">PURSUING UNITY <span className="text-gold">IN WORSHIP.</span></h2>
+                        <p className="text-foreground/60 font-medium leading-loose text-lg">
+                            To stir up hope in Jesus through annual large-scale musical and prayer events from a united church front across Africa.
+                            Since 2004, we have provided a platform where denominations fade, and the name of Jesus is exalted.
+                        </p>
+                    </div>
+                    <div className="bg-primary text-primary-foreground p-12 rounded-[2rem] space-y-6">
+                        <h3 className="text-gold font-black uppercase tracking-widest text-xs">The Vision</h3>
+                        <h2 className="text-4xl font-black tracking-tight text-white">A PROPHETIC <span className="text-gold">HOUSE.</span></h2>
+                        <p className="text-white/60 font-medium leading-loose text-lg">
+                            To see all of Africa seeing itself through the eyes of its Maker. We aim to achieve this through corporate worship,
+                            establishing local chapters that maintain the pulse of intercession in every major African city.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Core Pillars */}
+            <section className="section-padding bg-background/50" id="pillars">
+                <div className="max-container">
+                    <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
+                        <h2 className="text-5xl font-black tracking-tighter">OUR GUIDING <span className="text-gold">PILLARS.</span></h2>
+                        <p className="text-foreground/50 max-w-xs font-bold text-sm uppercase tracking-widest">The foundation of every AFLEWO experience.</p>
                     </div>
 
-                    <div className="relative">
-                        {/* Central Line */}
-                        <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gold/10 hidden md:block" />
+                    <div className="pillars-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {pillars.map((pillar, i) => (
+                            <div key={i} className="pillar-card glass-card p-10 space-y-6 hover:-translate-y-2 transition-transform duration-500">
+                                <div className="text-gold">{pillar.icon}</div>
+                                <h3 className="text-2xl font-black">{pillar.title}</h3>
+                                <p className="text-foreground/60 text-sm font-medium leading-relaxed">{pillar.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                        <div className="space-y-32">
-                            {milestones.map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    className={`relative flex items-center justify-between gap-16 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                                >
-                                    <div className="flex-1 hidden md:block" />
-
-                                    {/* Middle Dot */}
-                                    <div className="absolute left-1/2 -translate-x-1/2 w-16 h-16 rounded-full glass-card border-gold/30 flex items-center justify-center z-10 hidden md:flex">
-                                        <div className="w-3 h-3 rounded-full bg-gold aflewo-glow-gold" />
-                                    </div>
-
-                                    <div className="flex-1 glass-card p-10 space-y-4 relative group hover:border-gold/50 transition-all">
-                                        <div className="text-gold font-black text-6xl opacity-20 absolute top-4 right-8 group-hover:opacity-40 transition-opacity">
-                                            {item.year}
-                                        </div>
-                                        <div className="text-xs font-black text-emerald uppercase tracking-[0.2em]">{item.venue}</div>
-                                        <h3 className="text-3xl font-black tracking-tight">{item.title}</h3>
-                                        <p className="text-white/50 leading-relaxed font-medium">{item.desc}</p>
-                                    </div>
-                                </motion.div>
-                            ))}
+            {/* Founders Context */}
+            <section className="section-padding overflow-hidden relative">
+                <div className="max-container flex flex-col md:flex-row items-center gap-20">
+                    <div className="flex-1 space-y-8">
+                        <h2 className="text-5xl font-black tracking-tighter">THE SING AFRICA <br /><span className="text-gold">LEGACY.</span></h2>
+                        <p className="text-foreground/60 text-lg font-medium leading-relaxed">
+                            Birthed in October 2003, the alumni of Sing Africa sought to create a united front for the church.
+                            Under the leadership of Timothy Kaberia and Ruguru, the phrase "Africa Let's Worship" became our anthem.
+                        </p>
+                        <div className="flex items-center gap-4 py-4 border-y border-white/5">
+                            <div className="w-12 h-12 rounded-full overflow-hidden grayscale relative">
+                                <Image src="/mission-1.jpg" alt="Sing Africa" fill className="object-cover" />
+                            </div>
+                            <p className="text-gold text-[10px] font-black uppercase tracking-widest">Daystar University Christian Fellowship Ministries</p>
+                        </div>
+                    </div>
+                    <div className="flex-1 w-full aspect-square rounded-full border border-gold/20 flex items-center justify-center p-12 relative animate-breathe">
+                        <div className="w-full h-full rounded-full overflow-hidden relative grayscale opacity-40">
+                            <video
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                className="w-full h-full object-cover"
+                            >
+                                <source src="/hero-bg.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="text-9xl font-black text-gold/20 select-none">20+</div>
                         </div>
                     </div>
                 </div>

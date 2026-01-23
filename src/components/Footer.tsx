@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Twitter, Youtube, Facebook, ArrowUpRight } from "lucide-react";
 
 export default function Footer() {
@@ -11,15 +12,21 @@ export default function Footer() {
             <div className="max-w-6xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24">
                     {/* Logo & Vision */}
-                    <div className="md:col-span-5 space-y-8">
-                        <Link href="/" className="flex items-center gap-2 group">
-                            <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center font-black text-brown">
-                                A
+                    <div className="md:col-span-12 lg:col-span-5 space-y-8">
+                        <Link href="/" className="flex items-center gap-4 group">
+                            <div className="relative w-16 h-16 group-hover:rotate-6 transition-transform duration-500">
+                                <Image
+                                    src="/brand/AFLEWO-LOGO-1-Photoroom.svg"
+                                    alt="AFLEWO"
+                                    fill
+                                    className="object-contain brightness-0 invert"
+                                />
                             </div>
-                            <span className="font-black text-2xl tracking-tighter text-foreground">AFLEWO</span>
+                            <span className="font-black text-3xl tracking-tighter text-white">AFLEWO</span>
                         </Link>
-                        <p className="text-gold/60 text-xl font-medium leading-relaxed">
-                            Igniting and uniting Africa through worship. One God, one people, one Africa. Deploying digital resilience for the sound of heaven.
+                        <p className="text-white/40 text-lg font-medium leading-relaxed font-serif-spiritual italic max-w-md">
+                            Igniting and uniting Africa through worship. One God, one people, one Africa.
+                            The sound of heaven echoing from the heart of the continent.
                         </p>
                         <div className="flex gap-4">
                             <button className="p-3 glass-card rounded-ios text-gold hover:bg-gold hover:text-brown transition-all"><Instagram size={20} /></button>
@@ -29,54 +36,55 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Quick Links */}
-                    <div className="md:col-span-2 space-y-6">
-                        <h4 className="font-black text-gold uppercase tracking-widest text-xs">Explore</h4>
-                        <ul className="space-y-4 text-foreground/70 font-bold">
-                            <li><Link href="/about" className="hover:text-gold transition-all">Timeline</Link></li>
-                            <li><Link href="/media" className="hover:text-gold transition-all">Media</Link></li>
-                            <li><Link href="/stories" className="hover:text-gold transition-all">Stories</Link></li>
-                            <li><Link href="/join" className="hover:text-gold transition-all">Join Us</Link></li>
-                        </ul>
-                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:col-span-12 lg:col-span-7">
+                        {/* Quick Links */}
+                        <div className="space-y-6">
+                            <h4 className="font-black text-gold uppercase tracking-widest text-xs">Explore</h4>
+                            <ul className="space-y-4 text-white/50 font-black text-[10px] uppercase tracking-widest">
+                                <li><Link href="/about" className="hover:text-gold transition-all">Timeline</Link></li>
+                                <li><Link href="/media" className="hover:text-gold transition-all">Media</Link></li>
+                                <li><Link href="/stories" className="hover:text-gold transition-all">Stories</Link></li>
+                                <li><Link href="/join" className="hover:text-gold transition-all">Join Us</Link></li>
+                            </ul>
+                        </div>
 
-                    {/* Chapters */}
-                    <div className="md:col-span-2 space-y-6">
-                        <h4 className="font-black text-gold uppercase tracking-widest text-xs">Chapters</h4>
-                        <ul className="space-y-4 text-foreground/70 font-bold">
-                            <li><Link href="#" className="hover:text-gold transition-all">Nairobi</Link></li>
-                            <li><Link href="#" className="hover:text-gold transition-all">Mombasa</Link></li>
-                            <li><Link href="#" className="hover:text-gold transition-all">Kampala</Link></li>
-                            <li><Link href="#" className="hover:text-gold transition-all">Kigali</Link></li>
-                        </ul>
-                    </div>
+                        {/* Chapters */}
+                        <div className="space-y-6">
+                            <h4 className="font-black text-gold uppercase tracking-widest text-xs">Chapters</h4>
+                            <ul className="space-y-4 text-white/50 font-black text-[10px] uppercase tracking-widest">
+                                <li><Link href="#" className="hover:text-gold transition-all">Nairobi</Link></li>
+                                <li><Link href="#" className="hover:text-gold transition-all">Mombasa</Link></li>
+                                <li><Link href="#" className="hover:text-gold transition-all">Kampala</Link></li>
+                                <li><Link href="#" className="hover:text-gold transition-all">Kigali</Link></li>
+                            </ul>
+                        </div>
 
-                    {/* Newsletter */}
-                    <div className="md:col-span-3 space-y-6">
-                        <h4 className="font-black text-gold uppercase tracking-widest text-xs">Stay Connected</h4>
-                        <div className="space-y-4">
-                            <p className="text-sm text-gold/60 font-medium">Join 10k+ worshippers receiving monthly updates.</p>
-                            <div className="relative">
-                                <input
-                                    type="email"
-                                    placeholder="email@africa.com"
-                                    className="w-full bg-background/20 border-gold/10 rounded-ios py-3 pl-4 pr-12 text-sm focus:ring-1 focus:ring-gold outline-none"
-                                />
-                                <button className="absolute right-2 top-1/2 -translate-y-1/2 text-gold hover:scale-110 transition-transform">
-                                    <ArrowUpRight size={20} />
-                                </button>
+                        {/* Newsletter */}
+                        <div className="space-y-6 md:col-span-1 min-w-[200px]">
+                            <h4 className="font-black text-gold uppercase tracking-widest text-xs">Stay Connected</h4>
+                            <div className="space-y-4">
+                                <p className="text-[10px] text-white/30 font-black uppercase tracking-widest leading-relaxed">Join 15K+ worshippers in the movement.</p>
+                                <div className="relative">
+                                    <input
+                                        type="email"
+                                        placeholder="email@africa.com"
+                                        className="w-full bg-white/5 border border-white/10 rounded-full py-3 pl-6 pr-12 text-xs font-medium text-white appearance-none outline-none focus:ring-1 focus:ring-gold"
+                                    />
+                                    <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-gold text-brown rounded-full hover:scale-110 transition-transform">
+                                        <ArrowUpRight size={16} />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-12 border-t border-gold/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-gold/30">
-                    <div>© {currentYear} AFLEWO Digital • Nairobi, Kenya</div>
+                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-white/20">
+                    <div>© {currentYear} AFLEWO Digital • Prophetic House</div>
                     <div className="flex gap-8">
                         <Link href="#" className="hover:text-gold">Privacy Policy</Link>
-                        <Link href="#" className="hover:text-gold">Terms of Worship</Link>
-                        <Link href="#" className="hover:text-gold">Mailing List</Link>
+                        <Link href="#" className="hover:text-gold">M-Pesa Paybill: 819867</Link>
                     </div>
                 </div>
             </div>

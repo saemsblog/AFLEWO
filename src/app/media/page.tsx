@@ -2,93 +2,99 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
-import { Play, Image as ImageIcon, Youtube } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import Image from "next/image";
+import { Play, PlayCircle, Filter, Download } from "lucide-react";
 
-const categories = ["All", "Nairobi", "Eldoret", "Mombasa", "Regional"];
-
-const galleryItems = [
-    { title: "Kasarani 2016", cat: "Nairobi", image: "/images/AFLEWO 2016-22.jpg", type: "image" },
-    { title: "AFLEWO Chronicles", cat: "Documentary", image: "/images/hq720.jpg", type: "video", url: "https://www.youtube.com/watch?v=CW_qocLAFcw" },
-    { title: "One Africa Anthem", cat: "Regional", image: "/images/G2LyhBZXwAE-feP.jpg", type: "video", url: "https://youtu.be/2dis3SL4IPQ?si=Fudq-kpJPT3dlJsU" },
-    { title: "Live Worship 2024", cat: "Nairobi", image: "/images/12.jpg", type: "image" },
-    { title: "Eldoret Chapter", cat: "Eldoret", image: "/images/1759518172292.jpg", type: "image" },
-    { title: "Worship Documentary", cat: "Documentary", image: "/images/images (1).jpg", type: "video", url: "https://youtu.be/UHnlOzcbC_w?si=m2vpOlWwQtKYFL8Q" },
+const archivalMedia = [
+    { title: "Nairobi Live", year: "2024", type: "Video", src: "/hero-bg.mp4", thumb: "/archival-1.jpg", chapter: "Nairobi" },
+    { title: "Mombasa Night", year: "2009", type: "Image", src: "/archival-2.jpg", thumb: "/archival-2.jpg", chapter: "Mombasa" },
+    { title: "Winners' Chapel Altar", year: "2013", type: "Image", src: "/mission-1.jpg", thumb: "/mission-1.jpg", chapter: "Nairobi" },
+    { title: "Nakuru Revival", year: "2014", type: "Image", src: "/archival-1.jpg", thumb: "/archival-1.jpg", chapter: "Nakuru" },
+    { title: " Rwanda Healing", year: "2014", type: "Image", src: "/archival-2.jpg", thumb: "/archival-2.jpg", chapter: "Kigali" },
+    { title: "Documentary Segment", year: "2013", type: "Video", src: "/hero-bg.mp4", thumb: "/mission-1.jpg", chapter: "Documentary" },
 ];
 
 export default function MediaPage() {
+    const [filter, setFilter] = useState("All");
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    const filteredMedia = filter === "All"
+        ? archivalMedia
+        : archivalMedia.filter(m => m.type === filter || m.chapter === filter);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from(".media-item", {
+                opacity: 0,
+                y: 30,
+                stagger: 0.1,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        }, containerRef);
+        return () => ctx.revert();
+    }, [filter]);
+
     return (
         <main className="bg-background min-h-screen">
             <Navbar />
 
-            <section className="pt-32 pb-24 px-6">
-                <div className="max-container space-y-12">
-                    <div className="space-y-4">
-                        <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-gradient-gold">
-                            MEDIA HUB.
-                        </h1>
-                        <p className="text-gold/60 text-xl font-medium max-w-2xl">
-                            The collective memory of a movement. Browse through two decades of worship, rehearsals, and impact stories.
-                        </p>
+            <section className="pt-40 pb-20 px-6">
+                <div className="max-container">
+                    <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20">
+                        <div className="space-y-6">
+                            <span className="text-gold font-black uppercase tracking-[0.4em] text-xs">The Archive</span>
+                            <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85]">
+                                VISUAL <br /><span className="text-gold">TESTIMONY.</span>
+                            </h1>
+                        </div>
+                        <div className="flex flex-wrap gap-4 glass-card p-2 rounded-full">
+                            {["All", "Video", "Image", "Nairobi", "Mombasa"].map((f) => (
+                                <button
+                                    key={f}
+                                    onClick={() => setFilter(f)}
+                                    className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${filter === f ? "bg-gold text-brown" : "text-white/40 hover:text-white"
+                                        }`}
+                                >
+                                    {f}
+                                </button>
+                            ))}
+                        </div>
                     </div>
 
-                    {/* Filter Bar */}
-                    <div className="flex flex-wrap gap-4">
-                        {categories.map((cat) => (
-                            <button key={cat} className="press-scale px-6 py-2 rounded-full glass-card border-gold/10 text-xs font-black uppercase tracking-widest hover:bg-gold hover:text-brown transition-all">
-                                {cat}
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Gallery Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {galleryItems.map((item, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.05 }}
-                                className="group relative aspect-video rounded-ios overflow-hidden glass-card cursor-pointer"
-                            >
+                    <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {filteredMedia.map((item, i) => (
+                            <div key={i} className="media-item group relative aspect-[4/5] rounded-[2rem] overflow-hidden glass-card border-white/5 cursor-pointer">
                                 <Image
-                                    src={item.image}
+                                    src={item.thumb}
                                     alt={item.title}
                                     fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70"
+                                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-brown via-transparent to-transparent opacity-80" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-all" />
 
-                                <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                                    <div className="flex justify-between items-end">
-                                        <div className="space-y-2">
-                                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gold/60">{item.cat}</span>
-                                            <h3 className="text-xl font-black tracking-tight text-white group-hover:text-gold transition-colors">{item.title}</h3>
+                                <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                                    <div className="flex justify-between items-start opacity-0 group-hover:opacity-100 transition-all translate-y-[-10px] group-hover:translate-y-0">
+                                        <div className="p-3 bg-white/10 backdrop-blur-md rounded-2xl text-white">
+                                            {item.type === "Video" ? <PlayCircle size={24} /> : <Image src="/archival-1.jpg" width={24} height={24} className="opacity-0" alt="" />}
                                         </div>
-                                        <div className="w-10 h-10 rounded-full bg-gold text-brown flex items-center justify-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                                            {item.type === 'video' ? <Play size={16} fill="currentColor" /> : <ImageIcon size={16} />}
+                                        <button className="p-3 bg-white/10 backdrop-blur-md rounded-2xl text-white hover:bg-gold hover:text-brown transition-colors">
+                                            <Download size={20} />
+                                        </button>
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <div className="flex items-center gap-3">
+                                            <span className="text-gold text-[10px] font-black uppercase tracking-widest">{item.chapter}</span>
+                                            <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">{item.year}</span>
                                         </div>
+                                        <h3 className="text-2xl font-black text-white group-hover:text-gold transition-colors">{item.title}</h3>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
-                    </div>
-
-                    {/* Video Embed Hub */}
-                    <div className="pt-24 space-y-12">
-                        <h2 className="text-4xl font-black tracking-tighter flex items-center gap-4">
-                            <Youtube className="text-gold" size={32} /> LIVE ARCHIVES
-                        </h2>
-                        <div className="aspect-video w-full rounded-ios overflow-hidden glass-card border-gold/20">
-                            <iframe
-                                className="w-full h-full"
-                                src="https://www.youtube.com/embed/CW_qocLAFcw"
-                                title="AFLEWO Live"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            />
-                        </div>
                     </div>
                 </div>
             </section>
