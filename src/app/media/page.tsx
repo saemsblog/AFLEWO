@@ -46,7 +46,7 @@ export default function MediaPage() {
                     <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20">
                         <div className="space-y-6">
                             <span className="text-gold font-black uppercase tracking-[0.4em] text-xs">The Archive</span>
-                            <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85]">
+                            <h1 className="text-5xl md:text-9xl font-black tracking-tighter leading-[0.85]">
                                 VISUAL <br /><span className="text-gold">TESTIMONY.</span>
                             </h1>
                         </div>
