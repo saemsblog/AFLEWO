@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import AppIcon from "@/components/ui/AppIcon";
+import { Play } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,7 +55,6 @@ export default function HeroSection() {
     return (
         <section
             ref={sectionRef}
-            id="hero"
             className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background"
         >
             {/* Immersive Video Layer */}
@@ -95,7 +94,7 @@ export default function HeroSection() {
 
                 <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
                     <Link href="/media" className="hero-btn press-scale bg-white text-brown px-12 py-5 rounded-full font-black uppercase tracking-tighter flex items-center gap-3 group hover:bg-gold transition-all">
-                        <AppIcon name="play-arrow" size={20} className="group-hover:scale-110 transition-transform" />
+                        <Play size={20} fill="currentColor" stroke="none" className="group-hover:scale-110 transition-transform" />
                         Watch Archive
                     </Link>
                     <Link href="#about" className="hero-btn press-scale glass-card-elevated px-12 py-5 rounded-full font-black uppercase tracking-tighter text-white hover:bg-white/10 transition-all border-white/20">

@@ -11,7 +11,6 @@ import JoinCTA from "@/components/sections/JoinCTA";
 import Footer from "@/components/Footer";
 import PartnersSection from "@/components/sections/PartnersSection";
 import LeadershipSection from "@/components/sections/LeadershipSection";
-import ElasticNavigator from "@/components/ElasticNavigator";
 import { useEffect } from "react";
 import gsap from "gsap";
 
@@ -36,7 +35,6 @@ export default function Home() {
         <PartnersSection />
         <LeadershipSection />
         <JoinCTA />
-        <ElasticNavigator />
       </div>
 
       <Footer />
