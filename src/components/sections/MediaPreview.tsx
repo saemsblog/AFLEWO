@@ -144,12 +144,12 @@ export default function MediaPreview() {
                         <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-gold text-[10px] font-black uppercase tracking-[0.2em]">
                             <Calendar size={12} /> The Archive
                         </div>
-                        <h2 className="text-5xl md:text-7xl font-black tracking-tighter">
+                        <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9]">
                             THE SOUND <br />
-                            <span className="text-gold">OF HEAVEN</span>
+                            <span className="text-gold uppercase">OF HEAVEN</span>
                         </h2>
-                        <p className="text-foreground/50 max-w-md font-medium">
-                            20 years of worship captured. From the first gathering to today's continental movement.
+                        <p className="text-foreground/50 max-w-md font-medium text-center md:text-left">
+                            20 years of worship captured — from the first gathering to today's continental movement
                         </p>
                     </div>
                     <Link

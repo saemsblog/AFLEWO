@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon, Globe, Heart } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const links = [
     { name: "About", href: "/about" },
@@ -17,8 +18,11 @@ const links = [
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { theme, setTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         };
@@ -26,34 +30,37 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    if (!mounted) return null;
+
     return (
         <nav className={cn(
-            "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4",
-            isScrolled ? "mt-2 md:mt-4" : "mt-0"
+            "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6",
+            isScrolled ? "py-4" : "py-8"
         )}>
             <div className={cn(
-                "max-w-6xl mx-auto rounded-full transition-all duration-700 flex items-center justify-between px-6 py-3 md:px-8 md:py-4",
-                isScrolled ? "glass-card-elevated shadow-lg" : "bg-transparent"
+                "max-w-6xl mx-auto rounded-lg transition-all duration-700 flex items-center justify-between px-6 py-4",
+                isScrolled ? "glass-card-elevated shadow-2xl" : "bg-transparent"
             )}>
-                {/* Brand Logo */}
-                <Link href="/" className="flex items-center gap-3 group">
-                    <div className="relative w-8 h-8 md:w-10 md:h-10 group-hover:scale-110 transition-transform duration-500">
+                {/* Brand Logo - PNG Variant */}
+                <Link href="/" className="flex items-center gap-4 group">
+                    <div className="relative w-10 h-10 group-hover:scale-110 transition-transform duration-500">
                         <Image
                             src="/brand/AFLEWO LOGO 1-Photoroom.png"
                             alt="AFLEWO"
                             fill
                             className="object-contain"
+                            priority
                         />
                     </div>
                 </Link>
 
                 {/* Desktop Links */}
-                <div className="hidden md:flex items-center gap-8 lg:gap-10">
+                <div className="hidden md:flex items-center gap-10">
                     {links.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60 hover:text-gold transition-colors"
+                            className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/50 hover:text-gold transition-all"
                         >
                             {link.name}
                         </Link>
@@ -62,48 +69,77 @@ export default function Navbar() {
 
                 {/* Right Action */}
                 <div className="flex items-center gap-4">
-                    <button className="hidden sm:block press-scale bg-white text-brown px-6 md:px-8 py-2 md:py-3 rounded-full font-black text-[9px] md:text-[10px] uppercase tracking-widest shadow-glow hover:bg-gold transition-all">
-                        Connect
+                    {/* Theme Toggle */}
+                    <button
+                        onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                        className="p-3 rounded-lg glass-card text-gold hover:bg-gold hover:text-brown transition-all"
+                    >
+                        {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
                     </button>
+
+                    <Link
+                        href="/join"
+                        className="hidden sm:block press-scale bg-gold text-brown px-8 py-3 rounded-lg font-black text-[10px] uppercase tracking-widest shadow-glow hover:brightness-110 transition-all"
+                    >
+                        Join Altar
+                    </Link>
 
                     {/* Mobile Menu Toggle */}
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden p-2 text-white hover:text-gold transition-colors"
+                        className="md:hidden p-3 rounded-lg glass-card text-foreground/60 hover:text-gold transition-colors"
                     >
-                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
                 </div>
             </div>
 
             {/* Mobile Menu Overlay */}
             <div className={cn(
-                "fixed inset-0 bg-background/95 backdrop-blur-xl z-[60] flex flex-col items-center justify-center gap-8 transition-all duration-500",
-                isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                "fixed inset-0 bg-background/98 backdrop-blur-3xl z-[60] flex flex-col items-center justify-center gap-12 transition-all duration-700",
+                isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"
             )}>
                 <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="absolute top-8 right-8 p-2 text-white/50 hover:text-gold transition-colors"
+                    className="absolute top-8 right-8 p-4 rounded-full glass-card text-gold hover:rotate-90 transition-all duration-500"
                 >
-                    <X size={32} />
+                    <X size={24} />
                 </button>
 
-                {links.map((link) => (
-                    <Link
-                        key={link.name}
-                        href={link.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="text-3xl font-black uppercase tracking-[0.3em] text-white/60 hover:text-gold transition-all hover:scale-110"
-                    >
-                        {link.name}
-                    </Link>
-                ))}
+                <div className="flex flex-col items-center gap-4">
+                    <Image
+                        src="/brand/AFLEWO LOGO 1-Photoroom.png"
+                        alt="AFLEWO"
+                        width={60}
+                        height={60}
+                        className="object-contain"
+                    />
+                    <span className="text-[10px] font-black uppercase tracking-[0.5em] text-gold/60">EST. 2004</span>
+                </div>
 
-                <button className="press-scale bg-white text-brown px-12 py-5 rounded-full font-black text-xs uppercase tracking-[0.2em] shadow-glow mt-8">
-                    Connect Now
-                </button>
+                <div className="flex flex-col items-center gap-8">
+                    {links.map((link) => (
+                        <Link
+                            key={link.name}
+                            href={link.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="text-4xl font-black uppercase tracking-[0.4em] text-foreground/40 hover:text-gold transition-all hover:scale-105"
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
+                </div>
+
+                <div className="flex flex-col items-center gap-6 mt-12">
+                    <button className="press-scale bg-gold text-brown px-16 py-6 rounded-lg font-black text-xs uppercase tracking-[0.3em] shadow-glow">
+                        Register Now
+                    </button>
+                    <div className="flex gap-4">
+                        <Globe size={20} className="text-white/20" />
+                        <Heart size={20} className="text-white/20" />
+                    </div>
+                </div>
             </div>
         </nav>
     );
 }
-

@@ -74,7 +74,7 @@ export default function AboutSection() {
             <div className="max-container">
                 <div className="flex flex-col items-center text-center mb-24">
                     <div className="w-12 h-1 bg-gold mb-8" />
-                    <h2 className="text-4xl md:text-6xl font-black mb-6">THE JOURNEY OF <span className="text-gold">ALTARS.</span></h2>
+                    <h2 className="text-4xl md:text-6xl font-black mb-6">THE JOURNEY OF <span className="text-gold uppercase">ALTARS</span></h2>
                     <p className="text-foreground/60 max-w-2xl font-medium text-lg leading-relaxed">
                         Since 2004, AFLEWO has been more than an event. It is a movement of unity, intercession, and the relentless pursuit of God's presence across Africa.
                     </p>

@@ -5,96 +5,186 @@ import Footer from "@/components/Footer";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Image from "next/image";
-import { Play, PlayCircle, Filter, Download } from "lucide-react";
+import { PlayCircle, Filter, X, ChevronDown, Camera, Film } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const archivalMedia = [
-    { title: "Nairobi Live", year: "2024", type: "Video", src: "/hero-bg.mp4", thumb: "/archival-1.jpg", chapter: "Nairobi" },
-    { title: "Mombasa Night", year: "2009", type: "Image", src: "/archival-2.jpg", thumb: "/archival-2.jpg", chapter: "Mombasa" },
-    { title: "Winners' Chapel Altar", year: "2013", type: "Image", src: "/mission-1.jpg", thumb: "/mission-1.jpg", chapter: "Nairobi" },
-    { title: "Nakuru Revival", year: "2014", type: "Image", src: "/archival-1.jpg", thumb: "/archival-1.jpg", chapter: "Nakuru" },
-    { title: " Rwanda Healing", year: "2014", type: "Image", src: "/archival-2.jpg", thumb: "/archival-2.jpg", chapter: "Kigali" },
-    { title: "Documentary Segment", year: "2013", type: "Video", src: "/hero-bg.mp4", thumb: "/mission-1.jpg", chapter: "Documentary" },
+    { title: "Nairobi Live", year: "2024", type: "Video", src: "/hero-bg.mp4", thumb: "/archival-1.jpg", chapter: "Nairobi", event: "Main Night" },
+    { title: "Mombasa Night", year: "2009", type: "Image", src: "/archival-2.jpg", thumb: "/archival-2.jpg", chapter: "Mombasa", event: "Launch" },
+    { title: "Winners' Chapel Altar", year: "2013", type: "Image", src: "/mission-1.jpg", thumb: "/mission-1.jpg", chapter: "Nairobi", event: "10th Anniversary" },
+    { title: "Nakuru Revival", year: "2014", type: "Image", src: "/archival-1.jpg", thumb: "/archival-1.jpg", chapter: "Nakuru", event: "Rift Valley Launch" },
+    { title: "Rwanda Healing", year: "2014", type: "Image", src: "/archival-2.jpg", thumb: "/archival-2.jpg", chapter: "Kigali", event: "Commemoration" },
+    { title: "Documentary Segment", year: "2013", type: "Video", src: "/hero-bg.mp4", thumb: "/mission-1.jpg", chapter: "History", event: "Origins" },
 ];
 
+const types = ["All", "Image", "Video"];
+const chapters = ["All", "Nairobi", "Mombasa", "Nakuru", "Kigali"];
+const eras = ["All", "2004-2010", "2011-2019", "2020-Present"];
+
 export default function MediaPage() {
-    const [filter, setFilter] = useState("All");
+    const [activeType, setActiveType] = useState("All");
+    const [activeChapter, setActiveChapter] = useState("All");
+    const [activeEra, setActiveEra] = useState("All");
+    const [showFilters, setShowFilters] = useState(false);
+
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const filteredMedia = filter === "All"
-        ? archivalMedia
-        : archivalMedia.filter(m => m.type === filter || m.chapter === filter);
+    const filteredMedia = archivalMedia.filter(m => {
+        const typeMatch = activeType === "All" || m.type === activeType;
+        const chapterMatch = activeChapter === "All" || m.chapter === activeChapter;
+        // Era logic simplified for demonstration
+        const eraMatch = activeEra === "All" || (activeEra === "2004-2010" && parseInt(m.year) <= 2010);
+        return typeMatch && chapterMatch && eraMatch;
+    });
 
     useEffect(() => {
         const ctx = gsap.context(() => {
             gsap.from(".media-item", {
                 opacity: 0,
                 y: 30,
-                stagger: 0.1,
+                stagger: 0.05,
                 duration: 0.8,
-                ease: "power2.out"
+                ease: "expo.out"
             });
         }, containerRef);
         return () => ctx.revert();
-    }, [filter]);
+    }, [activeType, activeChapter, activeEra]);
 
     return (
         <main className="bg-background min-h-screen">
             <Navbar />
 
-            <section className="pt-40 pb-20 px-6">
+            <section className="pt-40 pb-32 px-6">
                 <div className="max-container">
-                    <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20">
-                        <div className="space-y-6">
-                            <span className="text-gold font-black uppercase tracking-[0.4em] text-xs">The Archive</span>
-                            <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85]">
-                                VISUAL <br /><span className="text-gold">TESTIMONY.</span>
-                            </h1>
+                    <div className="flex flex-col items-center text-center space-y-8 mb-20">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-gold text-[10px] font-black uppercase tracking-[0.3em]">
+                            <Camera size={12} /> The Eternal Record
                         </div>
-                        <div className="flex flex-wrap gap-4 glass-card p-2 rounded-full">
-                            {["All", "Video", "Image", "Nairobi", "Mombasa"].map((f) => (
+                        <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.85]">
+                            FAITH IN <br /><span className="text-gold">MOTION</span>
+                        </h1>
+                        <p className="max-w-2xl text-foreground/40 font-medium text-lg leading-relaxed">
+                            A curated archive of transformations, worship nights, and the prophetic journey from CITAM Karen to the Continent.
+                        </p>
+                    </div>
+
+                    {/* Main Menu: Type Filter */}
+                    <div className="flex flex-col items-center gap-8 mb-12">
+                        <div className="flex gap-2 p-2 glass-card rounded-lg">
+                            {types.map((t) => (
                                 <button
-                                    key={f}
-                                    onClick={() => setFilter(f)}
-                                    className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${filter === f ? "bg-gold text-brown" : "text-white/40 hover:text-white"
-                                        }`}
+                                    key={t}
+                                    onClick={() => setActiveType(t)}
+                                    className={cn(
+                                        "px-10 py-4 rounded-md text-[11px] font-black uppercase tracking-widest transition-all flex items-center gap-2",
+                                        activeType === t ? "bg-gold text-brown shadow-glow" : "text-white/40 hover:text-white"
+                                    )}
                                 >
-                                    {f}
+                                    {t === "Video" ? <Film size={14} /> : t === "Image" ? <Camera size={14} /> : null}
+                                    {t}
                                 </button>
                             ))}
                         </div>
+
+                        {/* Extended Filters Trigger */}
+                        <button
+                            onClick={() => setShowFilters(!showFilters)}
+                            className={cn(
+                                "flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] transition-all",
+                                showFilters ? "text-gold" : "text-white/40 hover:text-white"
+                            )}
+                        >
+                            <Filter size={14} /> {showFilters ? "Hide Filters" : "Advanced Search"}
+                            <ChevronDown size={14} className={cn("transition-transform duration-300", showFilters && "rotate-180")} />
+                        </button>
                     </div>
 
-                    <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filteredMedia.map((item, i) => (
-                            <div key={i} className="media-item group relative aspect-[4/5] rounded-[2rem] overflow-hidden glass-card border-white/5 cursor-pointer">
-                                <Image
-                                    src={item.thumb}
-                                    alt={item.title}
-                                    fill
-                                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-all" />
-
-                                <div className="absolute inset-0 p-8 flex flex-col justify-between">
-                                    <div className="flex justify-between items-start opacity-0 group-hover:opacity-100 transition-all translate-y-[-10px] group-hover:translate-y-0">
-                                        <div className="p-3 bg-white/10 backdrop-blur-md rounded-2xl text-white">
-                                            {item.type === "Video" ? <PlayCircle size={24} /> : <Image src="/archival-1.jpg" width={24} height={24} className="opacity-0" alt="" />}
-                                        </div>
-                                        <button className="p-3 bg-white/10 backdrop-blur-md rounded-2xl text-white hover:bg-gold hover:text-brown transition-colors">
-                                            <Download size={20} />
-                                        </button>
-                                    </div>
-
-                                    <div className="space-y-2">
-                                        <div className="flex items-center gap-3">
-                                            <span className="text-gold text-[10px] font-black uppercase tracking-widest">{item.chapter}</span>
-                                            <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">{item.year}</span>
-                                        </div>
-                                        <h3 className="text-2xl font-black text-white group-hover:text-gold transition-colors">{item.title}</h3>
-                                    </div>
-                                </div>
+                    {/* Filter Panel */}
+                    <div className={cn(
+                        "grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 overflow-hidden transition-all duration-500",
+                        showFilters ? "max-h-[500px] opacity-100 mb-20" : "max-h-0 opacity-0 mb-0"
+                    )}>
+                        <div className="glass-card p-8 rounded-lg space-y-6">
+                            <h4 className="text-[10px] font-black uppercase tracking-widest text-gold">Chapter</h4>
+                            <div className="flex flex-wrap gap-2">
+                                {chapters.map(c => (
+                                    <button
+                                        key={c}
+                                        onClick={() => setActiveChapter(c)}
+                                        className={cn(
+                                            "px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest border transition-all",
+                                            activeChapter === c ? "border-gold bg-gold/10 text-white" : "border-white/5 bg-white/5 text-white/40 hover:text-white"
+                                        )}
+                                    >
+                                        {c}
+                                    </button>
+                                ))}
                             </div>
-                        ))}
+                        </div>
+                        <div className="glass-card p-8 rounded-lg space-y-6">
+                            <h4 className="text-[10px] font-black uppercase tracking-widest text-gold">Time / Era</h4>
+                            <div className="flex flex-wrap gap-2">
+                                {eras.map(e => (
+                                    <button
+                                        key={e}
+                                        onClick={() => setActiveEra(e)}
+                                        className={cn(
+                                            "px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest border transition-all",
+                                            activeEra === e ? "border-gold bg-gold/10 text-white" : "border-white/5 bg-white/5 text-white/40 hover:text-white"
+                                        )}
+                                    >
+                                        {e}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
+                        {filteredMedia.length > 0 ? (
+                            filteredMedia.map((item, i) => (
+                                <div key={i} className="media-item group relative aspect-[4/5] rounded-lg overflow-hidden glass-card-elevated border-white/5 cursor-pointer">
+                                    <Image
+                                        src={item.thumb}
+                                        alt={item.title}
+                                        fill
+                                        className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-80 group-hover:opacity-95 transition-all" />
+
+                                    <div className="absolute inset-0 p-10 flex flex-col justify-between">
+                                        <div className="flex justify-between items-start">
+                                            <div className="p-4 bg-white/10 backdrop-blur-xl rounded-lg text-white border border-white/10">
+                                                {item.type === "Video" ? <PlayCircle size={24} className="text-gold" /> : <Camera size={24} className="text-gold" />}
+                                            </div>
+                                            {/* Download icon removed as requested */}
+                                        </div>
+
+                                        <div className="space-y-4">
+                                            <div className="flex items-center gap-3">
+                                                <span className="px-3 py-1 rounded-full bg-gold text-brown text-[8px] font-black uppercase tracking-widest leading-none">
+                                                    {item.chapter}
+                                                </span>
+                                                <span className="text-white/40 text-[9px] font-black uppercase tracking-widest">
+                                                    {item.year} • {item.event}
+                                                </span>
+                                            </div>
+                                            <h3 className="text-3xl font-black text-white group-hover:text-gold transition-colors leading-[0.9]">
+                                                {item.title}
+                                            </h3>
+                                        </div>
+                                    </div>
+
+                                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                </div>
+                            ))
+                        ) : (
+                            <div className="col-span-full py-40 text-center space-y-4 opacity-50">
+                                <X size={48} className="mx-auto text-gold" />
+                                <p className="text-xl font-black tracking-tighter">THE RECORD IS STILL TO BE REVEALED</p>
+                                <p className="text-[10px] font-black uppercase tracking-widest">Adjust filters to find historical milestones</p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>

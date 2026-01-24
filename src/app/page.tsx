@@ -9,13 +9,15 @@ import MediaPreview from "@/components/sections/MediaPreview";
 import StoriesTeaser from "@/components/sections/StoriesTeaser";
 import JoinCTA from "@/components/sections/JoinCTA";
 import Footer from "@/components/Footer";
+import PartnersSection from "@/components/sections/PartnersSection";
+import LeadershipSection from "@/components/sections/LeadershipSection";
 import { useEffect } from "react";
 import gsap from "gsap";
 
 export default function Home() {
   useEffect(() => {
     // Global reveal on mount
-    gsap.to("main", { opacity: 1, duration: 1, ease: "power2.out" });
+    gsap.to("main", { opacity: 1, duration: 1, ease: "expo.out" });
   }, []);
 
   return (
@@ -30,6 +32,8 @@ export default function Home() {
         <EventHub />
         <MediaPreview />
         <StoriesTeaser />
+        <PartnersSection />
+        <LeadershipSection />
         <JoinCTA />
       </div>
 

@@ -87,9 +87,9 @@ export default function HeroSection() {
                     <span className="text-gradient-gold">LET'S WORSHIP</span>
                 </h1>
 
-                <p className="hero-sub text-xl md:text-2xl text-white/70 font-medium max-w-2xl mx-auto mb-12 leading-relaxed font-serif-spiritual">
-                    One God. One People. One Africa. <br />
-                    Stirring up hope in Jesus through a united voice since 2004.
+                <p className="hero-sub text-xl md:text-2xl text-white/70 font-medium max-w-2xl mx-auto mb-12 leading-relaxed">
+                    One God • One People • One Africa <br />
+                    Stirring up hope in Jesus through a united voice since 2004
                 </p>
 
                 <div className="flex flex-col md:flex-row gap-6 justify-center items-center">

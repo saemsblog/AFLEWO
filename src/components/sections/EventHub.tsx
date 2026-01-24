@@ -383,24 +383,25 @@ END:VCALENDAR`;
                 <button
                     key={day}
                     onClick={() => setSelectedDate(isSelected ? null : date)}
-                    className={`relative h-10 md:h-14 rounded-lg text-sm font-bold transition-all ${isSelected
-                        ? "bg-gold text-brown"
-                        : hasEvents
-                            ? "bg-white/5 hover:bg-white/10 text-white"
-                            : "text-white/40 hover:bg-white/5"
+                    className={`relative h-10 md:h-14 w-full flex items-center justify-center text-sm font-black transition-all group overflow-hidden ${isSelected ? "text-brown" : hasEvents ? "text-white" : "text-white/30"
                         }`}
                 >
-                    {day}
-                    {hasEvents && !isSelected && (
-                        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 flex gap-0.5">
-                            {dayEvents.slice(0, 3).map((e, i) => (
-                                <span
-                                    key={i}
-                                    className={`w-1 h-1 rounded-full ${chapterColors[e.chapter]?.bg || "bg-gold"}`}
-                                />
-                            ))}
+                    {/* Spirit of Worship Animation Background */}
+                    {isSelected && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="absolute w-full h-full bg-gold rounded-full scale-90 md:scale-75 animate-scale-in" />
+                            <div className="spirit-wave absolute w-full h-full opacity-40 bg-[radial-gradient(circle,white_0%,transparent_70%)] blur-md animate-pulse" />
                         </div>
                     )}
+
+                    {!isSelected && hasEvents && (
+                        <div className="absolute bottom-1.5 w-1 h-1 bg-gold rounded-full" />
+                    )}
+
+                    <span className="relative z-10">{day}</span>
+
+                    {/* Hover state */}
+                    <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
                 </button>
             );
         }
@@ -418,20 +419,20 @@ END:VCALENDAR`;
 
             <div className="max-container relative z-10">
                 <div className="hub-panel mb-16">
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">
+                    <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-8 mb-12 text-center md:text-left">
                         <div className="space-y-4">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-gold text-[10px] font-black uppercase tracking-[0.2em]">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-gold text-[10px] font-black uppercase tracking-[0.2em] mx-auto md:mx-0">
                                 <CalendarIcon size={12} /> Events & Calendar
                             </div>
-                            <h2 className="text-5xl md:text-7xl font-black tracking-tighter">
+                            <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9]">
                                 THE <span className="text-gold">CALENDAR</span>
                             </h2>
                         </div>
                         <button
                             onClick={downloadAllICS}
-                            className="press-scale px-8 py-4 bg-gold text-brown rounded-lg font-black text-[10px] uppercase tracking-widest hover:brightness-110 transition-all flex items-center gap-3"
+                            className="press-scale px-10 py-5 bg-gold text-brown rounded-lg font-black text-[11px] uppercase tracking-widest hover:brightness-110 transition-all flex items-center gap-4 shadow-glow"
                         >
-                            <Download size={16} /> Sync All 2026 Events
+                            <Download size={18} /> Sync 2026 Roadmap
                         </button>
                     </div>
                 </div>
