@@ -79,6 +79,7 @@
     border-radius: 9999px;
     transform-origin: top;
     box-shadow: 0 0 15px hsla(0, 0%, 100%, 0.4);
+    z-index: 5;
 }
 
 .predictive-fill {
@@ -90,6 +91,7 @@
     border-radius: 9999px;
     transform-origin: top;
     pointer-events: none;
+    z-index: 2;
 }
 
 .section-node {
