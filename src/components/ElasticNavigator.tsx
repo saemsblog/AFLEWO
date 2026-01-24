@@ -32,11 +32,18 @@ export default function ElasticNavigator() {
     const [isExpanded, setIsExpanded] = useState(false);
     const [region, setRegion] = useState<'top' | 'middle' | 'bottom'>('middle');
     const [activeIndex, setActiveIndex] = useState(0);
+    const [isIdle, setIsIdle] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
 
     const sliderRef = useRef<HTMLDivElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
     const idleTimeoutRef = useRef<number | null>(null);
+
+    const resetIdleTimeout = useCallback((delay: number) => {
+        setIsIdle(false);
+        if (idleTimeoutRef.current) window.clearTimeout(idleTimeoutRef.current);
+        idleTimeoutRef.current = window.setTimeout(() => setIsIdle(true), delay);
+    }, []);
     const rafRef = useRef<number | null>(null);
     const lastYRef = useRef(0);
     const lastTimeRef = useRef(0);
@@ -55,9 +62,9 @@ export default function ElasticNavigator() {
     const rangeHeight = useTransform(value, (v) => `${v}%`);
     const predictiveHeight = useTransform(predictiveValue, (v) => `${v}%`);
 
-    // Brand Colors
-    const GOLD = "#f5a623";
-    const GOLD_MUTED = "rgba(245, 166, 35, 0.2)";
+    // Brand Colors (White Theme)
+    const PRIMARY_COLOR = "#ffffff";
+    const PRIMARY_MUTED = "rgba(255, 255, 255, 0.2)";
 
     const getClosestSectionIndex = useCallback((percentage: number) => {
         const span = 100 / (sections.length - 1);
@@ -91,30 +98,36 @@ export default function ElasticNavigator() {
     });
 
     useEffect(() => {
+        const handleInteraction = () => resetIdleTimeout(5000); // 5s screen inactivity
         const handleScroll = () => {
+            handleInteraction();
             if (isDragging) return;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             if (docHeight <= 0) return;
             const scrollPercent = (window.scrollY / docHeight) * 100;
             value.set(scrollPercent);
             setIsVisible(window.scrollY > window.innerHeight * 0.5);
-
-            if (idleTimeoutRef.current) window.clearTimeout(idleTimeoutRef.current);
-            idleTimeoutRef.current = window.setTimeout(() => setIsExpanded(false), 8000);
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('mousemove', handleInteraction);
+        window.addEventListener('keydown', handleInteraction);
+        window.addEventListener('touchstart', handleInteraction);
         window.addEventListener('resize', updateThumbPosition);
+
         handleScroll();
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('mousemove', handleInteraction);
+            window.removeEventListener('keydown', handleInteraction);
+            window.removeEventListener('touchstart', handleInteraction);
             window.removeEventListener('resize', updateThumbPosition);
             if (idleTimeoutRef.current) window.clearTimeout(idleTimeoutRef.current);
             if (rafRef.current) cancelAnimationFrame(rafRef.current);
             try { value.stop(); overflow.stop(); predictiveValue.stop(); } catch (e) { }
         };
-    }, [isDragging, value, updateThumbPosition]);
+    }, [isDragging, value, updateThumbPosition, resetIdleTimeout]);
 
     const handleTrackPointer = (ev: React.PointerEvent) => {
         if (!trackRef.current) return;
@@ -207,10 +220,20 @@ export default function ElasticNavigator() {
     }, [isDragging]);
 
     return (
-        <div className={cn(
-            "fixed right-6 bottom-8 z-[100] transition-all duration-1000 cubic-bezier(0.23, 1, 0.32, 1)",
-            isVisible ? "translate-x-0 opacity-100" : "translate-x-32 opacity-0"
-        )}>
+        <div
+            className={cn(
+                "fixed right-6 bottom-8 z-[100] transition-all duration-1000 cubic-bezier(0.23, 1, 0.32, 1)",
+                isVisible ? "translate-x-0" : "translate-x-32",
+                !isVisible ? "opacity-0" : isIdle ? "opacity-[0.05]" : "opacity-100"
+            )}
+            onPointerEnter={() => {
+                setIsIdle(false);
+                if (idleTimeoutRef.current) window.clearTimeout(idleTimeoutRef.current);
+            }}
+            onPointerLeave={() => {
+                if (!isExpanded) resetIdleTimeout(3500); // 3.5s nav inactivity
+            }}
+        >
             <AnimatePresence mode="popLayout">
                 {!isExpanded ? (
                     <motion.button
@@ -237,9 +260,9 @@ export default function ElasticNavigator() {
                     >
                         <motion.button
                             onClick={() => setIsExpanded(false)}
-                            className="text-gold/40 hover:text-gold mb-6 transition-colors"
+                            className="text-white/40 hover:text-white mb-6 transition-colors"
                         >
-                            <AppIcon name="close" size={20} />
+                            <AppIcon name="close" size={20} className="text-white" />
                         </motion.button>
 
                         <div
@@ -276,7 +299,7 @@ export default function ElasticNavigator() {
                                             }}
                                             animate={{
                                                 scale: isActive ? 1.4 : 1,
-                                                backgroundColor: isActive ? GOLD : GOLD_MUTED
+                                                backgroundColor: isActive ? PRIMARY_COLOR : PRIMARY_MUTED
                                             }}
                                         >
                                             <AnimatePresence>
@@ -299,14 +322,14 @@ export default function ElasticNavigator() {
                         </div>
 
                         <motion.div
-                            className="nav-arrow"
+                            className="nav-arrow text-white"
                             animate={{
                                 y: region === 'top' ? [-4, 0, -4] : region === 'bottom' ? [4, 0, 4] : 0,
                                 opacity: isDragging ? 1 : 0.4
                             }}
                             transition={{ repeat: Infinity, duration: 1.5 }}
                         >
-                            <AppIcon name={region === 'top' ? "stat_3" : region === 'bottom' ? "stat_minus_3" : "expand_more"} size={22} />
+                            <AppIcon name={region === 'top' ? "stat_3" : region === 'bottom' ? "stat_minus_3" : "expand_more"} size={22} className="text-white" />
                         </motion.div>
 
                         {isDragging && (

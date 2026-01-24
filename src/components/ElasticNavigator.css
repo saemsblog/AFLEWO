@@ -11,37 +11,35 @@
     width: 64px;
     height: 64px;
     border-radius: 24px;
-    background: hsla(20, 20%, 8%, 0.4);
-    border: 1px solid hsla(42, 92%, 56%, 0.2);
+    background: hsla(0, 0%, 100%, 0.1);
+    border: none;
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #f5a623;
-    /* gold */
+    color: #ffffff;
     cursor: pointer;
-    box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.6);
-    transition: background 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease, transform 0.3s ease, opacity 0.8s ease;
 }
 
 .fab-trigger:hover {
-    background: hsla(20, 20%, 8%, 0.6);
-    border-color: hsla(42, 92%, 56%, 0.4);
+    background: hsla(0, 0%, 100%, 0.2);
     transform: translateY(-4px);
 }
 
 .slider-container {
     padding: 2.5rem 0.5rem;
-    background: hsla(20, 20%, 8%, 0.4);
+    background: hsla(0, 0%, 100%, 0.1);
     backdrop-filter: blur(32px) saturate(180%);
     -webkit-backdrop-filter: blur(32px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: none;
     border-radius: 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
     width: 56px;
     height: 480px;
     position: relative;
@@ -67,7 +65,7 @@
     position: relative;
     width: 6px;
     height: 100%;
-    background: hsla(42, 90%, 50%, 0.08);
+    background: hsla(0, 0%, 100%, 0.15);
     border-radius: 9999px;
     overflow: visible;
 }
@@ -75,13 +73,12 @@
 .slider-fill {
     position: absolute;
     top: 0;
-    /* Anchored to top so dragging down fills down */
     left: 0;
     width: 100%;
-    background: #f5a623;
+    background: #ffffff;
     border-radius: 9999px;
     transform-origin: top;
-    box-shadow: 0 0 15px hsla(42, 92%, 56%, 0.4);
+    box-shadow: 0 0 15px hsla(0, 0%, 100%, 0.4);
 }
 
 .predictive-fill {
@@ -89,7 +86,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: hsla(42, 92%, 56%, 0.2);
+    background: hsla(0, 0%, 100%, 0.1);
     border-radius: 9999px;
     transform-origin: top;
     pointer-events: none;
@@ -99,13 +96,12 @@
     position: absolute;
     left: 50%;
     top: 0;
-    /* Standardized: top is set via style prop */
     transform: translate(-50%, -50%);
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: hsla(42, 92%, 56%, 0.25);
-    border: 1px solid hsla(42, 92%, 56%, 0.4);
+    background: hsla(0, 0%, 100%, 0.2);
+    border: 1px solid hsla(0, 0%, 100%, 0.3);
     cursor: pointer;
     z-index: 20;
     display: flex;
@@ -117,9 +113,9 @@
 }
 
 .section-node.active {
-    background: #f5a623;
-    border-color: #f5a623;
-    box-shadow: 0 0 20px hsla(42, 92%, 56%, 0.6);
+    background: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 0 20px hsla(0, 0%, 100%, 0.6);
 }
 
 .node-hit-area {
@@ -137,11 +133,10 @@
 .slider-thumb {
     position: fixed;
     left: var(--thumb-left, 0);
-    /* Set dynamically */
     width: 22px;
     height: 22px;
-    background: #f5a623;
-    border: 2px solid white;
+    background: #ffffff;
+    border: 2px solid #000000;
     border-radius: 50%;
     z-index: 50;
     pointer-events: none;
@@ -152,9 +147,10 @@
 .value-indicator {
     position: absolute;
     right: 54px;
-    background: hsla(20, 20%, 8%, 0.95);
-    border: 1px solid hsla(42, 92%, 56%, 0.25);
-    color: #f5a623;
+    background: hsla(0, 0%, 0%, 0.85);
+    /* Dark background for white text/icon link */
+    border: 1px solid hsla(0, 0%, 100%, 0.2);
+    color: #ffffff;
     padding: 6px 16px;
     border-radius: 14px;
     font-size: 12px;
@@ -171,7 +167,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: hsla(42, 92%, 56%, 0.6);
+    color: hsla(0, 0%, 100%, 0.6);
     margin-top: 1rem;
     cursor: pointer;
 }
