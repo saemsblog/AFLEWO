@@ -269,14 +269,14 @@ export default function ElasticNavigator() {
                         className="bg-brown/90 backdrop-blur-2xl border border-gold/20 flex flex-col items-center py-4 relative shadow-2xl"
                         style={{ transformOrigin: "bottom right" }}
                     >
-                        <button
+                        <motion.button
                             onClick={() => setIsExpanded(false)}
                             className="text-gold/50 hover:text-gold mb-2 transition-colors"
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                         >
                             <AppIcon name="close" size={16} />
-                        </button>
+                        </motion.button>
 
                         <motion.div
                             ref={sliderRef}
@@ -297,7 +297,7 @@ export default function ElasticNavigator() {
                                 }}
                                 className="slider-track"
                             >
-                                <div className="slider-range" style={{ height: rangeHeight }} />
+                                <motion.div className="slider-range" style={{ height: rangeHeight }} />
 
                                 <div className="predictive-track">
                                     <motion.div
