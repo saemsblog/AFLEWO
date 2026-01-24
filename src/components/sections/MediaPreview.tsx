@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 import { Play, ArrowRight, Calendar, MapPin, Eye } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -125,11 +126,11 @@ export default function MediaPreview() {
         return () => ctx.revert();
     }, []);
 
-    const getTypeIcon = (type: string) => {
+    const getTypeIcon = (type: string, size: number = 24) => {
         if (type === "video" || type === "documentary") {
-            return <Play size={24} fill="currentColor" stroke="none" />;
+            return <Play size={size} fill="currentColor" stroke="none" />;
         }
-        return <Eye size={24} />;
+        return <Eye size={size} />;
     };
 
     return (
@@ -165,7 +166,7 @@ export default function MediaPreview() {
                         <Link
                             href="/media"
                             key={i}
-                            className={`bento-item relative rounded-lg overflow-hidden glass-card border-white/5 group cursor-pointer
+                            className={`bento-item relative rounded-lg overflow-hidden glass-card border-white/5 group cursor-pointer transition-colors duration-500
                                 ${item.size === "large" ? "md:col-span-2 md:row-span-2" : ""}
                                 ${item.size === "medium" ? "md:col-span-2 md:row-span-1" : ""}
                                 ${item.size === "small" ? "md:col-span-1 md:row-span-1" : ""}
@@ -182,12 +183,18 @@ export default function MediaPreview() {
                             <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
                                 <div className="flex justify-between items-start">
                                     <div className="flex flex-wrap gap-2">
-                                        <span className="px-3 py-1 rounded-full bg-gold/20 backdrop-blur-sm text-gold text-[9px] font-black uppercase tracking-widest">
+                                        <span className={cn(
+                                            "rounded-full bg-gold/20 backdrop-blur-sm text-gold font-black uppercase tracking-widest",
+                                            item.size === "small" ? "px-2 py-0.5 text-[7px]" : "px-3 py-1 text-[9px]"
+                                        )}>
                                             {item.category}
                                         </span>
                                         {item.chapter && (
-                                            <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-white/70 text-[9px] font-black uppercase tracking-widest flex items-center gap-1">
-                                                <MapPin size={10} /> {item.chapter}
+                                            <span className={cn(
+                                                "rounded-full bg-white/10 backdrop-blur-sm text-white/70 font-black uppercase tracking-widest flex items-center gap-1",
+                                                item.size === "small" ? "px-2 py-0.5 text-[7px]" : "px-3 py-1 text-[9px]"
+                                            )}>
+                                                <MapPin size={item.size === "small" ? 8 : 10} /> {item.chapter}
                                             </span>
                                         )}
                                     </div>
@@ -208,8 +215,11 @@ export default function MediaPreview() {
                                     </div>
 
                                     <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                                        <button className="p-4 bg-gold rounded-full text-brown flex items-center justify-center hover:scale-110 transition-transform">
-                                            {getTypeIcon(item.type)}
+                                        <button className={cn(
+                                            "bg-gold rounded-full text-brown flex items-center justify-center hover:scale-110 transition-transform",
+                                            item.size === "small" ? "p-3" : "p-4"
+                                        )}>
+                                            {getTypeIcon(item.type, item.size === "small" ? 16 : 24)}
                                         </button>
                                     </div>
                                 </div>

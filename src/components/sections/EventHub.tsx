@@ -187,28 +187,38 @@ function FlipDigit({ value, label }: FlipDigitProps) {
     useEffect(() => {
         if (prevValue.current !== value && digitRef.current) {
             gsap.fromTo(digitRef.current,
-                { rotateX: -90, opacity: 0 },
-                { rotateX: 0, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }
+                { rotateX: -60, opacity: 0.5 },
+                { rotateX: 0, opacity: 1, duration: 0.6, ease: "elastic.out(1, 0.75)" }
             );
         }
         prevValue.current = value;
     }, [value]);
 
     return (
-        <div className="flex flex-col items-center gap-2">
-            <div className="relative perspective-1000">
+        <div className="flex flex-col items-center gap-3">
+            <div className="relative group">
+                {/* Outer Glow */}
+                <div className="absolute inset-0 bg-gold/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
                 <div
                     ref={digitRef}
-                    className="countdown-digit relative glass-card-elevated w-16 h-20 md:w-24 md:h-28 flex items-center justify-center rounded-xl border-white/10 overflow-hidden"
+                    className="countdown-digit relative w-20 h-24 md:w-28 md:h-32 flex items-center justify-center rounded-[1rem] bg-gradient-to-b from-white/10 to-transparent border border-white/5 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] overflow-hidden backdrop-blur-md"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent" />
-                    <span className="text-3xl md:text-5xl font-black text-white">
+                    {/* Shadow across the middle hinge */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40 opacity-20" />
+
+                    {/* Top half highlight */}
+                    <div className="absolute top-0 left-0 right-0 h-1/2 bg-white/5 border-b border-white/5" />
+
+                    <span className="text-4xl md:text-6xl font-black text-white tracking-tighter drop-shadow-2xl">
                         {value.toString().padStart(2, '0')}
                     </span>
-                    <div className="absolute top-1/2 left-0 right-0 h-px bg-black/30" />
+
+                    {/* Hinge Line */}
+                    <div className="absolute top-1/2 left-0 right-0 h-[2px] bg-black/40 shadow-[0_1px_0_rgba(255,255,255,0.05)]" />
                 </div>
             </div>
-            <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] text-white/30">{label}</span>
+            <span className="text-[9px] font-black uppercase tracking-[0.4em] text-gold/40">{label}</span>
         </div>
     );
 }

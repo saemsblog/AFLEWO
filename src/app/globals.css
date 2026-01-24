@@ -99,9 +99,8 @@
   h6 {
     @apply font-black tracking-tighter leading-tight;
 
-    /* Auto-center on mobile */
     @media (max-width: 768px) {
-      @apply text-center;
+      text-align: center;
     }
   }
 
@@ -117,7 +116,9 @@
     @apply font-medium;
 
     @media (max-width: 768px) {
-      @apply text-center mx-auto !important;
+      text-align: center;
+      margin-left: auto !important;
+      margin-right: auto !important;
     }
   }
 

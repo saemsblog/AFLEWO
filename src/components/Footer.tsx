@@ -13,8 +13,8 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-20 mb-24">
                     {/* Logo & Vision */}
                     <div className="md:col-span-12 lg:col-span-5 space-y-10 text-center lg:text-left">
-                        <Link href="/" className="flex items-center justify-center lg:justify-start gap-4 group">
-                            <div className="relative w-16 h-16 group-hover:rotate-6 transition-transform duration-500">
+                        <Link href="/" className="flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-6 group">
+                            <div className="relative w-20 h-20 group-hover:rotate-6 transition-transform duration-500">
                                 <Image
                                     src="/brand/AFLEWO LOGO 1-Photoroom.png"
                                     alt="AFLEWO"
@@ -22,8 +22,9 @@ export default function Footer() {
                                     className="object-contain"
                                 />
                             </div>
-                            <span className="font-black text-4xl tracking-tighter text-white">AFLEWO</span>
+                            <span className="font-black text-3xl md:text-5xl tracking-tighter text-white">Africa Let's Worship</span>
                         </Link>
+
                         <div className="space-y-6">
                             <p className="text-white/40 text-xl font-medium leading-relaxed italic max-w-md mx-auto lg:mx-0">
                                 "Uniting the Continent through the Altar of Worship. One God, one people, one Africa."

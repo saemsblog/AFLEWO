@@ -35,7 +35,7 @@ export default function LeadershipSection() {
     }, []);
 
     return (
-        <section ref={containerRef} className="section-padding bg-brown/5 relative overflow-hidden">
+        <section id="leadership" ref={containerRef} className="section-padding bg-brown/5 relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[radial-gradient(circle_at_center,var(--gold)_0%,transparent_70%)]" />
 
             <div className="max-container relative z-10">

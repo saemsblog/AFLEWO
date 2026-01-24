@@ -43,8 +43,9 @@ export default function ChaptersSection() {
         gsap.to(card, {
             x: moveX,
             y: moveY,
-            duration: 0.3,
-            ease: "power2.out"
+            duration: 0.4,
+            ease: "power2.out",
+            overwrite: "auto"
         });
     }, []);
 
@@ -55,8 +56,9 @@ export default function ChaptersSection() {
         gsap.to(card, {
             x: 0,
             y: 0,
-            duration: 0.5,
-            ease: "elastic.out(1, 0.3)"
+            duration: 0.8,
+            ease: "elastic.out(1, 0.5)",
+            overwrite: "auto"
         });
     }, []);
 
@@ -128,7 +130,7 @@ export default function ChaptersSection() {
                         <div
                             key={chapter.slug}
                             ref={(el) => { cardsRef.current[i] = el; }}
-                            className={`chapter-card glass-card-elevated p-8 md:p-10 flex flex-col justify-between group cursor-pointer transition-all duration-700 relative overflow-hidden rounded-lg ${getGridClasses(chapter.name)}`}
+                            className={`chapter-card glass-card-elevated p-8 md:p-10 flex flex-col justify-between group cursor-pointer transition-colors duration-500 relative overflow-hidden rounded-lg ${getGridClasses(chapter.name)}`}
                             onMouseMove={(e) => handleMouseMove(e, i)}
                             onMouseLeave={() => handleMouseLeave(i)}
                         >

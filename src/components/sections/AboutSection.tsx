@@ -117,7 +117,7 @@ export default function AboutSection() {
 
             {/* Background Decorative Text */}
             <div className="absolute -left-20 top-1/4 opacity-[0.02] pointer-events-none rotate-90 origin-left">
-                <span className="text-[20rem] font-black uppercase tracking-tighter">EST. 2004</span>
+                <span className="text-[20rem] font-black uppercase tracking-tighter">AFLEWO</span>
             </div>
         </section>
     );

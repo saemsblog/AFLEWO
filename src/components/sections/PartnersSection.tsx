@@ -33,7 +33,7 @@ export default function PartnersSection() {
     }, []);
 
     return (
-        <section ref={containerRef} className="py-20 bg-background border-y border-white/5">
+        <section id="partners" ref={containerRef} className="py-20 bg-background border-y border-white/5">
             <div className="max-container">
                 <div className="text-center mb-16 space-y-4">
                     <span className="text-gold text-[10px] font-black uppercase tracking-[0.4em]">Prophetic Alignment</span>

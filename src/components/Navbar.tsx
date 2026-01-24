@@ -6,6 +6,8 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Menu, X, Sun, Moon, Globe, Heart } from "lucide-react";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 const links = [
     { name: "About", href: "/about" },
@@ -18,6 +20,7 @@ const links = [
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
     const { theme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
@@ -56,15 +59,28 @@ export default function Navbar() {
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-10">
-                    {links.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/50 hover:text-gold transition-all"
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
+                    {links.map((link) => {
+                        const isActive = pathname === link.href;
+                        return (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className={cn(
+                                    "relative text-[10px] font-black uppercase tracking-[0.3em] transition-all",
+                                    isActive ? "text-gold" : "text-foreground/50 hover:text-gold"
+                                )}
+                            >
+                                {link.name}
+                                {isActive && (
+                                    <motion.div
+                                        layoutId="nav-active"
+                                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold"
+                                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                                    />
+                                )}
+                            </Link>
+                        );
+                    })}
                 </div>
 
                 {/* Right Action */}
