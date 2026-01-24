@@ -269,7 +269,11 @@ export default function ElasticNavigator() {
                                         <motion.div
                                             key={section.id}
                                             className={cn("section-node", isActive && "active")}
-                                            style={{ top: `${nodePos}%` }}
+                                            style={{
+                                                top: `${nodePos}%`,
+                                                x: "-50%",
+                                                y: "-50%"
+                                            }}
                                             animate={{
                                                 scale: isActive ? 1.4 : 1,
                                                 backgroundColor: isActive ? GOLD : GOLD_MUTED
