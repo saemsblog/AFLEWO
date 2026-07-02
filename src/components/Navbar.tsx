@@ -5,20 +5,28 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
+import { supabase } from "@/integrations/supabase/client";
 
-const navItems = [
-    { label: "About",   href: "/about",   rotation: -6  },
-    { label: "Media",   href: "/media",   rotation: 5   },
-    { label: "Stories", href: "/stories", rotation: -5  },
-    { label: "Join",    href: "/join",    rotation: 6   },
-    { label: "Alumni",  href: "/alumni",  rotation: -6  },
-    { label: "Chapters",href: "/#chapters",rotation: 5  },
+const publicNavItems = [
+    { label: "About",    href: "/about",    rotation: -6  },
+    { label: "Media",    href: "/media",    rotation: 5   },
+    { label: "Stories",  href: "/stories",  rotation: -5  },
+    { label: "Join",     href: "/join",     rotation: 6   },
+    { label: "Alumni",   href: "/alumni",   rotation: -6  },
+    { label: "Chapters", href: "/#chapters",rotation: 5   },
 ];
 
 export default function Navbar() {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
+    const [isSignedIn, setIsSignedIn] = useState(false);
+
+    // Dynamic auth item
+    const authItem = isSignedIn
+        ? { label: "Portal", href: "/portal",   rotation: -4 }
+        : { label: "Sign In", href: "/auth",    rotation: -4 };
+    const navItems = [...publicNavItems, authItem];
 
     const overlayRef   = useRef<HTMLDivElement>(null);
     const pillRefs     = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -26,7 +34,18 @@ export default function Navbar() {
     const lineRef1     = useRef<HTMLSpanElement>(null);
     const lineRef2     = useRef<HTMLSpanElement>(null);
 
-    useEffect(() => { setMounted(true); }, []);
+    useEffect(() => {
+        setMounted(true);
+        // Check current session
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setIsSignedIn(!!session);
+        });
+        // Listen for sign-in / sign-out events
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
+            setIsSignedIn(!!session);
+        });
+        return () => subscription.unsubscribe();
+    }, []);
 
     // Animate open / close
     useEffect(() => {

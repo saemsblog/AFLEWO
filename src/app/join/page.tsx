@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AppIcon from "@/components/ui/AppIcon";
 import Link from "next/link";
+import { supabase } from "@/integrations/supabase/client";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,6 +61,7 @@ export default function JoinPage() {
     const [formState, setFormState] = useState<FormState>({ name: "", email: "", phone: "", chapter: "", track: "", message: "" });
     const [submitted, setSubmitted] = useState(false);
     const [submitting, setSubmitting] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         // Read URL param ?tab=
@@ -102,15 +104,44 @@ export default function JoinPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true);
-        // Send to mailto as fallback — real integration can swap this for a fetch to /api/join
-        await new Promise((r) => setTimeout(r, 1500));
-        const subject = encodeURIComponent(`AFLEWO Join Application — ${formState.track || "General"}`);
-        const body = encodeURIComponent(
-            `Name: ${formState.name}\nEmail: ${formState.email}\nPhone: ${formState.phone}\nChapter: ${formState.chapter}\nTrack: ${formState.track}\nMessage: ${formState.message}`
-        );
-        window.location.href = `mailto:nairobi@aflewo.org?subject=${subject}&body=${body}`;
-        setSubmitting(false);
-        setSubmitted(true);
+        setError(null);
+
+        try {
+            // Attach auth token if user is signed in
+            const { data: { session } } = await supabase.auth.getSession();
+            const headers: Record<string, string> = { "Content-Type": "application/json" };
+            if (session?.access_token) {
+                headers["Authorization"] = `Bearer ${session.access_token}`;
+            }
+
+            const chapterSlug = formState.chapter.toLowerCase();
+            const res = await fetch("/api/join", {
+                method: "POST",
+                headers,
+                body: JSON.stringify({
+                    name: formState.name,
+                    email: formState.email,
+                    phone: formState.phone,
+                    chapter: chapterSlug,
+                    track: formState.track,
+                    message: formState.message,
+                }),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                setError(data.error || "Submission failed. Please try again.");
+                return;
+            }
+
+            setSubmitted(true);
+        } catch (err) {
+            console.error("[join] Submit error:", err);
+            setError("Network error. Please check your connection and try again.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -241,6 +272,12 @@ export default function JoinPage() {
                                         className="w-full py-5 bg-gold text-brown rounded-lg font-black uppercase tracking-widest hover:brightness-110 transition-all shadow-glow disabled:opacity-50 flex items-center justify-center gap-3">
                                         {submitting ? <><AppIcon name="autorenew" size={20} className="animate-spin" /> Sending...</> : <><AppIcon name="send" size={20} /> Submit Application</>}
                                     </button>
+                                    {error && (
+                                        <div className="flex items-center gap-3 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-bold">
+                                            <AppIcon name="error" size={18} />
+                                            {error}
+                                        </div>
+                                    )}
                                 </form>
                             )}
                         </div>

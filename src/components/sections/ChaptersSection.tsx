@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AppIcon from "@/components/ui/AppIcon";
 import Link from "next/link";
 import Image from "next/image";
-import { chapters, type Chapter } from "@/lib/chapters";
+import { useChaptersWithLiveData, type Chapter } from "@/lib/use-chapters";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -266,12 +266,14 @@ function QrModal({ chapter, isOpen, onClose }: QrModalProps) {
 }
 
 export default function ChaptersSection() {
+    const chapters = useChaptersWithLiveData();
     const containerRef = useRef<HTMLDivElement>(null);
     const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
     const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
     const [qrChapter, setQrChapter] = useState<Chapter | null>(null);
     // iOS-style 3D tilt: rotateX/rotateY on each card via GSAP quickTo
     const tiltRefs = useRef<{ rx: gsap.QuickToFunc; ry: gsap.QuickToFunc; scale: gsap.QuickToFunc }[]>([]);
+
 
     const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>, index: number) => {
         const card = cardsRef.current[index];

@@ -1,5 +1,4 @@
 
-
 export interface Chapter {
     slug: string;
     name: string;
