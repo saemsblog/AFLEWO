@@ -132,23 +132,13 @@ export default function Navbar() {
                             {authLink.name}
                         </Link>
 
-                        {/* Spacer on mobile so the pill bar right-edge aligns with the fixed toggle */}
-                        <div className="md:hidden w-10 h-10" aria-hidden />
+                        {/* Mobile menu toggle */}
+                        <div className="md:hidden w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:border-gold/30 transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <MenuToggle isOpen={isMobileMenuOpen} onToggle={toggleMenu} />
+                        </div>
                     </div>
                 </div>
             </nav>
-
-            {/* ── Single fixed toggle — floats above both nav AND overlay ── */}
-            {/* Matches the top-right position of the pill bar */}
-            <div
-                className={`fixed z-[300] transition-all duration-500 ${
-                    isScrolled ? "top-4 right-5 md:right-10" : "top-3 right-5 md:right-10"
-                } md:hidden`}
-            >
-                <div className="w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:border-gold/30 transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
-                    <MenuToggle isOpen={isMobileMenuOpen} onToggle={toggleMenu} />
-                </div>
-            </div>
 
             {/* ── Full-screen mobile overlay ── */}
             <div
