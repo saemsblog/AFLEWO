@@ -12,8 +12,8 @@ import animationData from "../../../public/menu-close-lottie.json";
  *   Frame  60  → X (cross, fully formed)
  *   Frame 168  → Menu again (end of reverse sequence)
  *
- * On OPEN  (☰→✕): playSegments [0,  60], stays at 60
- * On CLOSE (✕→☰): playSegments [60, 168], stays at 168 (same visual as 0)
+ * On OPEN  (☰→✕): playSegments [0,  60] at 2.5x speed
+ * On CLOSE (✕→☰): playSegments [60,  0] at 3.0x speed (reverse playback)
  */
 
 interface MenuToggleProps {
@@ -23,7 +23,6 @@ interface MenuToggleProps {
 
 const FRAME_MENU = 0;
 const FRAME_X    = 60;
-const FRAME_END  = 168;
 
 export default function MenuToggle({ isOpen, onToggle }: MenuToggleProps) {
     const lottieRef  = useRef<LottieRefCurrentProps>(null);
@@ -32,7 +31,7 @@ export default function MenuToggle({ isOpen, onToggle }: MenuToggleProps) {
 
     // Once Lottie DOM is ready, snap to Menu state silently
     const handleReady = () => {
-        lottieRef.current?.setSpeed(1.4);
+        lottieRef.current?.setSpeed(2.5);
         lottieRef.current?.goToAndStop(FRAME_MENU, true);
         readyRef.current  = true;
         prevRef.current   = false;
@@ -51,11 +50,13 @@ export default function MenuToggle({ isOpen, onToggle }: MenuToggleProps) {
         if (prevRef.current === isOpen) return; // no change
 
         if (isOpen) {
-            // ☰ → ✕ : single atomic seek-and-play, no pre-seek needed
+            // ☰ → ✕
+            lottieRef.current?.setSpeed(2.5);
             lottieRef.current?.playSegments([FRAME_MENU, FRAME_X], true);
         } else {
-            // ✕ → ☰
-            lottieRef.current?.playSegments([FRAME_X, FRAME_END], true);
+            // ✕ → ☰ (play exactly the same opening sequence but in reverse, faster)
+            lottieRef.current?.setSpeed(3.0);
+            lottieRef.current?.playSegments([FRAME_X, FRAME_MENU], true);
         }
 
         prevRef.current = isOpen;
