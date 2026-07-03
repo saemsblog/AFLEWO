@@ -823,4 +823,16 @@ export const Constants = {
       ],
     },
   },
-} as const
+} as const;
+
+export type Profile = Database["public"]["Tables"]["profiles"]["Row"];
+export type Audition = Database["public"]["Tables"]["auditions"]["Row"];
+export type Registration = Database["public"]["Tables"]["registrations"]["Row"];
+export type Chapter = Database["public"]["Tables"]["chapters"]["Row"];
+export type Attendance = Database["public"]["Tables"]["attendance"]["Row"];
+export type ChapterEvent = Database["public"]["Tables"]["chapter_events"]["Row"];
+export type Resource = Database["public"]["Tables"]["resources"]["Row"];
+export type UserRole = Database["public"]["Enums"]["user_role"];
+export type AuditionStatus = Database["public"]["Enums"]["audition_status"];
+export type AuditionCategory = Database["public"]["Enums"]["audition_category"];
+export type ResourceType = Database["public"]["Enums"]["resource_type"];

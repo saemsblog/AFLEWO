@@ -65,7 +65,7 @@ export default function AdminAuditionsPage() {
     }
 
     const { data, error } = await query;
-    if (!error) setAuditions((data || []) as AuditionWithProfile[]);
+    if (!error) setAuditions((data || []) as unknown as AuditionWithProfile[]);
     setLoading(false);
   };
 

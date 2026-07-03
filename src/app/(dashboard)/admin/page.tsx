@@ -131,7 +131,7 @@ export default function AdminOverviewPage() {
             <AppIcon name={icon} size={20} className={`${color} group-hover:scale-110 transition-transform`} />
             <div>
               <p className={`text-2xl font-black ${color}`}>
-                {loading ? "—" : (stats as Record<string, number | unknown[]>)[key] as number}
+                {loading ? "—" : stats[key as keyof Omit<AdminStats, "recentAuditLogs">]}
               </p>
               <p className="text-[10px] text-white/30 uppercase tracking-widest font-black mt-0.5">{label}</p>
             </div>

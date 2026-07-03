@@ -38,6 +38,7 @@
   ],
   "exclude": [
     "node_modules",
-    "legacy_vite"
+    "legacy_vite",
+    "src/test"
   ]
 }

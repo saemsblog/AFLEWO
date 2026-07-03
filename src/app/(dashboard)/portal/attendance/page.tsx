@@ -10,7 +10,7 @@ type AttendanceWithEvent = Attendance & {
   chapter_events: Pick<ChapterEvent, "title" | "starts_at" | "event_type">;
 };
 
-const statusDisplay = {
+const statusDisplay: Record<Attendance["status"], { label: string; icon: string; color: string }> = {
   present: { label: "Present",   icon: "check_circle", color: "text-emerald" },
   absent:  { label: "Absent",    icon: "cancel",       color: "text-red-400" },
   excused: { label: "Excused",   icon: "info",         color: "text-blue-400" },

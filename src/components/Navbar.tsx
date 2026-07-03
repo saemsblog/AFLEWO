@@ -88,7 +88,7 @@ export default function Navbar() {
             gsap.to(labels, { y: 28, autoAlpha: 0, duration: 0.18, ease: "power3.in" });
             gsap.to(pills,  {
                 scale: 0, opacity: 0, duration: 0.22, ease: "power3.in",
-                onComplete: () => gsap.set(overlay, { display: "none" })
+                onComplete: () => { gsap.set(overlay, { display: "none" }); }
             });
         }
     }, [isOpen, mounted]);
