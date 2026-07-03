@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { supabase } from "@/integrations/supabase/client";
+import MenuToggle from "@/components/ui/MenuToggle";
 
 const links = [
     { name: "About",    href: "/about"    },
@@ -127,28 +128,14 @@ export default function Navbar() {
                         {authLink.name}
                     </Link>
 
-                    {/* Mobile menu toggle */}
-                    <button
-                        type="button"
-                        aria-label="Toggle navigation"
-                        aria-expanded={isMobileMenuOpen}
-                        onClick={() => setIsMobileMenuOpen((v) => !v)}
-                        className="md:hidden w-10 h-10 rounded-full border border-white/10 bg-white/5 flex flex-col items-center justify-center gap-[5px] hover:border-gold/30 transition-all duration-200"
-                    >
-                        {isMobileMenuOpen ? (
-                            /* X icon */
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                                <line x1="18" y1="6" x2="6" y2="18" />
-                                <line x1="6" y1="6" x2="18" y2="18" />
-                            </svg>
-                        ) : (
-                            /* Hamburger */
-                            <>
-                                <span className="block w-[20px] h-[1.5px] bg-white rounded-full" />
-                                <span className="block w-[13px] h-[1.5px] bg-white rounded-full self-end mr-[3px]" />
-                            </>
-                        )}
-                    </button>
+                    {/* Mobile menu toggle — Lottie animated */}
+                    <div className="md:hidden w-10 h-10 rounded-full border border-white/10 bg-white/5 hover:border-gold/30 transition-all duration-300 flex items-center justify-center" style={{ filter: "invert(1)" }}>
+                        <MenuToggle
+                            isOpen={isMobileMenuOpen}
+                            onToggle={() => setIsMobileMenuOpen((v) => !v)}
+                            className="w-10 h-10"
+                        />
+                    </div>
                 </div>
             </div>
 

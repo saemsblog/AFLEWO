@@ -155,9 +155,9 @@ export default function HeroSection() {
                 </div>
 
                 {/* Scroll Indicator — below content layer (z-0) so it never overlaps CTA buttons */}
-                <div className="absolute top-4 lg:top-30 bottom-0 sm:bottom-4 lg:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30 z-0 pointer-events-none">
+                <div className="absolute bottom-0 sm:bottom-4 lg:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30 z-0 pointer-events-none">
                     <span className="text-[10px] font-black tracking-widest uppercase">Scroll</span>
-                    <div className="w-[2px] h-12 bg-gradient-to-b from-white to-transparent" />
+                    <div className="w-[2px] h-4 bg-gradient-to-b from-white to-transparent" />
                 </div>
             </section>
 
@@ -165,7 +165,7 @@ export default function HeroSection() {
             <div className="hidden md:flex w-full bg-background pt-12 pb-20 justify-center items-center gap-6 relative z-10">
                 <Link href="/media" className="hero-btn press-scale bg-white text-brown px-12 py-5 rounded-full font-black uppercase tracking-tighter flex items-center gap-3 group hover:bg-gold transition-all">
                     <SvgIcon name="play" size={20} className="group-hover:scale-110 transition-transform" />
-                    Watch Archive
+                    Watch This
                 </Link>
                 <Link href="#about" className="hero-btn press-scale glass-card-elevated px-12 py-5 rounded-full font-black uppercase tracking-tighter text-white hover:bg-white/10 transition-all border-white/20">
                     Our Vision
