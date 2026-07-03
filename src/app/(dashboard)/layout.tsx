@@ -1,26 +1,13 @@
 "use client";
 
-import { useEffect, useState, createContext, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/integrations/supabase/client";
 import type { Profile } from "@/integrations/supabase/types";
 import Link from "next/link";
 import AppIcon from "@/components/ui/AppIcon";
 
-// ─── Auth Context ──────────────────────────────────────────────
-interface AuthContextType {
-  profile: Profile | null;
-  loading: boolean;
-  signOut: () => Promise<void>;
-}
-
-const AuthContext = createContext<AuthContextType>({
-  profile: null,
-  loading: true,
-  signOut: async () => {},
-});
-
-export const useAuth = () => useContext(AuthContext);
+import { AuthContext } from "./AuthContext";
 
 // ─── Dashboard Navigation ─────────────────────────────────────
 const navItems = [

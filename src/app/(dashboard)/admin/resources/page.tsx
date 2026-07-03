@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "../../layout";
+import { useAuth } from "../../AuthContext";
 import type { Resource, ResourceType } from "@/integrations/supabase/types";
 import AppIcon from "@/components/ui/AppIcon";
 
