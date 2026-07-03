@@ -15,12 +15,17 @@ const nextConfig = {
             // Supabase Storage — for avatar URLs from OAuth providers
             {
                 protocol: "https",
-                hostname: "rdovwkzopojjdupickri.supabase.co",
+                hostname: "wjwjsjzfhcxdrcjugnbp.supabase.co",
             },
             // Google user profile photos (from Google OAuth)
             {
                 protocol: "https",
                 hostname: "lh3.googleusercontent.com",
+            },
+            // Cloudflare R2 Public Vault
+            {
+                protocol: "https",
+                hostname: "storage.aflewo.saemstunes.com",
             },
         ],
     },

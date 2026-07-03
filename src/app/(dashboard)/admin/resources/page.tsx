@@ -43,13 +43,16 @@ async function uploadResourceDirectToR2(file: File): Promise<{ url: string; byte
 
 async function uploadMediaViaPipeline(file: File, onStatus: (status: string) => void): Promise<{ url: string; publicId: string; bytes: number; mimeType: string }> {
   onStatus("Processing at Cloudinary Edge...");
+  
+  const uploadPreset = file.type.startsWith('image/') ? 'ml_image' : 'ml_default';
+  
   const sigRes = await fetch("/api/upload-signature", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ folder: "aflewo_resources" }),
+    body: JSON.stringify({ folder: "aflewo_resources", uploadPreset }),
   });
   if (!sigRes.ok) throw new Error("Could not get Cloudinary credentials");
-  const { signature, timestamp, cloudName, apiKey, folder } = await sigRes.json();
+  const { signature, timestamp, cloudName, apiKey, folder, uploadPreset: signedPreset } = await sigRes.json();
 
   const formData = new FormData();
   formData.append("file", file);
@@ -57,6 +60,7 @@ async function uploadMediaViaPipeline(file: File, onStatus: (status: string) => 
   formData.append("timestamp", timestamp.toString());
   formData.append("api_key", apiKey);
   formData.append("folder", folder);
+  if (signedPreset) formData.append("upload_preset", signedPreset);
 
   const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`, {
     method: "POST",
@@ -71,6 +75,8 @@ async function uploadMediaViaPipeline(file: File, onStatus: (status: string) => 
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       cloudinaryUrl: data.secure_url,
+      cloudinaryPublicId: data.public_id,
+      resourceType: data.resource_type,
       fileName: file.name,
       contentType: file.type
     }),

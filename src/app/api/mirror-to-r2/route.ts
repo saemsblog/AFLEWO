@@ -12,7 +12,7 @@ const r2Client = new S3Client({
 
 export async function POST(request: Request) {
   try {
-    const { cloudinaryUrl, fileName, contentType } = await request.json();
+    const { cloudinaryUrl, cloudinaryPublicId, resourceType, fileName, contentType } = await request.json();
 
     if (!cloudinaryUrl || !fileName) {
       return NextResponse.json({ error: 'Missing parameters' }, { status: 400 });
@@ -37,7 +37,35 @@ export async function POST(request: Request) {
 
     await r2Client.send(command);
 
-    // 3. Return the Custom Domain URL (Option B: assets.saemstunes.com)
+    // 3. Destroy Protocol: Wipe the file from Cloudinary to prevent storage leaks
+    if (cloudinaryPublicId && resourceType) {
+      const apiSecret = process.env.CLOUDINARY_API_SECRET;
+      const apiKey = process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY;
+      const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+      
+      if (apiSecret && apiKey && cloudName) {
+        const timestamp = Math.round(Date.now() / 1000);
+        // Important: Cloudinary requires the exact parameters alphabetically sorted for the signature
+        const toSign = `public_id=${cloudinaryPublicId}&timestamp=${timestamp}${apiSecret}`;
+        
+        // We need crypto for the SHA1 hash
+        const crypto = require('crypto');
+        const signature = crypto.createHash('sha1').update(toSign).digest('hex');
+        
+        await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/destroy`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            public_id: cloudinaryPublicId,
+            timestamp,
+            api_key: apiKey,
+            signature
+          })
+        }).catch(err => console.error('[Destroy Protocol] Non-fatal cleanup error:', err));
+      }
+    }
+
+    // 4. Return the Custom Domain URL (Option B: assets.saemstunes.com)
     const publicDomain = process.env.NEXT_PUBLIC_R2_PUBLIC_DOMAIN || `https://pub-${process.env.R2_ACCOUNT_ID}.r2.dev`;
     const r2Url = `${publicDomain}/${key}`;
 

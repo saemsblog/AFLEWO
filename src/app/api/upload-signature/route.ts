@@ -26,6 +26,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json().catch(() => ({}));
     const folder: string = body.folder || 'aflewo_general';
+    const uploadPreset: string = body.uploadPreset;
 
     // Whitelist allowed upload folders to prevent abuse
     const allowedFolders = [
@@ -44,6 +45,7 @@ export async function POST(request: Request) {
       folder,
       timestamp,
     };
+    if (uploadPreset) params.upload_preset = uploadPreset;
 
     // Sort params alphabetically and build key=value string
     const toSign = Object.entries(params)
@@ -63,6 +65,7 @@ export async function POST(request: Request) {
       cloudName,
       apiKey,
       folder,
+      uploadPreset,
     });
   } catch (error) {
     console.error('[upload-signature] Error generating signature:', error);
