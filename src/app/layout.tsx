@@ -11,11 +11,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "AFLEWO — Africa Let's Worship",
+    default: "AFLEWO - Africa Let's Worship",
     template: "%s | AFLEWO",
   },
   description:
-    "Africa Let's Worship (AFLEWO) — A continental interdenominational worship movement bringing thousands together since 2004. Join the choir, partner with us, or attend our all-night worship events across East Africa.",
+    "Africa Let's Worship (AFLEWO) - A continental interdenominational worship movement bringing tens of thousands together since 2004. Join the choir, partner with us, or attend our all-night worship events across Kenya & Africa at large.",
   keywords: ["AFLEWO", "Africa worship", "choir", "East Africa", "worship movement", "Nairobi"],
   authors: [{ name: "AFLEWO" }],
   creator: "AFLEWO",
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
     locale: "en_KE",
     url: "https://aflewo.org",
     siteName: "AFLEWO",
-    title: "AFLEWO — Africa Let's Worship",
+    title: "AFLEWO - Africa Let's Worship",
     description: "A continental interdenominational worship movement since 2004.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AFLEWO — Africa Let's Worship",
+    title: "AFLEWO - Africa Let's Worship",
     description: "A continental interdenominational worship movement since 2004.",
   },
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://aflewo.org"),

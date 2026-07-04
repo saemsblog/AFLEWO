@@ -264,7 +264,7 @@ export default function ChapterPage() {
                             </p>
                             <div className="w-12 h-px bg-gold/30 mx-auto" />
                             <p className="text-[10px] text-center font-black uppercase tracking-widest text-white/20">
-                                Home {chapter.established} · {chapter.country}
+                                 {chapter.established} · {chapter.country}
                             </p>
                         </div>
 

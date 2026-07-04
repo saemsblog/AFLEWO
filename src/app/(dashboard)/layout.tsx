@@ -23,6 +23,7 @@ const adminNavItems = [
   { href: "/admin/auditions", icon: "how_to_reg", label: "Auditions" },
   { href: "/admin/attendance", icon: "qr_code_scanner", label: "Check-In" },
   { href: "/admin/resources", icon: "upload_file", label: "Upload Resources" },
+  { href: "/admin/gallery", icon: "image", label: "Gallery Manager" },
   { href: "/admin/members", icon: "group", label: "Members" },
 ];
 

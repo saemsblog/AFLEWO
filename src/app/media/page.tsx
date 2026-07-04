@@ -1,214 +1,438 @@
 "use client";
 
 import Footer from "@/components/Footer";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import AppIcon from "@/components/ui/AppIcon";
+import SvgIcon from "@/components/ui/SvgIcon";
+import { supabase } from "@/integrations/supabase/client";
 
-gsap.registerPlugin(ScrollTrigger);
+// ─── Image Catalog ──────────────────────────────────────────────────────────
+// All images sourced from /public/images/gallery/
+// Hosting advice: move these to Supabase Storage or Cloudflare R2 and update
+// the src paths + next.config.mjs remotePatterns accordingly.
 
-// Expanded media catalog — real archival content titles and years from AFLEWO history
-const archivalMedia = [
-    { title: "The Altar of 15,000", year: "2024", type: "Image", thumb: "/archival-1.jpg", chapter: "Nairobi", desc: "Grace for Wholeness — October 2024" },
-    { title: "Nairobi Pre-Launch Night", year: "2024", type: "Video", thumb: "/archival-1.jpg", src: "/hero-bg.mp4", chapter: "Nairobi", desc: "2024 Pre-event gathering at Winners Chapel" },
-    { title: "Tanzania Worship Night", year: "2023", type: "Image", thumb: "/archival-2.jpg", chapter: "Tanzania", desc: "CCC Upanga Church, Dar es Salaam" },
-    { title: "Healing in Kigali", year: "2014", type: "Image", thumb: "/mission-1.jpg", chapter: "Rwanda", desc: "20-year commemoration worship service" },
-    { title: "Night of Wholeness", year: "2023", type: "Image", thumb: "/archival-1.jpg", chapter: "Nairobi", desc: "Winners Chapel International — full capacity" },
-    { title: "Mombasa Prayer Circle", year: "2022", type: "Video", thumb: "/archival-2.jpg", src: "/hero-bg.mp4", chapter: "Mombasa", desc: "Nightly intercession gathering on the Coast" },
-    { title: "Coast Revival", year: "2019", type: "Image", thumb: "/archival-2.jpg", chapter: "Mombasa", desc: "JCC Bamburi Centre — first thousand-voice gathering" },
-    { title: "Nakuru Season Launch", year: "2022", type: "Image", thumb: "/mission-1.jpg", chapter: "Nakuru", desc: "Deliverance Church Nakuru opening night" },
-    { title: "A Decade of Grace", year: "2013", type: "Image", thumb: "/archival-1.jpg", chapter: "Nairobi", desc: "10th anniversary, Sarit Centre Nairobi" },
-    { title: "Sound of One Voice", year: "2016", type: "Video", thumb: "/mission-1.jpg", src: "/hero-bg.mp4", chapter: "Nairobi", desc: "1,000-voice national choir event" },
-    { title: "Rwanda Reconciliation", year: "2014", type: "Image", thumb: "/archival-2.jpg", chapter: "Rwanda", desc: "Annual healing worship — April 7th" },
-    { title: "The First Altar", year: "2004", type: "Image", thumb: "/mission-1.jpg", chapter: "Nairobi", desc: "CITAM Karen — the inaugural AFLEWO gathering" },
+type GalleryItem = {
+  id: string | number;
+  src: string;
+  title: string;
+  chapter: string;
+  year: string;
+  category: string;
+  desc: string;
+  wide?: boolean; // spans 2 columns in the grid
+};
+
+const localGallery: GalleryItem[] = [
+  // ── bg series ──
+  { id: 1,  src: "/images/gallery/bg1.jpg.jpeg", title: "The Altar of Thousands",       chapter: "Nairobi",   year: "2024", category: "Gatherings", desc: "Grace for Wholeness — October 2024", wide: true },
+  { id: 2,  src: "/images/gallery/bg2.jpg.jpeg", title: "Continental Sound",             chapter: "Nairobi",   year: "2023", category: "Gatherings", desc: "Night of Wholeness — Winners Chapel International" },
+  { id: 3,  src: "/images/gallery/bg3.jpg.jpeg", title: "African Vigil Night",           chapter: "Mombasa",   year: "2022", category: "Gatherings", desc: "Coastal intercession gathering" },
+  { id: 4,  src: "/images/gallery/bg4.jpg.jpeg", title: "House of Prayer",               chapter: "Tanzania",  year: "2023", category: "Worship",    desc: "CCC Upanga Church, Dar es Salaam" },
+  { id: 5,  src: "/images/gallery/bg5.jpg.jpeg", title: "The Sound Goes Out",            chapter: "Rwanda",    year: "2014", category: "Worship",    desc: "20-year commemoration service, Kigali" },
+  { id: 6,  src: "/images/gallery/bg6.jpg.jpeg", title: "Nakuru Season Launch",          chapter: "Nakuru",    year: "2022", category: "Gatherings", desc: "Deliverance Church opening night" },
+  { id: 7,  src: "/images/gallery/bg7.jpg.jpeg", title: "The First Altar",               chapter: "Nairobi",   year: "2004", category: "Archive",    desc: "CITAM Karen — the inaugural AFLEWO gathering", wide: true },
+
+  // ── numbered series (01–12, two variants each) ──
+  { id: 8,  src: "/images/gallery/01.jpg_1.jpeg", title: "Opening Worship",              chapter: "Nairobi",   year: "2023", category: "Worship",    desc: "Pre-event gathering, 2023" },
+  { id: 9,  src: "/images/gallery/01.jpg_2.jpeg", title: "Choir Rehearsal",              chapter: "Nairobi",   year: "2024", category: "Behind the Scenes", desc: "Choir warm-up session" },
+  { id: 10, src: "/images/gallery/02.jpg.jpeg",   title: "Prayer Circle",                chapter: "Mombasa",   year: "2022", category: "Worship",    desc: "Coastal evening prayer" },
+  { id: 11, src: "/images/gallery/02.jpg_1.jpeg", title: "Mombasa Congregation",         chapter: "Mombasa",   year: "2022", category: "Gatherings", desc: "JCC Bamburi Centre" },
+  { id: 12, src: "/images/gallery/03.jpg.jpeg",   title: "A Decade of Grace",            chapter: "Nairobi",   year: "2013", category: "Archive",    desc: "10th anniversary, Sarit Centre" },
+  { id: 13, src: "/images/gallery/03.jpg_1.jpeg", title: "Memory Lane",                  chapter: "Nairobi",   year: "2013", category: "Archive",    desc: "Behind the scenes — decade celebration" },
+  { id: 14, src: "/images/gallery/04.jpg.jpeg",   title: "Sound of One Voice",           chapter: "Nairobi",   year: "2016", category: "Worship",    desc: "1,000-voice national choir event" },
+  { id: 15, src: "/images/gallery/04.jpg_1.jpeg", title: "Band Setup",                   chapter: "Nairobi",   year: "2016", category: "Behind the Scenes", desc: "Pre-show production setup" },
+  { id: 16, src: "/images/gallery/05.jpg.jpeg",   title: "Rwanda Reconciliation",        chapter: "Rwanda",    year: "2014", category: "Worship",    desc: "Annual healing worship — April 7th", wide: true },
+  { id: 17, src: "/images/gallery/05.jpg_1.jpeg", title: "Kigali Overflow",              chapter: "Rwanda",    year: "2014", category: "Gatherings", desc: "Outside the venue — overflow crowd" },
+  { id: 18, src: "/images/gallery/06.jpg.jpeg",   title: "Tanzania Night",               chapter: "Tanzania",  year: "2019", category: "Gatherings", desc: "Dar es Salaam chapter gathering" },
+  { id: 19, src: "/images/gallery/06.jpg_1.jpeg", title: "Tanzania Praise",              chapter: "Tanzania",  year: "2019", category: "Worship",    desc: "Congregational worship, Dar es Salaam" },
+  { id: 20, src: "/images/gallery/07.jpg.jpeg",   title: "Morning Devotion",             chapter: "Nakuru",    year: "2021", category: "Worship",    desc: "Dawn prayer session, Nakuru chapter" },
+  { id: 21, src: "/images/gallery/07.jpg_1.jpeg", title: "Rift Valley Rising",           chapter: "Nakuru",    year: "2021", category: "Gatherings", desc: "Rift Valley chapter milestone event" },
+  { id: 22, src: "/images/gallery/08.jpg.jpeg",   title: "Nairobi Overflow Night",       chapter: "Nairobi",   year: "2023", category: "Gatherings", desc: "Winners Chapel capacity crowd", wide: true },
+  { id: 23, src: "/images/gallery/08.jpg_1.jpeg", title: "Stage Preparation",            chapter: "Nairobi",   year: "2023", category: "Behind the Scenes", desc: "Sound check before the main event" },
+  { id: 24, src: "/images/gallery/09.jpg.jpeg",   title: "Children of Worship",          chapter: "Nairobi",   year: "2022", category: "Community", desc: "Youth worship wing in action" },
+  { id: 25, src: "/images/gallery/09.jpg_1.jpeg", title: "Family of Faith",              chapter: "Nairobi",   year: "2022", category: "Community", desc: "Families gathered together in worship" },
+  { id: 26, src: "/images/gallery/10.jpg.jpeg",   title: "Midnight Cry",                 chapter: "Mombasa",   year: "2019", category: "Worship",    desc: "Coastal midnight worship session" },
+  { id: 27, src: "/images/gallery/10.jpg_1.jpeg", title: "The Prayer Wall",              chapter: "Mombasa",   year: "2019", category: "Worship",    desc: "Intercessory prayer corner" },
+  { id: 28, src: "/images/gallery/11.jpg.jpeg",   title: "Continental Assembly",         chapter: "Nairobi",   year: "2024", category: "Gatherings", desc: "All-chapter continental summit", wide: true },
+  { id: 29, src: "/images/gallery/11.jpg_1.jpeg", title: "Leaders' Meeting",             chapter: "Nairobi",   year: "2024", category: "Community", desc: "Leadership roundtable — AFLEWO summit" },
+  { id: 30, src: "/images/gallery/12.jpg.jpeg",   title: "Golden Jubilee of Sound",      chapter: "Nairobi",   year: "2024", category: "Archive",    desc: "20-year commemorative gathering" },
+  { id: 31, src: "/images/gallery/12.jpg_1.jpeg", title: "The Legacy Continues",         chapter: "Nairobi",   year: "2024", category: "Archive",    desc: "Documentation of the 2024 milestone" },
+
+  // ── Instagram series ──
+  { id: 32, src: "/images/gallery/aflewoke_1732606933_3509683799022924098_1933161197.jpg", title: "Live Worship Moment",    chapter: "Nairobi", year: "2024", category: "Worship",    desc: "Spontaneous worship captured live" },
+  { id: 33, src: "/images/gallery/aflewoke_1732606933_3509683799031482459_1933161197.jpg", title: "Congregation in Motion", chapter: "Nairobi", year: "2024", category: "Gatherings", desc: "Standing ovation during the altar call" },
+  { id: 34, src: "/images/gallery/aflewoke_1732606933_3509683799039873799_1933161197.jpg", title: "Hands Raised High",      chapter: "Nairobi", year: "2024", category: "Worship",    desc: "Corporate surrender during praise" },
+  { id: 35, src: "/images/gallery/aflewoke_1732606933_3509683799115226364_1933161197.jpg", title: "The Sound of Africa",    chapter: "Nairobi", year: "2024", category: "Worship",    desc: "Worship carrying the African sound", wide: true },
+
+  // ── portrait series ──
+  { id: 36, src: "/images/gallery/p1.jpg.jpeg",  title: "Voice of the Movement",   chapter: "Nairobi",  year: "2023", category: "Community", desc: "Featured worship leader" },
+  { id: 37, src: "/images/gallery/p2.jpg.jpeg",  title: "Choir Section",           chapter: "Nairobi",  year: "2023", category: "Community", desc: "Alto section rehearsal" },
+  { id: 38, src: "/images/gallery/p3.jpg.jpeg",  title: "Keys Ministry",           chapter: "Nairobi",  year: "2022", category: "Behind the Scenes", desc: "Keyboard ministry" },
+  { id: 39, src: "/images/gallery/p4.jpg.jpeg",  title: "Praise Leader",           chapter: "Mombasa",  year: "2022", category: "Community", desc: "Coastal praise leader" },
+  { id: 40, src: "/images/gallery/p5.jpg.jpeg",  title: "Intercessor",             chapter: "Rwanda",   year: "2014", category: "Community", desc: "Prayer intercessor in focus" },
+  { id: 41, src: "/images/gallery/p6.jpg.jpeg",  title: "Drum Corps",              chapter: "Tanzania", year: "2023", category: "Behind the Scenes", desc: "Percussion section" },
+  { id: 42, src: "/images/gallery/p7.jpg.jpeg",  title: "Guitar Ministry",         chapter: "Nairobi",  year: "2023", category: "Behind the Scenes", desc: "Electric guitar worship" },
+  { id: 43, src: "/images/gallery/p8.jpg.jpeg",  title: "Bass Line",               chapter: "Nairobi",  year: "2022", category: "Behind the Scenes", desc: "Bass guitar ministry" },
+  { id: 44, src: "/images/gallery/p9.jpg.jpeg",  title: "Strings",                 chapter: "Nakuru",   year: "2022", category: "Behind the Scenes", desc: "String instrument ministry" },
+  { id: 45, src: "/images/gallery/p10.jpg.jpeg", title: "Spoken Word",             chapter: "Nairobi",  year: "2023", category: "Community", desc: "Prophetic declaration" },
+  { id: 46, src: "/images/gallery/p11.jpg.jpeg", title: "Sound Engineer",          chapter: "Nairobi",  year: "2024", category: "Behind the Scenes", desc: "Front-of-house engineer" },
+  { id: 47, src: "/images/gallery/p12.jpg.jpeg", title: "Media Team",              chapter: "Nairobi",  year: "2024", category: "Behind the Scenes", desc: "Camera crew during live event" },
+  { id: 48, src: "/images/gallery/p13.jpg.jpeg", title: "Worship in Unity",        chapter: "Nairobi",  year: "2024", category: "Worship",    desc: "Mixed congregation, unified sound" },
+  { id: 49, src: "/images/gallery/p14.jpg.jpeg", title: "Youth Voice",             chapter: "Mombasa",  year: "2022", category: "Community", desc: "Youth worship representative" },
+  { id: 50, src: "/images/gallery/p15.jpg.jpeg", title: "Morning Glory",           chapter: "Rwanda",   year: "2019", category: "Worship",    desc: "Dawn worship session" },
+  { id: 51, src: "/images/gallery/p16.jpg.jpeg", title: "The Conductor",           chapter: "Nairobi",  year: "2023", category: "Community", desc: "Choir director leading" },
+  { id: 52, src: "/images/gallery/p17.jpg.jpeg", title: "Faithful",                chapter: "Tanzania", year: "2023", category: "Community", desc: "Long-time member spotlight" },
+  { id: 53, src: "/images/gallery/p18.jpg.jpeg", title: "Creative Arts",           chapter: "Nairobi",  year: "2022", category: "Community", desc: "Dance ministry team" },
+  { id: 54, src: "/images/gallery/p19.jpg.jpeg", title: "The Usher",               chapter: "Nakuru",   year: "2022", category: "Community", desc: "Volunteer usher team" },
+  { id: 55, src: "/images/gallery/p20.jpg.jpeg", title: "Closing Prayer",          chapter: "Nairobi",  year: "2024", category: "Worship",    desc: "Final corporate prayer of the night" },
+
+  // ── misc ──
+  { id: 56, src: "/images/gallery/G2LyhBZXwAE-feP.jpg", title: "Social Media Reach",   chapter: "Nairobi", year: "2024", category: "Gatherings", desc: "Viral worship moment, 2024", wide: true },
+  { id: 57, src: "/images/gallery/hq720.jpg",            title: "YouTube Thumbnail",    chapter: "Nairobi", year: "2024", category: "Archive",    desc: "AFLEWO official YouTube channel preview" },
 ];
 
-const filters = ["All", "Video", "Image", "Nairobi", "Mombasa", "Tanzania", "Rwanda", "Nakuru"];
+const FILTERS = ["All", "Gatherings", "Worship", "Community", "Behind the Scenes", "Archive"];
+const CHAPTERS = ["All Chapters", "Nairobi", "Mombasa", "Tanzania", "Rwanda", "Nakuru"];
 
-interface LightboxProps {
-    item: typeof archivalMedia[0] | null;
-    onClose: () => void;
-}
+// ─── Lightbox ───────────────────────────────────────────────────────────────
+function Lightbox({ item, onClose, onPrev, onNext }: {
+  item: GalleryItem | null;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+}) {
+  useEffect(() => {
+    if (!item) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
+    };
+    window.addEventListener("keydown", handler);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", handler);
+      document.body.style.overflow = "";
+    };
+  }, [item, onClose, onPrev, onNext]);
 
-function Lightbox({ item, onClose }: LightboxProps) {
-    useEffect(() => {
-        if (!item) return;
-        const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-        window.addEventListener("keydown", handler);
-        document.body.style.overflow = "hidden";
-        return () => { window.removeEventListener("keydown", handler); document.body.style.overflow = ""; };
-    }, [item, onClose]);
+  if (!item) return null;
 
-    if (!item) return null;
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      onClick={onClose}
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/95 backdrop-blur-2xl" />
 
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={onClose}>
-            <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" />
-            <div className="relative z-10 max-w-4xl w-full mx-4 space-y-4" onClick={(e) => e.stopPropagation()}>
-                <div className="flex items-center justify-between">
-                    <div>
-                        <h3 className="text-2xl font-black text-white">{item.title}</h3>
-                        <p className="text-gold text-[10px] font-black uppercase tracking-widest">{item.chapter} · {item.year}</p>
-                    </div>
-                    <button onClick={onClose} className="p-3 glass-card rounded-xl text-white hover:text-gold transition-colors">
-                        <AppIcon name="close" size={24} />
-                    </button>
-                </div>
-
-                <div className="relative aspect-video rounded-2xl overflow-hidden glass-card-elevated border-white/10">
-                    {item.type === "Video" && item.src ? (
-                        <video src={item.src} controls autoPlay muted className="w-full h-full object-cover" />
-                    ) : (
-                        <Image src={item.thumb} alt={item.title} fill className="object-cover" />
-                    )}
-                </div>
-
-                <p className="text-white/50 text-sm font-bold">{item.desc}</p>
-            </div>
+      {/* Content */}
+      <div
+        className="relative z-10 w-full max-w-5xl mx-4 flex flex-col gap-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-start justify-between">
+          <div>
+            <h3 className="text-xl md:text-3xl font-black text-white leading-tight">{item.title}</h3>
+            <p className="text-gold text-[10px] font-black uppercase tracking-[0.3em] mt-1">
+              {item.chapter} · {item.year} · {item.category}
+            </p>
+          </div>
+        <button
+          onClick={onClose}
+          className="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all shrink-0 ml-4"
+        >
+          <SvgIcon name="close" size={20} className="opacity-80" />
+        </button>
         </div>
-    );
+
+        {/* Image */}
+        <div className="relative w-full rounded-2xl overflow-hidden bg-white/5 border border-white/10"
+          style={{ maxHeight: "70vh" }}>
+          <Image
+            src={item.src}
+            alt={item.title}
+            width={1200}
+            height={800}
+            className="w-full h-full object-contain"
+            style={{ maxHeight: "70vh" }}
+            unoptimized
+          />
+        </div>
+
+        {/* Footer */}
+        <div className="flex items-center justify-between">
+          <p className="text-white/50 text-sm font-medium">{item.desc}</p>
+          <div className="flex gap-2">
+            <button
+              onClick={onPrev}
+              className="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all"
+            >
+          <SvgIcon name="chevron_left" size={20} className="opacity-80" />
+            </button>
+            <button
+              onClick={onNext}
+              className="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all"
+            >
+          <SvgIcon name="chevron_right" size={20} className="opacity-80" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
+// ─── Page ────────────────────────────────────────────────────────────────────
 export default function MediaPage() {
-    const [filter, setFilter] = useState("All");
-    const [lightboxItem, setLightboxItem] = useState<typeof archivalMedia[0] | null>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
+  const [dbItems, setDbItems] = useState<GalleryItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [categoryFilter, setCategoryFilter] = useState("All");
+  const [chapterFilter, setChapterFilter] = useState("All Chapters");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const topRef = useRef<HTMLDivElement>(null);
 
-    const filteredMedia = filter === "All"
-        ? archivalMedia
-        : archivalMedia.filter((m) => m.type === filter || m.chapter === filter);
+  useEffect(() => {
+    async function fetchGallery() {
+      const { data, error } = await supabase
+        .from("gallery_images")
+        .select("*")
+        .eq("is_active", true)
+        .order("created_at", { ascending: false });
+        
+      if (!error && data) {
+        const formatted: GalleryItem[] = data.map((item: any) => ({
+          id: item.id,
+          src: item.image_url,
+          title: item.title,
+          chapter: item.chapter,
+          year: item.year.toString(),
+          category: item.category,
+          desc: item.description || "",
+          wide: item.is_wide
+        }));
+        setDbItems(formatted);
+      }
+      setLoading(false);
+    }
+    fetchGallery();
+  }, []);
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".media-item", {
-                opacity: 0,
-                y: 40,
-                stagger: 0.08,
-                duration: 0.9,
-                ease: "expo.out",
-                clearProps: "all",
-            });
-        }, containerRef);
-        return () => ctx.revert();
-    }, [filter]);
+  const gallery = [...dbItems, ...localGallery];
 
-    return (
-        <main className="bg-background min-h-screen">
-            <Lightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
+  const filtered = gallery.filter((item) => {
+    const catOk = categoryFilter === "All" || item.category === categoryFilter;
+    const chapOk = chapterFilter === "All Chapters" || item.chapter === chapterFilter;
+    return catOk && chapOk;
+  });
 
-            <section className="pt-40 pb-20 px-6">
-                <div className="max-container">
-                    <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20">
-                        <div className="space-y-6">
-                            <span className="text-gold font-black uppercase tracking-[0.4em] text-xs">The Archive</span>
-                            <h1 className="text-5xl md:text-9xl font-black tracking-tighter leading-[0.85]">
-                                VISUAL <br /><span className="text-gold">TESTIMONY.</span>
-                            </h1>
-                            <p className="text-foreground/40 max-w-md font-bold text-sm uppercase tracking-widest leading-relaxed">
-                                20 years of worship, prayer, and continental unity — documented.
-                            </p>
-                        </div>
-                        <div className="flex overflow-x-auto hide-scrollbar gap-2 glass-card p-2 rounded-full max-w-full">
-                            {filters.map((f) => (
-                                <button
-                                    key={f}
-                                    onClick={() => setFilter(f)}
-                                    className={`px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${filter === f ? "bg-gold text-brown" : "text-white/40 hover:text-white"}`}
-                                >
-                                    {f}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
+  const openLightbox = useCallback((index: number) => setLightboxIndex(index), []);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const prevItem = useCallback(() =>
+    setLightboxIndex((i) => (i === null ? null : (i - 1 + filtered.length) % filtered.length)),
+    [filtered.length]);
+  const nextItem = useCallback(() =>
+    setLightboxIndex((i) => (i === null ? null : (i + 1) % filtered.length)),
+    [filtered.length]);
 
-                    {/* Stats Bar */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-                        {[
-                            { label: "Years Archived", value: "20+" },
-                            { label: "Chapters Covered", value: "11" },
-                            { label: "Lives Documented", value: "15K+" },
-                            { label: "Media Items", value: `${filteredMedia.length}` },
-                        ].map((stat, i) => (
-                            <div key={i} className="glass-card p-6 rounded-lg text-center space-y-2">
-                                <p className="text-3xl font-black text-gold">{stat.value}</p>
-                                <p className="text-[10px] font-black uppercase tracking-widest text-white/40">{stat.label}</p>
-                            </div>
-                        ))}
-                    </div>
+  const lightboxItem = lightboxIndex !== null ? filtered[lightboxIndex] ?? null : null;
 
-                    <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filteredMedia.map((item, i) => (
-                            <button
-                                key={i}
-                                className="media-item group relative text-left rounded-[2rem] overflow-hidden glass-card border-white/5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold"
-                                style={{ aspectRatio: i % 5 === 0 ? "16/9" : "4/5" }}
-                                onClick={() => setLightboxItem(item)}
-                                aria-label={`Open ${item.title}`}
-                            >
-                                <Image
-                                    src={item.thumb}
-                                    alt={item.title}
-                                    fill
-                                    className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-all" />
+  return (
+    <main className="bg-background min-h-screen">
+      <Lightbox
+        item={lightboxItem}
+        onClose={closeLightbox}
+        onPrev={prevItem}
+        onNext={nextItem}
+      />
 
-                                {/* Type badge */}
-                                <div className="absolute top-5 left-5 opacity-0 group-hover:opacity-100 transition-all translate-y-[-8px] group-hover:translate-y-0 duration-300">
-                                    <div className="p-3 bg-white/10 backdrop-blur-md rounded-2xl text-white flex items-center gap-2">
-                                        {item.type === "Video"
-                                            ? <><AppIcon name="play_circle" size={20} /><span className="text-[10px] font-black uppercase">Video</span></>
-                                            : <><AppIcon name="image" size={20} /><span className="text-[10px] font-black uppercase">Photo</span></>
-                                        }
-                                    </div>
-                                </div>
+      {/* ── Hero ─────────────────────────────────────────────── */}
+      <section ref={topRef} className="pt-36 pb-12 px-6 border-b border-white/5">
+        <div className="max-container">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="space-y-3">
+              <span className="text-gold font-black uppercase tracking-[0.4em] text-[10px]">
+                Visual Archive
+              </span>
+              <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85]">
+                GALLERY<br />
+                <span className="text-gold">& MEDIA.</span>
+              </h1>
+              <p className="text-foreground/40 max-w-md font-bold text-xs uppercase tracking-widest leading-relaxed">
+                20 years of worship across Africa — documented.
+              </p>
+            </div>
 
-                                <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                                    <div className="space-y-2 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                                        <div className="flex items-center gap-3">
-                                            <span className="text-gold text-[10px] font-black uppercase tracking-widest">{item.chapter}</span>
-                                            <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">{item.year}</span>
-                                        </div>
-                                        <h3 className="text-2xl font-black text-white group-hover:text-gold transition-colors">{item.title}</h3>
-                                        <p className="text-white/50 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500">{item.desc}</p>
-                                    </div>
-                                </div>
-                            </button>
-                        ))}
-                    </div>
-
-                    {filteredMedia.length === 0 && (
-                        <div className="text-center py-24 space-y-4">
-                            <AppIcon name="image_not_supported" size={48} className="text-white/20 mx-auto" />
-                            <p className="text-white/40 font-black uppercase tracking-widest text-sm">No media found for this filter</p>
-                        </div>
-                    )}
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-3 shrink-0">
+              {[
+                { label: "Images", value: `${gallery.length}` },
+                { label: "Chapters", value: "5" },
+                { label: "Years", value: "20+" },
+              ].map((s) => (
+                <div key={s.label} className="glass-card p-4 rounded-xl text-center">
+                  <p className="text-2xl font-black text-gold">{s.value}</p>
+                  <p className="text-[9px] font-black uppercase tracking-widest text-white/40 mt-0.5">{s.label}</p>
                 </div>
-            </section>
+              ))}
+            </div>
+          </div>
 
-            {/* YouTube CTA */}
-            <section className="section-padding border-t border-white/5">
-                <div className="max-container flex flex-col md:flex-row items-center justify-between gap-12 glass-card-elevated p-12 rounded-lg border-gold/10">
-                    <div className="space-y-4">
-                        <h3 className="text-4xl font-black tracking-tighter">WATCH ON <span className="text-gold">YOUTUBE</span></h3>
-                        <p className="text-white/40 max-w-md font-bold text-sm uppercase tracking-widest leading-relaxed">
-                            Full-length worship recordings, documentaries, and live streams from every AFLEWO gathering.
-                        </p>
+          {/* Filters */}
+          <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            {/* Category filter */}
+            <div className="flex overflow-x-auto hide-scrollbar gap-1.5 glass-card p-1.5 rounded-full">
+              {FILTERS.map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setCategoryFilter(f)}
+                  className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${
+                    categoryFilter === f
+                      ? "bg-gold text-brown"
+                      : "text-white/40 hover:text-white"
+                  }`}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
+
+            {/* Chapter filter */}
+            <div className="flex overflow-x-auto hide-scrollbar gap-1.5 glass-card p-1.5 rounded-full">
+              {CHAPTERS.map((c) => (
+                <button
+                  key={c}
+                  onClick={() => setChapterFilter(c)}
+                  className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${
+                    chapterFilter === c
+                      ? "bg-white/20 text-white"
+                      : "text-white/30 hover:text-white"
+                  }`}
+                >
+                  {c === "All Chapters" ? "All" : c}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Result count */}
+          <p className="mt-4 text-[10px] font-black uppercase tracking-widest text-white/20">
+            Showing {filtered.length} of {gallery.length} items
+          </p>
+        </div>
+      </section>
+
+      {/* ── Grid ─────────────────────────────────────────────── */}
+      <section className="px-6 py-10">
+        <div className="max-container">
+          {loading ? (
+            <div className="flex flex-col items-center justify-center py-24 space-y-4">
+              <SvgIcon name="spinner" size={48} className="text-white/20 animate-spin opacity-50" />
+              <p className="text-white/40 font-black uppercase tracking-widest text-sm">
+                Loading Gallery...
+              </p>
+            </div>
+          ) : filtered.length === 0 ? (
+            <div className="text-center py-24 space-y-4">
+                  <SvgIcon name="image_off" size={48} className="text-white/20 mx-auto opacity-30" />
+              <p className="text-white/40 font-black uppercase tracking-widest text-sm">
+                No media found for this filter
+              </p>
+            </div>
+          ) : (
+            /* YouTube-style responsive grid — wide items span 2 cols on desktop */
+            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+              {filtered.map((item, index) => (
+                <div
+                  key={item.id}
+                  className={`break-inside-avoid mb-4 group relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 hover:border-gold/30 transition-all duration-500 bg-white/3 ${
+                    item.wide ? "sm:col-span-2" : ""
+                  }`}
+                  onClick={() => openLightbox(index)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Open ${item.title}`}
+                  onKeyDown={(e) => e.key === "Enter" && openLightbox(index)}
+                >
+                  <div className="relative w-full overflow-hidden">
+                    <Image
+                      src={item.src}
+                      alt={item.title}
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                      unoptimized
+                    />
+                  </div>
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  {/* Info */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <p className="text-gold text-[9px] font-black uppercase tracking-widest">
+                      {item.chapter} · {item.year}
+                    </p>
+                    <h3 className="text-white text-sm font-black mt-0.5 leading-tight">
+                      {item.title}
+                    </h3>
+                  </div>
+
+                  {/* Category badge */}
+                  <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-[9px] font-black uppercase tracking-widest bg-black/60 backdrop-blur-sm text-white/70 px-2.5 py-1 rounded-full border border-white/10">
+                      {item.category}
+                    </span>
+                  </div>
+
+                  {/* Expand icon */}
+                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="p-2 bg-black/60 backdrop-blur-sm rounded-xl text-white/60">
+                    <SvgIcon name="open_in_full" size={14} className="opacity-60" />
                     </div>
-                    <a
-                        href="https://youtube.com/@aflewo"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="press-scale flex items-center gap-3 px-10 py-5 bg-gold text-brown rounded-lg font-black text-[10px] uppercase tracking-widest hover:brightness-110 transition-all shrink-0 shadow-glow"
-                    >
-                        <AppIcon name="play_circle" size={20} /> Watch on YouTube
-                    </a>
+                  </div>
                 </div>
-            </section>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
 
-            <Footer />
-        </main>
-    );
+      {/* ── YouTube CTA ──────────────────────────────────────── */}
+      <section className="px-6 py-16 border-t border-white/5">
+        <div className="max-container">
+          <div className="glass-card-elevated p-10 md:p-14 rounded-2xl border-gold/10 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div className="space-y-3 text-center md:text-left">
+              <div className="flex items-center gap-3 justify-center md:justify-start">
+                <div className="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center">
+                  <SvgIcon name="play_arrow" size={22} className="opacity-90" />
+                </div>
+                <span className="text-white/40 text-[10px] font-black uppercase tracking-widest">
+                  Full-length recordings
+                </span>
+              </div>
+              <h3 className="text-3xl md:text-5xl font-black tracking-tighter">
+                WATCH ON <span className="text-gold">YOUTUBE</span>
+              </h3>
+              <p className="text-white/40 max-w-md font-bold text-xs uppercase tracking-widest leading-relaxed">
+                Full worship recordings, documentaries, and live streams from every AFLEWO gathering.
+              </p>
+            </div>
+            <a
+              href="https://youtube.com/@aflewo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="press-scale flex items-center gap-3 px-10 py-5 bg-red-600 hover:bg-red-500 text-white rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shrink-0"
+            >
+              <SvgIcon name="smart_display" size={20} className="opacity-90" />
+              Open YouTube Channel
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
 }
