@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { sendEmail, generateApplicationEmailHtml } from '@/lib/email';
 
 /**
  * POST /api/join
@@ -92,9 +93,12 @@ export async function POST(request: Request) {
       }
     }
 
-    // Always send a confirmation email via Resend (fire and forget)
-    // TODO: Integrate Resend when API key is configured
-    // await sendConfirmationEmail({ name, email, track, chapter });
+    // Send confirmation email via Resend
+    await sendEmail({
+      to: email,
+      subject: "AFLEWO Application Received",
+      html: generateApplicationEmailHtml(name, track, chapter),
+    });
 
     return NextResponse.json({
       success: true,

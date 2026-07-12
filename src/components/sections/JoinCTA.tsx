@@ -27,9 +27,9 @@ const opportunities = [
     },
     {
         title: "Share Your Story",
-        desc: "Share your AFLEWO experience. Let your story connect others to the movement.",
+        desc: "Share your AFLEWO experience. Let your testimony connect others to the movement.",
         icon: "chat" as const,
-        href: "/stories",
+        href: "/testimonies",
         stat: "Your Voice Matters",
         color: "from-gold/10 to-gold/5"
     }

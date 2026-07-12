@@ -5,7 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 import AppIcon from "@/components/ui/AppIcon";
+import SvgIcon from "@/components/ui/SvgIcon";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -317,8 +319,12 @@ export default function AboutPage() {
                     <div className="leadership-grid grid grid-cols-1 md:grid-cols-3 gap-8">
                         {leadership.map((leader, i) => (
                             <div key={i} className="leader-card glass-card-elevated p-8 rounded-2xl border-white/5 group hover:border-gold/30 transition-all space-y-6">
-                                <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-gold/30 group-hover:border-gold transition-colors">
-                                    <Image src={leader.image} alt={leader.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                                {/* Initials avatar — no placeholder images for founders */}
+                                <div className="w-20 h-20 rounded-full border-2 border-gold/30 group-hover:border-gold transition-colors flex items-center justify-center bg-gradient-to-br from-gold/20 to-gold/5 relative overflow-hidden">
+                                    <span className="text-gold font-black text-3xl select-none">
+                                        {leader.name.charAt(0)}
+                                    </span>
+                                    <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
                                 </div>
                                 <div className="space-y-1">
                                     <h4 className="text-xl font-black text-white">{leader.name}</h4>
@@ -381,6 +387,51 @@ export default function AboutPage() {
                     >
                         Update Your Profile <AppIcon name="arrow_forward" size={20} />
                     </button>
+                </div>
+            </section>
+
+            {/* Cross-page navigation CTAs */}
+            <section className="section-padding border-t border-white/5">
+                <div className="max-container grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <Link
+                        href="/testimonies"
+                        className="group glass-card-elevated rounded-2xl p-10 border-white/5 hover:border-gold/20 transition-all space-y-4"
+                    >
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center">
+                                <AppIcon name="format_quote" size={18} className="text-gold" />
+                            </div>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-gold">Testimonies</span>
+                        </div>
+                        <h3 className="text-2xl font-black tracking-tighter group-hover:text-gold transition-colors">Echoes of Grace</h3>
+                        <p className="text-white/40 text-sm font-medium leading-relaxed">
+                            7,000+ alumni. Thousands of testimonies. Read the stories of how worship has moved across Africa.
+                        </p>
+                        <div className="flex items-center gap-2 text-gold/60 group-hover:text-gold transition-colors text-xs font-black uppercase tracking-widest">
+                            <span>Read Testimonies</span>
+                            <SvgIcon name="arrow_right" size={16} />
+                        </div>
+                    </Link>
+
+                    <Link
+                        href="/join"
+                        className="group glass-card-elevated rounded-2xl p-10 border-white/5 hover:border-gold/20 transition-all space-y-4"
+                    >
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center">
+                                <SvgIcon name="person_add" size={18} className="text-gold" />
+                            </div>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-gold">Serve</span>
+                        </div>
+                        <h3 className="text-2xl font-black tracking-tighter group-hover:text-gold transition-colors">Join the Movement</h3>
+                        <p className="text-white/40 text-sm font-medium leading-relaxed">
+                            Every great story here started with someone choosing to serve. Find your place in the sound of Africa.
+                        </p>
+                        <div className="flex items-center gap-2 text-gold/60 group-hover:text-gold transition-colors text-xs font-black uppercase tracking-widest">
+                            <span>Serve With Us</span>
+                            <SvgIcon name="arrow_right" size={16} />
+                        </div>
+                    </Link>
                 </div>
             </section>
 

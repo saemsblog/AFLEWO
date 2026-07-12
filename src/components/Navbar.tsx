@@ -10,12 +10,10 @@ import SvgIcon from "@/components/ui/SvgIcon";
 import { motion } from "framer-motion";
 
 const links = [
-    { name: "About",    href: "/about"    },
-    { name: "Media",    href: "/media"    },
-    { name: "Stories",  href: "/stories"  },
-    { name: "Join",     href: "/join"     },
-    { name: "Alumni",   href: "/alumni"   },
-    { name: "Chapters", href: "/#chapters"},
+    { name: "About",        href: "/about"        },
+    { name: "Media",        href: "/media"        },
+    { name: "Testimonies",  href: "/testimonies"  },
+    { name: "Join",         href: "/join"         },
 ];
 
 export default function Navbar() {

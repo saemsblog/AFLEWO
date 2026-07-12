@@ -209,10 +209,10 @@ export default function StoriesTeaser() {
                         </div>
 
                         <Link
-                            href="/stories"
+                            href="/testimonies"
                             className="press-scale inline-flex items-center gap-4 bg-gold text-brown px-10 py-5 rounded-lg font-black uppercase tracking-tighter hover:brightness-110 transition-all shadow-glow"
                         >
-                            Read All Stories <SvgIcon name="arrow_forward" size={20} />
+                            Read Testimonies <SvgIcon name="arrow_forward" size={20} />
                         </Link>
                     </div>
 

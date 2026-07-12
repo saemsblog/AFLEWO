@@ -322,7 +322,32 @@ export default function JoinPage() {
                 </div>
             </section>
 
+            {/* Cross-page navigation */}
+            <section className="px-6 pb-16">
+                <div className="max-container">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+                        <Link
+                            href="/about"
+                            className="group glass-card rounded-xl p-6 border-white/5 hover:border-gold/20 transition-all space-y-3"
+                        >
+                            <p className="text-[10px] font-black uppercase tracking-widest text-gold">Read First</p>
+                            <p className="text-sm font-black group-hover:text-gold transition-colors">Our History &rarr;</p>
+                            <p className="text-white/30 text-xs font-medium">22 seasons of worship and prayer across Africa.</p>
+                        </Link>
+                        <Link
+                            href="/testimonies"
+                            className="group glass-card rounded-xl p-6 border-white/5 hover:border-gold/20 transition-all space-y-3"
+                        >
+                            <p className="text-[10px] font-black uppercase tracking-widest text-gold">Inspired By</p>
+                            <p className="text-sm font-black group-hover:text-gold transition-colors">Echoes of Grace &rarr;</p>
+                            <p className="text-white/30 text-xs font-medium">Read why thousands choose to serve year after year.</p>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
             <Footer />
         </main>
     );
 }
+

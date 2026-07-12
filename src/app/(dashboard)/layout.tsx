@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { supabase } from "@/integrations/supabase/client";
 import type { Profile } from "@/integrations/supabase/types";
 import Link from "next/link";
@@ -34,6 +34,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -159,13 +160,14 @@ export default function DashboardLayout({
           {/* Profile */}
           <div className="p-4 border-t border-white/5">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center flex-shrink-0">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-gold/30 to-gold/5 border border-gold/20 flex items-center justify-center flex-shrink-0"
+                style={{ boxShadow: "0 0 0 2px hsl(20 20% 8%), 0 0 12px -4px hsla(42,92%,56%,0.4)" }}>
                 <span className="text-gold text-xs font-black">
-                  {profile?.full_name?.charAt(0) || "?"}
+                  {profile?.full_name?.split(" ").map((n: string) => n[0]).slice(0, 2).join("").toUpperCase() || "?"}
                 </span>
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-xs font-bold text-white truncate">{profile?.full_name}</p>
+                <p className="text-xs font-black text-white truncate">{profile?.full_name}</p>
                 <p className="text-[9px] text-white/30 uppercase tracking-widest truncate">{profile?.role?.replace("_", " ")}</p>
               </div>
               <button
@@ -214,13 +216,28 @@ function NavLink({
   label: string;
   isAdmin?: boolean;
 }) {
+  const pathname = usePathname();
+  const isActive = pathname === href;
   return (
     <Link
       href={href}
-      className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-bold transition-all hover:bg-white/5 group
-        ${isAdmin ? "text-gold/60 hover:text-gold" : "text-white/50 hover:text-white"}`}
+      className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-black transition-all group relative
+        ${
+          isActive
+            ? isAdmin
+              ? "bg-gold/10 text-gold border border-gold/15"
+              : "bg-white/8 text-white border border-white/8"
+            : isAdmin
+            ? "text-gold/60 hover:text-gold hover:bg-gold/5"
+            : "text-white/50 hover:text-white hover:bg-white/5"
+        }`}
     >
-      <AppIcon name={icon} size={16} className="shrink-0 group-hover:scale-110 transition-transform" />
+      {isActive && (
+        <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 rounded-full ${
+          isAdmin ? "bg-gold" : "bg-white"
+        }`} />
+      )}
+      <AppIcon name={icon} size={16} className={`shrink-0 transition-transform ${isActive ? "" : "group-hover:scale-110"}`} />
       {label}
     </Link>
   );

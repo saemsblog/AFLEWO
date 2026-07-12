@@ -28,15 +28,28 @@ export default function AlumniPage() {
         return () => ctx.revert();
     }, []);
 
+    const [error, setError] = useState<string | null>(null);
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true);
-        await new Promise((r) => setTimeout(r, 1200));
-        const subject = encodeURIComponent(`AFLEWO Alumni Registration — ${form.name}`);
-        const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nChapter: ${form.chapter}\nYears: ${form.years}\nRole: ${form.role}`);
-        window.location.href = `mailto:alumni@aflewo.org?subject=${subject}&body=${body}`;
-        setSubmitting(false);
-        setSubmitted(true);
+        setError(null);
+        
+        try {
+            const res = await fetch("/api/alumni", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form)
+            });
+
+            if (!res.ok) throw new Error("Failed to submit");
+            
+            setSubmitted(true);
+        } catch (err) {
+            setError("Something went wrong. Please try again.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -180,6 +193,9 @@ export default function AlumniPage() {
                                                 className="w-full bg-white/5 border border-white/10 rounded-lg py-4 px-5 text-sm text-white outline-none focus:border-gold/50 transition-colors"
                                                 placeholder="e.g. Soprano, Sound Engineer, Usher, Logistics" />
                                         </div>
+                                        {error && (
+                                            <p className="text-red-400 text-xs font-bold text-center">{error}</p>
+                                        )}
                                         <button type="submit" disabled={submitting}
                                             className="w-full py-5 bg-gold text-brown rounded-lg font-black uppercase tracking-widest hover:brightness-110 transition-all shadow-glow disabled:opacity-50 flex items-center justify-center gap-3">
                                             {submitting ? <><AppIcon name="autorenew" size={20} className="animate-spin" /> Submitting...</> : <><AppIcon name="how_to_reg" size={20} /> Register as Alumni</>}
@@ -192,8 +208,8 @@ export default function AlumniPage() {
                                 <Link href="/join" className="press-scale inline-flex items-center gap-2 px-8 py-4 glass-card rounded-lg font-black text-[10px] uppercase tracking-widest text-gold hover:border-gold/30 transition-all">
                                     <AppIcon name="group_add" size={16} /> Join 2026 Team
                                 </Link>
-                                <Link href="/stories" className="press-scale inline-flex items-center gap-2 px-8 py-4 glass-card rounded-lg font-black text-[10px] uppercase tracking-widest hover:text-gold hover:border-gold/30 transition-all">
-                                    <AppIcon name="format_quote" size={16} /> Share Your Story
+                                <Link href="/testimonies" className="press-scale inline-flex items-center gap-2 px-8 py-4 glass-card rounded-lg font-black text-[10px] uppercase tracking-widest hover:text-gold hover:border-gold/30 transition-all">
+                                    <AppIcon name="format_quote" size={16} /> Share Your Testimony
                                 </Link>
                             </div>
                         </div>
