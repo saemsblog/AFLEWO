@@ -4,7 +4,7 @@ import './LightRays.css';
 
 const DEFAULT_COLOR = '#ffffff';
 
-const hexToRgb = (hex: string) => {
+const hexToRgb = (hex: string): [number, number, number] => {
   const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return m ? [parseInt(m[1], 16) / 255, parseInt(m[2], 16) / 255, parseInt(m[3], 16) / 255] : [1, 1, 1];
 };
@@ -31,6 +31,22 @@ const getAnchorAndDir = (origin: string, w: number, h: number) => {
   }
 };
 
+interface LightRaysProps {
+  raysOrigin?: string;
+  raysColor?: string;
+  raysSpeed?: number;
+  lightSpread?: number;
+  rayLength?: number;
+  pulsating?: boolean;
+  fadeDistance?: number;
+  saturation?: number;
+  followMouse?: boolean;
+  mouseInfluence?: number;
+  noiseAmount?: number;
+  distortion?: number;
+  className?: string;
+}
+
 const LightRays = ({
   raysOrigin = 'top-center',
   raysColor = DEFAULT_COLOR,
@@ -45,17 +61,17 @@ const LightRays = ({
   noiseAmount = 0.0,
   distortion = 0.0,
   className = ''
-}) => {
-  const containerRef = useRef<any>(null);
+}: LightRaysProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const uniformsRef = useRef<any>(null);
   const rendererRef = useRef<any>(null);
   const mouseRef = useRef({ x: 0.5, y: 0.5 });
   const smoothMouseRef = useRef({ x: 0.5, y: 0.5 });
-  const animationIdRef = useRef<any>(null);
+  const animationIdRef = useRef<number | null>(null);
   const meshRef = useRef<any>(null);
-  const cleanupFunctionRef = useRef<any>(null);
+  const cleanupFunctionRef = useRef<(() => void) | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const observerRef = useRef<any>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;

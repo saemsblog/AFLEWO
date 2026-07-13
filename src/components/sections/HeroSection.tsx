@@ -13,6 +13,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 const dynamicItems = getIslandDisplayItems();
 
+const slideVariants = {
+    enter: (dir: number) => ({
+        opacity: 0,
+        x: dir > 0 ? 60 : -60
+    }),
+    center: {
+        opacity: 1,
+        x: 0
+    },
+    exit: (dir: number) => ({
+        opacity: 0,
+        x: dir > 0 ? -60 : 60
+    })
+};
+
 export default function HeroSection() {
     const sectionRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -185,9 +200,10 @@ export default function HeroSection() {
                                     <motion.div
                                         key={currentItem.id}
                                         custom={direction}
-                                        initial={(dir) => ({ opacity: 0, x: dir > 0 ? 60 : -60 })}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={(dir) => ({ opacity: 0, x: dir > 0 ? -60 : 60 })}
+                                        variants={slideVariants}
+                                        initial="enter"
+                                        animate="center"
+                                        exit="exit"
                                         transition={{ type: "spring", stiffness: 380, damping: 35 }}
                                         className="w-full"
                                     >
