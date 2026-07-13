@@ -264,6 +264,7 @@ export default function AIAssistant() {
     const lottieRef = useRef<LottieRefCurrentProps>(null);
     const recognitionRef = useRef<any>(null);
     const synthRef = useRef<SpeechSynthesis | null>(null);
+    const hasSentRef = useRef(false);
 
     // Check for voice support
     useEffect(() => {
@@ -419,6 +420,8 @@ export default function AIAssistant() {
     const startListening = useCallback(() => {
         if (!hasVoiceSupport || isListening) return;
 
+        hasSentRef.current = false;
+
         const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = new SR();
         recognition.lang = "en-KE";
@@ -436,7 +439,8 @@ export default function AIAssistant() {
                 .join("");
             setVoiceTranscript(transcript);
 
-            if (event.results[event.results.length - 1].isFinal) {
+            if (event.results[event.results.length - 1].isFinal && !hasSentRef.current) {
+                hasSentRef.current = true;
                 setIsListening(false);
                 lottieRef.current?.stop();
                 sendMessage(transcript);
