@@ -437,7 +437,6 @@ export default function AIAssistant() {
             setVoiceTranscript(transcript);
 
             if (event.results[event.results.length - 1].isFinal) {
-                recognition.stop();
                 setIsListening(false);
                 lottieRef.current?.stop();
                 sendMessage(transcript);
