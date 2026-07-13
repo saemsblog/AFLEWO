@@ -162,12 +162,20 @@ const GlassSurface = ({
       return false;
     }
 
+    // Respect accessibility preferences
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedTransparency = window.matchMedia('(prefers-reduced-transparency: reduce)').matches;
+
+    if (prefersReducedMotion || prefersReducedTransparency) {
+      return false;
+    }
+
     // Downgrade to high-performance CSS glass on mobile and low-capability devices
-    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const isMobile = /Mobi|Android|iPhone|iPod/i.test(navigator.userAgent);
+    const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
     const cores = navigator.hardwareConcurrency || 4;
 
-    if (isMobile || isTouch || cores < 8) {
+    if ((isMobile && isSmallScreen) || cores < 4) {
       return false;
     }
 
