@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import textToSpeech from "@google-cloud/text-to-speech";
+import { TextToSpeechClient } from "@google-cloud/text-to-speech";
 
-let cachedClient: textToSpeech.TextToSpeechClient | null = null;
+let cachedClient: TextToSpeechClient | null = null;
 
 function getClient() {
     if (cachedClient) return cachedClient;
@@ -18,7 +18,7 @@ function getClient() {
         throw new Error("Server Configuration Error");
     }
 
-    cachedClient = new textToSpeech.TextToSpeechClient({
+    cachedClient = new TextToSpeechClient({
         credentials,
         projectId: credentials.project_id
     });
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
         }
 
         // Return the binary audio file with appropriate headers
-        return new NextResponse(response.audioContent, {
+        return new NextResponse(response.audioContent as any, {
             status: 200,
             headers: {
                 "Content-Type": "audio/mpeg",
