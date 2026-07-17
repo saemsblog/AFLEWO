@@ -115,6 +115,20 @@ export const events: AFLEWOEvent[] = [
         chapter: "Nairobi",
         location: "Winners' Chapel International",
         description: "The flagship all-night worship experience."
+    },
+    {
+        id: "eldoret-live-2026",
+        title: "🔴 LIVE NOW — Eldoret Worship Night",
+        date: "Jul 17, 2026",
+        start: "20260717T190000",
+        end: "20260718T020000",
+        time: "07:00 PM",
+        type: "Live Stream",
+        chapter: "Eldoret",
+        location: "AFLEWO Eldoret Chapter",
+        description: "AFLEWO Eldoret is live right now! Watch on YouTube or Facebook.",
+        isLive: true,
+        url: "https://www.youtube.com/live/fhpaPFr_OvQ?si=etOx1Ea0YAECAQ1l"
     }
 ];
 

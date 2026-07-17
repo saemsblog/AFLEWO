@@ -154,7 +154,7 @@ export default function HeroSection() {
                 <div ref={contentRef} className="relative z-10 text-center px-8 max-w-6xl mt-20 w-full">
 
                     {/* ── Notification Pill (GlassSurface, horizontal swipe, chevrons outside) ── */}
-                    <div className="mb-8 flex justify-center items-center gap-3">
+                    <div className="mb-8 flex justify-center items-center gap-3 relative z-20">
                         {/* Left chevron — outside pill */}
                         {dynamicItems.length > 1 && (
                             <button

@@ -60,13 +60,25 @@ function CloseIcon() {
     );
 }
 
-// ─── Mic icon SVG ─────────────────────────────────────────────────────────────
+// ─── Mic icon SVG (new branded icons) ────────────────────────────────────────
 function MicIcon({ active }: { active: boolean }) {
+    const col = active ? "hsl(42 92% 56%)" : "currentColor";
+    if (!active) {
+        // mic-off icon
+        return (
+            <svg width="18" height="18" viewBox="-3.5 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(-156.000000, -309.000000)" fill={col}>
+                    <path d="M169,335 C167.061,335 165.236,334.362 163.716,333.318 L162.31,334.742 C163.944,335.953 165.892,336.765 168,336.955 L168,339 L167,339 C166.448,339 166,339.448 166,340 C166,340.553 166.448,341 167,341 L171,341 C171.552,341 172,340.553 172,340 C172,339.448 171.552,339 171,339 L170,339 L170,336.955 C174.938,336.51 179.117,332.799 180,328 L178,328 C177.089,332.007 173.282,335 169,335 L169,335 Z M176,326 L176,320.739 L164.735,331.515 C165.918,332.432 167.386,333 169,333 C172.866,333 176,329.866 176,326 L176,326 Z M160.047,328.145 L160,328 L158,328 C158.109,328.596 158.271,329.175 158.478,329.733 L160.047,328.145 L160.047,328.145 Z M179.577,312.013 L155.99,334.597 L157.418,336.005 L181.014,313.433 L179.577,312.013 L179.577,312.013 Z M169,309 C165.134,309 162,312.134 162,316 L161.997,326.309 L175.489,313.401 C174.456,310.825 171.946,309 169,309 L169,309 Z" />
+                </g>
+            </svg>
+        );
+    }
+    // mic-on icon
     return (
-        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12,20a9,9,0,0,1-7-3.37,1,1,0,0,1,1.56-1.26,7,7,0,0,0,10.92,0A1,1,0,0,1,19,16.63,9,9,0,0,1,12,20Z" fill={active ? "hsl(42 92% 56%)" : "currentColor"} />
-            <path d="M12,2A5,5,0,0,0,7,7v4a5,5,0,0,0,10,0V7A5,5,0,0,0,12,2Z" fill={active ? "hsl(42 92% 56%)" : "currentColor"} />
-            <path d="M12,22a1,1,0,0,1-1-1V19a1,1,0,0,1,2,0v2A1,1,0,0,1,12,22Z" fill={active ? "hsl(42 92% 56%)" : "currentColor"} />
+        <svg width="18" height="18" viewBox="-5 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(-107.000000, -309.000000)" fill={col}>
+                <path d="M118,333 C121.866,333 125,329.866 125,326 L125,316 C125,312.134 121.866,309 118,309 C114.134,309 111,312.134 111,316 L111,326 C111,329.866 114.134,333 118,333 L118,333 Z M129,328 L127,328 C126.089,332.007 122.282,335 118,335 C113.718,335 109.911,332.007 109,328 L107,328 C107.883,332.799 112.063,336.51 117,336.955 L117,339 L116,339 C115.448,339 115,339.448 115,340 C115,340.553 115.448,341 116,341 L120,341 C120.552,341 121,340.553 121,340 C121,339.448 120.552,339 120,339 L119,339 L119,336.955 C123.937,336.51 128.117,332.799 129,328 L129,328 Z" />
+            </g>
         </svg>
     );
 }
@@ -293,7 +305,9 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: () => void })
     const [activeSystemMessage, setActiveSystemMessage] = useState<string | null>(null);
     const [showSignInPill, setShowSignInPill] = useState(false);
     const [fabIsIdle, setFabIsIdle] = useState(false);
-    const [isMuted, setIsMuted] = useState(false);
+    // Voice is muted by default — users must opt-in to enable TTS
+    const [isMuted, setIsMuted] = useState(true);
+    const [isHeroVisible, setIsHeroVisible] = useState(true);
     const [chatWallpaper, setChatWallpaper] = useState<string | null>(null);
     const [showPersonalize, setShowPersonalize] = useState(false);
     const aiChatLottieRef = useRef<LottieRefCurrentProps>(null);
@@ -355,6 +369,18 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: () => void })
         };
     }, [isOpen]);
 
+    // Hide FAB when hero section is visible — mirrors Nav FAB behaviour exactly
+    useEffect(() => {
+        const heroEl = document.getElementById("hero") || document.querySelector("[data-hero]");
+        if (!heroEl) { setIsHeroVisible(false); return; }
+        const obs = new IntersectionObserver(
+            ([entry]) => setIsHeroVisible(entry.isIntersecting),
+            { threshold: 0.1 }
+        );
+        obs.observe(heroEl);
+        return () => obs.disconnect();
+    }, []);
+
     // Auto-scroll to latest message or when thinking
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -377,6 +403,13 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: () => void })
     // ─── Navigation action executor ─────────────────────────────────────────
     const executeAction = useCallback((action: NavigationAction) => {
         if (action.type === "navigate_to") {
+            // BUG FIX: if already on the target page, abort navigation entirely
+            // to prevent the isTransitioning overlay from getting permanently stuck.
+            if (pathname === action.target) {
+                setIsNavigating(null);
+                setActiveSystemMessage(null);
+                return;
+            }
             if (onNavigate) onNavigate();
             router.push(action.target);
         } else if (action.type === "scroll_to") {
@@ -389,7 +422,7 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: () => void })
                 router.push(`/#${action.target}`);
             }
         }
-    }, [router, onNavigate]);
+    }, [router, onNavigate, pathname]);
 
     // ─── Text-to-speech ──────────────────────────────────────────────────────
     const speak = useCallback((text: string) => {
@@ -580,7 +613,7 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: () => void })
         <>
             {/* ── Floating Trigger Button ── */}
             <AnimatePresence>
-                {!isOpen && (
+                {!isOpen && !isHeroVisible && (
                     <motion.button
                         key="fab"
                         initial={{ scale: 0, opacity: 0 }}
@@ -680,7 +713,7 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: () => void })
                                         </svg>
                                     )}
                                 </button>
-                                {/* Personalize */}
+                                {/* Personalize / Wallpaper */}
                                 <button
                                     onClick={() => setShowPersonalize(p => !p)}
                                     className={`w-8 h-8 flex items-center justify-center rounded-full transition-all ${
@@ -689,9 +722,9 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: () => void })
                                     title="Personalize chat"
                                     aria-label="Personalize chat"
                                 >
-                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-                                        <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="currentColor" strokeWidth="1.5"/>
-                                        <path d="M8 12C8 9.79 9.79 8 12 8C14.21 8 16 9.79 16 12C16 14.21 14.21 16 12 16C9.79 16 8 14.21 8 12Z" fill="currentColor" opacity=".4"/>
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15.7209 7.34884C15.7209 8.37634 14.888 9.2093 13.8605 9.2093C12.833 9.2093 12 8.37634 12 7.34884C12 6.32133 12.833 5.48837 13.8605 5.48837C14.888 5.48837 15.7209 6.32133 15.7209 7.34884Z" fill="currentColor"/>
+                                        <path fillRule="evenodd" clipRule="evenodd" d="M16.0853 2.10839C15.2789 1.99997 14.2535 1.99998 12.9813 2H11.0187C9.74655 1.99998 8.72114 1.99997 7.91466 2.10839C7.07735 2.22097 6.37235 2.4618 5.81243 3.02172C5.25251 3.58164 5.01168 4.28664 4.89911 5.12395C4.79068 5.93043 4.79069 6.95585 4.79071 8.22802V15.772C4.79069 17.0442 4.79068 18.0696 4.89911 18.876C5.01168 19.7134 5.25251 20.4184 5.81243 20.9783C6.37235 21.5382 7.07735 21.779 7.91466 21.8916C8.72114 22 9.74655 22 11.0187 22H12.9813C14.2534 22 15.2789 22 16.0853 21.8916C16.9226 21.779 17.6276 21.5382 18.1876 20.9783C18.7475 20.4184 18.9883 19.7134 19.1009 18.876C19.2093 18.0696 19.2093 17.0441 19.2093 15.772V8.22803C19.2093 6.95585 19.2093 5.93044 19.1009 5.12395C18.9883 4.28664 18.7475 3.58164 18.1876 3.02172C17.6276 2.4618 16.9226 2.22097 16.0853 2.10839Z" fill="currentColor" opacity="0.4"/>
                                     </svg>
                                 </button>
                                 <button
@@ -1016,34 +1049,95 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: () => void })
 }
 
 // ─── Suggestions Configuration ──────────────────────────────────────────────
+// Priority sorting: live-event items first, then chapter-specific, then general.
 function getContextualSuggestions(text: string) {
     const lower = text.toLowerCase();
-    if (lower.includes("join") || lower.includes("choir") || lower.includes("audition") || lower.includes("register")) {
+    const now = new Date();
+    const hour = now.getHours();
+    const isEvening = hour >= 17 || hour < 4; // 5 PM – 4 AM = likely event hours
+
+    // ── LIVE EVENT: AFLEWO Eldoret is LIVE NOW (pinned highest priority) ──────
+    const liveEldoretSuggestions = [
+        { id: "live_eldoret", label: "🔴 Eldoret LIVE", prompt: "AFLEWO Eldoret is live right now! Where can I watch the stream?", icon: "videocam" },
+        { id: "live_youtube", label: "Watch on YouTube", prompt: "Open the AFLEWO Eldoret YouTube live stream", icon: "youtube" },
+        { id: "live_facebook", label: "Watch on Facebook", prompt: "Open the AFLEWO Eldoret Facebook live stream", icon: "share" },
+    ];
+
+    // ── JOIN / AUDITIONS ──────────────────────────────────────────────────────
+    if (lower.includes("join") || lower.includes("choir") || lower.includes("audition") || lower.includes("register") || lower.includes("apply")) {
         return [
             { id: "join_choir", label: "Join Choir", prompt: "How do I register to join the AFLEWO choir?", icon: "church" },
-            { id: "requirements", label: "Auditions", prompt: "What are the audition requirements?", icon: "favorite" },
-            { id: "serve_teams", label: "Other Teams", prompt: "How do I join the ushering, security, or media teams?", icon: "person_add" }
+            { id: "requirements", label: "Requirements", prompt: "What are the audition requirements for each team?", icon: "favorite" },
+            { id: "serve_teams", label: "Other Teams", prompt: "How do I join the ushering, security, or media teams?", icon: "person_add" },
+            { id: "partner", label: "Partner", prompt: "How can I financially partner with AFLEWO?", icon: "handshake" },
         ];
     }
-    if (lower.includes("event") || lower.includes("date") || lower.includes("calendar") || lower.includes("worship night")) {
+
+    // ── EVENTS / DATES ────────────────────────────────────────────────────────
+    if (lower.includes("event") || lower.includes("date") || lower.includes("calendar") || lower.includes("worship night") || lower.includes("schedule")) {
         return [
-            { id: "calendar_2026", label: "2026 Schedule", prompt: "What events are planned for AFLEWO 2026?", icon: "calendar" },
-            { id: "nairobi_launch", label: "Pre-Launch", prompt: "Tell me about the Nairobi Pre-Launch event", icon: "calendar" },
-            { id: "main_event", label: "Main Event", prompt: "When is the main AFLEWO Nairobi event?", icon: "calendar" }
+            { id: "main_event", label: "Oct 2–4 Nairobi", prompt: "Tell me about the main AFLEWO Night on October 2nd in Nairobi", icon: "calendar" },
+            { id: "calendar_2026", label: "Full 2026 Schedule", prompt: "What is the full AFLEWO 2026 event calendar?", icon: "calendar" },
+            { id: "nairobi_launch", label: "Pre-Launch", prompt: "Tell me about the Nairobi Pre-Launch event on April 10th", icon: "calendar" },
+            ...liveEldoretSuggestions.slice(0, 1),
         ];
     }
-    if (lower.includes("chapter") || lower.includes("nairobi") || lower.includes("mombasa") || lower.includes("eldoret") || lower.includes("nakuru")) {
+
+    // ── ELDORET SPECIFIC ──────────────────────────────────────────────────────
+    if (lower.includes("eldoret")) {
         return [
-            { id: "chapters_list", label: "All Chapters", prompt: "Show me all active AFLEWO chapters", icon: "location" },
-            { id: "nairobi_chapter", label: "Nairobi Chapter", prompt: "Where is the Nairobi chapter based?", icon: "church" },
-            { id: "mombasa_chapter", label: "Mombasa Chapter", prompt: "Tell me about the Mombasa chapter", icon: "location" }
+            ...liveEldoretSuggestions,
+            { id: "eldoret_chapter", label: "Eldoret Chapter", prompt: "Tell me about the AFLEWO Eldoret chapter", icon: "location" },
         ];
     }
-    // Default general suggestions
+
+    // ── CHAPTER CONTEXT ───────────────────────────────────────────────────────
+    if (lower.includes("chapter") || lower.includes("nairobi") || lower.includes("mombasa") || lower.includes("nakuru") || lower.includes("rwanda") || lower.includes("tanzania")) {
+        return [
+            { id: "chapters_list", label: "All Chapters", prompt: "Show me all 7 active AFLEWO chapters", icon: "location" },
+            { id: "nairobi_chapter", label: "Nairobi", prompt: "Where is the Nairobi chapter based and when do they rehearse?", icon: "church" },
+            { id: "mombasa_chapter", label: "Mombasa", prompt: "Tell me about the Mombasa chapter prayer circle", icon: "location" },
+            { id: "rwanda_chapter", label: "Rwanda", prompt: "Tell me about the Rwanda reconciliation chapter", icon: "location" },
+        ];
+    }
+
+    // ── LIVE / STREAM ─────────────────────────────────────────────────────────
+    if (lower.includes("live") || lower.includes("stream") || lower.includes("watch")) {
+        return liveEldoretSuggestions;
+    }
+
+    // ── MEDIA / WORSHIP ARCHIVE ───────────────────────────────────────────────
+    if (lower.includes("media") || lower.includes("video") || lower.includes("worship") || lower.includes("song") || lower.includes("music")) {
+        return [
+            { id: "media_archive", label: "Worship Archive", prompt: "Where can I watch past AFLEWO worship videos?", icon: "music" },
+            { id: "stories", label: "Testimonies", prompt: "Show me AFLEWO community stories and testimonies", icon: "speech" },
+            ...liveEldoretSuggestions.slice(0, 1),
+        ];
+    }
+
+    // ── DONATION / PAYBILL ────────────────────────────────────────────────────
+    if (lower.includes("donate") || lower.includes("mpesa") || lower.includes("partner") || lower.includes("support") || lower.includes("paybill")) {
+        return [
+            { id: "donate_mpesa", label: "M-Pesa Paybill", prompt: "What is the AFLEWO M-Pesa paybill number?", icon: "wallet" },
+            { id: "partner_tiers", label: "Partner Tiers", prompt: "What are the AFLEWO corporate partnership tiers?", icon: "handshake" },
+            { id: "alumni", label: "Alumni Network", prompt: "How do I re-register as an AFLEWO alumni?", icon: "person_add" },
+        ];
+    }
+
+    // ── DEFAULT (evening: surface live event first) ───────────────────────────
+    if (isEvening) {
+        return [
+            liveEldoretSuggestions[0],
+            { id: "join", label: "Join Movement", prompt: "How do I register to join the AFLEWO choir?", icon: "church" },
+            { id: "events", label: "Events", prompt: "What events are planned for AFLEWO 2026?", icon: "calendar" },
+            { id: "chapters", label: "Chapters", prompt: "Show me all 7 active AFLEWO chapters", icon: "location" },
+        ];
+    }
+
     return [
-        { id: "join", label: "Join Choir", prompt: "How do I register to join the AFLEWO choir?", icon: "church" },
-        { id: "events", label: "Events", prompt: "What events are planned for AFLEWO 2026?", icon: "calendar" },
-        { id: "chapters", label: "Chapters", prompt: "Show me active AFLEWO chapters", icon: "location" },
-        { id: "media", label: "Archive", prompt: "Where can I watch past worship videos?", icon: "music" }
+        { id: "join", label: "Join Movement", prompt: "How do I register to join the AFLEWO choir?", icon: "church" },
+        { id: "events", label: "2026 Events", prompt: "What events are planned for AFLEWO 2026?", icon: "calendar" },
+        { id: "chapters", label: "Chapters", prompt: "Show me all 7 active AFLEWO chapters", icon: "location" },
+        { id: "media", label: "Archive", prompt: "Where can I watch past worship videos?", icon: "music" },
     ];
 }

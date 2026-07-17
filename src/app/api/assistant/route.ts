@@ -59,6 +59,13 @@ EVENTS (2026 season):
 - Nyeri Regional Gathering: May 15, 2026 — PCEA Nyamachaki
 - Main Nairobi Event: Oct 03–04, 2026 — flagship all-night worship, Winners' Chapel
 
+🔴 LIVE EVENT (ACTIVE RIGHT NOW — July 2026):
+- AFLEWO Eldoret is currently LIVE streaming their worship night.
+- YouTube Live Stream: https://www.youtube.com/live/fhpaPFr_OvQ?si=etOx1Ea0YAECAQ1l
+- Facebook Live Stream: https://www.facebook.com/AFLEWOEldoret/videos/1548029893474868
+- When a user asks about Eldoret, live streaming, or "what is happening now", always provide BOTH stream links formatted as Markdown hyperlinks.
+- Example: "AFLEWO Eldoret is LIVE right now! Watch on [YouTube](https://www.youtube.com/live/fhpaPFr_OvQ?si=etOx1Ea0YAECAQ1l) or [Facebook](https://www.facebook.com/AFLEWOEldoret/videos/1548029893474868) 🙌"
+
 HOW TO JOIN:
 - Audition categories: Choir, Band, Media, Ushering, Security, Dancing
 - Visit /join to register for auditions

@@ -161,7 +161,7 @@ export default function JoinPage() {
         <main ref={containerRef} className="bg-background min-h-screen">
 
             {/* Hero */}
-            <section className="pt-40 pb-24 px-6 relative overflow-hidden">
+            <section className="pt-40 pb-8 px-6 relative overflow-hidden">
                 <div className="absolute top-0 right-[-10%] w-[500px] h-[500px] rounded-full bg-gold/5 blur-[150px] -z-10" />
                 <div className="max-container flex flex-col items-center text-center space-y-8">
                     <span className="text-gold font-black uppercase tracking-[0.4em] text-xs">Serve the Vision</span>
@@ -177,7 +177,7 @@ export default function JoinPage() {
 
             {/* Track Cards */}
             <section className="section-padding">
-                <div className="max-container space-y-20">
+                <div className="max-container space-y-8">
                     <div className="tracks-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {tracks.map((track) => (
                             <div
