@@ -15,17 +15,20 @@ import loaderJson from "../../context/lottie/Loader.json";
  * and export Next.js metadata.
  */
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
-  // Only show the preloader once per browser session.
-  // On client-side navigations Next.js App Router remounts ClientLayout,
-  // which would reset `loading` to true and wipe the AIAssistant state.
-  // We use sessionStorage as the source of truth so the preloader only
-  // fires on the very first hard load — not on soft navigations.
-  const [loading, setLoading] = useState(() => {
-    if (typeof window === "undefined") return true;
-    return !sessionStorage.getItem("aflewo_preloader_done");
-  });
+  // Always start as true to match the server render and prevent React hydration errors.
+  // The sessionStorage check runs in a useEffect (after hydration) so the server and
+  // client initial renders always agree — eliminating React error #418/#423.
+  const [loading, setLoading] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const pathname = usePathname();
+
+  // After hydration: if the preloader was already shown this session, skip it instantly.
+  // This keeps AIAssistant mounted and chat state alive across client-side navigations.
+  useEffect(() => {
+    if (sessionStorage.getItem("aflewo_preloader_done")) {
+      setLoading(false);
+    }
+  }, []);
 
   // Reset the transition overlay automatically when the pathname changes
   useEffect(() => {
