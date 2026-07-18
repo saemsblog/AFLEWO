@@ -758,7 +758,7 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: () => void })
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 40, scale: 0.92 }}
                         transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                        className="fixed bottom-8 right-8 z-[150] w-[360px] max-w-[calc(100vw-2rem)] rounded-3xl overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.6)] border border-white/10 relative"
+                        className="fixed bottom-8 right-8 z-[150] w-[360px] max-w-[calc(100vw-2rem)] rounded-3xl overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.6)] border border-white/10"
                         style={{
                             background: "hsl(20 14% 5% / 0.95)",
                             backdropFilter: "blur(32px)",
@@ -768,11 +768,13 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: () => void })
                             flexDirection: "column",
                         }}
                     >
-                        {/* -- Liquid Glass Island -- */}
-                        <LiquidGlassIsland
-                            island={islandState}
-                            onDismiss={() => setIslandState({ mode: "IDLE", payload: null })}
-                        />
+                        {/* -- Liquid Glass Island (relative wrapper gives island absolute anchor) -- */}
+                        <div className="relative flex-shrink-0">
+                            <LiquidGlassIsland
+                                island={islandState}
+                                onDismiss={() => setIslandState({ mode: "IDLE", payload: null })}
+                            />
+                        </div>
 
                         {/* Ã¢â€â‚¬Ã¢â€â‚¬ Panel Header Ã¢â€â‚¬Ã¢â€â‚¬ */}
                         <div className="flex items-center justify-between px-5 py-4 border-b border-white/8 flex-shrink-0">
