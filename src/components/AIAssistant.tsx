@@ -320,7 +320,7 @@ function LiquidGlassIsland({ island, onDismiss }: { island: IslandState; onDismi
                     <motion.div key="map-content" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.26 }} className="px-3 pb-3">
                         <p className="text-[9px] font-black uppercase tracking-[0.25em] text-gold/70 mb-2">{island.payload.label || "Venue Location"}</p>
                         <div className="w-full rounded-xl overflow-hidden" style={{ height: 156, background: "rgba(0,0,0,0.3)" }}>
-                            <iframe title={island.payload.label || "Venue map"} src={https://maps.google.com/maps?q=,&z=15&output=embed} width="100%" height="100%" style={{ border: 0, borderRadius: 12, opacity: 0.92 }} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+                            <iframe title={island.payload.label || "Venue map"} src={`https://maps.google.com/maps?q=${island.payload.lat},${island.payload.lng}&z=15&output=embed`} width="100%" height="100%" style={{ border: 0, borderRadius: 12, opacity: 0.92 }} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
                         </div>
                         <p className="text-[8px] text-white/30 text-center mt-1.5 font-medium tracking-wide">{island.payload.lat.toFixed(4)}, {island.payload.lng.toFixed(4)}</p>
                     </motion.div>
