@@ -15,7 +15,15 @@ import loaderJson from "../../context/lottie/Loader.json";
  * and export Next.js metadata.
  */
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
-  const [loading, setLoading] = useState(true);
+  // Only show the preloader once per browser session.
+  // On client-side navigations Next.js App Router remounts ClientLayout,
+  // which would reset `loading` to true and wipe the AIAssistant state.
+  // We use sessionStorage as the source of truth so the preloader only
+  // fires on the very first hard load — not on soft navigations.
+  const [loading, setLoading] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !sessionStorage.getItem("aflewo_preloader_done");
+  });
   const [isTransitioning, setIsTransitioning] = useState(false);
   const pathname = usePathname();
 
@@ -26,7 +34,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
   return (
     <>
-      {loading && <Preloader onComplete={() => setLoading(false)} />}
+      {loading && <Preloader onComplete={() => { sessionStorage.setItem("aflewo_preloader_done", "1"); setLoading(false); }} />}
       <div
         className={
           loading
