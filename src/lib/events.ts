@@ -13,6 +13,13 @@ export interface AFLEWOEvent {
     description?: string;
     isLive?: boolean;
     url?: string;
+    /** Decimal coordinates for the embedded map */
+    lat?: number;
+    lng?: number;
+    /** Short venue name shown in the expanded card header */
+    venueName?: string;
+    /** Human-readable start time shown in the card */
+    startTime?: string;
 }
 
 export const events: AFLEWOEvent[] = [
@@ -26,7 +33,11 @@ export const events: AFLEWOEvent[] = [
         type: "Audition",
         chapter: "Eldoret",
         location: "Eldoret Regional Hub",
-        description: "Auditions for Choir, Band, Media, Ushering, Security, and Dancing categories."
+        description: "Auditions for Choir, Band, Media, Ushering, Security, and Dancing categories.",
+        venueName: "Eldoret Regional Hub",
+        startTime: "Feb 15 · 09:00 AM",
+        lat: 0.5143,
+        lng: 35.2698,
     },
     {
         id: "2",
@@ -38,7 +49,11 @@ export const events: AFLEWOEvent[] = [
         type: "Rehearsal",
         chapter: "Nakuru",
         location: "Deliverance Church, Nakuru",
-        description: "2026 season rehearsals for registered choir members."
+        description: "2026 season rehearsals for registered choir members.",
+        venueName: "Deliverance Church, Nakuru",
+        startTime: "Mar 02 · 05:00 PM",
+        lat: -0.3031,
+        lng: 36.0800,
     },
     {
         id: "3",
@@ -52,7 +67,9 @@ export const events: AFLEWOEvent[] = [
         location: "Zoom Virtual Altar",
         description: "Nightly prayer circle gathering via Zoom.",
         isLive: true,
-        url: "https://zoom.us/j/aflewo"
+        url: "https://zoom.us/j/aflewo",
+        venueName: "Zoom Virtual Altar",
+        startTime: "Nightly · 09:00 PM",
     },
     {
         id: "4",
@@ -66,7 +83,11 @@ export const events: AFLEWOEvent[] = [
         location: "Winners' Chapel International",
         description: "Pre-launch event for the 2026 main gathering.",
         isLive: true,
-        url: "https://youtube.com/aflewo"
+        url: "https://youtube.com/aflewo",
+        venueName: "Winners' Chapel International",
+        startTime: "Apr 10 · 06:00 PM",
+        lat: -1.2679,
+        lng: 36.8025,
     },
     {
         id: "5",
@@ -78,7 +99,11 @@ export const events: AFLEWOEvent[] = [
         type: "Event",
         chapter: "Tanzania",
         location: "CCC Upanga Church, Dar es Salaam",
-        description: "An evening of worship and praise."
+        description: "An evening of worship and praise.",
+        venueName: "CCC Upanga Church",
+        startTime: "Mar 21 · 07:00 PM",
+        lat: -6.8161,
+        lng: 39.2803,
     },
     {
         id: "6",
@@ -90,7 +115,11 @@ export const events: AFLEWOEvent[] = [
         type: "Event",
         chapter: "Rwanda",
         location: "Christian Life Assembly, Kigali",
-        description: "Annual commemoration service for healing and reconciliation."
+        description: "Annual commemoration service for healing and reconciliation.",
+        venueName: "Christian Life Assembly",
+        startTime: "Apr 07 · 10:00 AM",
+        lat: -1.9441,
+        lng: 30.0619,
     },
     {
         id: "7",
@@ -102,7 +131,11 @@ export const events: AFLEWOEvent[] = [
         type: "Event",
         chapter: "Nyeri",
         location: "PCEA Nyamachaki",
-        description: "Mt. Kenya regional worship gathering."
+        description: "Mt. Kenya regional worship gathering.",
+        venueName: "PCEA Nyamachaki",
+        startTime: "May 15 · 02:00 PM",
+        lat: -0.4167,
+        lng: 36.9500,
     },
     {
         id: "112",
@@ -114,7 +147,11 @@ export const events: AFLEWOEvent[] = [
         type: "Main Event",
         chapter: "Nairobi",
         location: "Winners' Chapel International",
-        description: "The flagship all-night worship experience."
+        description: "The flagship all-night worship experience.",
+        venueName: "Winners' Chapel International",
+        startTime: "Oct 03 · 06:00 PM",
+        lat: -1.2679,
+        lng: 36.8025,
     },
     {
         id: "eldoret-live-2026",
@@ -128,7 +165,11 @@ export const events: AFLEWOEvent[] = [
         location: "AFLEWO Eldoret Chapter",
         description: "AFLEWO Eldoret is live right now! Watch on YouTube or Facebook.",
         isLive: true,
-        url: "https://www.youtube.com/live/fhpaPFr_OvQ?si=etOx1Ea0YAECAQ1l"
+        url: "https://www.youtube.com/live/fhpaPFr_OvQ?si=etOx1Ea0YAECAQ1l",
+        venueName: "AFLEWO Eldoret Chapter",
+        startTime: "Jul 17 · 07:00 PM",
+        lat: 0.5143,
+        lng: 35.2698,
     }
 ];
 
@@ -154,18 +195,23 @@ export function getLiveEvents() {
 
 export function getIslandDisplayItems() {
     const live = getLiveEvents();
-    if (live.length > 0) return live.map(l => ({
+    const source = live.length > 0 ? live : events.filter(e =>
+        parseEventDate(e.date) !== null &&
+        parseEventDate(e.date)! >= new Date()
+    ).slice(0, 3);
+
+    const list = source.length > 0 ? source : (events.slice(-3));
+
+    return list.map(l => ({
         id: l.id,
         title: l.title,
-        url: l.url || "/events",
-        isExternal: l.url?.startsWith("http"),
-        isLive: true
-    }));
-    return promos.map(p => ({
-        id: p.id,
-        title: p.title,
-        url: p.url,
-        isExternal: p.isExternal,
-        isLive: false
+        url: l.url || "/join",
+        isExternal: !!(l.url?.startsWith("http")),
+        isLive: !!l.isLive,
+        description: l.description,
+        venueName: l.venueName,
+        startTime: l.startTime,
+        lat: l.lat,
+        lng: l.lng,
     }));
 }
