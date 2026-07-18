@@ -91,23 +91,29 @@ export default function JoinPage() {
     }, []);
 
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".track-card", {
-                scrollTrigger: { trigger: ".tracks-grid", start: "top 95%", once: true },
-                y: 60,
-                opacity: 0,
-                stagger: 0.1,
-                duration: 1,
-                ease: "expo.out",
-            });
-            gsap.from(".join-hero-text", {
-                y: 80,
-                opacity: 0,
-                duration: 1.4,
-                ease: "expo.out",
-            });
-        }, containerRef);
-        return () => ctx.revert();
+        // Delay GSAP slightly to allow Next.js page transition to complete and DOM to settle
+        const timer = setTimeout(() => {
+            const ctx = gsap.context(() => {
+                gsap.from(".track-card", {
+                    scrollTrigger: { trigger: ".tracks-grid", start: "top 95%", once: true },
+                    y: 60,
+                    opacity: 0,
+                    stagger: 0.1,
+                    duration: 1,
+                    ease: "expo.out",
+                });
+                gsap.from(".join-hero-text", {
+                    y: 80,
+                    opacity: 0,
+                    duration: 1.4,
+                    ease: "expo.out",
+                });
+                ScrollTrigger.refresh();
+            }, containerRef);
+            return () => ctx.revert();
+        }, 100);
+
+        return () => clearTimeout(timer);
     }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
