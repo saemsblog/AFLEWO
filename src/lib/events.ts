@@ -1,4 +1,3 @@
-"use client";
 
 export interface AFLEWOEvent {
     id: string;

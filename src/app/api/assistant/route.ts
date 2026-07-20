@@ -17,10 +17,72 @@ const SITE_ROUTES = [
 ];
 
 // ─── AFLEWO Site Knowledge Base ───────────────────────────────────────────────
-function getSiteMapContext() {
-    const eventsContext = events.map(e => `- ${e.title}: ${e.startTime} — ${e.location} (${e.description})`).join("\n");
+const FALLBACK_SITE_MAP_CONTEXT = `
+AFLEWO (Africa Let's Worship) — Site Knowledge Base
 
-    return `
+IDENTITY:
+- Full name: Africa Let's Worship (AFLEWO)
+- Founded: 2004
+- Type: Continental interdenominational worship movement
+- Mission: Stirring up hope in Jesus through a united African voice
+- Tagline: "One God. One People. One Africa."
+
+CHAPTERS (7 total):
+- Nairobi, Kenya (flagship chapter, main annual event)
+- Nakuru, Kenya
+- Nyeri, Kenya
+- Mombasa, Kenya
+- Eldoret, Kenya
+- Tanzania
+- Rwanda
+
+SITE PAGES & PATHS:
+${SITE_ROUTES.map(r => `- ${r.name}: ${r.path} (${r.description})`).join("\n")}
+
+NAVIGATION SECTIONS (home page scroll):
+- #hero — landing video section, main headline
+- #about — vision and history
+- #chapters — all 7 chapters
+- #events — event calendar
+- #media — archive preview
+- #stories — echo testimonies
+- #join — connect / join CTA
+
+EVENTS:
+- Main Nairobi Event: October 3, 2026. Location: Winners' Chapel International. Expected attendance: 12,000+.
+- Nakuru Regional Event: August 14, 2026.
+- Eldoret Campus Tour: September 5, 2026.
+
+HOW TO JOIN:
+- Audition categories: Choir, Band, Media, Ushering, Security, Dancing
+- Visit /join to register for auditions
+- Requirements vary by chapter and category
+- Must be a committed Christian with a heart for worship
+
+CONTACT:
+- Website: aflewo.org
+- Social: YouTube @aflewo, Instagram @aflewo, Facebook @aflewo
+
+NAVIGATION COMMANDS (you can navigate for the user):
+- navigate_to: push the user to a page path
+- scroll_to: scroll the current page to a named section anchor
+
+RESPONSE GUIDELINES:
+- Only answer from information in this knowledge base or retrieved context.
+- If unsure or topic is outside AFLEWO, say: "I don't have that information — please contact us via our social channels or visit aflewo.org."
+- Keep answers warm, faith-grounded, and concise.
+- For joining/registration: always direct to /join.
+- For event details: give date, location, and brief description.
+- Never fabricate dates, locations, or names not in this document.
+- ALWAYS format references to site pages as Markdown hyperlinks using exact paths. Example: [Media page](/media) or [Join us](/join). Do not output plain text page names.
+- If the user has low bandwidth (indicated by [LOW_BANDWIDTH] flag), respond in minimal text only: no greetings, no pleasantries, just the essential fact in one sentence.
+`;
+
+function getSiteMapContext() {
+    try {
+        const eventsContext = events.map(e => `- ${e.title}: ${e.startTime} — ${e.location} (${e.description})`).join("\n");
+
+        return `
 AFLEWO (Africa Let's Worship) — Site Knowledge Base
 
 IDENTITY:
@@ -84,6 +146,10 @@ RESPONSE GUIDELINES:
 - ALWAYS format references to site pages as Markdown hyperlinks using exact paths. Example: [Media page](/media) or [Join us](/join). Do not output plain text page names.
 - If the user has low bandwidth (indicated by [LOW_BANDWIDTH] flag), respond in minimal text only: no greetings, no pleasantries, just the essential fact in one sentence.
 `;
+    } catch (err) {
+        console.error("[AFLEWO AI] Dynamic context injection failed, falling back to static context.", err);
+        return FALLBACK_SITE_MAP_CONTEXT;
+    }
 }
 
 // ─── Whitelisted navigation actions ──────────────────────────────────────────
