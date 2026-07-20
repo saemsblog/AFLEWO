@@ -302,6 +302,21 @@ function LiquidGlassIsland({
     isFullscreen: boolean;
     onToggleFullscreen: () => void;
 }) {
+    const [ipLocation, setIpLocation] = useState<{ lat: number, lng: number } | null>(null);
+
+    useEffect(() => {
+        if (island.mode === "MAP_VIEW" && !ipLocation) {
+            fetch("https://get.geojs.io/v1/ip/geo.json")
+                .then(res => res.json())
+                .then(data => {
+                    if (data.latitude && data.longitude) {
+                        setIpLocation({ lat: parseFloat(data.latitude), lng: parseFloat(data.longitude) });
+                    }
+                })
+                .catch(err => console.error("GeoIP fetch failed", err));
+        }
+    }, [island.mode, ipLocation]);
+
     if (island.mode === "IDLE" || island.mode === "CHAT_ACTIVE") return null;
     return (
         <AnimatePresence mode="wait">
@@ -343,7 +358,9 @@ function LiquidGlassIsland({
                         >
                             <iframe
                                 title={island.payload.label || "Venue map"}
-                                src={`https://maps.google.com/maps?q=${island.payload.lat},${island.payload.lng}&z=15&output=embed`}
+                                src={ipLocation 
+                                    ? `https://maps.google.com/maps?saddr=${ipLocation.lat},${ipLocation.lng}&daddr=${island.payload.lat},${island.payload.lng}&dirflg=d&output=embed`
+                                    : `https://maps.google.com/maps?q=${island.payload.lat},${island.payload.lng}&z=15&output=embed`}
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0, borderRadius: 12, opacity: 0.93 }}
@@ -354,7 +371,9 @@ function LiquidGlassIsland({
                             {/* Start Navigation Overlay Button */}
                             <div className="absolute bottom-3 left-0 right-0 flex justify-center z-20 pointer-events-none">
                                 <a
-                                    href={`https://www.google.com/maps/dir/?api=1&destination=${island.payload.lat},${island.payload.lng}`}
+                                    href={ipLocation 
+                                        ? `https://www.google.com/maps/dir/?api=1&origin=${ipLocation.lat},${ipLocation.lng}&destination=${island.payload.lat},${island.payload.lng}&travelmode=driving`
+                                        : `https://www.google.com/maps/dir/?api=1&destination=${island.payload.lat},${island.payload.lng}&travelmode=driving`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="pointer-events-auto glass-surface hover:scale-105 active:scale-95 transition-all text-gold px-4 py-2 rounded-full font-black uppercase text-[10px] tracking-wider flex items-center gap-1.5"
