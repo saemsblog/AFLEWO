@@ -325,22 +325,11 @@ function LiquidGlassIsland({
                          island.mode === "LIVE_WAVEFORM" ? "Live Audio" : "Saved Offline"}
                     </p>
                     <div className="flex items-center gap-1.5">
-                        {island.mode === "MAP_VIEW" && (
-                            <button
-                                onClick={onToggleFullscreen}
-                                className="text-white/30 hover:text-gold transition-colors"
-                                aria-label={isFullscreen ? "Collapse map" : "Expand map fullscreen"}
-                                title={isFullscreen ? "Collapse" : "Expand"}
-                            >
-                                {isFullscreen ? (
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 14H10M10 14V20M10 14L3 21M20 10H14M14 10V4M14 10L21 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                                ) : (
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M14 10L21 3M21 3H15M21 3V9M10 14L3 21M3 21H9M3 21V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                                )}
-                            </button>
-                        )}
                         <button onClick={onDismiss} className="text-white/25 hover:text-white/60 transition-colors" aria-label="Dismiss">
-                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" /></svg>
+                            <svg width="16" height="16" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.8 13C7.35817 13 7 13.3582 7 13.8V14.2C7 14.6418 7.35817 15 7.8 15H20.2C20.6418 15 21 14.6418 21 14.2V13.8C21 13.3582 20.6418 13 20.2 13H7.8Z" fill="currentColor"/>
+                                <path fillRule="evenodd" clipRule="evenodd" d="M14 1C6.82031 1 1 6.82031 1 14C1 21.1797 6.82031 27 14 27C21.1797 27 27 21.1797 27 14C27 6.82031 21.1797 1 14 1ZM3 14C3 7.9248 7.92578 3 14 3C20.0742 3 25 7.9248 25 14C25 20.0752 20.0742 25 14 25C7.92578 25 3 20.0752 3 14Z" fill="currentColor"/>
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -373,6 +362,20 @@ function LiquidGlassIsland({
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor" /></svg>
                                     Start Navigation
                                 </a>
+                            </div>
+
+                            {/* Expand Overlay Button */}
+                            <div className="absolute bottom-3 right-3 flex justify-center z-20 pointer-events-none">
+                                <button
+                                    onClick={onToggleFullscreen}
+                                    className="pointer-events-auto bg-black/60 backdrop-blur-md border border-white/10 hover:border-white/30 text-white/50 hover:text-white px-2.5 py-2.5 rounded-full transition-all active:scale-95"
+                                    aria-label={isFullscreen ? "Collapse map" : "Expand map fullscreen"}
+                                    title={isFullscreen ? "Collapse" : "Expand"}
+                                >
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10 19H5V14M14 5H19V10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                         <p className="text-[8px] text-white/25 text-center mt-1 font-medium tracking-wide">
