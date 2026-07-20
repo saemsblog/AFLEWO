@@ -358,9 +358,15 @@ function LiquidGlassIsland({
                         >
                             <iframe
                                 title={island.payload.label || "Venue map"}
-                                src={ipLocation 
-                                    ? `https://maps.google.com/maps?saddr=${ipLocation.lat},${ipLocation.lng}&daddr=${island.payload.lat},${island.payload.lng}&dirflg=d&output=embed`
-                                    : `https://maps.google.com/maps?q=${island.payload.lat},${island.payload.lng}&z=15&output=embed`}
+                                src={
+                                    process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY 
+                                        ? (ipLocation 
+                                            ? `https://www.google.com/maps/embed/v1/directions?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY}&origin=${ipLocation.lat},${ipLocation.lng}&destination=${island.payload.lat},${island.payload.lng}&mode=driving`
+                                            : `https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY}&q=${island.payload.lat},${island.payload.lng}`)
+                                        : (ipLocation 
+                                            ? `https://maps.google.com/maps?saddr=${ipLocation.lat},${ipLocation.lng}&daddr=${island.payload.lat},${island.payload.lng}&dirflg=d&output=embed`
+                                            : `https://maps.google.com/maps?q=${island.payload.lat},${island.payload.lng}&z=15&output=embed`)
+                                }
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0, borderRadius: 12, opacity: 0.93 }}
