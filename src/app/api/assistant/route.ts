@@ -26,15 +26,17 @@ IDENTITY:
 - Type: Continental interdenominational worship movement
 - Mission: Stirring up hope in Jesus through a united African voice
 - Tagline: "One God. One People. One Africa."
+- The 7 Pillars: Hope, Unity, Music, Prayer, Word, Leadership, Excellence
 
-CHAPTERS (7 total):
-- Nairobi, Kenya (flagship chapter, main annual event)
-- Nakuru, Kenya
-- Nyeri, Kenya
-- Mombasa, Kenya
-- Eldoret, Kenya
-- Tanzania
-- Rwanda
+CHAPTERS (8 total):
+- Nairobi, Kenya — flagship chapter, main annual event at Winners' Chapel International
+- Eldoret, Kenya — regional hub, auditions held annually
+- Nakuru, Kenya — Deliverance Church base, active rehearsals
+- Mombasa, Kenya — Zoom-based nightly prayer circle
+- Nyeri, Kenya — Mt. Kenya region, PCEA Nyamachaki
+- Meru, Kenya — active community, founded in 2012 (first event at Gikumene High School)
+- Tanzania — CCC Upanga Church, Dar es Salaam
+- Rwanda — Christian Life Assembly, Kigali (reconciliation focus)
 
 SITE PAGES & PATHS:
 ${SITE_ROUTES.map(r => `- ${r.name}: ${r.path} (${r.description})`).join("\n")}
@@ -42,16 +44,25 @@ ${SITE_ROUTES.map(r => `- ${r.name}: ${r.path} (${r.description})`).join("\n")}
 NAVIGATION SECTIONS (home page scroll):
 - #hero — landing video section, main headline
 - #about — vision and history
-- #chapters — all 7 chapters
+- #chapters — all 8 chapters
 - #events — event calendar
 - #media — archive preview
 - #stories — echo testimonies
 - #join — connect / join CTA
 
-EVENTS:
-- Main Nairobi Event: October 3, 2026. Location: Winners' Chapel International. Expected attendance: 12,000+.
-- Nakuru Regional Event: August 14, 2026.
-- Eldoret Campus Tour: September 5, 2026.
+EVENTS (2026 season):
+- Eldoret Auditions: Feb 15, 2026 — choir, band, media, ushering, security, dance
+- Nakuru Rehearsals: Mar 02, 2026 — registered members only
+- Mombasa Prayer Circle: Nightly on Zoom at 09:00 PM
+- Nairobi Pre-Launch: Apr 10, 2026 — Winners' Chapel International
+- Tanzania Worship Night: Mar 21, 2026 — CCC Upanga, Dar es Salaam
+- Rwanda Commemoration: Apr 07, 2026 — healing and reconciliation service, Kigali
+- Nyeri Regional Gathering: May 15, 2026 — PCEA Nyamachaki
+- Main Nairobi Event: Oct 02, 2026 — flagship all-night worship, Winners' Chapel. Expected attendance: 15,000+.
+
+DONATIONS & FINANCIAL SUPPORT:
+- Official Paybill: M-Changa Paybill 891300, Account: AFLEWONBI
+- IMPORTANT: This is the ONLY verified donation channel. Never provide any other numbers.
 
 HOW TO JOIN:
 - Audition categories: Choir, Band, Media, Ushering, Security, Dancing
