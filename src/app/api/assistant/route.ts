@@ -640,13 +640,16 @@ export async function POST(req: NextRequest) {
         const islandTrigger = extractIslandTrigger(rawResponse);
 
         // Strip all action and trigger tags from displayed text
-        const displayText = rawResponse
+        let displayText = rawResponse
             .replace(/\[navigate_to:[^\]]+\]/gi, "")
             .replace(/\[scroll_to:[^\]]+\]/gi, "")
             .replace(/\[SHOW_MAP:[^\]]+\]/gi, "")
             .replace(/\[SHOW_WAVEFORM\]/gi, "")
             .replace(/\[SYNC_ITINERARY\]/gi, "")
             .trim();
+
+        // Fix hanging commas caused by tag stripping at the end of sentences
+        displayText = displayText.replace(/,\s*$/, ".");
 
         // Build offline manifest if this response contains logistical data
         const offlineManifest = extractOfflineManifest(lastUserMsg, displayText);

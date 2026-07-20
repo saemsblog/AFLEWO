@@ -1314,7 +1314,7 @@ function getContextualSuggestions(text: string) {
 
     // Ã¢â€â‚¬Ã¢â€â‚¬ LIVE EVENT: AFLEWO Eldoret is LIVE NOW (pinned highest priority) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
     const liveEldoretSuggestions = [
-        { id: "live_eldoret", label: "Ã°Å¸â€Â´ Eldoret LIVE", prompt: "AFLEWO Eldoret is live right now! Where can I watch the stream?", icon: "videocam" },
+        { id: "live_eldoret", label: "🔴 Eldoret LIVE", prompt: "AFLEWO Eldoret is live right now! Where can I watch the stream?", icon: "videocam" },
         { id: "live_youtube", label: "Watch on YouTube", prompt: "Open the AFLEWO Eldoret YouTube live stream", icon: "youtube" },
         { id: "live_facebook", label: "Watch on Facebook", prompt: "Open the AFLEWO Eldoret Facebook live stream", icon: "share" },
     ];
