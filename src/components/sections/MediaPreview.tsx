@@ -98,7 +98,7 @@ function MediaCard({ item, index }: { item: MediaItem; index: number }) {
     const isLarge = item.size === "large";
     const isMedium = item.size === "medium";
     
-    const delay = i => shouldReduceMotion ? { duration: 0.15 } : { ...SPRING_IN, delay: i * 0.05 };
+    const delay = (i: number) => shouldReduceMotion ? { duration: 0.15 } : { ...SPRING_IN, delay: i * 0.05 };
 
     return (
         <motion.div
