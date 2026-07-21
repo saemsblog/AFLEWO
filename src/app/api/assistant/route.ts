@@ -58,11 +58,20 @@ EVENTS (2026 season):
 - Tanzania Worship Night: Mar 21, 2026 — CCC Upanga, Dar es Salaam
 - Rwanda Commemoration: Apr 07, 2026 — healing and reconciliation service, Kigali
 - Nyeri Regional Gathering: May 15, 2026 — PCEA Nyamachaki
-- Main Nairobi Event: Oct 02, 2026 — flagship all-night worship, Winners' Chapel. Expected attendance: 15,000+.
+- Main Nairobi Event: Oct 02, 2026 — flagship all-night worship, Winners' Chapel International, Nairobi. Expected attendance: 15,000+.
 
 DONATIONS & FINANCIAL SUPPORT:
 - Official Paybill: M-Changa Paybill 891300, Account: AFLEWONBI
 - IMPORTANT: This is the ONLY verified donation channel. Never provide any other numbers.
+
+MAP VENUE COORDINATES (use these for SHOW_MAP tags):
+- Winners' Chapel International, Nairobi: -1.2840, 36.8231
+- Deliverance Church, Nakuru: -0.3031, 36.0800
+- Elim Sanctuary, Mombasa: -4.0435, 39.6682
+- PCEA Nyamachaki, Nyeri: -0.4167, 36.9500
+- CCC Upanga, Dar es Salaam: -6.8161, 39.2803
+- Christian Life Assembly, Kigali: -1.9441, 30.0619
+- Eldoret Chapter HQ: 0.5143, 35.2698
 
 HOW TO JOIN:
 - Audition categories: Choir, Band, Media, Ushering, Security, Dancing
@@ -105,14 +114,14 @@ IDENTITY:
 - The 7 Pillars: Hope, Unity, Music, Prayer, Word, Leadership, Excellence
 
 CHAPTERS (8 total):
-- Nairobi, Kenya — flagship chapter, main annual event at Winners' Chapel International
-- Nakuru, Kenya — Founded 2013 (initially a 1,000-voice choir), Deliverance Church base, active rehearsals
-- Nyeri, Kenya — Founded 2010 at PCEA Nyamachaki, now draws over 2,000 people. Mt. Kenya region.
+- Nairobi, Kenya — flagship chapter, main annual event at Winners' Chapel International (-1.2840, 36.8231)
+- Nakuru, Kenya — Founded 2013 (initially a 1,000-voice choir), Deliverance Church base, active rehearsals (-0.3031, 36.0800)
+- Nyeri, Kenya — Founded 2010 at PCEA Nyamachaki, now draws over 2,000 people. Mt. Kenya region. (-0.4167, 36.9500)
 - Meru, Kenya — Founded 2012 (first event at Gikumene High School), active community.
-- Mombasa, Kenya — Founded 2009 at Elim Sanctuary in Makupa, now draws over 5,000 people annually. Zoom-based nightly prayer circle.
-- Eldoret, Kenya — Regional hub, highly active community with 12,000+ followers.
-- Tanzania — CCC Upanga Church, Dar es Salaam
-- Rwanda — Christian Life Assembly, Kigali (reconciliation focus)
+- Mombasa, Kenya — Founded 2009 at Elim Sanctuary in Makupa, now draws over 5,000 people annually. Zoom-based nightly prayer circle. (-4.0435, 39.6682)
+- Eldoret, Kenya — Regional hub, highly active community with 12,000+ followers. (0.5143, 35.2698)
+- Tanzania — CCC Upanga Church, Dar es Salaam (-6.8161, 39.2803)
+- Rwanda — Christian Life Assembly, Kigali (-1.9441, 30.0619) (reconciliation focus)
 
 SITE PAGES & PATHS:
 ${SITE_ROUTES.map(r => `- ${r.name}: ${r.path} (${r.description})`).join("\n")}
@@ -132,6 +141,15 @@ ${eventsContext}
 DONATIONS & FINANCIAL SUPPORT:
 - Official Paybill: M-Changa Paybill 891300, Account: AFLEWONBI
 - IMPORTANT: This is the ONLY verified donation channel. Never provide any other numbers.
+
+MAP VENUE COORDINATES (use these for SHOW_MAP tags):
+- Winners' Chapel International, Nairobi: -1.2840, 36.8231
+- Deliverance Church, Nakuru: -0.3031, 36.0800
+- Elim Sanctuary, Mombasa: -4.0435, 39.6682
+- PCEA Nyamachaki, Nyeri: -0.4167, 36.9500
+- CCC Upanga, Dar es Salaam: -6.8161, 39.2803
+- Christian Life Assembly, Kigali: -1.9441, 30.0619
+- Eldoret Chapter HQ: 0.5143, 35.2698
 
 HOW TO JOIN:
 - Audition categories: Choir, Band, Media, Ushering, Security, Dancing
@@ -458,7 +476,7 @@ ${ragContext ? `ADDITIONAL RETRIEVED CONTEXT (from secure knowledge sandbox):\n$
 FORMATTING RULES:
 - When you want to navigate the user to a page, append [navigate_to: /path] at the very end of your response.
 - When you want to scroll to a section, append [scroll_to: sectionId] at the very end.
-- When the user asks for directions or venue location, append [SHOW_MAP: lat, lng, "Venue Name"] at the very end.
+- When the user asks for directions, "where is", "how do I get to", "show me on a map", or "location of" any AFLEWO venue or chapter, you MUST append [SHOW_MAP: lat, lng, "Venue Name"] at the very end using coordinates from MAP VENUE COORDINATES. Example: [SHOW_MAP: -1.2840, 36.8231, "Winners' Chapel International, Nairobi"]
 - When the user asks for their schedule or itinerary, append [SYNC_ITINERARY] at the very end.
 - These tags are stripped from the displayed text — they are never shown to the user.
 - Never answer outside the scope of AFLEWO unless it's a general Christian faith question.
@@ -590,10 +608,10 @@ function fallbackResponse(messages: Message[]): string {
         return "To join AFLEWO, you can register for auditions at our Join page. We hold auditions for Choir, Band, Media, Ushering, Security, and Dancing teams. [navigate_to: /join]";
     }
     if (lastMsg.includes("event") || lastMsg.includes("nairobi") || lastMsg.includes("when")) {
-        return "Our next major event is the Main Nairobi Event on October 3-4, 2026 — an all-night worship experience at Winners' Chapel International. [scroll_to: events]";
+        return "Our next major event is the Main Nairobi Event on October 2nd, 2026 — a flagship all-night worship experience at Winners' Chapel International. [scroll_to: events]";
     }
     if (lastMsg.includes("chapter") || lastMsg.includes("location") || lastMsg.includes("where")) {
-        return "AFLEWO has 7 chapters across East Africa: Nairobi, Eldoret, Nakuru, Mombasa, and Nyeri in Kenya — plus Tanzania and Rwanda. [scroll_to: chapters]";
+        return "AFLEWO has 8 chapters across East Africa: Nairobi, Eldoret, Nakuru, Mombasa, Nyeri, and Meru in Kenya — plus Tanzania and Rwanda. [scroll_to: chapters]";
     }
     if (lastMsg.includes("about") || lastMsg.includes("mission") || lastMsg.includes("who")) {
         return "Africa Let's Worship (AFLEWO) is a continental interdenominational worship movement founded in 2004. Our mission: One God. One People. One Africa. [scroll_to: about]";

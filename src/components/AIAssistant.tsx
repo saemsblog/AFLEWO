@@ -52,7 +52,7 @@ interface IslandState {
     payload: IslandPayload | null;
 }
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Web Speech API declarations Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+//     Web Speech API declarations                                               ¬
 declare global {
     interface Window {
         SpeechRecognition: any;
@@ -69,7 +69,7 @@ function SendIcon() {
     );
 }
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Close icon SVG Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+//     Close icon SVG                                                            ¬
 function CloseIcon() {
     return (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +78,7 @@ function CloseIcon() {
     );
 }
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Mic icon SVG Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+//     Mic icon SVG                                                              ¬
 function MicIcon({ active }: { active: boolean }) {
     return (
         <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -480,7 +480,7 @@ function ActionChips({
     );
 }
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Main AI Assistant Component Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+//     Main AI Assistant Component                                               ¬
 export default function AIAssistant({ onNavigate }: { onNavigate?: (url?: string) => void }) {
     const router = useRouter();
     const pathname = usePathname();
@@ -499,7 +499,7 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: (url?: string
         },
     ]);
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Liquid Glass Island state machine Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    //     Liquid Glass Island state machine                                         ¬
     // Atomic state: only one mode can be active at a time.
     const [islandState, setIslandState] = useState<IslandState>({ mode: "IDLE", payload: null });
     const [isMapFullscreen, setIsMapFullscreen] = useState(false);
@@ -529,7 +529,7 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: (url?: string
 
     const aiChatLottieRef = useRef<LottieRefCurrentProps>(null);
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Network awareness Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    //     Network awareness                                                    ¬
     const { isLowBandwidth, isOnline } = useBandwidth();
     const { saveManifest } = useOfflineManifest();
 
@@ -662,7 +662,7 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: (url?: string
             || voices.find(v => v.lang.startsWith("en"));
         if (preferred) utterance.voice = preferred;
         synthRef.current.speak(utterance);
-    }, []);
+    }, [isMuted]);
 
     // ------------------------------------ Send message to backend ---------------------------------------------
     const sendMessage = useCallback(async (text: string) => {
@@ -1123,7 +1123,7 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: (url?: string
                             )}
                         </AnimatePresence>
 
-                        {/* Ã¢â€â‚¬Ã¢â€â‚¬ Offline / Low-Bandwidth Status Banner Ã¢â€â‚¬Ã¢â€â‚¬ */}
+                        {/*    Offline / Low-Bandwidth Status Banner    */}
                         <AnimatePresence>
                             {!isOnline && (
                                 <motion.div
@@ -1153,7 +1153,7 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: (url?: string
                             )}
                         </AnimatePresence>
 
-                        {/* Ã¢â€â‚¬Ã¢â€â‚¬ Messages Area Ã¢â€â‚¬Ã¢â€â‚¬ */}
+                        {/*    Messages Area    */}
                         <div
                             className="flex-1 overflow-y-auto px-4 py-4 hide-scrollbar flex flex-col gap-2.5"
                             style={{
@@ -1314,7 +1314,7 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: (url?: string
                             </div>
                         </div>
 
-                        {/* Ã¢â€â‚¬Ã¢â€â‚¬ Input Area Ã¢â€â‚¬Ã¢â€â‚¬ */}
+                        {/*    Input Area    */}
                         <div className="px-4 py-3 border-t border-white/8 flex-shrink-0">
                             <div className="flex items-end gap-2 relative">
                                 {/* Slash Suggestions */}
@@ -1388,7 +1388,7 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: (url?: string
                             </div>
                         </div>
 
-                        {/* Ã¢â€â‚¬Ã¢â€â‚¬ Transition Overlay Ã¢â€â‚¬Ã¢â€â‚¬ */}
+                        {/*    Transition Overlay    */}
                         <AnimatePresence>
                             {isNavigating && (
                                 <motion.div
@@ -1416,96 +1416,112 @@ export default function AIAssistant({ onNavigate }: { onNavigate?: (url?: string
     );
 }
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Suggestions Configuration Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
-// Priority sorting: live-event items first, then chapter-specific, then general.
+//     Suggestions Configuration
+// Scored matching: each topic accumulates keyword hits; highest score wins.
+// This prevents the first-match-wins ambiguity of a long if/else chain.
 function getContextualSuggestions(text: string) {
     const lower = text.toLowerCase();
     const now = new Date();
     const hour = now.getHours();
     const isEvening = hour >= 17 || hour < 4; // 5 PM – 4 AM = likely event hours
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬ LIVE EVENT: AFLEWO Eldoret is LIVE NOW (pinned highest priority) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
     const liveEldoretSuggestions = [
         { id: "live_eldoret", label: "🔴 Eldoret LIVE", prompt: "Take me to the Media page to watch the AFLEWO Eldoret livestream.", icon: "videocam" },
         { id: "live_youtube", label: "Watch on YouTube", prompt: "Take me to the Media page to watch the YouTube live stream.", icon: "youtube" },
         { id: "live_facebook", label: "Watch on Facebook", prompt: "Take me to the Media page to watch the Facebook live stream.", icon: "share" },
     ];
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬ JOIN / AUDITIONS Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
-    if (lower.includes("join") || lower.includes("choir") || lower.includes("audition") || lower.includes("register") || lower.includes("apply")) {
-        return [
-            { id: "join_choir", label: "Join Choir", prompt: "How do I register to join the AFLEWO choir?", icon: "church" },
-            { id: "requirements", label: "Requirements", prompt: "What are the audition requirements for each team?", icon: "favorite" },
-            { id: "serve_teams", label: "Other Teams", prompt: "How do I join the ushering, security, or media teams?", icon: "person_add" },
-            { id: "partner", label: "Partner", prompt: "How can I financially partner with AFLEWO?", icon: "handshake" },
-        ];
+    type Suggestion = { id: string; label: string; prompt: string; icon: string };
+    type Topic = { keywords: string[]; suggestions: Suggestion[] };
+
+    const TOPICS: Record<string, Topic> = {
+        join: {
+            keywords: ["join", "choir", "audition", "register", "apply", "band", "media team", "ushering", "security", "dance"],
+            suggestions: [
+                { id: "join_choir", label: "Join Choir", prompt: "How do I register to join the AFLEWO choir?", icon: "church" },
+                { id: "requirements", label: "Requirements", prompt: "What are the audition requirements for each team?", icon: "favorite" },
+                { id: "serve_teams", label: "Other Teams", prompt: "How do I join the ushering, security, or media teams?", icon: "person_add" },
+                { id: "partner", label: "Partner", prompt: "How can I financially partner with AFLEWO?", icon: "handshake" },
+            ],
+        },
+        events: {
+            keywords: ["event", "date", "calendar", "worship night", "schedule", "rehearsal", "next event", "upcoming", "when"],
+            suggestions: [
+                { id: "main_event", label: "Oct 2 Nairobi", prompt: "Tell me about the main AFLEWO Night on October 2nd, 2026 in Nairobi", icon: "calendar" },
+                { id: "calendar_2026", label: "Full 2026 Schedule", prompt: "What is the full AFLEWO 2026 event calendar?", icon: "calendar" },
+                { id: "nairobi_launch", label: "Pre-Launch", prompt: "Tell me about the Nairobi Pre-Launch event on April 10th", icon: "calendar" },
+                liveEldoretSuggestions[0],
+            ],
+        },
+        eldoret: {
+            keywords: ["eldoret", "eldoret chapter", "eldoret live", "eldoret stream"],
+            suggestions: [
+                ...liveEldoretSuggestions,
+                { id: "eldoret_chapter", label: "Eldoret Chapter", prompt: "Tell me about the AFLEWO Eldoret chapter", icon: "location" },
+            ],
+        },
+        chapters: {
+            keywords: ["chapter", "nairobi", "mombasa", "nakuru", "rwanda", "tanzania", "nyeri", "meru", "kigali", "dar es salaam", "location", "where", "region"],
+            suggestions: [
+                { id: "chapters_list", label: "All Chapters", prompt: "Show me all 8 active AFLEWO chapters", icon: "location" },
+                { id: "nairobi_chapter", label: "Nairobi", prompt: "Where is the Nairobi chapter based and when do they rehearse?", icon: "church" },
+                { id: "mombasa_chapter", label: "Mombasa", prompt: "Tell me about the Mombasa chapter prayer circle", icon: "location" },
+                { id: "rwanda_chapter", label: "Rwanda", prompt: "Tell me about the Rwanda reconciliation chapter", icon: "location" },
+            ],
+        },
+        live: {
+            keywords: ["live", "stream", "watch", "streaming", "broadcast", "online", "youtube", "facebook"],
+            suggestions: liveEldoretSuggestions,
+        },
+        media: {
+            keywords: ["media", "video", "worship", "song", "music", "archive", "recording", "past"],
+            suggestions: [
+                { id: "media_archive", label: "Worship Archive", prompt: "Where can I watch past AFLEWO worship videos?", icon: "music" },
+                { id: "stories", label: "Testify", prompt: "Show me AFLEWO community stories and testimonies", icon: "speech" },
+                liveEldoretSuggestions[0],
+            ],
+        },
+        donate: {
+            keywords: ["donate", "mpesa", "partner", "support", "paybill", "give", "tithe", "offering", "financial"],
+            suggestions: [
+                { id: "donate_mpesa", label: "M-Pesa Paybill", prompt: "What is the AFLEWO M-Pesa paybill number?", icon: "wallet" },
+                { id: "partner_tiers", label: "Partner Tiers", prompt: "What are the AFLEWO corporate partnership tiers?", icon: "handshake" },
+                { id: "alumni", label: "Alumni Network", prompt: "How do I re-register as an AFLEWO alumni?", icon: "person_add" },
+            ],
+        },
+    };
+
+    // Score each topic against the reply text — highest score wins
+    let bestTopic: string | null = null;
+    let bestScore = 0;
+
+    for (const [topicKey, topic] of Object.entries(TOPICS)) {
+        const score = topic.keywords.reduce((acc, kw) => acc + (lower.includes(kw) ? 1 : 0), 0);
+        if (score > bestScore) {
+            bestScore = score;
+            bestTopic = topicKey;
+        }
     }
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬ EVENTS / DATES Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
-    if (lower.includes("event") || lower.includes("date") || lower.includes("calendar") || lower.includes("worship night") || lower.includes("schedule")) {
-        return [
-            { id: "main_event", label: "Oct 2nd Nairobi", prompt: "Tell me about the main AFLEWO Night on October 2nd in Nairobi", icon: "calendar" },
-            { id: "calendar_2026", label: "Full 2026 Schedule", prompt: "What is the full AFLEWO 2026 event calendar?", icon: "calendar" },
-            { id: "nairobi_launch", label: "Pre-Launch", prompt: "Tell me about the Nairobi Pre-Launch event on April 10th", icon: "calendar" },
-            ...liveEldoretSuggestions.slice(0, 1),
-        ];
+    if (bestTopic && bestScore > 0) {
+        return TOPICS[bestTopic].suggestions;
     }
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬ ELDORET SPECIFIC Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
-    if (lower.includes("eldoret")) {
-        return [
-            ...liveEldoretSuggestions,
-            { id: "eldoret_chapter", label: "Eldoret Chapter", prompt: "Tell me about the AFLEWO Eldoret chapter", icon: "location" },
-        ];
-    }
-
-    // Ã¢â€â‚¬Ã¢â€â‚¬ CHAPTER CONTEXT Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
-    if (lower.includes("chapter") || lower.includes("nairobi") || lower.includes("mombasa") || lower.includes("nakuru") || lower.includes("rwanda") || lower.includes("tanzania")) {
-        return [
-            { id: "chapters_list", label: "All Chapters", prompt: "Show me all 7 active AFLEWO chapters", icon: "location" },
-            { id: "nairobi_chapter", label: "Nairobi", prompt: "Where is the Nairobi chapter based and when do they rehearse?", icon: "church" },
-            { id: "mombasa_chapter", label: "Mombasa", prompt: "Tell me about the Mombasa chapter prayer circle", icon: "location" },
-            { id: "rwanda_chapter", label: "Rwanda", prompt: "Tell me about the Rwanda reconciliation chapter", icon: "location" },
-        ];
-    }
-
-    // Ã¢â€â‚¬Ã¢â€â‚¬ LIVE / STREAM Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
-    if (lower.includes("live") || lower.includes("stream") || lower.includes("watch")) {
-        return liveEldoretSuggestions;
-    }
-
-    // Ã¢â€â‚¬Ã¢â€â‚¬ MEDIA / WORSHIP ARCHIVE Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
-    if (lower.includes("media") || lower.includes("video") || lower.includes("worship") || lower.includes("song") || lower.includes("music")) {
-        return [
-            { id: "media_archive", label: "Worship Archive", prompt: "Where can I watch past AFLEWO worship videos?", icon: "music" },
-            { id: "stories", label: "Testify", prompt: "Show me AFLEWO community stories and testimonies", icon: "speech" },
-            ...liveEldoretSuggestions.slice(0, 1),
-        ];
-    }
-
-    // Ã¢â€â‚¬Ã¢â€â‚¬ DONATION / PAYBILL Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
-    if (lower.includes("donate") || lower.includes("mpesa") || lower.includes("partner") || lower.includes("support") || lower.includes("paybill")) {
-        return [
-            { id: "donate_mpesa", label: "M-Pesa Paybill", prompt: "What is the AFLEWO M-Pesa paybill number?", icon: "wallet" },
-            { id: "partner_tiers", label: "Partner Tiers", prompt: "What are the AFLEWO corporate partnership tiers?", icon: "handshake" },
-            { id: "alumni", label: "Alumni Network", prompt: "How do I re-register as an AFLEWO alumni?", icon: "person_add" },
-        ];
-    }
-
-    // Ã¢â€â‚¬Ã¢â€â‚¬ DEFAULT (evening: surface live event first) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    // Default: evening surfaces live event first
     if (isEvening) {
         return [
             liveEldoretSuggestions[0],
             { id: "join", label: "Join Movement", prompt: "How do I register to join the AFLEWO choir?", icon: "church" },
             { id: "events", label: "Events", prompt: "What events are planned for AFLEWO 2026?", icon: "calendar" },
-            { id: "chapters", label: "Chapters", prompt: "Show me all 7 active AFLEWO chapters", icon: "location" },
+            { id: "chapters", label: "Chapters", prompt: "Show me all 8 active AFLEWO chapters", icon: "location" },
         ];
     }
 
     return [
         { id: "join", label: "Join Movement", prompt: "How do I register to join the AFLEWO choir?", icon: "church" },
         { id: "events", label: "2026 Events", prompt: "What events are planned for AFLEWO 2026?", icon: "calendar" },
-        { id: "chapters", label: "Chapters", prompt: "Show me all 7 active AFLEWO chapters", icon: "location" },
+        { id: "chapters", label: "Chapters", prompt: "Show me all 8 active AFLEWO chapters", icon: "location" },
         { id: "media", label: "Archive", prompt: "Where can I watch past worship videos?", icon: "music" },
     ];
 }
+
