@@ -32,7 +32,7 @@ CHAPTERS (8 total):
 - Nairobi, Kenya — flagship chapter, main annual event at Winners' Chapel International
 - Eldoret, Kenya — regional hub, auditions held annually
 - Nakuru, Kenya — Deliverance Church base, active rehearsals
-- Mombasa, Kenya — Zoom-based nightly prayer circle
+- Mombasa, Kenya — Founded 2009 at Elim Evangelistic Church P.E.F.A. in Makupa, now draws over 5,000 people annually. Zoom-based nightly prayer circle.
 - Nyeri, Kenya — Mt. Kenya region, PCEA Nyamachaki
 - Meru, Kenya — active community, founded in 2012 (first event at Gikumene High School)
 - Tanzania — CCC Upanga Church, Dar es Salaam
@@ -62,16 +62,16 @@ EVENTS (2026 season):
 
 DONATIONS & FINANCIAL SUPPORT:
 - Official Paybill: M-Changa Paybill 891300, Account: AFLEWONBI
-- IMPORTANT: This is the ONLY verified donation channel. Never provide any other numbers.
+- IMPORTANT: This is the most recently confirmed donation channel.
 
 MAP VENUE COORDINATES (use these for SHOW_MAP tags):
-- Winners' Chapel International, Nairobi: -1.2840, 36.8231
-- Deliverance Church, Nakuru: -0.3031, 36.0800
-- Elim Sanctuary, Mombasa: -4.0435, 39.6682
-- PCEA Nyamachaki, Nyeri: -0.4167, 36.9500
-- CCC Upanga, Dar es Salaam: -6.8161, 39.2803
-- Christian Life Assembly, Kigali: -1.9441, 30.0619
-- Eldoret Chapter HQ: 0.5143, 35.2698
+- Winners' Chapel International, Nairobi: -1.3211, 36.8504
+- Deliverance Church, Nakuru: -0.2976, 36.0690
+- Elim Evangelistic Church P.E.F.A., Makupa, Mombasa: -4.0418, 39.6570
+- PCEA Nyamachaki, Nyeri: -0.4254, 36.9609
+- City Christian Center TAG (CCC Upanga), Dar es Salaam: -6.8090, 39.2802
+- Christian Life Assembly, Kigali: -1.9478, 30.1054
+- Deliverance Church, Eldoret: 0.5176, 35.2828
 
 HOW TO JOIN:
 - Audition categories: Choir, Band, Media, Ushering, Security, Dancing
@@ -118,10 +118,10 @@ CHAPTERS (8 total):
 - Nakuru, Kenya — Founded 2013 (initially a 1,000-voice choir), Deliverance Church base, active rehearsals (-0.3031, 36.0800)
 - Nyeri, Kenya — Founded 2010 at PCEA Nyamachaki, now draws over 2,000 people. Mt. Kenya region. (-0.4167, 36.9500)
 - Meru, Kenya — Founded 2012 (first event at Gikumene High School), active community.
-- Mombasa, Kenya — Founded 2009 at Elim Sanctuary in Makupa, now draws over 5,000 people annually. Zoom-based nightly prayer circle. (-4.0435, 39.6682)
-- Eldoret, Kenya — Regional hub, highly active community with 12,000+ followers. (0.5143, 35.2698)
-- Tanzania — CCC Upanga Church, Dar es Salaam (-6.8161, 39.2803)
-- Rwanda — Christian Life Assembly, Kigali (-1.9441, 30.0619) (reconciliation focus)
+- Mombasa, Kenya — Founded 2009 at Elim Evangelistic Church P.E.F.A. in Makupa, now draws over 5,000 people annually. Zoom-based nightly prayer circle. (-4.0418, 39.6570)
+- Eldoret, Kenya — Regional hub, highly active community with 12,000+ followers. (0.5176, 35.2828)
+- Tanzania — CCC Upanga Church, Dar es Salaam (-6.8090, 39.2802)
+- Rwanda — Christian Life Assembly, Kigali (-1.9478, 30.1054) (reconciliation focus)
 
 SITE PAGES & PATHS:
 ${SITE_ROUTES.map(r => `- ${r.name}: ${r.path} (${r.description})`).join("\n")}
@@ -140,16 +140,16 @@ ${eventsContext}
 
 DONATIONS & FINANCIAL SUPPORT:
 - Official Paybill: M-Changa Paybill 891300, Account: AFLEWONBI
-- IMPORTANT: This is the ONLY verified donation channel. Never provide any other numbers.
+- IMPORTANT: This is the most recently confirmed donation channel.
 
 MAP VENUE COORDINATES (use these for SHOW_MAP tags):
-- Winners' Chapel International, Nairobi: -1.2840, 36.8231
-- Deliverance Church, Nakuru: -0.3031, 36.0800
-- Elim Sanctuary, Mombasa: -4.0435, 39.6682
-- PCEA Nyamachaki, Nyeri: -0.4167, 36.9500
-- CCC Upanga, Dar es Salaam: -6.8161, 39.2803
-- Christian Life Assembly, Kigali: -1.9441, 30.0619
-- Eldoret Chapter HQ: 0.5143, 35.2698
+- Winners' Chapel International, Nairobi: -1.3211, 36.8504
+- Deliverance Church, Nakuru: -0.2976, 36.0690
+- Elim Evangelistic Church P.E.F.A., Makupa, Mombasa: -4.0418, 39.6570
+- PCEA Nyamachaki, Nyeri: -0.4254, 36.9609
+- City Christian Center TAG (CCC Upanga), Dar es Salaam: -6.8090, 39.2802
+- Christian Life Assembly, Kigali: -1.9478, 30.1054
+- Deliverance Church, Eldoret: 0.5176, 35.2828
 
 HOW TO JOIN:
 - Audition categories: Choir, Band, Media, Ushering, Security, Dancing
@@ -466,6 +466,15 @@ Assistant: Of course! Anything else I can help with?
 `;
 
     const systemPrompt = `You are a helpful assistant for AFLEWO (Africa Let's Worship). You speak with warmth, faith, and clarity.${locationContext}${bandwidthContext}
+
+CURRENT SYSTEM DATE AND TIME:
+Today's Date is: ${new Date().toLocaleString("en-KE", { timeZone: "Africa/Nairobi" })}
+
+TEMPORAL RULES:
+- ALWAYS compare event dates in the knowledge base to Today's Date.
+- If an event date is strictly IN THE PAST relative to Today's Date, you MUST use past tense (e.g., "The event happened on...", "The live stream has ended"). NEVER say an event is "upcoming" or "live right now" if the date has passed.
+- If an event is happening TODAY, emphasize that it is currently happening.
+- If an event is in the FUTURE, use future tense.
 
 ${calibrationBlock}
 
