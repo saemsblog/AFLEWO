@@ -62,7 +62,7 @@ NAVIGATION SECTIONS (home page scroll):
 EVENTS (2026 season):
 - Eldoret Auditions: Feb 15, 2026 — choir, band, media, ushering, security, dance
 - Nakuru Rehearsals: Mar 02, 2026 — registered members only
-- Mombasa Prayer Circle: Nightly on Zoom at 09:00 PM
+- JCC Bamburi Centre: Nightly on Zoom at 09:00 PM
 - Nairobi Pre-Launch: Apr 10, 2026 — Winners' Chapel International
 - Tanzania Worship Night: Mar 21, 2026 — CCC Upanga, Dar es Salaam
 - Rwanda Commemoration: Apr 07, 2026 — healing and reconciliation service, Kigali

@@ -33,7 +33,7 @@ const timeline = [
     {
         year: "2009",
         title: "The Coast Answers",
-        desc: "AFLEWO Mombasa is established at JCC Bamburi Centre. The chapter immediately sets itself apart through its nightly prayer culture, creating what would later become the Mombasa Prayer Circle.",
+        desc: "AFLEWO Mombasa is established at JCC Bamburi Centre. The chapter immediately sets itself apart through its nightly prayer culture, creating what would later become the Mombasa JCC Bamburi Centre gathering.",
         image: "/archival-2.jpg",
     },
     {

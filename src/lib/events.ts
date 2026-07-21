@@ -58,7 +58,7 @@ export const events: AFLEWOEvent[] = [
     },
     {
         id: "3",
-        title: "Mombasa Prayer Circle",
+        title: "JCC Bamburi Centre",
         date: "Every Night",
         start: "20260123T210000",
         end: "20260123T220000",

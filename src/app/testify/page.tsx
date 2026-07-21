@@ -49,7 +49,7 @@ const narrativeStories = [
         id: "mombasa-prayer-circle",
         title: "The Circle That Never Closes",
         subtitle: "Every night since 2020",
-        desc: "During the COVID-19 lockdowns of 2020, AFLEWO Mombasa faced the same crisis every chapter did: how do you hold a worship event when no one can gather? The answer was the Prayer Circle — a nightly Zoom call that started with 12 people and now draws intercessors from Mombasa, Malindi, Lamu, and even diaspora communities in the UK and Canada. Five years later, the circle still meets every night at 9 PM EAT. It has not missed a single night.",
+        desc: "During the COVID-19 lockdowns of 2020, AFLEWO Mombasa faced the same crisis every chapter did: how do you hold a worship event when no one can gather? The answer was the JCC Bamburi Centre — a nightly Zoom call that started with 12 people and now draws intercessors from Mombasa, Malindi, Lamu, and even diaspora communities in the UK and Canada. Five years later, the circle still meets every night at 9 PM EAT. It has not missed a single night.",
         author: "Mombasa Chapter Leadership",
         year: "2020 – Present",
         chapter: "Mombasa",

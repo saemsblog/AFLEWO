@@ -35,7 +35,7 @@ const localGallery: GalleryItem[] = [
   // ── numbered series (01–12, two variants each) ──
   { id: 8, src: "/images/gallery/01.jpg_1.jpeg", title: "Opening Worship", chapter: "Nairobi", year: "2023", category: "Worship", desc: "Pre-event gathering, 2023" },
   { id: 9, src: "/images/gallery/01.jpg_2.jpeg", title: "Choir Rehearsal", chapter: "Nairobi", year: "2024", category: "Behind the Scenes", desc: "Choir warm-up session" },
-  { id: 10, src: "/images/gallery/02.jpg.jpeg", title: "Prayer Circle", chapter: "Mombasa", year: "2022", category: "Worship", desc: "Coastal evening prayer" },
+  { id: 10, src: "/images/gallery/02.jpg.jpeg", title: "JCC Bamburi Centre", chapter: "Mombasa", year: "2022", category: "Worship", desc: "Coastal evening prayer" },
   { id: 11, src: "/images/gallery/02.jpg_1.jpeg", title: "Mombasa Congregation", chapter: "Mombasa", year: "2022", category: "Gatherings", desc: "JCC Bamburi Centre" },
   { id: 12, src: "/images/gallery/03.jpg.jpeg", title: "A Decade of Grace", chapter: "Nairobi", year: "2013", category: "Archive", desc: "10th anniversary, Sarit Centre" },
   { id: 13, src: "/images/gallery/03.jpg_1.jpeg", title: "Memory Lane", chapter: "Nairobi", year: "2013", category: "Archive", desc: "Behind the scenes — decade celebration" },

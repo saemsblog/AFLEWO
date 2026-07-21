@@ -35,8 +35,8 @@ const stories: Story[] = [
         chapter: "Continental"
     },
     {
-        content: "The Prayer Circle in Mombasa has transformed my spiritual life. Every night at 9 PM, we gather virtually and heaven touches earth.",
-        name: "Mombasa Prayer Circle",
+        content: "The JCC Bamburi Centre in Mombasa has transformed my spiritual life. Every night at 9 PM, we gather virtually and heaven touches earth.",
+        name: "JCC Bamburi Centre",
         role: "Member Testimony",
         stat: "365 Nights/Year",
         year: "2025",

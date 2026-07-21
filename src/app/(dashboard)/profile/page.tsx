@@ -39,7 +39,7 @@ const eventTypeLabel: Record<string, string> = {
   main_event:   "Main Event",
   rehearsal:    "Rehearsal",
   audition:     "Audition",
-  prayer_circle:"Prayer Circle",
+  prayer_circle:"JCC Bamburi Centre",
   outreach:     "Outreach",
   other:        "Other",
 };
