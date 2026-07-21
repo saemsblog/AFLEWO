@@ -7,11 +7,18 @@ import Image from "next/image";
 import Link from "next/link";
 import SvgIcon from "@/components/ui/SvgIcon";
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
+// ─── Spring presets (Apple WWDC 2018 — Designing Fluid Interfaces) ─────────────
+// Critically damped = no overshoot. response ≈ 0.35s → stiffness/damping mapped.
+const SPRING_DEFAULT  = { type: "spring", stiffness: 380, damping: 38, mass: 0.9 } as const;
+const SPRING_ENTRANCE = { type: "spring", stiffness: 260, damping: 32, mass: 1.0 } as const;
+
+// ─── Register Modal ────────────────────────────────────────────────────────────
 interface RegisterFormState { name: string; email: string; phone: string; }
 
 function RegisterModal({ chapterName, eventName, onClose }: { chapterName: string; eventName: string; onClose: () => void }) {
+    const shouldReduceMotion = useReducedMotion();
     const [form, setForm] = useState<RegisterFormState>({ name: "", email: "", phone: "" });
     const [submitted, setSubmitted] = useState(false);
     const [submitting, setSubmitting] = useState(false);
@@ -26,7 +33,7 @@ function RegisterModal({ chapterName, eventName, onClose }: { chapterName: strin
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true);
-        await new Promise((r) => setTimeout(r, 1200));
+        await new Promise((r) => setTimeout(r, 1000));
         const subject = encodeURIComponent(`AFLEWO ${chapterName} Registration — ${eventName}`);
         const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nChapter: ${chapterName}\nEvent: ${eventName}`);
         window.location.href = `mailto:${chapterName.toLowerCase()}@aflewo.org?subject=${subject}&body=${body}`;
@@ -35,255 +42,416 @@ function RegisterModal({ chapterName, eventName, onClose }: { chapterName: strin
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4" onClick={onClose}>
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-xl" />
-            <div className="relative z-10 w-full max-w-md glass-card-elevated rounded-2xl p-10 border-gold/20 space-y-8" onClick={(e) => e.stopPropagation()}>
-                <div className="flex items-start justify-between">
-                    <div>
-                        <h3 className="text-2xl font-black tracking-tighter">REGISTER <span className="text-gold">NOW</span></h3>
-                        <p className="text-white/40 text-[10px] font-black uppercase tracking-widest">{chapterName} — {eventName}</p>
+        <AnimatePresence>
+            <motion.div
+                className="fixed inset-0 z-50 flex items-end sm:items-center justify-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: shouldReduceMotion ? 0.1 : 0.22 }}
+                onClick={onClose}
+            >
+                {/* Scrim */}
+                <div className="absolute inset-0 bg-black/75 backdrop-blur-2xl" />
+
+                {/* Sheet — enters from bottom on mobile (Apple sheet pattern), centered on desktop */}
+                <motion.div
+                    className="relative z-10 w-full max-w-md mx-4 mb-4 sm:mb-0 rounded-3xl overflow-hidden border border-white/10"
+                    style={{ background: "rgba(12,10,8,0.92)", backdropFilter: "blur(40px) saturate(180%)" }}
+                    initial={shouldReduceMotion ? { opacity: 0 } : { y: 60, opacity: 0, scale: 0.97 }}
+                    animate={{ y: 0, opacity: 1, scale: 1 }}
+                    exit={shouldReduceMotion ? { opacity: 0 } : { y: 40, opacity: 0, scale: 0.97 }}
+                    transition={shouldReduceMotion ? { duration: 0.15 } : SPRING_ENTRANCE}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    {/* Gold top rule — material light-catch edge */}
+                    <div className="h-px w-full bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+
+                    <div className="p-8 space-y-7">
+                        <div className="flex items-start justify-between">
+                            <div>
+                                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gold/70 mb-1">
+                                    {chapterName} Chapter
+                                </p>
+                                <h3 className="text-2xl font-black tracking-tight leading-none">
+                                    Register <span className="text-gold">Now</span>
+                                </h3>
+                            </div>
+                            <motion.button
+                                onClick={onClose}
+                                whileTap={{ scale: 0.92 }}
+                                transition={SPRING_DEFAULT}
+                                className="w-9 h-9 rounded-full flex items-center justify-center bg-white/6 hover:bg-white/12 text-white/50 hover:text-white transition-colors"
+                                style={{ WebkitTapHighlightColor: "transparent" }}
+                            >
+                                <SvgIcon name="close" size={16} />
+                            </motion.button>
+                        </div>
+
+                        {submitted ? (
+                            <motion.div
+                                className="text-center py-10 space-y-4"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={SPRING_DEFAULT}
+                            >
+                                <div className="w-16 h-16 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center mx-auto">
+                                    <SvgIcon name="check_circle" size={32} className="text-gold" />
+                                </div>
+                                <h4 className="text-xl font-black tracking-tight">Registration Sent!</h4>
+                                <p className="text-white/40 text-sm leading-relaxed">
+                                    We&apos;ll confirm to <span className="text-white/70">{form.email}</span> within 24 hours.
+                                </p>
+                            </motion.div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-4">
+                                {([
+                                    { key: "name", label: "Full Name", type: "text", placeholder: "Your full name" },
+                                    { key: "email", label: "Email", type: "email", placeholder: "you@email.com" },
+                                    { key: "phone", label: "Phone (optional)", type: "tel", placeholder: "+254 700 000 000" },
+                                ] as const).map(({ key, label, type, placeholder }) => (
+                                    <div key={key} className="space-y-1.5">
+                                        <label className="text-[9px] font-black uppercase tracking-[0.25em] text-white/35">{label}</label>
+                                        <input
+                                            type={type}
+                                            required={key !== "phone"}
+                                            value={form[key]}
+                                            onChange={(e) => setForm((p) => ({ ...p, [key]: e.target.value }))}
+                                            placeholder={placeholder}
+                                            className="w-full bg-white/5 border border-white/8 hover:border-white/15 focus:border-gold/50 rounded-xl py-3 px-4 text-sm text-white outline-none transition-colors placeholder:text-white/20"
+                                        />
+                                    </div>
+                                ))}
+                                <motion.button
+                                    type="submit"
+                                    disabled={submitting}
+                                    whileTap={{ scale: 0.97 }}
+                                    transition={SPRING_DEFAULT}
+                                    className="w-full mt-2 py-4 bg-gold text-brown rounded-2xl font-black text-[11px] uppercase tracking-[0.25em] hover:brightness-110 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                                    style={{ WebkitTapHighlightColor: "transparent" }}
+                                >
+                                    {submitting
+                                        ? <><SvgIcon name="loader" size={16} className="animate-spin" /> Sending…</>
+                                        : <><SvgIcon name="send" size={16} /> Confirm Registration</>
+                                    }
+                                </motion.button>
+                            </form>
+                        )}
                     </div>
-                    <button onClick={onClose} className="p-2 glass-card rounded-lg text-white/50 hover:text-white">
-                        <SvgIcon name="close" size={20} />
-                    </button>
-                </div>
-                {submitted ? (
-                    <div className="text-center py-10 space-y-4">
-                        <SvgIcon name="check_circle" size={56} className="text-gold mx-auto" />
-                        <h4 className="text-xl font-black">Registration Sent!</h4>
-                        <p className="text-white/50 text-sm">We&apos;ll confirm to {form.email} within 24 hours.</p>
-                    </div>
-                ) : (
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                        <div className="space-y-1.5">
-                            <label className="text-[10px] font-black uppercase tracking-widest text-gold">Full Name *</label>
-                            <input required value={form.name} onChange={(e) => setForm((p) => ({ ...p, name: e.target.value }))}
-                                className="w-full bg-white/5 border border-white/10 rounded-lg py-3 px-4 text-sm text-white outline-none focus:border-gold/50"
-                                placeholder="Your full name" />
-                        </div>
-                        <div className="space-y-1.5">
-                            <label className="text-[10px] font-black uppercase tracking-widest text-gold">Email *</label>
-                            <input type="email" required value={form.email} onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
-                                className="w-full bg-white/5 border border-white/10 rounded-lg py-3 px-4 text-sm text-white outline-none focus:border-gold/50"
-                                placeholder="you@email.com" />
-                        </div>
-                        <div className="space-y-1.5">
-                            <label className="text-[10px] font-black uppercase tracking-widest text-gold">Phone</label>
-                            <input value={form.phone} onChange={(e) => setForm((p) => ({ ...p, phone: e.target.value }))}
-                                className="w-full bg-white/5 border border-white/10 rounded-lg py-3 px-4 text-sm text-white outline-none focus:border-gold/50"
-                                placeholder="+254 700 000 000" />
-                        </div>
-                        <button type="submit" disabled={submitting}
-                            className="w-full py-4 bg-gold text-brown rounded-lg font-black uppercase tracking-widest hover:brightness-110 transition-all disabled:opacity-50 flex items-center justify-center gap-2">
-                            {submitting ? <><SvgIcon name="loader" size={18} className="animate-spin" /> Sending...</> : <><SvgIcon name="send" size={18} /> Confirm Registration</>}
-                        </button>
-                    </form>
-                )}
-            </div>
-        </div>
+                </motion.div>
+            </motion.div>
+        </AnimatePresence>
     );
 }
 
+// ─── Stat Tile ─────────────────────────────────────────────────────────────────
+function StatTile({ icon, label, value, delay = 0 }: { icon: string; label: string; value: string; delay?: number }) {
+    const shouldReduceMotion = useReducedMotion();
+    return (
+        <motion.div
+            className="group relative flex flex-col gap-3 p-6 rounded-2xl border border-white/6 overflow-hidden"
+            style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(12px)" }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={shouldReduceMotion ? { duration: 0.2 } : { ...SPRING_ENTRANCE, delay }}
+            whileHover={{ borderColor: "rgba(212,175,55,0.2)" }}
+        >
+            {/* Ambient glow on hover */}
+            <div className="absolute inset-0 bg-gold/0 group-hover:bg-gold/3 transition-colors duration-500 pointer-events-none rounded-2xl" />
+            <SvgIcon name={icon} size={20} className="text-gold/60" />
+            <div>
+                <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/25 mb-1">{label}</p>
+                <p className="text-base font-black tracking-tight text-white">{value}</p>
+            </div>
+        </motion.div>
+    );
+}
+
+// ─── Contact Row ───────────────────────────────────────────────────────────────
+function ContactRow({ icon, label, value, href }: { icon: string; label: string; value: string; href: string }) {
+    return (
+        <motion.a
+            href={href}
+            target={href.startsWith("http") ? "_blank" : undefined}
+            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="flex items-center gap-4 group"
+            whileTap={{ scale: 0.97 }}
+            transition={SPRING_DEFAULT}
+            style={{ WebkitTapHighlightColor: "transparent" }}
+        >
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-white/8 bg-white/4 group-hover:bg-gold/15 group-hover:border-gold/30 transition-all duration-300">
+                <SvgIcon name={icon} size={17} className="text-gold/70 group-hover:text-gold transition-colors" />
+            </div>
+            <div className="min-w-0">
+                <p className="text-[9px] font-black uppercase tracking-[0.25em] text-white/25 mb-0.5">{label}</p>
+                <p className="text-sm font-bold text-white/60 group-hover:text-white transition-colors truncate">{value}</p>
+            </div>
+            <SvgIcon name="chevron_right" size={14} className="text-white/15 group-hover:text-gold/50 transition-colors ml-auto shrink-0" />
+        </motion.a>
+    );
+}
+
+// ─── Page ──────────────────────────────────────────────────────────────────────
 export default function ChapterPage() {
     const { slug } = useParams();
     const chapter = getChapter(slug as string);
-    const containerRef = useRef<HTMLDivElement>(null);
+    const shouldReduceMotion = useReducedMotion();
     const [showRegister, setShowRegister] = useState(false);
+    const [mounted, setMounted] = useState(false);
 
-    useEffect(() => {
-        if (!chapter) return;
-        const ctx = gsap.context(() => {
-            gsap.from(".animate-up", {
-                y: 40,
-                opacity: 0,
-                stagger: 0.1,
-                duration: 1,
-                ease: "expo.out",
-            });
-        }, containerRef);
-        return () => ctx.revert();
-    }, [chapter]);
+    useEffect(() => { setMounted(true); }, []);
 
     if (!chapter) return notFound();
 
-    return (
-        <main ref={containerRef} className="bg-background min-h-screen">
-            {showRegister && (
-                <RegisterModal
-                    chapterName={chapter.name}
-                    eventName={chapter.upcomingEvent || "2026 Event"}
-                    onClose={() => setShowRegister(false)}
-                />
-            )}
+    const stagger = (i: number) => shouldReduceMotion ? { duration: 0.15 } : { ...SPRING_ENTRANCE, delay: i * 0.07 };
 
-            {/* Hero */}
-            <section className="relative h-[60vh] flex items-end pb-12 overflow-hidden">
+    return (
+        <main className="bg-background min-h-screen">
+            <AnimatePresence>
+                {showRegister && (
+                    <RegisterModal
+                        chapterName={chapter.name}
+                        eventName={chapter.upcomingEvent || "2026 Season"}
+                        onClose={() => setShowRegister(false)}
+                    />
+                )}
+            </AnimatePresence>
+
+            {/* ── HERO — Image preserved as-is per instruction ─────────────────── */}
+            <section className="relative h-[65vh] min-h-[480px] flex items-end overflow-hidden">
                 <Image
                     src={chapter.venueImage || "/archival-1.jpg"}
-                    alt={chapter.name}
+                    alt={`AFLEWO ${chapter.name}`}
                     fill
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-                <div className="max-container relative z-10 space-y-4 px-6">
-                    <Link href="/#chapters" className="inline-flex items-center gap-2 text-gold text-[10px] font-black uppercase tracking-widest hover:gap-4 transition-all mb-4">
-                        <SvgIcon name="arrow_back" size={14} /> Back to Chapters
-                    </Link>
-                    <div className="animate-up">
-                        <div className="flex items-center gap-3 mb-3">
-                            <span className="text-2xl">{chapter.flag}</span>
-                            <span className={`px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-gradient-to-r ${chapter.color} text-white border border-white/10`}>
+                {/* Deep gradient: content readable, image visible at top */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+                {/* Subtle side vignette */}
+                <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-transparent" />
+
+                <div className="relative z-10 w-full px-6 pb-12 max-container">
+                    {/* Back nav — responds on press */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -8 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={stagger(0)}
+                        className="mb-8"
+                    >
+                        <Link
+                            href="/chapters"
+                            className="inline-flex items-center gap-2 text-white/40 hover:text-gold text-[9px] font-black uppercase tracking-[0.3em] transition-colors group"
+                        >
+                            <SvgIcon name="arrow_back" size={12} className="group-hover:-translate-x-0.5 transition-transform" />
+                            All Chapters
+                        </Link>
+                    </motion.div>
+
+                    <motion.div
+                        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={stagger(1)}
+                        className="space-y-3"
+                    >
+                        {/* Status + flag row */}
+                        <div className="flex items-center gap-2.5 flex-wrap">
+                            <span className="text-xl leading-none">{chapter.flag}</span>
+                            <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-[0.2em] bg-gradient-to-r ${chapter.color} text-white border border-white/10`}>
                                 {chapter.status}
                             </span>
                             {chapter.registrationOpen && (
-                                <span className="px-3 py-1 rounded-full bg-emerald/20 text-emerald text-[8px] font-black uppercase tracking-widest">Registration Open</span>
+                                <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/25 text-emerald-300 text-[9px] font-black uppercase tracking-[0.2em]">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                                    Open
+                                </span>
                             )}
                         </div>
-                        <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white">
-                            AFLEWO <span className="text-gold">{chapter.name}</span>
+
+                        {/* Display headline — tight tracking, large scale */}
+                        <h1 className="text-[clamp(3rem,12vw,7rem)] font-black leading-[0.88] tracking-tighter text-white">
+                            AFLEWO<br />
+                            <span className="text-gold">{chapter.name.toUpperCase()}</span>
                         </h1>
-                        <p className="text-white/50 font-bold text-sm uppercase tracking-widest mt-2">{chapter.country} · Est. {chapter.established}</p>
-                    </div>
+
+                        <p className="text-white/35 text-[10px] font-black uppercase tracking-[0.35em]">
+                            {chapter.country} · Est. {chapter.established}
+                        </p>
+                    </motion.div>
                 </div>
             </section>
 
-            {/* Content */}
-            <section className="section-padding">
-                <div className="max-container flex flex-col lg:flex-row gap-20">
-                    {/* Main */}
-                    <div className="flex-1 space-y-12 animate-up">
-                        <div className="space-y-6">
-                            <h2 className="text-4xl font-black tracking-tighter">About the Chapter</h2>
-                            <p className="text-lg text-foreground/60 leading-relaxed font-medium">{chapter.description}</p>
+            {/* ── BODY ──────────────────────────────────────────────────────────── */}
+            <section className="px-6 py-16">
+                <div className="max-container grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-start">
+
+                    {/* ── LEFT COLUMN ──────────────────────────────────────────── */}
+                    <div className="space-y-14">
+
+                        {/* Chapter description */}
+                        <motion.div
+                            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={stagger(2)}
+                            className="space-y-4 border-l-2 border-gold/30 pl-7"
+                        >
+                            <p className="text-[9px] font-black uppercase tracking-[0.35em] text-gold/60">Chapter Overview</p>
+                            <p className="text-lg text-white/55 leading-relaxed font-medium">{chapter.description}</p>
+                        </motion.div>
+
+                        {/* Stats grid */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <StatTile icon="calendar_month" label="Established" value={`AFLEWO ${chapter.established}`} delay={0.1} />
+                            <StatTile icon="location_on" label="Primary Venue" value={chapter.venue} delay={0.15} />
+                            {chapter.capacity && <StatTile icon="groups" label="Peak Capacity" value={`${chapter.capacity} Souls`} delay={0.2} />}
+                            <StatTile icon="flag" label="Nation" value={`${chapter.flag} ${chapter.country}`} delay={0.25} />
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="glass-card p-8 rounded-lg space-y-3">
-                                <SvgIcon name="calendar" className="text-gold" size={24} />
-                                <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Established</p>
-                                <p className="text-xl font-black">AFLEWO {chapter.established}</p>
-                            </div>
-                            <div className="glass-card p-8 rounded-lg space-y-3">
-                                <SvgIcon name="location" className="text-gold" size={24} />
-                                <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Primary Venue</p>
-                                <p className="text-xl font-black">{chapter.venue}</p>
-                            </div>
-                            {chapter.capacity && (
-                                <div className="glass-card p-8 rounded-lg space-y-3">
-                                    <SvgIcon name="people" className="text-gold" size={24} />
-                                    <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Peak Capacity</p>
-                                    <p className="text-xl font-black">{chapter.capacity} Souls</p>
-                                </div>
-                            )}
-                            <div className="glass-card p-8 rounded-lg space-y-3">
-                                <SvgIcon name="flag" className="text-gold" size={24} />
-                                <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Nation</p>
-                                <p className="text-xl font-black">{chapter.flag} {chapter.country}</p>
-                            </div>
-                        </div>
-
+                        {/* Upcoming event card */}
                         {chapter.upcomingEvent && (
-                            <div className="glass-card-elevated p-10 rounded-lg border-gold/20 bg-gold/5 space-y-6">
-                                <div className="space-y-2">
-                                    <p className="text-gold text-[10px] font-black uppercase tracking-widest">Upcoming Event</p>
-                                    <h3 className="text-2xl font-black tracking-tighter">{chapter.upcomingEvent}</h3>
-                                    {chapter.hasPrayerCircle && (
-                                        <p className="text-white/50 text-sm font-bold">
-                                            Every night at 9:00 PM EAT via Zoom
-                                        </p>
-                                    )}
+                            <motion.div
+                                initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={stagger(3)}
+                                className="relative rounded-3xl overflow-hidden border border-gold/15 p-8 space-y-6"
+                                style={{ background: "linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(212,175,55,0.02) 100%)" }}
+                            >
+                                {/* Decorative top edge */}
+                                <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+
+                                <div className="flex items-start justify-between gap-4">
+                                    <div className="space-y-1.5">
+                                        <p className="text-[9px] font-black uppercase tracking-[0.35em] text-gold/70">Upcoming Event</p>
+                                        <h3 className="text-xl font-black tracking-tight leading-snug">{chapter.upcomingEvent}</h3>
+                                        {chapter.hasPrayerCircle && (
+                                            <p className="text-white/40 text-[11px] font-bold mt-1">
+                                                Every night at 9:00 PM EAT · Zoom
+                                            </p>
+                                        )}
+                                    </div>
+                                    <div className="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/20 flex items-center justify-center shrink-0">
+                                        <SvgIcon name="event" size={22} className="text-gold" />
+                                    </div>
                                 </div>
+
                                 {chapter.registrationOpen && (
-                                    <button
+                                    <motion.button
                                         onClick={() => setShowRegister(true)}
-                                        className="w-full py-4 rounded-lg bg-gold text-brown font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-glow flex items-center justify-center gap-3"
+                                        whileTap={{ scale: 0.97 }}
+                                        transition={SPRING_DEFAULT}
+                                        className="w-full py-4 rounded-2xl bg-gold text-brown font-black text-[11px] uppercase tracking-[0.25em] hover:brightness-110 transition-all flex items-center justify-center gap-2.5"
+                                        style={{ WebkitTapHighlightColor: "transparent" }}
                                     >
-                                        <SvgIcon name="check_circle" size={18} /> Register Now
-                                    </button>
+                                        <SvgIcon name="check_circle" size={17} />
+                                        Register for This Event
+                                    </motion.button>
                                 )}
                                 {chapter.link && !chapter.registrationOpen && (
-                                    <a
+                                    <motion.a
                                         href={chapter.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="block w-full py-4 rounded-lg bg-gold text-brown font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all text-center"
+                                        whileTap={{ scale: 0.97 }}
+                                        transition={SPRING_DEFAULT}
+                                        className="block w-full py-4 rounded-2xl bg-gold text-brown font-black text-[11px] uppercase tracking-[0.25em] hover:brightness-110 transition-all text-center"
+                                        style={{ WebkitTapHighlightColor: "transparent" }}
                                     >
                                         Open Registration Link
-                                    </a>
+                                    </motion.a>
                                 )}
-                            </div>
+                            </motion.div>
                         )}
                     </div>
 
-                    {/* Sidebar */}
-                    <div className="w-full lg:w-80 space-y-8 animate-up">
-                        <div className="glass-card p-8 rounded-lg space-y-6">
-                            <h4 className="font-black text-xs uppercase tracking-widest text-gold">Contact & Connect</h4>
-                            <div className="space-y-4">
+                    {/* ── RIGHT SIDEBAR (sticky on desktop) ────────────────────── */}
+                    <div className="space-y-4 lg:sticky lg:top-24">
+
+                        {/* Contact card */}
+                        <motion.div
+                            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: 16 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={stagger(2)}
+                            className="rounded-3xl border border-white/6 p-6 space-y-5"
+                            style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(20px)" }}
+                        >
+                            <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30">Contact & Connect</p>
+                            <div className="space-y-4 divide-y divide-white/5">
                                 {chapter.contactPhone && (
-                                    <a href={`tel:${chapter.contactPhone}`} className="flex items-center gap-4 text-white/60 hover:text-white transition-colors group">
-                                        <div className="w-10 h-10 rounded-lg bg-white/5 group-hover:bg-gold/20 flex items-center justify-center transition-colors">
-                                            <SvgIcon name="call" size={18} className="text-gold" />
-                                        </div>
-                                        <div>
-                                            <p className="text-[9px] font-black uppercase tracking-widest text-white/30">Call Us</p>
-                                            <span className="text-sm font-bold">{chapter.contactPhone}</span>
-                                        </div>
-                                    </a>
+                                    <ContactRow icon="call" label="Call Us" value={chapter.contactPhone} href={`tel:${chapter.contactPhone}`} />
                                 )}
                                 {chapter.contactEmail && (
-                                    <a href={`mailto:${chapter.contactEmail}`} className="flex items-center gap-4 text-white/60 hover:text-white transition-colors group">
-                                        <div className="w-10 h-10 rounded-lg bg-white/5 group-hover:bg-gold/20 flex items-center justify-center transition-colors">
-                                            <SvgIcon name="mail" size={18} className="text-gold" />
-                                        </div>
-                                        <div>
-                                            <p className="text-[9px] font-black uppercase tracking-widest text-white/30">Email Us</p>
-                                            <span className="text-sm font-bold">{chapter.contactEmail}</span>
-                                        </div>
-                                    </a>
+                                    <div className="pt-4">
+                                        <ContactRow icon="mail" label="Email Us" value={chapter.contactEmail} href={`mailto:${chapter.contactEmail}`} />
+                                    </div>
                                 )}
                                 {chapter.whatsappLink && (
-                                    <a href={chapter.whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-white/60 hover:text-white transition-colors group">
-                                        <div className="w-10 h-10 rounded-lg bg-white/5 group-hover:bg-gold/20 flex items-center justify-center transition-colors">
-                                            <SvgIcon name="forum" size={18} className="text-gold" />
-                                        </div>
-                                        <div>
-                                            <p className="text-[9px] font-black uppercase tracking-widest text-white/30">WhatsApp Group</p>
-                                            <span className="text-sm font-bold">Join Community</span>
-                                        </div>
-                                    </a>
+                                    <div className="pt-4">
+                                        <ContactRow icon="forum" label="WhatsApp Group" value="Join Community" href={chapter.whatsappLink} />
+                                    </div>
                                 )}
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="glass-card p-8 rounded-lg space-y-6 border-white/5">
-                            <h4 className="font-black text-xs uppercase tracking-widest text-gold text-center">Prophetic Pillar</h4>
-                            <p className="text-sm text-center font-black uppercase tracking-widest text-white/20 italic">
-                                &quot;The Sound <br />of {chapter.name}&quot;
-                            </p>
-                            <div className="w-12 h-px bg-gold/30 mx-auto" />
-                            <p className="text-[10px] text-center font-black uppercase tracking-widest text-white/20">
-                                 {chapter.established} · {chapter.country}
-                            </p>
-                        </div>
-
-                        <div className="glass-card p-8 rounded-lg space-y-4 border-white/5">
-                            <h4 className="font-black text-xs uppercase tracking-widest text-gold">Support This Chapter</h4>
-                            <p className="text-white/40 text-xs font-bold">M-Pesa Paybill</p>
-                            <p className="text-2xl font-black text-gold">819867</p>
-                            <p className="text-white/30 text-[10px] font-bold">Account: AFLEWO {chapter.name}</p>
-                            <a href="tel:*456*819867#" className="block w-full py-3 text-center glass-card rounded-lg text-[10px] font-black uppercase tracking-widest text-gold hover:bg-gold/10 transition-colors">
-                                Dial *456*819867#
-                            </a>
-                        </div>
-
-                        <Link
-                            href="/#chapters"
-                            className="flex items-center gap-3 text-white/40 hover:text-gold transition-colors text-[10px] font-black uppercase tracking-widest"
+                        {/* Prophetic identity card — the signature element */}
+                        <motion.div
+                            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: 16 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={stagger(3)}
+                            className="rounded-3xl border border-gold/10 p-6 space-y-4 text-center overflow-hidden relative"
+                            style={{ background: "linear-gradient(160deg, rgba(212,175,55,0.06) 0%, rgba(0,0,0,0) 60%)" }}
                         >
-                            <SvgIcon name="arrow_back" size={14} /> All Chapters
-                        </Link>
+                            {/* Radial glow */}
+                            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(212,175,55,0.12),transparent_70%)] pointer-events-none" />
+                            <p className="text-[8px] font-black uppercase tracking-[0.4em] text-gold/40">Prophetic Pillar</p>
+                            <p className="text-2xl font-black tracking-tight text-white/80 italic leading-snug">
+                                &ldquo;The Sound<br />of {chapter.name}&rdquo;
+                            </p>
+                            <div className="w-8 h-px bg-gold/30 mx-auto" />
+                            <p className="text-[9px] text-white/20 font-black uppercase tracking-[0.3em]">
+                                Est. {chapter.established} · {chapter.country}
+                            </p>
+                        </motion.div>
+
+                        {/* Give / M-Pesa card */}
+                        <motion.div
+                            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: 16 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={stagger(4)}
+                            className="rounded-3xl border border-white/6 p-6 space-y-4"
+                            style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(20px)" }}
+                        >
+                            <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30">Support This Chapter</p>
+                            <div className="space-y-1">
+                                <p className="text-[9px] text-white/25 font-bold uppercase tracking-widest">M-Pesa Paybill</p>
+                                <p className="text-3xl font-black text-gold tracking-tight">819867</p>
+                                <p className="text-[10px] text-white/25 font-bold">Account: AFLEWO {chapter.name}</p>
+                            </div>
+                            <motion.a
+                                href="tel:*456*819867#"
+                                whileTap={{ scale: 0.96 }}
+                                transition={SPRING_DEFAULT}
+                                className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl border border-gold/20 bg-gold/5 hover:bg-gold/12 text-gold text-[10px] font-black uppercase tracking-[0.2em] transition-colors"
+                                style={{ WebkitTapHighlightColor: "transparent" }}
+                            >
+                                <SvgIcon name="call" size={14} />
+                                Dial *456*819867#
+                            </motion.a>
+                        </motion.div>
+
+                        {/* Back link */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ ...SPRING_ENTRANCE, delay: 0.5 }}
+                        >
+                            <Link
+                                href="/chapters"
+                                className="flex items-center gap-2 text-white/25 hover:text-gold transition-colors text-[9px] font-black uppercase tracking-[0.3em] group px-2"
+                            >
+                                <SvgIcon name="arrow_back" size={12} className="group-hover:-translate-x-0.5 transition-transform" />
+                                View All Chapters
+                            </Link>
+                        </motion.div>
                     </div>
                 </div>
             </section>

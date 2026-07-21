@@ -1,0 +1,1 @@
+git push aflewo main ; git push origin main ; git push origin-A main ; git push origin-new main ; git push production main
