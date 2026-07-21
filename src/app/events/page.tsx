@@ -196,10 +196,15 @@ function EventsInner() {
     const [typeFilter, setTypeFilter]       = useState("All");
     const [chapterFilter, setChapterFilter] = useState(defaultChapter);
     const [showPast, setShowPast]           = useState(false);
+    const [mounted, setMounted] = useState(false);
 
-    const now = new Date();
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const { upcoming, past } = useMemo(() => {
+        if (!mounted) return { upcoming: [], past: [] };
+        const now = new Date();
         const sorted = [...events].sort((a, b) => {
             const da = parseEventDate(a.date);
             const db = parseEventDate(b.date);
@@ -306,8 +311,11 @@ function EventsInner() {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function EventsPage() {
+    const [mounted, setMounted] = useState(false);
+
     // Scroll-reveal
     useEffect(() => {
+        setMounted(true);
         const observer = new IntersectionObserver(
             (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("revealed"); }),
             { threshold: 0.06 }
@@ -318,7 +326,7 @@ export default function EventsPage() {
 
     const totalEvents = events.length;
     const now = new Date();
-    const upcomingCount = events.filter((e) => { const d = parseEventDate(e.date); return d && d >= now; }).length;
+    const upcomingCount = mounted ? events.filter((e) => { const d = parseEventDate(e.date); return d && d >= now; }).length : "...";
     const chapterCount  = new Set(events.map((e) => e.chapter)).size;
 
     return (

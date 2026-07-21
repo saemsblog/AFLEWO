@@ -124,7 +124,8 @@ const PAGE_DICTIONARY: Record<string, string> = {
     "home page": "/",
     "home": "/"
 };
-const fuzzyRegex = new RegExp(`\\b(${Object.keys(PAGE_DICTIONARY).join("|")})\\b`, "gi");
+const FUZZY_LINK_KEYS = Object.keys(PAGE_DICTIONARY).filter(key => key.includes(" "));
+const fuzzyRegex = new RegExp(`\\b(${FUZZY_LINK_KEYS.join("|")})\\b`, "gi");
 
 // ─── CopyableToken ────────────────────────────────────────────────────────────
 function CopyableToken({ value, label }: { value: string; label: string }) {
