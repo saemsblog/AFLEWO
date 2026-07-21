@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useCallback, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import SvgIcon from "@/components/ui/SvgIcon";
 
-gsap.registerPlugin(ScrollTrigger);
+// ─── Spring presets (Apple Design) ──────────────────────────────────────────────
+const SPRING = { type: "spring", stiffness: 380, damping: 38, mass: 0.9 } as const;
+const SPRING_IN = { type: "spring", stiffness: 260, damping: 32, mass: 1.0 } as const;
 
+// ─── Data ─────────────────────────────────────────────────────────────────────
 interface MediaItem {
     title: string;
     category: string;
@@ -63,191 +65,245 @@ const mediaItems: MediaItem[] = [
     }
 ];
 
-export default function MediaPreview() {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const itemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
-    const magneticRefs = useRef<{ x: gsap.QuickToFunc; y: gsap.QuickToFunc }[]>([]);
+// ─── Media Card Component ─────────────────────────────────────────────────────
+function MediaCard({ item, index }: { item: MediaItem; index: number }) {
+    const shouldReduceMotion = useReducedMotion();
+    const [hovered, setHovered] = useState(false);
+    const cardRef = useRef<HTMLAnchorElement>(null);
 
-    const handleMouseMove = useCallback((e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
-        if (!magneticRefs.current[index]) return;
-        const item = itemsRef.current[index];
-        if (!item) return;
+    // Magnetic button effect for the play/view icon
+    const [magneticPos, setMagneticPos] = useState({ x: 0, y: 0 });
 
-        const rect = item.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (shouldReduceMotion || !cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        const x = (e.clientX - rect.left) - rect.width / 2;
+        const y = (e.clientY - rect.top) - rect.height / 2;
+        // Move the button slightly towards the cursor (magnetic effect)
+        setMagneticPos({ x: x * 0.15, y: y * 0.15 });
+    };
 
-        magneticRefs.current[index].x(x * 0.05);
-        magneticRefs.current[index].y(y * 0.05);
-    }, []);
-
-    const handleMouseLeave = useCallback((index: number) => {
-        if (!magneticRefs.current[index]) return;
-        magneticRefs.current[index].x(0);
-        magneticRefs.current[index].y(0);
-    }, []);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            itemsRef.current.forEach((item, index) => {
-                if (item) {
-                    magneticRefs.current[index] = {
-                        x: gsap.quickTo(item, "x", { duration: 0.6, ease: "power3.out" }),
-                        y: gsap.quickTo(item, "y", { duration: 0.6, ease: "power3.out" })
-                    };
-                }
-            });
-
-            gsap.from(".media-header", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 85%",
-                },
-                y: 60,
-                opacity: 0,
-                duration: 1.2,
-                ease: "expo.out"
-            });
-
-            gsap.from(".bento-item", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 70%",
-                },
-                scale: 0.95,
-                opacity: 0,
-                stagger: 0.1,
-                duration: 1,
-                ease: "expo.out"
-            });
-        }, sectionRef);
-
-        return () => ctx.revert();
-    }, []);
+    const handleMouseLeave = () => {
+        setHovered(false);
+        setMagneticPos({ x: 0, y: 0 });
+    };
 
     const getTypeIcon = (type: string, size: "large" | "medium" | "small") => {
         const iconSize = size === "large" ? 32 : size === "medium" ? 24 : 16;
-        if (type === "video" || type === "documentary") {
-            return <SvgIcon name="play_arrow" size={iconSize} />;
-        }
-        return <SvgIcon name="visibility" size={iconSize} />;
+        return (type === "video" || type === "documentary") 
+            ? <SvgIcon name="play_arrow" size={iconSize} />
+            : <SvgIcon name="visibility" size={iconSize} />;
     };
 
+    const isLarge = item.size === "large";
+    const isMedium = item.size === "medium";
+    
+    const delay = i => shouldReduceMotion ? { duration: 0.15 } : { ...SPRING_IN, delay: i * 0.05 };
+
     return (
-        <section ref={sectionRef} className="section-padding bg-background relative" id="media">
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/4 right-0 w-64 h-64 bg-gold/5 rounded-full blur-[120px]" />
-            </div>
+        <motion.div
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.96 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={delay(index)}
+            className={`
+                ${isLarge ? "col-span-2 row-span-2" : ""}
+                ${isMedium ? "col-span-2 row-span-1" : ""}
+                ${item.size === "small" ? "col-span-1 row-span-1" : ""}
+            `}
+        >
+            <Link
+                ref={cardRef}
+                href="/media"
+                onMouseEnter={() => setHovered(true)}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className={`group relative block w-full h-full rounded-[2rem] overflow-hidden border border-white/8 cursor-pointer transform-gpu`}
+                style={{ WebkitTapHighlightColor: "transparent" }}
+            >
+                {/* Background Image & Zoom */}
+                <motion.div 
+                    className="absolute inset-0 w-full h-full"
+                    animate={{ scale: hovered ? 1.05 : 1, filter: hovered ? "grayscale(0%)" : "grayscale(100%)" }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                >
+                    <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                        draggable={false}
+                        unoptimized
+                    />
+                </motion.div>
+
+                {/* Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent transition-opacity duration-500 z-10" />
+                <div className="absolute inset-0 bg-gold/10 opacity-0 group-hover:opacity-20 mix-blend-overlay transition-opacity duration-500 z-10" />
+
+                {/* Watermark (Reveals on hover) */}
+                <AnimatePresence>
+                    {hovered && (
+                        <motion.div
+                            initial={{ opacity: 0, rotate: -15, scale: 0.9 }}
+                            animate={{ opacity: 0.15, rotate: -20, scale: 1 }}
+                            exit={{ opacity: 0, rotate: -15, scale: 0.9 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="absolute inset-0 flex items-center justify-center pointer-events-none z-10"
+                        >
+                            <span className={`text-white font-black tracking-[0.4em] uppercase select-none ${isLarge ? 'text-6xl' : 'text-3xl'}`}>
+                                AFLEWO
+                            </span>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* Content Container */}
+                <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between z-20">
+                    
+                    {/* Top Row: Badges */}
+                    <div className="flex justify-between items-start gap-2">
+                        <div className="flex flex-wrap gap-2">
+                            <span className="px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] bg-gold/15 text-gold border border-gold/20 shadow-[0_0_12px_rgba(212,175,55,0.15)]" style={{ backdropFilter: "blur(8px)" }}>
+                                {item.category}
+                            </span>
+                            {item.chapter && (
+                                <span className="px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] bg-white/10 text-white/70 border border-white/10 hidden sm:flex items-center gap-1" style={{ backdropFilter: "blur(8px)" }}>
+                                    <SvgIcon name="location" size={10} /> {item.chapter}
+                                </span>
+                            )}
+                        </div>
+                        {item.views && (
+                            <span className="flex items-center gap-1 text-[10px] font-black tracking-widest text-white/50 bg-black/40 px-2 py-1 rounded-full border border-white/5" style={{ backdropFilter: "blur(8px)" }}>
+                                <SvgIcon name="visibility" size={10} /> {item.views}
+                            </span>
+                        )}
+                    </div>
+
+                    {/* Bottom Row: Text & Action */}
+                    <div className="flex items-end justify-between gap-4">
+                        <motion.div 
+                            className="space-y-1"
+                            animate={{ y: hovered ? 0 : 8 }}
+                            transition={SPRING}
+                        >
+                            <span className="text-gold text-[10px] font-black uppercase tracking-[0.25em] block">{item.year}</span>
+                            <h3 className={`font-black text-white leading-tight tracking-tight ${isLarge ? "text-4xl md:text-5xl" : isMedium ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"}`}>
+                                {item.title}
+                            </h3>
+                        </motion.div>
+
+                        <motion.div
+                            animate={{ 
+                                x: magneticPos.x, 
+                                y: magneticPos.y,
+                                scale: hovered ? 1 : 0.8,
+                                opacity: hovered ? 1 : 0 
+                            }}
+                            transition={SPRING}
+                            className={`shrink-0 bg-gold text-brown rounded-full flex items-center justify-center shadow-glow ${item.size === "small" ? "p-3" : "p-4 md:p-5"}`}
+                        >
+                            {getTypeIcon(item.type, item.size)}
+                        </motion.div>
+                    </div>
+
+                </div>
+
+                {/* Hover border effect */}
+                <motion.div 
+                    className="absolute inset-0 border-[3px] border-gold/0 rounded-[2rem] pointer-events-none z-30"
+                    animate={{ borderColor: hovered ? "rgba(212,175,55,0.3)" : "rgba(212,175,55,0)" }}
+                    transition={{ duration: 0.3 }}
+                />
+            </Link>
+        </motion.div>
+    );
+}
+
+// ─── Main Section ─────────────────────────────────────────────────────────────
+export default function MediaPreview() {
+    const shouldReduceMotion = useReducedMotion();
+    
+    const stagger = (i: number) => shouldReduceMotion ? { duration: 0.15 } : { ...SPRING_IN, delay: i * 0.05 };
+
+    const stats = [
+        { label: "Photos", value: "5,000+", icon: "camera" },
+        { label: "Videos", value: "200+", icon: "play_circle" },
+        { label: "Years Archived", value: "20", icon: "history" },
+        { label: "Chapters", value: "11", icon: "location_on" }
+    ];
+
+    return (
+        <section id="media" className="section-padding bg-background relative overflow-hidden">
+            {/* Ambient glows */}
+            <div className="absolute top-1/4 right-[-10%] w-[500px] h-[500px] bg-gold/5 rounded-full blur-[150px] pointer-events-none mix-blend-screen" />
+            <div className="absolute bottom-1/4 left-[-10%] w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
 
             <div className="max-container relative z-10">
-                <div className="media-header flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16">
-                    <div className="space-y-6">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-gold text-[10px] font-black uppercase tracking-[0.2em]">
-                            <SvgIcon name="calendar" size={12} /> The Archive
+                {/* Header */}
+                <motion.div
+                    initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={stagger(0)}
+                    className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16"
+                >
+                    <div className="space-y-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold/20 bg-gold/8 text-gold text-[10px] font-black uppercase tracking-[0.25em]">
+                            <SvgIcon name="photo_library" size={12} /> The Archive
                         </div>
-                        <h2 className="text-5xl md:text-7xl font-black tracking-tighter">
+                        <h2 className="text-[clamp(3rem,8vw,5.5rem)] font-black tracking-tighter leading-[0.85]">
                             THE SOUND <br />
                             <span className="text-gold">OF HEAVEN</span>
                         </h2>
-                        <p className="text-foreground/50 max-w-md font-medium">
-                            20 years of worship captured. From the first gathering to today{"'"}s continental movement.
+                        <p className="text-white/40 max-w-md font-bold text-xs uppercase tracking-[0.2em] leading-relaxed pt-2">
+                            20 years of worship captured. From the first gathering in 2004 to today's continental movement.
                         </p>
                     </div>
-                    <Link
-                        href="/media"
-                        className="press-scale flex items-center gap-3 px-6 py-3 glass-card rounded-full text-gold font-black uppercase tracking-widest text-xs hover:bg-gold hover:text-brown transition-all"
+                    
+                    <motion.div
+                        whileTap={{ scale: 0.96 }}
+                        transition={SPRING}
                     >
-                        Explore Gallery <SvgIcon name="arrow_forward" size={16} />
-                    </Link>
-                </div>
-
-                <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[180px] gap-4">
-                    {mediaItems.map((item, i) => (
                         <Link
                             href="/media"
-                            key={i}
-                            ref={(el) => { itemsRef.current[i] = el; }}
-                            onMouseMove={(e) => handleMouseMove(e, i)}
-                            onMouseLeave={() => handleMouseLeave(i)}
-                            className={`bento-item relative rounded-2xl overflow-hidden glass-card border-white/5 group cursor-pointer no-download-wrapper select-none
-                                ${item.size === "large" ? "col-span-2 row-span-2" : ""}
-                                ${item.size === "medium" ? "col-span-2 row-span-1" : ""}
-                                ${item.size === "small" ? "col-span-1 row-span-1" : ""}
-                            `}
-                            onContextMenu={(e) => e.preventDefault()}
+                            className="flex items-center gap-3 px-8 py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-gold/30 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-gold transition-all"
+                            style={{ backdropFilter: "blur(12px)" }}
                         >
-                            <Image
-                                src={item.image}
-                                alt={item.title}
-                                fill
-                                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 select-none"
-                                draggable={false}
-                                style={{ pointerEvents: "none", WebkitUserDrag: "none" } as React.CSSProperties}
-                            />
-                            {/* Watermark Overlay (Hidden until hover) */}
-                            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" aria-hidden="true">
-                                <div className="flex flex-col items-center gap-0.5 opacity-[0.25] select-none" style={{ transform: "rotate(-20deg)" }}>
-                                    <span className={`text-white font-black tracking-[0.4em] uppercase ${item.size === 'small' ? 'text-lg' : 'text-3xl'}`}>AFLEWO</span>
-                                </div>
-                            </div>
-
-                            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500 z-10" />
-
-                            <div className="absolute inset-0 p-5 md:p-8 flex flex-col justify-between z-20">
-                                <div className="flex justify-between items-start">
-                                    <div className="flex flex-wrap gap-2">
-                                        <span className="px-3 py-1 rounded-full bg-gold/20 backdrop-blur-sm text-gold text-[9px] font-black uppercase tracking-widest">
-                                            {item.category}
-                                        </span>
-                                        {item.chapter && (
-                                            <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm text-white/70 text-[9px] font-black uppercase tracking-widest flex items-center gap-1">
-                                                <SvgIcon name="location" size={10} /> {item.chapter}
-                                            </span>
-                                        )}
-                                    </div>
-                                    {item.views && (
-                                        <span className="flex items-center gap-1 text-white/50 text-[10px] font-black">
-                                            <SvgIcon name="visibility" size={12} /> {item.views}
-                                        </span>
-                                    )}
-                                </div>
-
-                                <div className="space-y-4">
-                                    <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                                        <span className="text-gold text-[10px] font-black uppercase tracking-widest">{item.year}</span>
-                                        <h3 className={`font-black text-white mt-1 leading-tight ${item.size === "large" ? "text-3xl md:text-4xl" : "text-xl md:text-2xl"
-                                            }`}>
-                                            {item.title}
-                                        </h3>
-                                    </div>
-
-                                    <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                                        <button className={`bg-gold rounded-full text-brown flex items-center justify-center hover:scale-110 transition-transform ${item.size === "small" ? "p-2" : "p-4"}`}>
-                                            {getTypeIcon(item.type, item.size)}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="absolute inset-0 border-2 border-transparent group-hover:border-gold/30 rounded-lg transition-colors duration-500 pointer-events-none" />
+                            Explore Full Gallery
+                            <SvgIcon name="arrow_forward" size={16} />
                         </Link>
+                    </motion.div>
+                </motion.div>
+
+                {/* Bento Grid Gallery */}
+                <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[220px] md:auto-rows-[260px] gap-4 md:gap-5">
+                    {mediaItems.map((item, i) => (
+                        <MediaCard key={i} item={item} index={i} />
                     ))}
                 </div>
 
-                <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {[
-                        { label: "Photos", value: "5,000+", icon: "visibility" },
-                        { label: "Videos", value: "200+", icon: "play_arrow" },
-                        { label: "Years Archived", value: "20", icon: "calendar_month" },
-                        { label: "Chapters", value: "11", icon: "location_on" }
-                    ].map((stat, i) => (
-                        <div key={i} className="glass-card p-6 rounded-2xl text-center group hover:border-gold/20 transition-colors">
-                            <SvgIcon name={stat.icon} size={24} className="mx-auto text-gold mb-3 group-hover:scale-110 transition-transform" />
-                            <div className="text-2xl font-black text-white">{stat.value}</div>
-                            <div className="text-[10px] font-black uppercase tracking-widest text-white/40">{stat.label}</div>
-                        </div>
+                {/* Stats Bar */}
+                <motion.div
+                    initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={stagger(3)}
+                    className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
+                >
+                    {stats.map((stat, i) => (
+                        <motion.div 
+                            key={i}
+                            whileHover={{ y: -4, borderColor: "rgba(212,175,55,0.25)", background: "rgba(255,255,255,0.04)" }}
+                            className="p-8 rounded-[2rem] border border-white/6 text-center transition-colors cursor-default"
+                            style={{ background: "rgba(255,255,255,0.02)", backdropFilter: "blur(12px)" }}
+                        >
+                            <SvgIcon name={stat.icon} size={28} className="mx-auto text-gold/80 mb-4" />
+                            <div className="text-3xl md:text-4xl font-black text-white tracking-tighter leading-none mb-1">{stat.value}</div>
+                            <div className="text-[9px] font-black uppercase tracking-[0.25em] text-white/40">{stat.label}</div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

@@ -1,327 +1,458 @@
 "use client";
 
 import { useEffect, useRef, useState, useMemo, useCallback } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import SvgIcon from "@/components/ui/SvgIcon";
 import Link from "next/link";
 import { supabase } from "@/integrations/supabase/client";
 import { type Session } from "@supabase/supabase-js";
-
-gsap.registerPlugin(ScrollTrigger);
-
 import { events, parseEventDate, type AFLEWOEvent } from "@/lib/events";
 
-const chapterColors: Record<string, { bg: string; text: string; border: string }> = {
-    Nairobi: { bg: "bg-gold/20", text: "text-gold", border: "border-gold/30" },
-    Nakuru: { bg: "bg-orange-500/20", text: "text-orange-400", border: "border-orange-500/30" },
-    Eldoret: { bg: "bg-purple-500/20", text: "text-purple-400", border: "border-purple-500/30" },
-    Mombasa: { bg: "bg-cyan-500/20", text: "text-cyan-400", border: "border-cyan-500/30" },
-    Tanzania: { bg: "bg-emerald/20", text: "text-emerald", border: "border-emerald/30" },
-    Rwanda: { bg: "bg-blue-500/20", text: "text-blue-400", border: "border-blue-500/30" },
-    Nyeri: { bg: "bg-green-500/20", text: "text-green-400", border: "border-green-500/30" },
-    Meru: { bg: "bg-lime-500/20", text: "text-lime-400", border: "border-lime-500/30" }
+// ─── Apple Design spring presets ─────────────────────────────────────────────
+const SPRING = { type: "spring", stiffness: 380, damping: 38, mass: 0.9 } as const;
+const SPRING_IN = { type: "spring", stiffness: 260, damping: 32, mass: 1.0 } as const;
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
+const chapterColors: Record<string, string> = {
+    Nairobi:  "text-gold border-gold/30 bg-gold/10",
+    Nakuru:   "text-orange-400 border-orange-500/30 bg-orange-500/10",
+    Eldoret:  "text-purple-400 border-purple-500/30 bg-purple-500/10",
+    Mombasa:  "text-cyan-400 border-cyan-500/30 bg-cyan-500/10",
+    Tanzania: "text-emerald-400 border-emerald-500/30 bg-emerald-500/10",
+    Rwanda:   "text-blue-400 border-blue-500/30 bg-blue-500/10",
+    Nyeri:    "text-green-400 border-green-500/30 bg-green-500/10",
+    Meru:     "text-lime-400 border-lime-500/30 bg-lime-500/10",
 };
+const CHAPTERS = Object.keys(chapterColors);
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const WEEKDAYS = ["S","M","T","W","T","F","S"];
 
-const chapters = Object.keys(chapterColors);
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-interface FlipDigitProps {
-    value: number;
-    label: string;
-}
-
-function FlipDigit({ value, label }: FlipDigitProps) {
-    const flipRef = useRef<HTMLDivElement>(null);
-    const prevValue = useRef(value);
-    const [displayValue, setDisplayValue] = useState(value);
-    const [nextValue, setNextValue] = useState(value);
-    const tlRef = useRef<gsap.core.Timeline | null>(null);
-
-    useEffect(() => {
-        if (prevValue.current !== value) {
-            // Kill any in-progress flip before starting a fresh one
-            tlRef.current?.kill();
-            if (flipRef.current) gsap.set(flipRef.current, { rotateX: 0 });
-
-            setNextValue(value);
-            const capturedPrev = prevValue.current;
-            prevValue.current = value;
-
-            const tl = gsap.timeline({
-                onComplete: () => {
-                    setDisplayValue(value);
-                    if (flipRef.current) gsap.set(flipRef.current, { rotateX: 0 });
-                }
-            });
-            tlRef.current = tl;
-            if (flipRef.current) {
-                tl.to(flipRef.current, { rotateX: -180, duration: 0.6, ease: "power2.inOut" });
-            }
-            void capturedPrev;
-        } else {
-            prevValue.current = value;
-        }
-    }, [value]);
-
-    const formattedDisplay = displayValue.toString().padStart(2, '0');
-    const formattedNext = nextValue.toString().padStart(2, '0');
-
+// ─── Flip Digit (Apple popLayout spring) ──────────────────────────────────────
+function FlipDigit({ value, label }: { value: number; label: string }) {
+    const shouldReduceMotion = useReducedMotion();
+    const pad = (n: number) => String(n).padStart(2, "0");
     return (
-        <div className="flex flex-col items-center gap-2 group">
-            <div className="relative" style={{ perspective: "1000px" }}>
-                <div className="relative w-16 h-20 md:w-24 md:h-32 rounded-xl overflow-hidden glass-card shadow-2xl border border-white/5">
-                    {/* Top Static */}
-                    <div className="absolute inset-x-0 top-0 h-1/2 bg-[hsl(20,20%,12%)] flex items-end justify-center overflow-hidden">
-                        <span className="text-3xl md:text-5xl font-black text-white translate-y-1/2">{formattedNext}</span>
-                    </div>
-                    {/* Bottom Static */}
-                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-[hsl(20,20%,10%)] flex items-start justify-center overflow-hidden">
-                        <span className="text-3xl md:text-5xl font-black text-white -translate-y-1/2">{formattedDisplay}</span>
-                    </div>
-                    {/* Flipper */}
-                    <div ref={flipRef} className="absolute inset-x-0 top-0 h-1/2 origin-bottom z-10" style={{ transformStyle: "preserve-3d" }}>
-                        <div className="absolute inset-0 bg-[hsl(20,20%,12%)] flex items-end justify-center overflow-hidden rounded-t-xl" style={{ backfaceVisibility: "hidden" }}>
-                            <span className="text-3xl md:text-5xl font-black text-white translate-y-1/2">{formattedDisplay}</span>
-                        </div>
-                        <div className="absolute inset-0 bg-[hsl(20,20%,10%)] flex items-start justify-center overflow-hidden rounded-b-xl" style={{ backfaceVisibility: "hidden", transform: "rotateX(180deg)" }}>
-                            <span className="text-3xl md:text-5xl font-black text-white -translate-y-1/2">{formattedNext}</span>
-                        </div>
-                    </div>
-                    <div className="absolute top-1/2 left-0 right-0 h-px bg-black/40 z-20 shadow-[0_1px_0_rgba(255,255,255,0.05)]" />
-                </div>
+        <div className="flex flex-col items-center gap-2">
+            <div
+                className="relative w-16 h-20 md:w-24 md:h-28 rounded-2xl flex items-center justify-center overflow-hidden border border-white/8"
+                style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(12px)" }}
+            >
+                {/* Inset top-edge light catch */}
+                <div className="absolute top-0 left-4 right-4 h-px bg-white/10 pointer-events-none" />
+                {/* Center rule */}
+                <div className="absolute left-0 right-0 top-1/2 h-px bg-black/40 z-10" />
+                <AnimatePresence mode="popLayout">
+                    <motion.span
+                        key={value}
+                        initial={shouldReduceMotion ? { opacity: 0 } : { y: 24, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={shouldReduceMotion ? { opacity: 0 } : { y: -24, opacity: 0 }}
+                        transition={SPRING}
+                        className="text-4xl md:text-6xl font-black text-gold tabular-nums tracking-tighter select-none"
+                    >
+                        {pad(value)}
+                    </motion.span>
+                </AnimatePresence>
             </div>
-            <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] text-white/30 group-hover:text-gold transition-colors">{label}</span>
+            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30">{label}</span>
         </div>
     );
 }
 
+// ─── Countdown Panel ──────────────────────────────────────────────────────────
+function CountdownPanel({ nextEvent, timeLeft }: { nextEvent: AFLEWOEvent | null; timeLeft: { days: number; hours: number; mins: number; secs: number } }) {
+    return (
+        <div
+            className="rounded-[2rem] border border-gold/15 p-8 md:p-10 space-y-8 relative overflow-hidden"
+            style={{ background: "linear-gradient(135deg,rgba(212,175,55,0.08) 0%,rgba(0,0,0,0) 100%)", backdropFilter: "blur(20px)" }}
+        >
+            {/* Radial glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(212,175,55,0.12),transparent_70%)] pointer-events-none" />
+            <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent pointer-events-none" />
+
+            <div className="relative z-10 text-center space-y-2">
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-gold/70">Next Event Countdown</span>
+                <h3 className="text-2xl md:text-3xl font-black tracking-tighter text-white leading-none">
+                    {nextEvent?.title || "THE NEXT EVENT"}
+                </h3>
+                {nextEvent && (
+                    <p className="text-white/35 text-[11px] font-bold uppercase tracking-[0.2em]">
+                        {nextEvent.chapter} · {nextEvent.date}
+                    </p>
+                )}
+            </div>
+
+            <div className="relative z-10 flex justify-center gap-3 md:gap-5">
+                <FlipDigit value={timeLeft.days}  label="Days" />
+                <span className="text-gold/30 font-black text-3xl self-center pb-6">:</span>
+                <FlipDigit value={timeLeft.hours} label="Hours" />
+                <span className="text-gold/30 font-black text-3xl self-center pb-6">:</span>
+                <FlipDigit value={timeLeft.mins}  label="Mins" />
+                <span className="text-gold/30 font-black text-3xl self-center pb-6 hidden sm:block">:</span>
+                <div className="hidden sm:block"><FlipDigit value={timeLeft.secs} label="Secs" /></div>
+            </div>
+
+            <motion.div
+                whileTap={{ scale: 0.97 }}
+                transition={SPRING}
+                className="relative z-10"
+            >
+                <Link
+                    href={nextEvent?.url || "/join"}
+                    className="flex items-center justify-center gap-2.5 w-full py-4 rounded-2xl bg-gold text-brown font-black text-[11px] uppercase tracking-[0.25em] hover:brightness-110 active:scale-95 transition-all shadow-[0_0_24px_rgba(212,175,55,0.2)]"
+                    style={{ WebkitTapHighlightColor: "transparent" }}
+                >
+                    <SvgIcon name="check_circle" size={16} />
+                    Register Now
+                </Link>
+            </motion.div>
+        </div>
+    );
+}
+
+// ─── Main Section ─────────────────────────────────────────────────────────────
 export default function EventHub() {
-    const sectionRef = useRef<HTMLDivElement>(null);
+    const shouldReduceMotion = useReducedMotion();
     const [currentMonth, setCurrentMonth] = useState(() => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), 1); });
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [activeFilters, setActiveFilters] = useState<string[]>([]);
     const [showFilters, setShowFilters] = useState(false);
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0, secs: 0 });
     const [session, setSession] = useState<Session | null>(null);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => { setMounted(true); }, []);
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data }) => setSession(data.session));
-        const { data: authListener } = supabase.auth.onAuthStateChange((_, session) => setSession(session));
-        return () => authListener.subscription.unsubscribe();
+        const { data: auth } = supabase.auth.onAuthStateChange((_, s) => setSession(s));
+        return () => auth.subscription.unsubscribe();
     }, []);
 
     const nextEvent = useMemo(() => {
+        if (!mounted) return null;
         const now = new Date();
-        const futureEvents = events
-            .filter(e => e.visibility !== "member" || session)
-            .filter(e => {
-                const date = parseEventDate(e.date);
-                return date && date > now;
-            })
-            .sort((a, b) => {
-                const dateA = parseEventDate(a.date);
-                const dateB = parseEventDate(b.date);
-                if (!dateA || !dateB) return 0;
-                return dateA.getTime() - dateB.getTime();
-            });
-        return futureEvents[0] || null;
-    }, [session]);
+        return events
+            .filter(e => (e.visibility !== "member" || session))
+            .filter(e => { const d = parseEventDate(e.date); return d && d > now; })
+            .sort((a, b) => { const da = parseEventDate(a.date); const db = parseEventDate(b.date); if (!da || !db) return 0; return da.getTime() - db.getTime(); })[0] || null;
+    }, [session, mounted]);
 
     useEffect(() => {
-        const calculateTimeLeft = () => {
-            if (!nextEvent) return;
-            const eventDate = parseEventDate(nextEvent.date);
-            if (!eventDate) return;
-            const now = new Date();
-            const diff = eventDate.getTime() - now.getTime();
-            if (diff <= 0) {
-                setTimeLeft({ days: 0, hours: 0, mins: 0, secs: 0 });
-                return;
-            }
+        if (!nextEvent) return;
+        const tick = () => {
+            const d = parseEventDate(nextEvent.date);
+            if (!d) return;
+            const diff = Math.max(0, d.getTime() - Date.now());
             setTimeLeft({
-                days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                mins: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-                secs: Math.floor((diff % (1000 * 60)) / 1000)
+                days:  Math.floor(diff / 86400000),
+                hours: Math.floor((diff % 86400000) / 3600000),
+                mins:  Math.floor((diff % 3600000) / 60000),
+                secs:  Math.floor((diff % 60000) / 1000),
             });
         };
-        calculateTimeLeft();
-        const timer = setInterval(calculateTimeLeft, 1000);
-        return () => clearInterval(timer);
+        tick();
+        const id = setInterval(tick, 1000);
+        return () => clearInterval(id);
     }, [nextEvent]);
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".hub-panel", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 70%",
-                },
-                y: 60,
-                opacity: 0,
-                stagger: 0.2,
-                duration: 1.2,
-                ease: "power4.out"
-            });
-        }, sectionRef);
-        return () => ctx.revert();
-    }, []);
-
-    const getDaysInMonth = useCallback((date: Date) => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(), []);
-    const getFirstDayOfMonth = useCallback((date: Date) => new Date(date.getFullYear(), date.getMonth(), 1).getDay(), []);
-    const getEventsForDate = useCallback((date: Date) => events.filter(e => {
+    const getDaysInMonth  = useCallback((d: Date) => new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate(), []);
+    const getFirstDay     = useCallback((d: Date) => new Date(d.getFullYear(), d.getMonth(), 1).getDay(), []);
+    const getEventsForDate = useCallback((d: Date) => events.filter(e => {
         if (e.visibility === "member" && !session) return false;
-        const d = parseEventDate(e.date);
-        return d && d.toDateString() === date.toDateString();
+        const ed = parseEventDate(e.date);
+        return ed && ed.toDateString() === d.toDateString();
     }), [session]);
 
     const filteredEvents = useMemo(() => {
-        let filtered = events.filter(e => e.visibility !== "member" || session);
-        if (activeFilters.length > 0) filtered = filtered.filter(e => activeFilters.includes(e.chapter));
-        if (selectedDate) filtered = filtered.filter(e => {
-            const d = parseEventDate(e.date);
-            return d && d.toDateString() === selectedDate.toDateString();
-        });
-        return filtered;
-    }, [activeFilters, selectedDate, session]);
+        if (!mounted) return [];
+        let list = events.filter(e => e.visibility !== "member" || session);
+        if (activeFilters.length) list = list.filter(e => activeFilters.includes(e.chapter));
+        if (selectedDate) list = list.filter(e => { const d = parseEventDate(e.date); return d && d.toDateString() === selectedDate.toDateString(); });
+        return list;
+    }, [activeFilters, selectedDate, session, mounted]);
 
-    const toggleFilter = (chapter: string) => {
-        setActiveFilters(prev => prev.includes(chapter) ? prev.filter(c => c !== chapter) : [...prev, chapter]);
+    const toggleFilter   = (c: string) => setActiveFilters(p => p.includes(c) ? p.filter(x => x !== c) : [...p, c]);
+    const navigateMonth  = (dir: number) => setCurrentMonth(d => new Date(d.getFullYear(), d.getMonth() + dir, 1));
+
+    const downloadICS = () => {
+        const vis = events.filter(e => e.visibility !== "member" || session);
+        const content = `BEGIN:VCALENDAR\nVERSION:2.0\nX-WR-CALNAME:AFLEWO 2026\n${vis.map(e => `BEGIN:VEVENT\nSUMMARY:${e.title}\nDTSTART:${e.start}\nDTEND:${e.end}\nLOCATION:${e.location}\nEND:VEVENT`).join('\n')}\nEND:VCALENDAR`;
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([content], { type: "text/calendar" }));
+        a.download = "AFLEWO_2026.ics";
+        a.click();
     };
 
-    const navigateMonth = (direction: number) => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + direction, 1));
-
-    const downloadAllICS = () => {
-        const visibleEvents = events.filter(e => e.visibility !== "member" || session);
-        const content = `BEGIN:VCALENDAR\nVERSION:2.0\nX-WR-CALNAME:AFLEWO 2026\n${visibleEvents.map(e => `BEGIN:VEVENT\nSUMMARY:${e.title}\nDTSTART:${e.start}\nDTEND:${e.end}\nLOCATION:${e.location}\nEND:VEVENT`).join('\n')}\nEND:VCALENDAR`;
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(new Blob([content], { type: 'text/calendar' }));
-        link.download = 'AFLEWO_2026.ics';
-        link.click();
-    };
+    const stagger = (i: number) => shouldReduceMotion ? { duration: 0.15 } : { ...SPRING_IN, delay: i * 0.07 };
 
     return (
-        <section ref={sectionRef} id="events" className="section-padding bg-background relative overflow-hidden">
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-gold/5 rounded-full blur-[150px]" />
-            </div>
+        <section id="events" className="section-padding bg-background relative overflow-hidden">
+            {/* Ambient glow */}
+            <div className="absolute top-0 left-1/4 w-[600px] h-[400px] bg-gold/4 rounded-full blur-[150px] pointer-events-none mix-blend-screen" />
 
             <div className="max-container relative z-10">
-                <div className="hub-panel mb-16">
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12">
-                        <div className="space-y-4">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-gold text-[10px] font-black uppercase tracking-[0.2em]">
-                                <SvgIcon name="calendar" size={12} /> Events & Calendar
-                            </div>
-                            <h2 className="text-5xl md:text-7xl font-black tracking-tighter">
-                                THE <span className="text-gold">CALENDAR</span>
-                            </h2>
+                {/* Header */}
+                <motion.div
+                    initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={stagger(0)}
+                    className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16"
+                >
+                    <div className="space-y-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold/20 bg-gold/8 text-gold text-[10px] font-black uppercase tracking-[0.25em]">
+                            <SvgIcon name="calendar" size={12} /> Events & Calendar
                         </div>
-                        <button
-                            onClick={downloadAllICS}
-                            className="press-scale px-8 py-4 bg-gold text-brown rounded-lg font-black text-[10px] uppercase tracking-widest hover:brightness-110 transition-all flex items-center gap-3"
-                        >
-                            <SvgIcon name="download" size={16} /> Download 2026 Calendar (.ics)
-                        </button>
+                        <h2 className="text-[clamp(3rem,8vw,5.5rem)] font-black tracking-tighter leading-[0.85]">
+                            THE <span className="text-gold">CALENDAR</span>
+                        </h2>
                     </div>
-                </div>
+                    <motion.button
+                        whileTap={{ scale: 0.96 }}
+                        transition={SPRING}
+                        onClick={downloadICS}
+                        className="flex items-center gap-3 px-8 py-4 bg-gold text-brown rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(212,175,55,0.15)]"
+                        style={{ WebkitTapHighlightColor: "transparent" }}
+                    >
+                        <SvgIcon name="download" size={16} /> Download 2026 Calendar (.ics)
+                    </motion.button>
+                </motion.div>
 
+                {/* Grid: Calendar | Events+Countdown */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <div className="lg:col-span-5 hub-panel space-y-6">
-                        <div className="glass-card-elevated p-6 md:p-8 rounded-lg border-white/5">
-                            <div className="flex items-center justify-between mb-6">
-                        <button onClick={() => navigateMonth(-1)} className="p-3 rounded-lg glass-card hover:bg-white/10 flex items-center justify-center"><SvgIcon name="arrow_left" size={18} /></button>
-                                <h3 className="text-xl font-black tracking-tight">{months[currentMonth.getMonth()]} {currentMonth.getFullYear()}</h3>
-                                <button onClick={() => navigateMonth(1)} className="p-3 rounded-lg glass-card hover:bg-white/10 flex items-center justify-center"><SvgIcon name="arrow_right" size={18} /></button>
+                    {/* ── Calendar + Filters ─── */}
+                    <motion.div
+                        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={stagger(1)}
+                        className="lg:col-span-5 space-y-5"
+                    >
+                        {/* Calendar Widget */}
+                        <div
+                            className="rounded-[2rem] border border-white/8 p-7"
+                            style={{ background: "rgba(255,255,255,0.025)", backdropFilter: "blur(24px) saturate(180%)" }}
+                        >
+                            {/* Month nav */}
+                            <div className="flex items-center justify-between mb-7">
+                                <motion.button
+                                    whileTap={{ scale: 0.9 }}
+                                    transition={SPRING}
+                                    onClick={() => navigateMonth(-1)}
+                                    className="w-9 h-9 rounded-full flex items-center justify-center border border-white/8 hover:border-gold/30 hover:bg-gold/10 transition-colors"
+                                >
+                                    <SvgIcon name="arrow_left" size={18} />
+                                </motion.button>
+                                <h3 className="text-base font-black tracking-tight">
+                                    {MONTHS[currentMonth.getMonth()]} <span className="text-gold">{currentMonth.getFullYear()}</span>
+                                </h3>
+                                <motion.button
+                                    whileTap={{ scale: 0.9 }}
+                                    transition={SPRING}
+                                    onClick={() => navigateMonth(1)}
+                                    className="w-9 h-9 rounded-full flex items-center justify-center border border-white/8 hover:border-gold/30 hover:bg-gold/10 transition-colors"
+                                >
+                                    <SvgIcon name="arrow_right" size={18} />
+                                </motion.button>
                             </div>
-                            <div className="grid grid-cols-7 gap-1 mb-2">
-                                {weekDays.map(day => <div key={day} className="text-center text-[10px] font-black uppercase tracking-widest text-white/30 py-2">{day}</div>)}
+
+                            {/* Weekday headers */}
+                            <div className="grid grid-cols-7 mb-3">
+                                {WEEKDAYS.map((d, i) => (
+                                    <div key={`wd-${i}`} className="text-center text-[9px] font-black uppercase tracking-[0.2em] text-white/25 py-2">{d}</div>
+                                ))}
                             </div>
+
+                            {/* Days grid */}
                             <div className="grid grid-cols-7 gap-1">
-                                {Array.from({ length: getFirstDayOfMonth(currentMonth) }).map((_, i) => <div key={`empty-${i}`} className="h-10 md:h-14" />)}
+                                {Array.from({ length: getFirstDay(currentMonth) }).map((_, i) => (
+                                    <div key={`e-${i}`} className="h-10 md:h-12" />
+                                ))}
                                 {Array.from({ length: getDaysInMonth(currentMonth) }).map((_, i) => {
                                     const date = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i + 1);
                                     const hasEvents = getEventsForDate(date).length > 0;
                                     const isSelected = selectedDate?.toDateString() === date.toDateString();
+                                    const isToday = new Date().toDateString() === date.toDateString();
                                     return (
-                                        <button key={i} onClick={() => setSelectedDate(isSelected ? null : date)} className={`relative h-10 md:h-14 rounded-lg text-sm font-bold transition-all ${isSelected ? "bg-gold text-brown" : hasEvents ? "bg-white/5 hover:bg-white/10" : "text-white/40 hover:bg-white/5"}`}>
+                                        <motion.button
+                                            key={i}
+                                            whileTap={{ scale: 0.88 }}
+                                            transition={SPRING}
+                                            onClick={() => setSelectedDate(isSelected ? null : date)}
+                                            className={`relative h-10 md:h-12 rounded-xl text-sm font-bold transition-all ${
+                                                isSelected  ? "bg-gold text-brown shadow-glow" :
+                                                isToday     ? "bg-white/10 text-white border border-white/20" :
+                                                hasEvents   ? "bg-white/5 hover:bg-white/10 text-white" :
+                                                              "text-white/30 hover:bg-white/5 hover:text-white/60"
+                                            }`}
+                                            style={{ WebkitTapHighlightColor: "transparent" }}
+                                        >
                                             {i + 1}
-                                            {hasEvents && !isSelected && <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-gold rounded-full" />}
-                                        </button>
+                                            {hasEvents && !isSelected && (
+                                                <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-gold shadow-[0_0_4px_rgba(212,175,55,0.8)]" />
+                                            )}
+                                        </motion.button>
                                     );
                                 })}
                             </div>
-                            {selectedDate && <button onClick={() => setSelectedDate(null)} className="mt-4 w-full py-3 glass-card rounded-lg text-[10px] font-black uppercase tracking-widest text-white/50 hover:text-white flex items-center justify-center gap-2"><SvgIcon name="close" size={14} /> Clear Selection</button>}
+
+                            <AnimatePresence>
+                                {selectedDate && (
+                                    <motion.button
+                                        initial={{ opacity: 0, y: 8 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 8 }}
+                                        transition={SPRING}
+                                        onClick={() => setSelectedDate(null)}
+                                        className="mt-5 w-full py-3 rounded-xl border border-white/8 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white hover:border-white/20 flex items-center justify-center gap-2 transition-colors"
+                                    >
+                                        <SvgIcon name="close" size={14} /> Clear Selection
+                                    </motion.button>
+                                )}
+                            </AnimatePresence>
                         </div>
 
-                        <div className="glass-card p-6 rounded-lg border-white/5">
-                            <div className="flex items-center justify-between mb-4">
-                                <h4 className="text-sm font-black uppercase tracking-widest">Filter by Chapter</h4>
-                                <button onClick={() => setShowFilters(!showFilters)} className={`p-2 rounded-lg transition-colors ${showFilters ? "bg-gold text-brown" : "glass-card"}`}><SvgIcon name="filter" size={16} /></button>
+                        {/* Chapter filters */}
+                        <div
+                            className="rounded-[2rem] border border-white/8 p-6 space-y-4"
+                            style={{ background: "rgba(255,255,255,0.02)", backdropFilter: "blur(20px)" }}
+                        >
+                            <div className="flex items-center justify-between">
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/35">Filter by Chapter</span>
+                                <motion.button
+                                    whileTap={{ scale: 0.9 }}
+                                    transition={SPRING}
+                                    onClick={() => setShowFilters(!showFilters)}
+                                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${showFilters ? "bg-gold text-brown" : "border border-white/10 hover:border-gold/30 hover:bg-gold/10"}`}
+                                >
+                                    <SvgIcon name="filter" size={14} />
+                                </motion.button>
                             </div>
-                            {showFilters && (
-                                <div className="flex flex-wrap gap-2">
-                                    {chapters.map((c: string) => <button key={c} onClick={() => toggleFilter(c)} className={`px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-2 ${activeFilters.includes(c) ? "bg-gold/20 text-gold border border-gold/30" : "glass-card text-white/50"}`}>{activeFilters.includes(c) && <SvgIcon name="check" size={12} />}{c}</button>)}
-                                </div>
-                            )}
+                            <AnimatePresence>
+                                {showFilters && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: "auto" }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        transition={SPRING}
+                                        className="flex flex-wrap gap-2 overflow-hidden"
+                                    >
+                                        {CHAPTERS.map(c => (
+                                            <motion.button
+                                                key={c}
+                                                whileTap={{ scale: 0.93 }}
+                                                transition={SPRING}
+                                                onClick={() => toggleFilter(c)}
+                                                className={`px-3 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] border transition-all flex items-center gap-1.5 ${
+                                                    activeFilters.includes(c)
+                                                        ? `${chapterColors[c]} shadow-sm`
+                                                        : "border-white/8 text-white/40 hover:border-white/20 hover:text-white/70"
+                                                }`}
+                                            >
+                                                {activeFilters.includes(c) && <SvgIcon name="check" size={10} />}
+                                                {c}
+                                            </motion.button>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="lg:col-span-7 hub-panel space-y-6">
-                        <div className="glass-card-elevated p-6 md:p-8 rounded-lg border-white/5">
+                    {/* ── Events list + Countdown ─── */}
+                    <motion.div
+                        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={stagger(2)}
+                        className="lg:col-span-7 space-y-5"
+                    >
+                        {/* Events List */}
+                        <div
+                            className="rounded-[2rem] border border-white/8 p-7"
+                            style={{ background: "rgba(255,255,255,0.025)", backdropFilter: "blur(24px)" }}
+                        >
                             <div className="flex items-center justify-between mb-6">
-                                <h3 className="text-xl font-black tracking-tight">{selectedDate ? `Events on ${selectedDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}` : "Upcoming Events"}</h3>
-                                <span className="px-3 py-1 rounded-full bg-white/5 text-[10px] font-black">{filteredEvents.length} Events</span>
+                                <h3 className="text-base font-black tracking-tight">
+                                    {selectedDate
+                                        ? `Events on ${selectedDate.toLocaleDateString("en-US", { month: "short", day: "numeric" })}`
+                                        : "Upcoming Events"}
+                                </h3>
+                                <span className="px-3 py-1 rounded-full border border-white/8 text-[9px] font-black text-white/40">
+                                    {filteredEvents.length} Events
+                                </span>
                             </div>
-                            <div className="space-y-3 max-h-[500px] overflow-y-auto hide-scrollbar">
-                                {filteredEvents.map(e => (
-                                    <div key={e.id} className="group flex flex-col md:flex-row md:items-center justify-between p-5 glass-card rounded-lg border-white/5 hover:border-gold/30 transition-all">
-                                        <div className="flex items-start md:items-center gap-4">
-                                            <div className="w-14 h-14 rounded-lg bg-gold/10 flex flex-col items-center justify-center text-gold border border-gold/20">
-                                                <span className="text-lg font-black">{e.date === "Every Night" ? "∞" : e.date.split(' ')[1]}</span>
-                                                <span className="text-[8px] font-black uppercase">{e.date === "Every Night" ? "DAILY" : e.date.split(' ')[0]}</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-white group-hover:text-gold transition-colors">{e.title}</h4>
-                                                <div className="flex items-center gap-3 text-[10px] font-black uppercase text-white/40 mt-1">
-                                                    <span className="flex items-center gap-1"><SvgIcon name="schedule" size={12} /> {e.time}</span>
-                                                    <span className="bg-gold/10 text-gold px-2 py-0.5 rounded-full">{e.chapter}</span>
+
+                            <div className="space-y-3 max-h-[440px] overflow-y-auto hide-scrollbar pr-1">
+                                <AnimatePresence mode="popLayout">
+                                    {filteredEvents.length === 0 ? (
+                                        <motion.div
+                                            key="empty"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            className="text-center py-16 text-white/20 text-xs font-black uppercase tracking-widest"
+                                        >
+                                            No events for this selection
+                                        </motion.div>
+                                    ) : filteredEvents.map((e, i) => (
+                                        <motion.div
+                                            key={e.id}
+                                            layout
+                                            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 12 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0 }}
+                                            transition={{ ...SPRING_IN, delay: i * 0.04 }}
+                                            className="group flex items-center justify-between gap-4 p-5 rounded-2xl border border-white/5 hover:border-gold/20 transition-all"
+                                            style={{ background: "rgba(255,255,255,0.02)" }}
+                                        >
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-14 h-14 rounded-xl bg-gold/10 border border-gold/20 flex flex-col items-center justify-center text-gold shrink-0">
+                                                    <span className="text-lg font-black leading-none">
+                                                        {e.date === "Every Night" ? "∞" : e.date.split(" ")[1]}
+                                                    </span>
+                                                    <span className="text-[8px] font-black uppercase tracking-wide">
+                                                        {e.date === "Every Night" ? "DAILY" : e.date.split(" ")[0]}
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-black text-white group-hover:text-gold transition-colors text-sm leading-tight">{e.title}</h4>
+                                                    <div className="flex items-center gap-2 mt-1 text-[9px] font-black uppercase tracking-[0.2em] text-white/35">
+                                                        <SvgIcon name="schedule" size={10} />
+                                                        <span>{e.time}</span>
+                                                        <span className={`px-2 py-0.5 rounded-full border ${chapterColors[e.chapter] || "text-white/40 border-white/10 bg-white/5"}`}>
+                                                            {e.chapter}
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="flex gap-2 mt-4 md:mt-0">
-                                            <button className="p-2 border border-white/10 rounded-lg hover:bg-white/5 transition-colors"><SvgIcon name="calendar" size={16} /></button>
-                                            <Link href={`https://maps.google.com/?q=${encodeURIComponent(e.location)}`} target="_blank" className="p-2 bg-gold text-brown rounded-lg hover:brightness-110"><SvgIcon name="location" size={16} /></Link>
-                                        </div>
-                                    </div>
-                                ))}
+                                            <Link
+                                                href={`https://maps.google.com/?q=${encodeURIComponent(e.location)}`}
+                                                target="_blank"
+                                                className="p-2.5 rounded-xl bg-gold/10 hover:bg-gold border border-gold/20 hover:border-gold text-gold hover:text-brown transition-all shrink-0 active:scale-90"
+                                                style={{ WebkitTapHighlightColor: "transparent" }}
+                                            >
+                                                <SvgIcon name="location" size={16} />
+                                            </Link>
+                                        </motion.div>
+                                    ))}
+                                </AnimatePresence>
+                            </div>
+
+                            <div className="mt-5 pt-4 border-t border-white/5">
+                                <Link
+                                    href="/events"
+                                    className="flex items-center justify-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/30 hover:text-gold transition-colors group"
+                                >
+                                    View Full Calendar
+                                    <SvgIcon name="arrow_forward" size={12} className="group-hover:translate-x-1 transition-transform" />
+                                </Link>
                             </div>
                         </div>
 
-                        <div className="glass-card-elevated p-8 md:p-10 rounded-lg border-white/5 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 p-6"><SvgIcon name="star" className="text-gold animate-pulse" size={20} /></div>
-                            <div className="space-y-8 relative z-10">
-                                <div className="text-center space-y-3">
-                                    <span className="text-gold font-black uppercase tracking-[0.4em] text-xs">Next Event Countdown</span>
-                                    <h2 className="text-3xl font-black tracking-tighter">{nextEvent?.title || "THE NEXT EVENT"}</h2>
-                                    <p className="text-white/40 text-xs">{nextEvent ? `${nextEvent.chapter} • ${nextEvent.date}` : ""}</p>
-                                </div>
-                                <div className="flex justify-center gap-2 md:gap-4">
-                                    <FlipDigit value={timeLeft.days} label="Days" />
-                                    <FlipDigit value={timeLeft.hours} label="Hours" />
-                                    <FlipDigit value={timeLeft.mins} label="Mins" />
-                                    <FlipDigit value={timeLeft.secs} label="Secs" />
-                                </div>
-                                <button
-                                    onClick={() => { window.location.href = nextEvent?.url || '/join'; }}
-                                    className="press-scale w-full py-4 rounded-lg bg-white text-brown font-black uppercase tracking-tighter hover:bg-gold transition-all shadow-lg"
-                                >Register Now</button>
-                            </div>
-                            <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-                        </div>
-                    </div>
+                        {/* Countdown Panel */}
+                        <CountdownPanel nextEvent={nextEvent} timeLeft={timeLeft} />
+                    </motion.div>
                 </div>
             </div>
         </section>
