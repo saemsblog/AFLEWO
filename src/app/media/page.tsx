@@ -2,15 +2,12 @@
 
 import Footer from "@/components/Footer";
 import { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import SvgIcon from "@/components/ui/SvgIcon";
 import { supabase } from "@/integrations/supabase/client";
+import ProtectedCanvas from "@/components/ui/ProtectedCanvas";
+import { AnimatePresence, motion } from "framer-motion";
 
 // ─── Image Catalog ──────────────────────────────────────────────────────────
-// All images sourced from /public/images/gallery/
-// Hosting advice: move these to Supabase Storage or Cloudflare R2 and update
-// the src paths + next.config.mjs remotePatterns accordingly.
-
 type GalleryItem = {
   id: string | number;
   src: string;
@@ -94,7 +91,6 @@ const localGallery: GalleryItem[] = [
 const FILTERS = ["All", "Gatherings", "Worship", "Community", "Behind the Scenes", "Archive"];
 const CHAPTERS = ["All Chapters", "Nairobi", "Mombasa", "Tanzania", "Rwanda", "Nakuru"];
 
-// ─── YouTube Videos ───────────────────────────────────────────────────────────
 const YOUTUBE_VIDEOS = [
   {
     id: "uY1o6cJHcRc",
@@ -122,16 +118,38 @@ const YOUTUBE_VIDEOS = [
   },
 ];
 
-// ─── Lightbox ───────────────────────────────────────────────────────────────
-// Per spec: image + close only. No prev/next nav, no download, no share.
-function Lightbox({ item, onClose }: {
+const getWatermarkedUrl = (srcPath: string) => {
+  if (srcPath.startsWith("http://") || srcPath.startsWith("https://")) {
+    return srcPath;
+  }
+  return `/api/media?src=${encodeURIComponent(srcPath)}`;
+};
+
+// ─── Lightbox Component with iOS Motion & Swipe Navigation ─────────────────
+function Lightbox({
+  item,
+  currentIndex,
+  totalCount,
+  onClose,
+  onPrev,
+  onNext,
+}: {
   item: GalleryItem | null;
+  currentIndex: number;
+  totalCount: number;
   onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
 }) {
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
   useEffect(() => {
     if (!item) return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
     };
     window.addEventListener("keydown", handler);
     document.body.style.overflow = "hidden";
@@ -139,77 +157,146 @@ function Lightbox({ item, onClose }: {
       window.removeEventListener("keydown", handler);
       document.body.style.overflow = "";
     };
-  }, [item, onClose]);
+  }, [item, onClose, onPrev, onNext]);
 
   if (!item) return null;
 
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center"
-      onClick={onClose}
-    >
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/95 backdrop-blur-2xl" />
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
 
-      {/* Content */}
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 40;
+
+    if (distance > minSwipeDistance) {
+      onNext();
+    } else if (distance < -minSwipeDistance) {
+      onPrev();
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  return (
+    <AnimatePresence>
       <div
-        className="relative z-10 w-full max-w-5xl mx-4 flex flex-col gap-4"
-        onClick={(e) => e.stopPropagation()}
+        className="fixed inset-0 z-50 flex items-center justify-center select-none"
+        onClick={onClose}
       >
-        {/* Header */}
-        <div className="flex items-start justify-between">
-          <div>
-            <h3 className="text-xl md:text-3xl font-black text-white leading-tight">{item.title}</h3>
-            <p className="text-gold text-[10px] font-black uppercase tracking-[0.3em] mt-1">
-              {item.chapter} · {item.year} · {item.category}
+        {/* Deep iOS Blur Backdrop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute inset-0 bg-black/95 backdrop-blur-3xl"
+        />
+
+        {/* Pure Bare Left Chevron Navigation */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onPrev();
+          }}
+          className="absolute left-3 md:left-8 z-30 p-2 text-white/50 hover:text-white active:scale-90 transition-all opacity-80 hover:opacity-100 group"
+          aria-label="Previous Media"
+        >
+          <svg
+            className="w-8 h-8 md:w-10 md:h-10 stroke-current transition-transform group-hover:-translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+
+        {/* Pure Bare Right Chevron Navigation */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onNext();
+          }}
+          className="absolute right-3 md:right-8 z-30 p-2 text-white/50 hover:text-white active:scale-90 transition-all opacity-80 hover:opacity-100 group"
+          aria-label="Next Media"
+        >
+          <svg
+            className="w-8 h-8 md:w-10 md:h-10 stroke-current transition-transform group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="2"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+
+        {/* Main Content Modal Frame */}
+        <motion.div
+          key={item.id}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 w-full max-w-5xl mx-4 flex flex-col gap-4"
+          onClick={(e) => e.stopPropagation()}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Header */}
+          <div className="flex items-start justify-between">
+            <div className="space-y-1">
+              <div className="flex items-center gap-3">
+                <span className="text-gold text-[10px] font-black uppercase tracking-[0.3em]">
+                  {item.chapter} · {item.year} · {item.category}
+                </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-white/10 border border-white/15 text-[9px] font-black text-white/80 uppercase tracking-widest backdrop-blur-md">
+                  {currentIndex + 1} / {totalCount}
+                </span>
+              </div>
+              <h3 className="text-xl md:text-3xl font-black text-white leading-tight">{item.title}</h3>
+            </div>
+            <button
+              onClick={onClose}
+              className="p-3 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 text-white transition-all shrink-0 ml-4 border border-white/15 backdrop-blur-xl"
+              aria-label="Close Preview"
+            >
+              <SvgIcon name="close" size={20} className="opacity-90" />
+            </button>
+          </div>
+
+          {/* Protected Canvas Container */}
+          <div
+            className="no-download-wrapper relative w-full rounded-3xl overflow-hidden bg-white/5 border border-white/10 select-none shadow-2xl"
+            style={{ height: "68vh", maxHeight: "68vh" }}
+            onContextMenu={(e) => e.preventDefault()}
+          >
+            <ProtectedCanvas
+              src={getWatermarkedUrl(item.src)}
+              alt={item.title}
+              objectFit="contain"
+              watermarkSrc="/logo.png"
+              className="w-full h-full"
+            />
+          </div>
+
+          {/* Footer */}
+          <div className="flex items-center justify-between px-1">
+            <p className="text-white/60 text-sm font-medium leading-relaxed">{item.desc}</p>
+            <p className="text-white/30 text-[9px] font-black uppercase tracking-widest shrink-0 ml-4">
+              Swipe or use Arrow Keys
             </p>
           </div>
-          <button
-            onClick={onClose}
-            className="p-3 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all shrink-0 ml-4"
-          >
-            <SvgIcon name="close" size={20} className="opacity-80" />
-          </button>
-        </div>
-
-        {/* Image with watermark — download prevented via CSS + onContextMenu */}
-        <div
-          className="no-download-wrapper relative w-full rounded-2xl overflow-hidden bg-white/5 border border-white/10 select-none"
-          style={{ maxHeight: "70vh" }}
-          onContextMenu={(e) => e.preventDefault()}
-        >
-          <Image
-            src={item.src}
-            alt={item.title}
-            width={1200}
-            height={800}
-            className="w-full h-full object-contain select-none"
-            style={{ maxHeight: "70vh", pointerEvents: "none", WebkitUserDrag: "none" } as React.CSSProperties}
-            unoptimized
-            draggable={false}
-          />
-          {/* Watermark overlay — AFLEWO branding, covers entire image */}
-          <div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
-            aria-hidden="true"
-          >
-            <div
-              className="flex flex-col items-center gap-1 opacity-[0.12] select-none"
-              style={{ transform: "rotate(-25deg)", userSelect: "none" }}
-            >
-              <span className="text-white font-black text-4xl md:text-6xl tracking-[0.4em] uppercase">AFLEWO</span>
-              <span className="text-white font-black text-xs md:text-sm tracking-[0.6em] uppercase">aflewo.org</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer — description only, no controls */}
-        <div className="flex items-center justify-between">
-          <p className="text-white/50 text-sm font-medium">{item.desc}</p>
-          <p className="text-white/20 text-[9px] font-black uppercase tracking-widest">© AFLEWO Archive</p>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </AnimatePresence>
   );
 }
 
@@ -249,7 +336,9 @@ export default function MediaPage() {
     fetchGallery();
   }, []);
 
-  const gallery = [...dbItems, ...localGallery];
+  // Use DB items when loaded, fall back to local gallery — prevents double-render
+  // when DB contains the same images as the local catalog.
+  const gallery = dbItems.length > 0 ? dbItems : localGallery;
 
   const filtered = gallery.filter((item) => {
     const catOk = categoryFilter === "All" || item.category === categoryFilter;
@@ -260,13 +349,31 @@ export default function MediaPage() {
   const openLightbox = useCallback((index: number) => setLightboxIndex(index), []);
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
 
+  const handlePrevItem = useCallback(() => {
+    setLightboxIndex((prev) => {
+      if (prev === null || filtered.length === 0) return null;
+      return prev === 0 ? filtered.length - 1 : prev - 1;
+    });
+  }, [filtered.length]);
+
+  const handleNextItem = useCallback(() => {
+    setLightboxIndex((prev) => {
+      if (prev === null || filtered.length === 0) return null;
+      return prev === filtered.length - 1 ? 0 : prev + 1;
+    });
+  }, [filtered.length]);
+
   const lightboxItem = lightboxIndex !== null ? filtered[lightboxIndex] ?? null : null;
 
   return (
     <main className="bg-background min-h-screen">
       <Lightbox
         item={lightboxItem}
+        currentIndex={lightboxIndex ?? 0}
+        totalCount={filtered.length}
         onClose={closeLightbox}
+        onPrev={handlePrevItem}
+        onNext={handleNextItem}
       />
 
       {/* ── Hero ─────────────────────────────────────────────── */}
@@ -472,13 +579,12 @@ export default function MediaPage() {
                   onKeyDown={(e) => e.key === "Enter" && openLightbox(index)}
                 >
                   <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 bg-white/5">
-                    <Image
-                      src={item.src}
+                    <ProtectedCanvas
+                      src={getWatermarkedUrl(item.src)}
                       alt={item.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      unoptimized
-                      draggable={false}
+                      objectFit="cover"
+                      watermarkSrc="/logo.png"
+                      className="w-full h-full rounded-xl"
                     />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -507,23 +613,21 @@ export default function MediaPage() {
                   aria-label={`Open ${item.title}`}
                   onKeyDown={(e) => e.key === "Enter" && openLightbox(index)}
                 >
-                  <div className="relative w-full overflow-hidden">
-                    <Image
-                      src={item.src}
+                  <div className="relative w-full h-[280px] sm:h-[320px] overflow-hidden">
+                    <ProtectedCanvas
+                      src={getWatermarkedUrl(item.src)}
                       alt={item.title}
-                      width={600}
-                      height={400}
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
-                      unoptimized
-                      draggable={false}
+                      objectFit="cover"
+                      watermarkSrc="/logo.png"
+                      className="w-full h-full group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                   {/* Info */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-30">
                     <p className="text-gold text-[9px] font-black uppercase tracking-widest">
                       {item.chapter} · {item.year}
                     </p>
@@ -533,14 +637,14 @@ export default function MediaPage() {
                   </div>
 
                   {/* Category badge */}
-                  <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-30">
                     <span className="text-[9px] font-black uppercase tracking-widest bg-black/60 backdrop-blur-sm text-white/70 px-2.5 py-1 rounded-full border border-white/10">
                       {item.category}
                     </span>
                   </div>
 
                   {/* Expand icon */}
-                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-30">
                     <div className="p-2 bg-black/60 backdrop-blur-sm rounded-xl text-white/60">
                       <SvgIcon name="open_in_full" size={14} className="opacity-60" />
                     </div>

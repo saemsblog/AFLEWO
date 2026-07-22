@@ -27,37 +27,7 @@ const CHAPTERS = Object.keys(chapterColors);
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const WEEKDAYS = ["S","M","T","W","T","F","S"];
 
-// ─── Flip Digit (Apple popLayout spring) ──────────────────────────────────────
-function FlipDigit({ value, label }: { value: number; label: string }) {
-    const shouldReduceMotion = useReducedMotion();
-    const pad = (n: number) => String(n).padStart(2, "0");
-    return (
-        <div className="flex flex-col items-center gap-2">
-            <div
-                className="relative w-16 h-20 md:w-24 md:h-28 rounded-2xl flex items-center justify-center overflow-hidden border border-white/8"
-                style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(12px)" }}
-            >
-                {/* Inset top-edge light catch */}
-                <div className="absolute top-0 left-4 right-4 h-px bg-white/10 pointer-events-none" />
-                {/* Center rule */}
-                <div className="absolute left-0 right-0 top-1/2 h-px bg-black/40 z-10" />
-                <AnimatePresence mode="popLayout">
-                    <motion.span
-                        key={value}
-                        initial={shouldReduceMotion ? { opacity: 0 } : { y: 24, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={shouldReduceMotion ? { opacity: 0 } : { y: -24, opacity: 0 }}
-                        transition={SPRING}
-                        className="text-4xl md:text-6xl font-black text-gold tabular-nums tracking-tighter select-none"
-                    >
-                        {pad(value)}
-                    </motion.span>
-                </AnimatePresence>
-            </div>
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30">{label}</span>
-        </div>
-    );
-}
+import FlipClockCountdown from "@/components/ui/FlipClock";
 
 // ─── Countdown Panel ──────────────────────────────────────────────────────────
 function CountdownPanel({ nextEvent, timeLeft }: { nextEvent: AFLEWOEvent | null; timeLeft: { days: number; hours: number; mins: number; secs: number } }) {
@@ -82,14 +52,12 @@ function CountdownPanel({ nextEvent, timeLeft }: { nextEvent: AFLEWOEvent | null
                 )}
             </div>
 
-            <div className="relative z-10 flex justify-center gap-3 md:gap-5">
-                <FlipDigit value={timeLeft.days}  label="Days" />
-                <span className="text-gold/30 font-black text-3xl self-center pb-6">:</span>
-                <FlipDigit value={timeLeft.hours} label="Hours" />
-                <span className="text-gold/30 font-black text-3xl self-center pb-6">:</span>
-                <FlipDigit value={timeLeft.mins}  label="Mins" />
-                <span className="text-gold/30 font-black text-3xl self-center pb-6 hidden sm:block">:</span>
-                <div className="hidden sm:block"><FlipDigit value={timeLeft.secs} label="Secs" /></div>
+            <div className="relative z-10 flex justify-center mb-8">
+                {nextEvent ? (
+                    <FlipClockCountdown targetDate={parseEventDate(nextEvent.date) || new Date()} />
+                ) : (
+                    <div className="text-white/30 text-xs font-black uppercase tracking-widest py-8">No Upcoming Events</div>
+                )}
             </div>
 
             <motion.div

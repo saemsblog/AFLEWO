@@ -333,7 +333,7 @@ export default function HeroSection() {
                                                 key="collapsed"
                                                 exit={{ opacity: 0, transition: { duration: 0.12 } }}
                                                 className="relative z-10 overflow-hidden h-[44px] flex items-center"
-                                                style={{ touchAction: "pan-y" }}
+                                                style={{ touchAction: "none" }}
                                                 onPointerDown={handlePointerDown}
                                                 onPointerMove={handlePointerMove}
                                                 onPointerUp={handlePointerUp}
@@ -350,13 +350,16 @@ export default function HeroSection() {
                                                         transition={{ type: "spring", stiffness: 380, damping: 35 }}
                                                         className="w-full h-full"
                                                     >
-                                                        {/* Tap = expand. No navigation on pill tap. */}
+                                                        {/* Tap = expand. onPointerUp guard ensures it fires even with pointer capture. */}
                                                         <button
                                                             type="button"
-                                                            onClick={() => {
-                                                                if (Math.abs(dragCurrentXRef.current - dragStartXRef.current) > 10) return;
+                                                            onPointerUp={(e) => {
+                                                                const delta = Math.abs(dragCurrentXRef.current - dragStartXRef.current);
+                                                                if (delta > 10) return;
+                                                                e.stopPropagation();
                                                                 expand();
                                                             }}
+                                                            onClick={(e) => e.stopPropagation()}
                                                             draggable={false}
                                                             className="inline-flex h-full items-center gap-3 px-5 text-[10px] font-black uppercase tracking-[0.3em] text-white hover:text-gold transition-colors animate-breathe w-full justify-center"
                                                         >
@@ -370,6 +373,7 @@ export default function HeroSection() {
                                                 </AnimatePresence>
                                             </motion.div>
                                         )}
+
 
                                         {/* ── EXPANDED state: full event card ── */}
                                         {isExpanded && (

@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
 import Link from "next/link";
 import SvgIcon from "@/components/ui/SvgIcon";
+import { motion, AnimatePresence, useInView, useReducedMotion } from "framer-motion";
 
-gsap.registerPlugin(ScrollTrigger);
+// ─── Spring preset ─────────────────────────────────────────────────────────────
+const SPRING = { type: "spring", stiffness: 360, damping: 36, mass: 0.85 } as const;
 
 interface Story {
     content: string;
@@ -24,7 +24,7 @@ const stories: Story[] = [
         role: "Host Partner",
         stat: "10K+ Attended",
         year: "2025",
-        chapter: "Nairobi"
+        chapter: "Nairobi",
     },
     {
         content: "Since 2004, the vision of corporate worship has birthed 11 chapters across Kenya, Tanzania, Rwanda and Uganda. The movement grows.",
@@ -32,7 +32,7 @@ const stories: Story[] = [
         role: "Chairman",
         stat: "11 Chapters",
         year: "2004–2026",
-        chapter: "Continental"
+        chapter: "Continental",
     },
     {
         content: "The JCC Bamburi Centre in Mombasa has transformed my spiritual life. Every night at 9 PM, we gather virtually and heaven touches earth.",
@@ -40,7 +40,7 @@ const stories: Story[] = [
         role: "Member Testimony",
         stat: "365 Nights/Year",
         year: "2025",
-        chapter: "Mombasa"
+        chapter: "Mombasa",
     },
     {
         content: "Being part of the 1,000-voice choir was life-changing. The unity, the power, the presence — it's indescribable.",
@@ -48,267 +48,245 @@ const stories: Story[] = [
         role: "Volunteer",
         stat: "1,000 Voices",
         year: "2024",
-        chapter: "Nakuru"
-    }
+        chapter: "Nakuru",
+    },
 ];
 
 export default function StoriesTeaser() {
     const sectionRef = useRef<HTMLDivElement>(null);
-    const cardsRef = useRef<HTMLDivElement[]>([]);
-    const currentIndexRef = useRef(0);
-    const isAnimatingRef = useRef(false);
+    const inView = useInView(sectionRef, { once: true, margin: "-12%" });
+    const shouldReduceMotion = useReducedMotion();
     const [activeIndex, setActiveIndex] = useState(0);
+    const [dir, setDir] = useState(1);
+    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-    // Register a card ref by index
-    const setCardRef = useCallback((el: HTMLDivElement | null, i: number) => {
-        if (el) cardsRef.current[i] = el;
+    const goTo = useCallback((next: number, direction = 1) => {
+        setDir(direction);
+        setActiveIndex((next + stories.length) % stories.length);
     }, []);
 
-    const gotoStory = useCallback((index: number) => {
-        if (isAnimatingRef.current || index === currentIndexRef.current) return;
-        const cards = cardsRef.current;
-        if (!cards.length) return;
+    const handleNext = useCallback(() => goTo(activeIndex + 1, 1), [activeIndex, goTo]);
+    const handlePrev = useCallback(() => goTo(activeIndex - 1, -1), [activeIndex, goTo]);
 
-        isAnimatingRef.current = true;
-        const direction = index > currentIndexRef.current ? 1 : -1;
-        const outgoing = cards[currentIndexRef.current];
-        const incoming = cards[index];
-
-        setActiveIndex(index);
-
-        const tl = gsap.timeline({
-            onComplete: () => {
-                isAnimatingRef.current = false;
-                currentIndexRef.current = index;
-            }
-        });
-
-        tl.to(outgoing, {
-            xPercent: -100 * direction,
-            opacity: 0,
-            duration: 0.75,
-            ease: "power3.inOut"
-        });
-
-        tl.fromTo(
-            incoming,
-            { xPercent: 100 * direction, opacity: 0 },
-            { xPercent: 0, opacity: 1, duration: 0.75, ease: "power3.inOut" },
-            0
-        );
-    }, []);
-
-    const handleNext = useCallback(() => {
-        const next = (currentIndexRef.current + 1) % stories.length;
-        gotoStory(next);
-    }, [gotoStory]);
-
-    const handlePrev = useCallback(() => {
-        const prev = (currentIndexRef.current - 1 + stories.length) % stories.length;
-        gotoStory(prev);
-    }, [gotoStory]);
-
-    // Keyboard navigation
+    // Auto-advance
     useEffect(() => {
-        const handler = (e: KeyboardEvent) => {
-            if (e.key === "ArrowRight") handleNext();
-            if (e.key === "ArrowLeft") handlePrev();
-        };
-        window.addEventListener("keydown", handler);
-        return () => window.removeEventListener("keydown", handler);
-    }, [handleNext, handlePrev]);
-
-    // Auto-advance every 6 seconds
-    useEffect(() => {
-        const interval = setInterval(() => {
-            handleNext();
-        }, 6000);
-        return () => clearInterval(interval);
+        timerRef.current = setInterval(handleNext, 6000);
+        return () => { if (timerRef.current) clearInterval(timerRef.current); };
     }, [handleNext]);
 
-    useEffect(() => {
-        const cards = cardsRef.current;
-        if (!cards.length) return;
+    const resetTimer = useCallback(() => {
+        if (timerRef.current) clearInterval(timerRef.current);
+        timerRef.current = setInterval(handleNext, 6000);
+    }, [handleNext]);
 
-        // rAF ensures DOM is painted before GSAP reads positions
-        const raf = requestAnimationFrame(() => {
-            gsap.set(cards, { xPercent: 100, opacity: 0 });
-            gsap.set(cards[0], { xPercent: 0, opacity: 1 });
-            currentIndexRef.current = 0;
-        });
+    const story = stories[activeIndex];
 
-        const ctx = gsap.context(() => {
-            gsap.from(".stories-header", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 80%",
-                },
-                x: -60,
-                opacity: 0,
-                duration: 1.2,
-                ease: "expo.out"
-            });
-        }, sectionRef);
-
-        return () => {
-            cancelAnimationFrame(raf);
-            ctx.revert();
-        };
-    }, []);
+    const variants = {
+        enter: (d: number) => ({
+            opacity: 0,
+            x: shouldReduceMotion ? 0 : d * 50,
+            scale: shouldReduceMotion ? 1 : 0.97,
+        }),
+        center: { opacity: 1, x: 0, scale: 1 },
+        exit: (d: number) => ({
+            opacity: 0,
+            x: shouldReduceMotion ? 0 : d * -50,
+            scale: shouldReduceMotion ? 1 : 0.97,
+        }),
+    };
 
     return (
-        <section ref={sectionRef} className="section-padding bg-brown text-white relative overflow-hidden" id="stories">
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gold/5 rounded-full blur-[150px]" />
-                <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-emerald/5 rounded-full blur-[120px]" />
-            </div>
+        <section ref={sectionRef} id="stories" className="py-24 md:py-32 px-6 relative overflow-hidden" style={{ background: "hsl(25 20% 6%)" }}>
+            {/* Ambient glows */}
+            <div className="absolute top-0 right-0 w-[500px] h-[400px] bg-gold/5 blur-[160px] pointer-events-none rounded-bl-[50%]" />
+            <div className="absolute bottom-0 left-0 w-[350px] h-[300px] bg-purple-500/4 blur-[130px] pointer-events-none" />
 
             <div className="max-container relative z-10">
-                <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-start lg:items-center min-h-[auto] lg:min-h-[600px]">
-                    {/* Left — sticky header + controls */}
-                    <div className="stories-header flex-1 space-y-8 lg:sticky lg:top-32">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-[10px] font-black uppercase tracking-[0.2em]">
-                            <SvgIcon name="star" size={14} /> Stories
-                        </div>
-                        <h2 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9]">
-                            HEIRS OF <br />
-                            <span className="text-gold">GLORY</span>
-                        </h2>
-                        <p className="text-white/60 text-xl font-medium leading-relaxed italic max-w-md">
-                            &quot;Behind every worship night is a story of transformation. From the hidden prayers of volunteers to the global echoes of our anthem.&quot;
-                        </p>
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start lg:items-center">
 
-                        {/* Desktop Controls (hidden on mobile) */}
-                        <div className="hidden lg:flex flex-col gap-8">
-                            <div className="flex items-center gap-4 pt-4">
+                    {/* ── Left: header + controls ── */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -32 }}
+                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ ...SPRING, delay: 0 }}
+                        className="flex-1 space-y-8 lg:sticky lg:top-32"
+                    >
+                        {/* Label pill */}
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-gold/8 border border-gold/18 rounded-full text-gold text-[8px] font-black uppercase tracking-[0.3em]">
+                            <SvgIcon name="star" size={12} />
+                            Testimonies
+                        </div>
+
+                        {/* Headline */}
+                        <div className="space-y-2">
+                            <h2
+                                className="font-black tracking-tighter leading-[0.88] text-white"
+                                style={{ fontSize: "clamp(3rem,7vw,6.5rem)" }}
+                            >
+                                HEIRS OF<br />
+                                <span className="text-gold">GLORY</span>
+                            </h2>
+                            <p className="text-white/40 font-medium text-[13px] leading-relaxed max-w-xs italic">
+                                "Behind every worship night is a story of transformation — from hidden prayers to continental echoes."
+                            </p>
+                        </div>
+
+                        {/* Desktop nav + CTA */}
+                        <div className="hidden lg:flex flex-col gap-6">
+                            {/* Pagination dots + chevrons */}
+                            <div className="flex items-center gap-3">
                                 <button
-                                    onClick={handlePrev}
+                                    onClick={() => { handlePrev(); resetTimer(); }}
                                     aria-label="Previous story"
-                                    className="p-4 rounded-full glass-card hover:bg-white/10 transition-colors active:scale-95"
+                                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/8 text-white/40 hover:text-white hover:border-white/20 transition-all active:scale-90"
                                 >
-                                    <SvgIcon name="arrow_back" size={20} />
+                                    <SvgIcon name="chevron_left" size={16} />
                                 </button>
-                                <div className="flex gap-2">
+                                <div className="flex gap-1.5">
                                     {stories.map((_, i) => (
                                         <button
                                             key={i}
-                                            onClick={() => gotoStory(i)}
-                                            aria-label={`Go to story ${i + 1}`}
-                                            className={`h-2 rounded-full transition-all duration-500 ${
-                                                i === activeIndex ? "w-8 bg-gold" : "w-2 bg-white/20 hover:bg-white/40"
-                                            }`}
+                                            onClick={() => { goTo(i, i > activeIndex ? 1 : -1); resetTimer(); }}
+                                            aria-label={`Story ${i + 1}`}
+                                            className={`h-1.5 rounded-full transition-all duration-400 ${i === activeIndex ? "w-6 bg-gold" : "w-1.5 bg-white/18 hover:bg-white/35"}`}
                                         />
                                     ))}
                                 </div>
                                 <button
-                                    onClick={handleNext}
+                                    onClick={() => { handleNext(); resetTimer(); }}
                                     aria-label="Next story"
-                                    className="p-4 rounded-full glass-card hover:bg-white/10 transition-colors active:scale-95"
+                                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/8 text-white/40 hover:text-white hover:border-white/20 transition-all active:scale-90"
                                 >
-                                    <SvgIcon name="arrow_forward" size={20} />
+                                    <SvgIcon name="chevron_right" size={16} />
                                 </button>
                             </div>
 
                             <Link
                                 href="/testify"
-                                className="group inline-flex items-center gap-2 bg-gold text-brown px-8 py-4 rounded-full font-black uppercase tracking-widest hover:bg-white transition-all shadow-glow"
+                                className="inline-flex items-center gap-2 bg-gold text-brown px-7 py-3.5 rounded-full font-black uppercase tracking-widest text-[10px] hover:brightness-110 transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)] active:scale-95 w-max"
                             >
-                                Testify <SvgIcon name="arrow_forward" size={20} />
+                                Share Your Story
+                                <SvgIcon name="arrow_forward" size={14} />
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    {/* Right — carousel stack & Mobile Controls */}
-                    <div className="flex-1 w-full flex flex-col gap-10">
-                        <div className="w-full h-[420px] sm:h-[480px] lg:h-[540px] relative overflow-hidden">
-                        {stories.map((story, i) => (
-                            <div
-                                key={i}
-                                ref={(el) => setCardRef(el, i)}
-                                className="story-card absolute inset-0 flex items-center justify-center"
-                                style={{ willChange: "transform, opacity" }}
-                            >
-                                <div className="glass-card-elevated p-8 md:p-12 relative overflow-hidden group rounded-[2rem] border-white/5 bg-brown/40 backdrop-blur-3xl shadow-2xl w-full max-w-full lg:max-w-[420px]">
-                                    <SvgIcon name="quote" size={80} className="absolute top-8 right-8 text-gold/10 group-hover:text-gold/20 transition-colors duration-500" />
+                    {/* ── Right: animated story card ── */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 32 }}
+                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ ...SPRING, delay: 0.1 }}
+                        className="flex-1 w-full flex flex-col gap-8"
+                    >
+                        {/* Card carousel */}
+                        <div className="relative overflow-hidden min-h-[320px] sm:min-h-[360px]">
+                            <AnimatePresence mode="wait" custom={dir}>
+                                <motion.div
+                                    key={activeIndex}
+                                    custom={dir}
+                                    variants={variants}
+                                    initial="enter"
+                                    animate="center"
+                                    exit="exit"
+                                    transition={{ ...SPRING }}
+                                    className="absolute inset-0"
+                                >
+                                    <div
+                                        className="relative h-full rounded-[1.75rem] border border-white/6 p-8 md:p-10 flex flex-col overflow-hidden group"
+                                        style={{ background: "rgba(255,255,255,0.025)", backdropFilter: "blur(24px) saturate(160%)" }}
+                                    >
+                                        {/* Ambient hover glow */}
+                                        <div className="absolute inset-0 bg-gold/0 group-hover:bg-gold/3 transition-colors duration-500 pointer-events-none rounded-[1.75rem]" />
 
-                                    <div className="relative z-10 space-y-8">
-                                        <div className="flex items-center gap-3">
-                                            {story.chapter && (
-                                                <span className="px-3 py-1 rounded-full bg-gold/10 text-gold text-[10px] font-black uppercase tracking-widest">
-                                                    {story.chapter}
-                                                </span>
-                                            )}
-                                            {story.year && (
-                                                <span className="text-white/30 text-[10px] font-black uppercase tracking-widest">
-                                                    {story.year}
-                                                </span>
-                                            )}
+                                        {/* Decorative quote mark */}
+                                        <span
+                                            className="absolute top-6 right-8 font-black text-gold/8 leading-none pointer-events-none select-none"
+                                            style={{ fontSize: "7rem" }}
+                                            aria-hidden="true"
+                                        >
+                                            "
+                                        </span>
+
+                                        <div className="relative z-10 flex flex-col gap-6 h-full">
+                                            {/* Chapter + year pills */}
+                                            <div className="flex items-center gap-2 flex-wrap">
+                                                {story.chapter && (
+                                                    <span className="px-2.5 py-1 rounded-full bg-gold/8 border border-gold/15 text-gold text-[8px] font-black uppercase tracking-[0.25em]">
+                                                        {story.chapter}
+                                                    </span>
+                                                )}
+                                                {story.year && (
+                                                    <span className="text-white/25 text-[8px] font-black uppercase tracking-[0.25em]">
+                                                        {story.year}
+                                                    </span>
+                                                )}
+                                            </div>
+
+                                            {/* Quote */}
+                                            <p
+                                                className="font-black tracking-tight text-white leading-snug flex-1"
+                                                style={{ fontSize: "clamp(1.1rem,2.2vw,1.5rem)" }}
+                                            >
+                                                "{story.content}"
+                                            </p>
+
+                                            {/* Attribution + stat */}
+                                            <div className="flex items-end justify-between gap-4 pt-5 border-t border-white/6">
+                                                <div>
+                                                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gold">{story.name}</p>
+                                                    <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-white/30 mt-0.5">{story.role}</p>
+                                                </div>
+                                                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gold/8 border border-gold/12 shrink-0">
+                                                    <SvgIcon name="favorite" size={12} className="text-gold" />
+                                                    <span className="text-[9px] font-black text-gold">{story.stat}</span>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <p className="text-2xl md:text-3xl font-black tracking-tight text-white leading-tight">
-                                            &quot;{story.content}&quot;
-                                        </p>
-
-                                        <div className="flex justify-between items-end border-t border-white/10 pt-8">
-                                            <div className="space-y-1">
-                                                <h4 className="font-black text-gold uppercase tracking-widest text-xs">
-                                                    {story.name}
-                                                </h4>
-                                                <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">
-                                                    {story.role}
-                                                </p>
-                                            </div>
-                                            <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-gold/10">
-                                                <SvgIcon name="heart" size={16} className="text-gold" />
-                                                <span className="text-xs font-black text-gold">{story.stat}</span>
-                                            </div>
-                                        </div>
+                                        {/* Bottom accent line */}
+                                        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-b-[1.75rem]" />
                                     </div>
-
-                                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                </div>
-                            </div>
-                        ))}
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
 
-                        {/* Mobile Controls (hidden on desktop) */}
-                        <div className="flex lg:hidden flex-col gap-8 items-center sm:items-start">
-                            <div className="flex items-center gap-4">
+                        {/* Mobile controls */}
+                        <div className="flex lg:hidden flex-col gap-5 items-center sm:items-start">
+                            <div className="flex items-center gap-3">
                                 <button
-                                    onClick={handlePrev}
+                                    onClick={() => { handlePrev(); resetTimer(); }}
                                     aria-label="Previous story"
-                                    className="p-4 rounded-full glass-card hover:bg-white/10 transition-colors active:scale-95"
+                                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/8 text-white/40 hover:text-white hover:border-white/20 transition-all active:scale-90"
                                 >
-                                    <SvgIcon name="arrow_back" size={20} />
+                                    <SvgIcon name="chevron_left" size={16} />
                                 </button>
-                                <div className="flex gap-2">
+                                <div className="flex gap-1.5">
                                     {stories.map((_, i) => (
                                         <button
                                             key={i}
-                                            onClick={() => gotoStory(i)}
-                                            aria-label={`Go to story ${i + 1}`}
-                                            className={`h-2 rounded-full transition-all duration-500 ${
-                                                i === activeIndex ? "w-8 bg-gold" : "w-2 bg-white/20 hover:bg-white/40"
-                                            }`}
+                                            onClick={() => { goTo(i, i > activeIndex ? 1 : -1); resetTimer(); }}
+                                            aria-label={`Story ${i + 1}`}
+                                            className={`h-1.5 rounded-full transition-all duration-400 ${i === activeIndex ? "w-6 bg-gold" : "w-1.5 bg-white/18 hover:bg-white/35"}`}
                                         />
                                     ))}
                                 </div>
                                 <button
-                                    onClick={handleNext}
+                                    onClick={() => { handleNext(); resetTimer(); }}
                                     aria-label="Next story"
-                                    className="p-4 rounded-full glass-card hover:bg-white/10 transition-colors active:scale-95"
+                                    className="w-9 h-9 flex items-center justify-center rounded-full border border-white/8 text-white/40 hover:text-white hover:border-white/20 transition-all active:scale-90"
                                 >
-                                    <SvgIcon name="arrow_forward" size={20} />
+                                    <SvgIcon name="chevron_right" size={16} />
                                 </button>
                             </div>
                             <Link
                                 href="/testify"
-                                className="press-scale inline-flex items-center gap-4 bg-gold text-brown w-full justify-center sm:w-max px-10 py-5 rounded-lg font-black uppercase tracking-tighter hover:brightness-110 transition-all shadow-glow"
+                                className="inline-flex items-center gap-2 bg-gold text-brown px-7 py-3.5 rounded-full font-black uppercase tracking-widest text-[10px] hover:brightness-110 transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)] active:scale-95"
                             >
-                                Testify <SvgIcon name="arrow_forward" size={20} />
+                                Share Your Story
+                                <SvgIcon name="arrow_forward" size={14} />
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
