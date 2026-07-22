@@ -29,7 +29,7 @@ const tracks = [
         shortTitle: "Band",
         desc: "Join the instrumental team. Open to pianists, drummers, string players, guitarists, and brass.",
         mobileExplainer: "Live instruments backing the entire movement. Pianists, drummers, guitarists, and string/brass players. Technical audition required.",
-        iconName: "track_mic",
+        iconName: "track_piano",
         color: "from-gold/20 to-gold/5",
         requirements: ["Proficiency on your instrument", "Ability to follow chord charts", "Attend all pre-event rehearsals"],
     },
@@ -40,7 +40,7 @@ const tracks = [
         desc: "Run cameras, sound boards, and live stream desks. Capture the moment for thousands watching online across Africa.",
         mobileExplainer: "Video, audio, and livestream production for the main event and online audiences. Own or access equipment required.",
         iconName: "track_video",
-        color: "from-secondary/40 to-secondary/10",
+        color: "from-brown/40 to-brown/10",
         requirements: ["Experience in video/sound production", "Own or access equipment", "Attend 2 pre-event tech rehearsals"],
     },
     {
@@ -49,8 +49,8 @@ const tracks = [
         shortTitle: "Usher",
         desc: "Ensuring every worshipper feels at home. Welcome teams, crowd flow, and on-site logistics.",
         mobileExplainer: "Front-line hospitality and crowd flow management. Friendly, servant-hearted, and physically able to stand for extended periods.",
-        iconName: "track_home",
-        color: "from-emerald/20 to-emerald/5",
+        iconName: "track_ushering",
+        color: "from-gold/20 to-gold/5",
         requirements: ["Friendly and servant-hearted", "Physically able to stand for long hours", "Bilingual (Swahili + English) preferred"],
     },
     {
@@ -59,8 +59,8 @@ const tracks = [
         shortTitle: "Security",
         desc: "Keep the congregation safe and the venue orderly. Coordinate with venue security personnel.",
         mobileExplainer: "Perimeter and internal crowd safety. Works alongside venue security. Physical fitness and calm under pressure required.",
-        iconName: "track_home",
-        color: "from-accent/10 to-accent/5",
+        iconName: "track_security",
+        color: "from-brown/40 to-brown/10",
         requirements: ["Physical fitness and calm demeanor", "Prior security or military background preferred", "Coordinate with venue security on-site"],
     },
     {
@@ -69,8 +69,8 @@ const tracks = [
         shortTitle: "Dance",
         desc: "Lead congregational movement in worship. Dance ministry expressing the full spectrum of praise.",
         mobileExplainer: "Praise and worship dance ministry. All styles welcome — African, contemporary, and liturgical. Audition required.",
-        iconName: "track_mic",
-        color: "from-accent/20 to-accent/5",
+        iconName: "track_dance",
+        color: "from-gold/20 to-gold/5",
         requirements: ["Dance experience (any style)", "Heart for expressive worship", "Attend choreography rehearsals"],
     },
     {
@@ -80,7 +80,7 @@ const tracks = [
         desc: "For corporate and individual supporters powering the vision. M-Pesa, bank transfer, and in-kind partnerships available.",
         mobileExplainer: "Corporate and individual financial partnership. Brand placement on all event material. Dedicated receipt provided.",
         iconName: "track_donate",
-        color: "from-accent/20 to-accent/5",
+        color: "from-brown/40 to-brown/10",
         requirements: ["Minimum KES 10,000 corporate tier", "Brand placement on all event material", "Dedicated partnership receipt provided"],
     },
 ];
@@ -305,7 +305,7 @@ export default function JoinPage() {
                                 }}
                             >
                                 <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${track.color} flex items-center justify-center text-gold group-hover:scale-110 transition-transform duration-500`}>
-                                    <SvgIcon name={track.iconName} size={28} className={track.id === "partners" || track.id === "dancing" || track.id === "security" ? "text-accent" : "text-gold"} />
+                                    <SvgIcon name={track.iconName} size={28} className="text-gold" />
                                 </div>
                                 {/* Tablet: shorter copy — full desc only when expanded */}
                                 <h3 className="text-xl lg:text-2xl font-black tracking-tighter group-hover:text-gold transition-colors">{track.title}</h3>

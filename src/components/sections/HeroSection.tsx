@@ -122,8 +122,9 @@ export default function HeroSection() {
         const delta = dragCurrentXRef.current - dragStartXRef.current;
         if (delta > 50) prevEvent();
         else if (delta < -50) nextEvent();
+        else if (Math.abs(delta) <= 10) expand();
         setIsDragging(false);
-    }, [isDragging, nextEvent, prevEvent]);
+    }, [isDragging, nextEvent, prevEvent, expand]);
 
     const handlePointerDown = useCallback((e: React.PointerEvent) => {
         e.currentTarget.setPointerCapture(e.pointerId);
@@ -353,13 +354,10 @@ export default function HeroSection() {
                                                         {/* Tap = expand. onPointerUp guard ensures it fires even with pointer capture. */}
                                                         <button
                                                             type="button"
-                                                            onPointerUp={(e) => {
-                                                                const delta = Math.abs(dragCurrentXRef.current - dragStartXRef.current);
-                                                                if (delta > 10) return;
+                                                            onClick={(e) => {
                                                                 e.stopPropagation();
                                                                 expand();
                                                             }}
-                                                            onClick={(e) => e.stopPropagation()}
                                                             draggable={false}
                                                             className="inline-flex h-full items-center gap-3 px-5 text-[10px] font-black uppercase tracking-[0.3em] text-white hover:text-gold transition-colors animate-breathe w-full justify-center"
                                                         >
